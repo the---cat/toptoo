@@ -1,0 +1,156 @@
+#ts_ag_offer_filter_container div.ts_ag_offer_filter {
+	border: 1px solid #58ace4;
+	margin-top: .9em;
+}
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter a{
+	color:#09f;
+	font-size:.9em;
+}
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter h2 {
+	background: #58ace4;
+	color: #fff;
+	font-size: .875em;
+	font-weight: bold;
+	line-height: 1.1em;
+	margin: 0;
+	padding:.8em 1em;
+	text-transform: uppercase;
+}
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter h3.title {
+	background: #ebebeb;
+	border:solid #ccc;
+	border-width:1px 0 0;
+	color:#666;
+	cursor: pointer;
+	font-size: .75em;
+	font-weight: bold;
+	line-height: 1em;
+	margin: 0;
+	padding:1.2em 20px 1.1em 1em;
+	position:relative;
+	zoom:1;
+}
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter h3.title .arr{
+	border-top: 4px solid #000;
+	border-right:4px solid transparent;
+	border-left:4px solid transparent;
+	display:block;
+	height:0;
+	margin-top:-2px;
+	overflow:hidden;
+	position:absolute;
+	right:1em;
+	top:50%;
+	width:0;
+}
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter h3.enabled .arr{
+	border-top:none;
+	border-bottom:4px solid #000;
+}
+
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter h3.enabled {
+	background-color:#a6d9ff;
+	background-position:0 100%;
+	border-width:1px 0;
+	color:#000;
+}
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter {
+	color: #333;
+	display: none;
+	font-size:.75em;
+	position: relative;
+	padding:1.5em 1em .75em;
+}
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter-departure-time,
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter-arrival-time{
+	padding-top:.75em;
+}
+
+#disable-all-filters {
+	display:none;
+	font-size:.75em;
+	text-align: center;
+	border-top:1px solid #ccc;
+	padding:.75em 1em .3em;
+}
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter-time div.clear-all,
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter-time div.select-all {
+	padding-bottom:.3em;
+	position:absolute;
+	right:1em;
+	top:.3em;
+}
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter-time div.clear-all{
+	left:1em;
+	right:auto;
+}
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter-time div.select-all a {display: none;}
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter-time div.time-slider{
+	background:#fff;
+	border-color:#ddd;
+	height:.65em;
+}
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter-time div.time-slider .ui-widget-header{background:#88ceff;}
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter-time div.time-slider .ui-slider-handle{
+	background:transparent url(img/handle.png) 50% 50% no-repeat;
+	border:none;
+	height:22px;
+	top:-8px;
+	width:10px;
+}
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter li label,
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter li input {cursor: pointer;}
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter li.disabled label,
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter li.disabled input { cursor: default; }
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.enabled { display: block; }
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter-airport div.point {
+	margin: .5em 0 .25em;
+	font-weight: bold;
+}
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter-carrier ul{clear:both;}
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter-carrier li {
+	white-space: nowrap;
+}
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter-carrier input {vertical-align: middle;}
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter-carrier label {
+	background-position: left center;
+	background-repeat: no-repeat;
+	line-height:1;
+	padding:.8em 0 .8em 30px;
+	display: -moz-inline-box;
+	display: inline-block;
+	vertical-align: middle;
+	white-space:normal;
+}
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter-time div.slider-box { margin: 1em 0; }
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter-time span.time-check { white-space: nowrap; }
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter-time label { margin: 0 1em 0 5px; }
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter-time input { vertical-align: middle; }
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter-time div.slider-box span.time-range { 
+	color:#09f;
+	font-weight: bold;
+	white-space:nowrap;
+}
+
+#ts_ag_offer_filter_container div.ts_ag_offer_filter div.filter-time div.time-slider { margin: .5em .5em 0; }
