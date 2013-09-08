@@ -1,0 +1,25 @@
+#ts_ag_currency {
+  color:#899091;
+  font-size:12px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+#ts_ag_currency li {
+  display:inline;
+  margin-left: 15px;
+}
+
+#ts_ag_currency li label{
+  border-bottom:1px dashed;
+  cursor: pointer;
+  text-transform:uppercase;
+}
+
+#ts_ag_currency li div.radio,
+#ts_ag_currency li input{ display:none !important; }
+
+#ts_ag_currency li.selected label{
+  border-color:#ffffff;
+  color:#ff0066;
+}
