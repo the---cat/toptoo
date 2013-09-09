@@ -1,0 +1,8 @@
+= Новый шаблон =
+
+http://avia.toptoo.com/test2/
+
+
+= Обновление шаблона =
+
+http://avia.toptoo.com/test2/template_update.php
