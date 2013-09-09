@@ -1,5 +1,4 @@
 <? if (!defined('B_PROLOG_INCLUDED') || true !== B_PROLOG_INCLUDED) { die(); } 
-
 $arParams['PENALTY_TYPE_FILTER_ENABLED'] = 'N';
 ?>
 
@@ -13,12 +12,11 @@ $arParams['PENALTY_TYPE_FILTER_ENABLED'] = 'N';
   <?= CIBECacheControl::RenderJSLink( $sScriptFile ) ?>
   <? endif; ?>
   <? endif; // !defined('__JS_IBE_OFFER_FILTER_TEMPLATE_DEFAULT') ?>
-
 <span id="ts_ag_offer_filter_container">
 <? if ( CIBEAjax::StartArea( "#ts_ag_offer_filter_container" ) ) { ?>
   <? $iEnabledFiltersCount = 0; ?>
   <? if ($arResult['FILTER']): ?>
-  <div id="ts_ag_offer_filter">
+  <div class="ts_ag_offer_filter">
     <div id="ts_ag_offer_filter<?= $arResult[ "~UID" ] ?>">
     <? foreach ($arResult['FILTER'] as $arFilter): ?>
       <? if ($arFilter['~VISIBLE']): ?>
@@ -36,10 +34,11 @@ $arParams['PENALTY_TYPE_FILTER_ENABLED'] = 'N';
         <? endif; // !isset( $arParams[ $enabler_name ] ) || $arParams[ $enabler_name ] !== "N" ?>
       <? endif; // $arFilter['~VISIBLE'] ?>
     <? endforeach; ?>
-
-    <? /* <div id="disable-all-filters">
+    <? /*
+    <div id="disable-all-filters">
       <a href="javascript:void(0)" class="disable-all-filters"><?= GetMessage('TS_IBE_OFFER_FILTER_DISABLE_ALL_FILTERS') ?></a>
-    </div> */ ?>
+    </div>
+    */ ?>
   </div>
 </div>
 <script type="text/javascript">
@@ -67,6 +66,7 @@ function getFilterIdsByFilterBody( filterBody ) {
 new CIBEOfferFilterScript( '#ts_ag_offer_filter<?= $arResult[ "~UID" ] ?>', <?= $iEnabledFiltersCount ?>, '<?= $arResult[ "~UID" ] ?>' );
 
 if ('function' == typeof autoSelect) { autoSelect(); }
+
 // ]]>
 </script>
 <? endif; // if ($arResult['FILTER']) ?>
