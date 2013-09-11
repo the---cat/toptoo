@@ -1,3 +1,18 @@
+#ts_ag_reservation_container__form_top{
+  background: #f4b422;
+  background: -moz-linear-gradient(top, #f4b422 0%, #faba28 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f4b422), color-stop(100%,#faba28));
+  background: -webkit-linear-gradient(top, #f4b422 0%,#faba28 100%);
+  background: -o-linear-gradient(top, #f4b422 0%,#faba28 100%);
+  background: -ms-linear-gradient(top, #f4b422 0%,#faba28 100%);
+  background: linear-gradient(to bottom, #f4b422 0%,#faba28 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4b422', endColorstr='#faba28',GradientType=0 );
+  margin: 0;
+  min-width:960px;
+  width: 100%;
+}
+
+#ts_ag_reservation_container__form_top #ts_ag_reservation,
 #ts_ag_reservation_container__form_order,
 #ts_ag_reservation_container__offer,
 #ts_ag_reservation_container__order,
@@ -22,18 +37,18 @@
 #ts_ag_reservation select,
 #ts_ag_reservation textarea {
   border: 1px solid #000000;
-} /*Поля и ввода и выпадающие списки*/
+} /*РџРѕР»СЏ Рё РІРІРѕРґР° Рё РІС‹РїР°РґР°СЋС‰РёРµ СЃРїРёСЃРєРё*/
 
 #ts_ag_reservation input[type="text"],
 #ts_ag_reservation input[type="password"] {
   border: 1px solid #000000;
-} /*Поля и ввода и выпадающие списки*/
+} /*РџРѕР»СЏ Рё РІРІРѕРґР° Рё РІС‹РїР°РґР°СЋС‰РёРµ СЃРїРёСЃРєРё*/
 
 #ts_ag_reservation select:hover,
 #ts_ag_reservation select:focus,
 #ts_ag_reservation textarea:hover,
 #ts_ag_reservation textarea:focus {
-} /*Поля ввода и выпадающие списки при наведении и в фокусе*/
+} /*РџРѕР»СЏ РІРІРѕРґР° Рё РІС‹РїР°РґР°СЋС‰РёРµ СЃРїРёСЃРєРё РїСЂРё РЅР°РІРµРґРµРЅРёРё Рё РІ С„РѕРєСѓСЃРµ*/
 
 #ts_ag_reservation input[type="text"]:hover,
 #ts_ag_reservation input[type="text"]:focus,
@@ -44,11 +59,11 @@
 #ts_ag_reservation input,
 #ts_ag_reservation textarea {
   padding: 2px;
-} /*Поля ввода*/
+} /*РџРѕР»СЏ РІРІРѕРґР°*/
 
 #ts_ag_reservation select {
   padding: 1px;
-} /*Поля ввода*/
+} /*РџРѕР»СЏ РІРІРѕРґР°*/
 
 #ts_ag_reservation .c-back{ float:left; }
 #ts_ag_reservation .c-next{ float:right; }
@@ -79,7 +94,7 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-} /* Кнопка */
+} /* РљРЅРѕРїРєР° */
 
 #ts_ag_reservation .button .price{
   font-size:24px;
@@ -101,7 +116,7 @@
 #ts_ag_reservation .info_caption {
   background: #71c3cc;
   color: #ffffff;
-} /* Заголовки */
+} /* Р—Р°РіРѕР»РѕРІРєРё */
 
 #ts_ag_reservation .icon{
   background:transparent url(images/icons.png) 0 0 no-repeat;
@@ -118,7 +133,7 @@
 #ts_ag_reservation .upt_info .icon{ background-position: -40px -20px; }
 #ts_ag_reservation .timelimit .icon{ background-position: 0 -40px; }
 
-/* ОШИБОЧНАЯ СИТУАЦИЯ*/
+/* РћРЁРР‘РћР§РќРђРЇ РЎРРўРЈРђР¦РРЇ*/
 #ts_ag_reservation .error {
   background: #ffffce;
   font-size: 90%;
@@ -127,32 +142,32 @@
   overflow: hidden;
   width: 100%;
   width: auto;
-} /*Блок сообщения об ошибке*/
+} /*Р‘Р»РѕРє СЃРѕРѕР±С‰РµРЅРёСЏ РѕР± РѕС€РёР±РєРµ*/
 
 #ts_ag_reservation .error p {
   margin: 0;
 }
 
 #ts_ag_reservation .error .type {
-} /*Тип ошибки*/
+} /*РўРёРї РѕС€РёР±РєРё*/
 
 #ts_ag_reservation .error .text {
-} /*Описание ошибки*/
+} /*РћРїРёСЃР°РЅРёРµ РѕС€РёР±РєРё*/
 
 
-/* ФОРМА ЗАПРОСА */
-#ts_ag_reservation .form-order { padding: 1em; } /*Блок формы*/
+/* Р¤РћР РњРђ Р—РђРџР РћРЎРђ */
+#ts_ag_reservation .form-order { padding: 1em; } /*Р‘Р»РѕРє С„РѕСЂРјС‹*/
 #ts_ag_reservation .form-order fieldset { border: none; }
-#ts_ag_reservation .form-order legend { display: none; } /*Заголовок общий для всех блоков*/
+#ts_ag_reservation .form-order legend { display: none; } /*Р—Р°РіРѕР»РѕРІРѕРє РѕР±С‰РёР№ РґР»СЏ РІСЃРµС… Р±Р»РѕРєРѕРІ*/
 #ts_ag_reservation .form-order .title{ cursor: pointer; }
 
-#ts_ag_reservation .form-order .route-types { padding-bottom: .6em; } /*Блок "Тип перевозки"*/
-#ts_ag_reservation .form-order .route-types .types { margin-left: 5em; } /*Блок типа перевозки*/
+#ts_ag_reservation .form-order .route-types { padding-bottom: .6em; } /*Р‘Р»РѕРє "РўРёРї РїРµСЂРµРІРѕР·РєРё"*/
+#ts_ag_reservation .form-order .route-types .types { margin-left: 5em; } /*Р‘Р»РѕРє С‚РёРїР° РїРµСЂРµРІРѕР·РєРё*/
 #ts_ag_reservation .form-order .route-types .type {
   float: left;
   margin-right: 1em;
   white-space: nowrap;
-} /*Блок каждого типа перевозки*/
+} /*Р‘Р»РѕРє РєР°Р¶РґРѕРіРѕ С‚РёРїР° РїРµСЂРµРІРѕР·РєРё*/
 #ts_ag_reservation .form-order .route-types .type * { vertical-align: middle; }
 
 #ts_ag_reservation .form-order .route,
@@ -168,7 +183,7 @@
   padding-bottom: .6em;
 }
 
-#ts_ag_reservation .form-order .route .point { } /*Блок каждого пункта маршрута*/
+#ts_ag_reservation .form-order .route .point { } /*Р‘Р»РѕРє РєР°Р¶РґРѕРіРѕ РїСѓРЅРєС‚Р° РјР°СЂС€СЂСѓС‚Р°*/
 
 #ts_ag_reservation .form-order .route .point .title,
 #ts_ag_reservation .form-order .dates .date .title{
@@ -191,7 +206,7 @@
   display: block;
   position: relative;
   z-index: 1;
-} /*Поле ввода пункта маршрута*/
+} /*РџРѕР»Рµ РІРІРѕРґР° РїСѓРЅРєС‚Р° РјР°СЂС€СЂСѓС‚Р°*/
 
 #ts_ag_reservation .form-order .route .point input.ac_loading{
   background-image:url(images/loader.white.gif);
@@ -223,7 +238,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   font-size: 75%;
   padding: 0;
   text-decoration: none;
-} /*Ссылка вызова справочника пунктов*/
+} /*РЎСЃС‹Р»РєР° РІС‹Р·РѕРІР° СЃРїСЂР°РІРѕС‡РЅРёРєР° РїСѓРЅРєС‚РѕРІ*/
 
 #ts_ag_reservation .form-order .route .point .link-container .cities_list{
 	float:right;
@@ -243,7 +258,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
 #ts_ag_reservation .form-order .dates .date input {
   vertical-align: middle;
   width: 5.3em;
-} /*Поле ввода даты*/
+} /*РџРѕР»Рµ РІРІРѕРґР° РґР°С‚С‹*/
 
 #ts_ag_reservation .form-order .dates .date .date-container {
   float: left;
@@ -258,7 +273,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
 #ts_ag_reservation .form-order .dates .date select {
   vertical-align: middle;
   width: 12em;
-} /*Выпадающий список с диапазоном времени*/
+} /*Р’С‹РїР°РґР°СЋС‰РёР№ СЃРїРёСЃРѕРє СЃ РґРёР°РїР°Р·РѕРЅРѕРј РІСЂРµРјРµРЅРё*/
 
 #ts_ag_reservation .form-order .dates .date .calendar-container {
   float:left;
@@ -285,7 +300,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
 #ts_ag_reservation .form-order .passengers .passenger {
   margin: 0;
   padding: 0 0 .3em 0;
-} /*Общий блок категорий пассажиров всех типов*/
+} /*РћР±С‰РёР№ Р±Р»РѕРє РєР°С‚РµРіРѕСЂРёР№ РїР°СЃСЃР°Р¶РёСЂРѕРІ РІСЃРµС… С‚РёРїРѕРІ*/
 
 #ts_ag_reservation .form-order .passengers .passenger .title {
   display: -moz-inline-box;
@@ -298,9 +313,9 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   vertical-align: middle;
   max-width: 13em;
   width: 3em; /*FF2, Safari*/
-}/* Общие свойства выпадающих списков с количеством пассажиров*/
+}/* РћР±С‰РёРµ СЃРІРѕР№СЃС‚РІР° РІС‹РїР°РґР°СЋС‰РёС… СЃРїРёСЃРєРѕРІ СЃ РєРѕР»РёС‡РµСЃС‚РІРѕРј РїР°СЃСЃР°Р¶РёСЂРѕРІ*/
 
-#ts_ag_reservation .form-order .passengers .category select { width: auto; } /*Выпадающий список с перечнем категорий пассажиров*/
+#ts_ag_reservation .form-order .passengers .category select { width: auto; } /*Р’С‹РїР°РґР°СЋС‰РёР№ СЃРїРёСЃРѕРє СЃ РїРµСЂРµС‡РЅРµРј РєР°С‚РµРіРѕСЂРёР№ РїР°СЃСЃР°Р¶РёСЂРѕРІ*/
 
 #ts_ag_reservation .form-order .preferences .preference { padding-bottom: .3em; }
 
@@ -317,57 +332,74 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   vertical-align: middle;
 }
 
-#ts_ag_reservation .form-order .preferences .company select { width: 17em; } /*Выпадающий список авиакомпаний*/
+#ts_ag_reservation .form-order .preferences .company select { width: 17em; } /*Р’С‹РїР°РґР°СЋС‰РёР№ СЃРїРёСЃРѕРє Р°РІРёР°РєРѕРјРїР°РЅРёР№*/
 #ts_ag_reservation .form-order .preferences .direct .title {
   margin-right: .5em;
   width: auto;
-} /*Подпись к типам рейсов*/
+} /*РџРѕРґРїРёСЃСЊ Рє С‚РёРїР°Рј СЂРµР№СЃРѕРІ*/
 
-/* Режим all_in_one */
-#ts_ag_reservation_container__form_top{
-  background: #f4b422;
-  background: -moz-linear-gradient(top, #f4b422 0%, #faba28 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f4b422), color-stop(100%,#faba28));
-  background: -webkit-linear-gradient(top, #f4b422 0%,#faba28 100%);
-  background: -o-linear-gradient(top, #f4b422 0%,#faba28 100%);
-  background: -ms-linear-gradient(top, #f4b422 0%,#faba28 100%);
-  background: linear-gradient(to bottom, #f4b422 0%,#faba28 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4b422', endColorstr='#faba28',GradientType=0 );
-
-  margin: 0;
-  min-width:960px;
-  width: 100%;
-}
-#ts_ag_reservation_container__form_top #ts_ag_reservation{
-  margin: 0 auto;
-  min-width:960px;
-  max-width: 1280px;
-}
+/* Р РµР¶РёРј all_in_one */
 #ts_ag_reservation_container__form_top .form-order{ padding:10px 5px; }
-#ts_ag_reservation_container__form_top .form-order .top_form_points,
-#ts_ag_reservation_container__form_top .form-order .top_form_dates { float:left; }
-#ts_ag_reservation_container__form_top .form-order .top_form_points { padding-right:10px; }
-#ts_ag_reservation_container__form_top .form-order .title{
-  color:#666666;
-  display:block;
-  font-size:11px;
-  line-height: 18px;
+#ts_ag_reservation_container__form_top .form-order .route-types{
+  clear:both;
+  padding-bottom:7px;
 }
+#ts_ag_reservation_container__form_top .form-order .route-types .type{
+  border-bottom:1px dashed;
+  color:#303030;
+  cursor: pointer;
+  display: inline-block;
+  font-size:11px;
+  margin-right:25px;
+  text-transform: uppercase;
+  vertical-align: top;
+}
+#ts_ag_reservation_container__form_top .form-order .route-types .selected{
+  border-bottom:none;
+  cursor: default;
+  font-weight:bold;
+}
+
+#ts_ag_reservation_container__form_top .form-order .top_form_points,
+#ts_ag_reservation_container__form_top .form-order .top_form_dates,
+#ts_ag_reservation_container__form_top .form-order .point,
+#ts_ag_reservation_container__form_top .form-order .date { float:left; }
+#ts_ag_reservation_container__form_top .form-order .top_form_points { padding-right:1em; }
+
 #ts_ag_reservation_container__form_top .form-order input[type="text"]{
   border:1px solid #c89010;
   color:#000000;
   display: block;
   font-size:15px;
   font-weight:bold;
-  height: 20px;
+  height: 21px;
   padding:6px 20px 6px 5px;
   position: relative;
 }
-
-#ts_ag_reservation_container__form_top .form-order .point,
-#ts_ag_reservation_container__form_top .form-order .date{ 
-  float:left;
-  padding-right:10px;
+#ts_ag_reservation_container__form_top .form-order #route_switch{
+  cursor: pointer;
+  height:35px;
+  position: relative;
+  width:32px;
+}
+#ts_ag_reservation_container__form_top .form-order #route_switch:before,
+#ts_ag_reservation_container__form_top .form_rt #route_switch:after{ 
+  color:#000000;
+  content:'\2192';
+  display:block;
+  left:0;
+  line-height:35px;
+  position: absolute;
+  text-align: center;
+  top:0;
+  width:32px;
+}
+#ts_ag_reservation_container__form_top .form_rt #route_switch:before{ line-height: 29px; }
+#ts_ag_reservation_container__form_top .form_rt #route_switch:after{
+  bottom:0;
+  content:'\2190';
+  line-height: 29px;
+  top:auto;
 }
 
 #ts_ag_reservation_container__form_top .form-order .location,
@@ -377,13 +409,11 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
 #ts_ag_reservation_container__form_top .form-order .point input.ac_loading{
   background:#ffffff url(images/loader.white.gif) 90% 50% no-repeat;
 }
-#ts_ag_reservation_container__form_top .form-order .date input { width:90px; }
-
 #ts_ag_reservation_container__form_top .form-order .location .link-container{
   background:url(images/point.png) 50% 50% no-repeat;
   cursor: pointer; 
   display: block;
-  height:34px;
+  height:35px;
   overflow: hidden;
   position: absolute;
   right:1px;
@@ -392,12 +422,44 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   width:20px;
 }
 
+#ts_ag_reservation_container__form_top .form-order .date_to{
+  padding-right:23px;
+  position:relative;
+}
+#ts_ag_reservation_container__form_top .form-order .date_to:after{
+  color:#000000;
+  content: '\2013';
+  display: block;
+  line-height:35px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top:0;
+  width:23px;
+}
+
+#ts_ag_reservation_container__form_top .form-order #add_dateback{
+  border:1px dashed #a76c00;
+  color:#a86d00;
+  cursor: pointer;
+  display: inline-block;
+  font-size:12px;
+  height: 21px;
+  line-height: 21px;
+  padding:6px 10px;
+}
+
+#ts_ag_reservation_container__form_top .form_ow #form_dateback_top,
+#ts_ag_reservation_container__form_top .form_rt #add_dateback{ display: none; }
+
+#ts_ag_reservation_container__form_top .form-order .date input { width:90px; }
 #ts_ag_reservation_container__form_top .form-order .date-container img{
   cursor: pointer;
   position: absolute;
   right:6px;
   top:11px;
 }
+
 #ts_ag_reservation_container__form_top .form-order .top_form_submit {
   background: #bababa;
   background: -moz-linear-gradient(top,  #e7e7e7 0%, #bababa 100%);
@@ -408,7 +470,6 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e7e7e7', endColorstr='#bababa',GradientType=0 );
 
   float:right;
-  margin-top:18px;
   padding:1px;
 }
 #ts_ag_reservation_container__form_top .form-order .top_form_submit .button{
@@ -427,14 +488,15 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   font-size:12px;
   font-weight:bold;
   
-  height:32px;
+  height:33px;
+  padding: 5px;
   text-align: center;
   text-transform: uppercase;
   width:130px;
 }
 
-/* ВЫБОР РЕЙСОВ. РЕКОМЕНДАЦИЯ ОПТИМАЛЬНЫХ ТАРИФОВ */
-/* Список рекомендаций */
+/* Р’Р«Р‘РћР  Р Р•Р™РЎРћР’. Р Р•РљРћРњР•РќР”РђР¦РРЇ РћРџРўРРњРђР›Р¬РќР«РҐ РўРђР РР¤РћР’ */
+/* РЎРїРёСЃРѕРє СЂРµРєРѕРјРµРЅРґР°С†РёР№ */
 #ts_ag_reservation .offers_tools{ padding:11px 0; }
 #ts_ag_reservation .offers_tools .c-back{
   background:transparent url(images/back.png) 6px 50% no-repeat; 
@@ -446,7 +508,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   border:1px solid #a6a6a6;
   margin-bottom:20px;
   position:relative;
-} /*Блок одной рекомендации*/
+} /*Р‘Р»РѕРє РѕРґРЅРѕР№ СЂРµРєРѕРјРµРЅРґР°С†РёРё*/
 
 #ts_ag_reservation .offers .offer table{ width:100%; }
 
@@ -619,7 +681,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
 #ts_ag_reservation .offers .offer .submit{ text-align: right; }
 #ts_ag_reservation .offers .offer .submit .button{ min-width:200px; }
 
-/* ВЫБОР РЕЙСОВ. ПРОМЕЖУТОЧНЫЙ ИТОГ */
+/* Р’Р«Р‘РћР  Р Р•Р™РЎРћР’. РџР РћРњР•Р–РЈРўРћР§РќР«Р™ РРўРћР“ */
 #ts_ag_reservation .order {
   overflow: hidden;
   width: 100%;
@@ -627,13 +689,13 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
 
 #ts_ag_reservation .order .basket {
   font-size: 80%;
-} /*Корзина*/
+} /*РљРѕСЂР·РёРЅР°*/
 
 
 #ts_ag_reservation .order .basket table {
   width: 100%;
   margin:0 0 10px;
-} /*Таблица корзины*/
+} /*РўР°Р±Р»РёС†Р° РєРѕСЂР·РёРЅС‹*/
 
 #ts_ag_reservation .order .basket th {
   border-bottom: 1px solid #999999;
@@ -641,20 +703,20 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   font-weight: bold;
   padding:4px 2px;
   text-align: left;
-} /*Заголовки столбцов таблицы корзины*/
+} /*Р—Р°РіРѕР»РѕРІРєРё СЃС‚РѕР»Р±С†РѕРІ С‚Р°Р±Р»РёС†С‹ РєРѕСЂР·РёРЅС‹*/
 
 #ts_ag_reservation .order .basket .product {
-} /*Строка с одним продуктом*/
+} /*РЎС‚СЂРѕРєР° СЃ РѕРґРЅРёРј РїСЂРѕРґСѓРєС‚РѕРј*/
 
 #ts_ag_reservation .order .basket .product td {
   border-bottom: 1px solid #999999;
   padding: .2em .5em .2em 0;
-} /*Ячейки строки с одним продуктом*/
+} /*РЇС‡РµР№РєРё СЃС‚СЂРѕРєРё СЃ РѕРґРЅРёРј РїСЂРѕРґСѓРєС‚РѕРј*/
 
 #ts_ag_reservation .order .basket .product .name {
   float:left;
   font-weight: bold;
-} /*Наименование продукта*/
+} /*РќР°РёРјРµРЅРѕРІР°РЅРёРµ РїСЂРѕРґСѓРєС‚Р°*/
 
 #ts_ag_reservation .order .basket .product .service-delete {
   background: transparent url(images/service-delete.gif) scroll 100% 50% no-repeat;
@@ -662,7 +724,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   width: 16px;
   height: 16px;
   margin-left: 5px;
-} /*Удаление продукта*/
+} /*РЈРґР°Р»РµРЅРёРµ РїСЂРѕРґСѓРєС‚Р°*/
 
 #ts_ag_reservation .order .basket .product .e-ticket-block .e-ticket {
   background: transparent url(images/e-ticket.gif) scroll 100% 50% no-repeat;
@@ -670,7 +732,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   margin-right: 1px;
   min-height: 15px;
   padding-right: 19px;
-} /*Признак электронного билета*/
+} /*РџСЂРёР·РЅР°Рє СЌР»РµРєС‚СЂРѕРЅРЅРѕРіРѕ Р±РёР»РµС‚Р°*/
 
 #ts_ag_reservation .order .basket .product .p-ticket-block .p-ticket {
   background: transparent url(images/p-ticket.gif) scroll 100% 50% no-repeat;
@@ -678,7 +740,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   margin-right: 1px;
   min-height: 15px;
   padding-right: 19px;
-} /*Признак бумажного билета*/
+} /*РџСЂРёР·РЅР°Рє Р±СѓРјР°Р¶РЅРѕРіРѕ Р±РёР»РµС‚Р°*/
 
 #ts_ag_reservation .order .basket .product .l-ticket-block .l-ticket {
   background: transparent url(images/l-ticket.gif) scroll 100% 50% no-repeat;
@@ -686,46 +748,46 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   margin-right: 1px;
   min-height: 15px;
   padding-right: 19px;
-} /*Признак электронного билета с оформлением в офисе*/
+} /*РџСЂРёР·РЅР°Рє СЌР»РµРєС‚СЂРѕРЅРЅРѕРіРѕ Р±РёР»РµС‚Р° СЃ РѕС„РѕСЂРјР»РµРЅРёРµРј РІ РѕС„РёСЃРµ*/
 
 #ts_ag_reservation .order .basket .product .route {
-} /*Маршрут*/
+} /*РњР°СЂС€СЂСѓС‚*/
 
 #ts_ag_reservation .order .basket .product .tariff_code {
-} /*Код тарифа*/
+} /*РљРѕРґ С‚Р°СЂРёС„Р°*/
 
 #ts_ag_reservation .order .basket .header .money_cell {
   text-align: right;
-} /*Контейнер цены*/
+} /*РљРѕРЅС‚РµР№РЅРµСЂ С†РµРЅС‹*/
 
 #ts_ag_reservation .order .basket .header .count_cell {
   text-align: right;
-} /*Контейнер количества*/
+} /*РљРѕРЅС‚РµР№РЅРµСЂ РєРѕР»РёС‡РµСЃС‚РІР°*/
 
 #ts_ag_reservation .order .basket .product .money_cell {
   text-align: right;
   white-space: nowrap;
-} /*Контейнер цены*/
+} /*РљРѕРЅС‚РµР№РЅРµСЂ С†РµРЅС‹*/
 
 #ts_ag_reservation .order .basket .product .count_cell {
   text-align: right;
-} /*Контейнер количества*/
+} /*РљРѕРЅС‚РµР№РЅРµСЂ РєРѕР»РёС‡РµСЃС‚РІР°*/
 
 #ts_ag_reservation .order .basket .product .price {
   border-bottom: 1px dashed;
   color: #4179AB;
   cursor: help;
-} /*Ссылка на условия применения тарифа*/
+} /*РЎСЃС‹Р»РєР° РЅР° СѓСЃР»РѕРІРёСЏ РїСЂРёРјРµРЅРµРЅРёСЏ С‚Р°СЂРёС„Р°*/
 
 #ts_ag_reservation .order .basket .product .tariff_code a {
   font-weight: bold;
-} /*Ссылка на условия применения тарифа*/
+} /*РЎСЃС‹Р»РєР° РЅР° СѓСЃР»РѕРІРёСЏ РїСЂРёРјРµРЅРµРЅРёСЏ С‚Р°СЂРёС„Р°*/
 
 #ts_ag_reservation .order .basket .product .sum_price {
-} /*Стоимость всех продуктов одного наименования*/
+} /*РЎС‚РѕРёРјРѕСЃС‚СЊ РІСЃРµС… РїСЂРѕРґСѓРєС‚РѕРІ РѕРґРЅРѕРіРѕ РЅР°РёРјРµРЅРѕРІР°РЅРёСЏ*/
 
 #tooltip {
-} /*Блок всплывающей подсказки с расчетом цены продукта*/
+} /*Р‘Р»РѕРє РІСЃРїР»С‹РІР°СЋС‰РµР№ РїРѕРґСЃРєР°Р·РєРё СЃ СЂР°СЃС‡РµС‚РѕРј С†РµРЅС‹ РїСЂРѕРґСѓРєС‚Р°*/
 
 #ts_ag_reservation .order .basket .total_title {
   font-size: 120%;
@@ -733,7 +795,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   padding: 6px .5em 0 .5em;
   text-align: right;
   vertical-align: top;
-} /*Ячейка с надписью «Итого:»*/
+} /*РЇС‡РµР№РєР° СЃ РЅР°РґРїРёСЃСЊСЋ В«РС‚РѕРіРѕ:В»*/
 
 #ts_ag_reservation .order .basket .total_paysystem_title {
   font-size: 120%;
@@ -742,7 +804,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   text-align: right;
   vertical-align: top;
   color:#50ACE6;
-} /*Ячейка с надписью Сумма к оплате с учетом комиссии платежной системы:»*/
+} /*РЇС‡РµР№РєР° СЃ РЅР°РґРїРёСЃСЊСЋ РЎСѓРјРјР° Рє РѕРїР»Р°С‚Рµ СЃ СѓС‡РµС‚РѕРј РєРѕРјРёСЃСЃРёРё РїР»Р°С‚РµР¶РЅРѕР№ СЃРёСЃС‚РµРјС‹:В»*/
 
 #ts_ag_reservation .order .basket .total_price {
   font-size: 150%;
@@ -750,7 +812,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   padding: 6px .5em 0 0;
   vertical-align: top;
   text-align: right;
-} /*Ячейка с суммарной стоимостью продукта*/
+} /*РЇС‡РµР№РєР° СЃ СЃСѓРјРјР°СЂРЅРѕР№ СЃС‚РѕРёРјРѕСЃС‚СЊСЋ РїСЂРѕРґСѓРєС‚Р°*/
 
 #ts_ag_reservation .order .basket .total_paysystem_price {
   font-size: 150%;
@@ -759,7 +821,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   vertical-align: top;
   text-align: right;
   color:#50ACE6;
-} /*Ячейка с суммарной стоимостью продукта*/
+} /*РЇС‡РµР№РєР° СЃ СЃСѓРјРјР°СЂРЅРѕР№ СЃС‚РѕРёРјРѕСЃС‚СЊСЋ РїСЂРѕРґСѓРєС‚Р°*/
 
 #ts_ag_reservation .order .tariff_child_note {
   background: url(images/tariff-child-note.gif) no-repeat right center;
@@ -782,22 +844,22 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   font-size: 90%;
   margin: 0 0 1em;
   padding: 0;
-} /*Дополнительные ограничения*/
+} /*Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РѕРіСЂР°РЅРёС‡РµРЅРёСЏ*/
 
 #ts_ag_reservation .order .limits li {
   margin: 0 0 .25em;
   padding: 0;
-} /*Дополнительные ограничения*/
+} /*Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РѕРіСЂР°РЅРёС‡РµРЅРёСЏ*/
 
 #ts_ag_reservation_curtain__all_in_one #button_back_order{ width:auto; }
 
 #ts_ag_reservation .order .flights {
   font-size: .8em;
-} /*Блок таблицы с рейсами*/
+} /*Р‘Р»РѕРє С‚Р°Р±Р»РёС†С‹ СЃ СЂРµР№СЃР°РјРё*/
 
 #ts_ag_reservation .order .flights table {
   width: 100%;
-} /*Таблица с рейсами*/
+} /*РўР°Р±Р»РёС†Р° СЃ СЂРµР№СЃР°РјРё*/
 
 #ts_ag_reservation .order .flights th {
   border-bottom: 1px solid #999999;
@@ -806,28 +868,28 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   padding-right: .5em;
   padding-bottom: .3em;
   text-align: left;
-} /*Заголовки столбцов таблицы с рейсами*/
+} /*Р—Р°РіРѕР»РѕРІРєРё СЃС‚РѕР»Р±С†РѕРІ С‚Р°Р±Р»РёС†С‹ СЃ СЂРµР№СЃР°РјРё*/
 
 #ts_ag_reservation .order .flights .flight {
-} /*Один рейс*/
+} /*РћРґРёРЅ СЂРµР№СЃ*/
 
 #ts_ag_reservation .order .flights .flight td {
   border-bottom: 1px solid #999999;
   padding: .2em .5em .2em 0;
-} /*Ячейки в одном рейсе*/
+} /*РЇС‡РµР№РєРё РІ РѕРґРЅРѕРј СЂРµР№СЃРµ*/
 
 #ts_ag_reservation .order .flights .flight .charter {
   color: #4179AB;
   text-transform:uppercase;
   font-size: .9em;
   font-weight: bold;
-} /*Предупреждение о чартерном рейсе*/
+} /*РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ Рѕ С‡Р°СЂС‚РµСЂРЅРѕРј СЂРµР№СЃРµ*/
 
 #ts_ag_reservation .order .flights .flight .logo {
   background-position: left center;
   background-repeat: no-repeat;
   padding-left: 80px;
-} /*Логотип авиакомпании*/
+} /*Р›РѕРіРѕС‚РёРї Р°РІРёР°РєРѕРјРїР°РЅРёРё*/
 
 #ts_ag_personal .order .flights .flight .logo .number,
 #ts_ag_reservation .order .flights .flight .logo .number {
@@ -848,56 +910,56 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
 
 #ts_ag_reservation .order .flights .flight .departure_date {
   font-weight: bold;
-} /*Дата вылета*/
+} /*Р”Р°С‚Р° РІС‹Р»РµС‚Р°*/
 
 #ts_ag_reservation .order .flights .flight .departure_time {
-} /*Время вылета*/
+} /*Р’СЂРµРјСЏ РІС‹Р»РµС‚Р°*/
 
 #ts_ag_reservation .order .flights .flight .departure_name {
   clear: left;
   float: left;
   padding-right: .3em;
-} /*Аэропорт вылета*/
+} /*РђСЌСЂРѕРїРѕСЂС‚ РІС‹Р»РµС‚Р°*/
 
 #ts_ag_reservation .order .flights .flight .departure_code {
-} /*Код аэропорта вылета*/
+} /*РљРѕРґ Р°СЌСЂРѕРїРѕСЂС‚Р° РІС‹Р»РµС‚Р°*/
 
 #ts_ag_reservation .order .flights .flight .arrival_date {
   font-weight: bold;
-} /*Дата прилёта*/
+} /*Р”Р°С‚Р° РїСЂРёР»С‘С‚Р°*/
 
 #ts_ag_reservation .order .flights .flight .arrival_time {
-} /*Время прилёта*/
+} /*Р’СЂРµРјСЏ РїСЂРёР»С‘С‚Р°*/
 
 #ts_ag_reservation .order .flights .flight .arrival_name {
   clear: left;
   float: left;
   padding-right: .3em;
-} /*Аэропорт прилёта*/
+} /*РђСЌСЂРѕРїРѕСЂС‚ РїСЂРёР»С‘С‚Р°*/
 
 #ts_ag_reservation .order .flights .flight .arrival_code {
-} /*Код аэропорта прилёта*/
+} /*РљРѕРґ Р°СЌСЂРѕРїРѕСЂС‚Р° РїСЂРёР»С‘С‚Р°*/
 
 #ts_ag_reservation .order .flights .flight .number {
   font-weight: bold;
-} /*Номер рейса*/
+} /*РќРѕРјРµСЂ СЂРµР№СЃР°*/
 
 #ts_ag_reservation .offer .flights .flight .number .codeshare {
-} /*Номер рейса, выполняемого другим перевозчиком*/
+} /*РќРѕРјРµСЂ СЂРµР№СЃР°, РІС‹РїРѕР»РЅСЏРµРјРѕРіРѕ РґСЂСѓРіРёРј РїРµСЂРµРІРѕР·С‡РёРєРѕРј*/
 
 #ts_ag_reservation .order .flights .flight .plane {
-} /*Тип самолёта*/
+} /*РўРёРї СЃР°РјРѕР»С‘С‚Р°*/
 
 #ts_ag_reservation .order .flights .flight .service_class {
-} /*Класс обслуживания*/
+} /*РљР»Р°СЃСЃ РѕР±СЃР»СѓР¶РёРІР°РЅРёСЏ*/
 
 #ts_ag_reservation .order .flights .flight .service_code {
-} /*Код бронирования*/
+} /*РљРѕРґ Р±СЂРѕРЅРёСЂРѕРІР°РЅРёСЏ*/
 
 #ts_ag_reservation .order .flights .time_info {
   font-size: 85%;
   color: #999999;
-} /*Информация о местном времени*/
+} /*РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РјРµСЃС‚РЅРѕРј РІСЂРµРјРµРЅРё*/
 
 #ts_ag_reservation .order .tariff_title {
   padding: 0;
@@ -905,7 +967,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   font-size: 1em;
   font-weight: bold;
   color: #333333;
-} /*Название тарифа*/
+} /*РќР°Р·РІР°РЅРёРµ С‚Р°СЂРёС„Р°*/
 
 #ts_ag_reservation .order .tariff_condition {
   width: 97%;
@@ -916,25 +978,25 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   border: solid 1px #999999;
   line-height: 150%;
   background: #EEEEEE;
-} /*Условия тарифа*/
+} /*РЈСЃР»РѕРІРёСЏ С‚Р°СЂРёС„Р°*/
 
 #ts_ag_reservation .order .tariff_agree_title {
   margin: 1em 0 .2em 0;
   font-size: 90%;
   font-weight: bold;
-} /*Заголовок соглашения с условиями тарифа*/
+} /*Р—Р°РіРѕР»РѕРІРѕРє СЃРѕРіР»Р°С€РµРЅРёСЏ СЃ СѓСЃР»РѕРІРёСЏРјРё С‚Р°СЂРёС„Р°*/
 
 #ts_ag_reservation .order .tariff_agree,
 #ts_ag_reservation .order .service_agree .service {
   padding: 0 .5em;
-} /*Блок соглашения с условиями тарифа*/
+} /*Р‘Р»РѕРє СЃРѕРіР»Р°С€РµРЅРёСЏ СЃ СѓСЃР»РѕРІРёСЏРјРё С‚Р°СЂРёС„Р°*/
 
 #ts_ag_reservation .order .tariff_agree label,
 #ts_ag_reservation .order .service_agree .service label {
   cursor:pointer;
   font-size: 80%;
   margin-left: .5em;
-} /*Подпись к чекбоксу соглашения с условиями тарифа*/
+} /*РџРѕРґРїРёСЃСЊ Рє С‡РµРєР±РѕРєСЃСѓ СЃРѕРіР»Р°С€РµРЅРёСЏ СЃ СѓСЃР»РѕРІРёСЏРјРё С‚Р°СЂРёС„Р°*/
 
 #ts_ag_reservation .profiles-switcher {
   border-bottom: 1px dashed blue;
@@ -943,19 +1005,19 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   display: inline-block; /* http://www.w3.org/TR/CSS21/visuren.html#display-prop */
   margin-bottom: .5em;
   text-decoration: none;
-} /* ссылка, которая туда-сюда профили */
+} /* СЃСЃС‹Р»РєР°, РєРѕС‚РѕСЂР°СЏ С‚СѓРґР°-СЃСЋРґР° РїСЂРѕС„РёР»Рё */
 
-/* КНОПКИ */
+/* РљРќРћРџРљР */
 
 #ts_ag_reservation .buttons {
   clear: both;
   padding-top: 1em;
-} /*Блок кнопок*/
+} /*Р‘Р»РѕРє РєРЅРѕРїРѕРє*/
 
 #ts_ag_reservation .buttons .c-back {
   float: left;
   margin-bottom: .5em;
-} /*Блок кнопки «Обратно»*/
+} /*Р‘Р»РѕРє РєРЅРѕРїРєРё В«РћР±СЂР°С‚РЅРѕВ»*/
 
 #ts_ag_reservation .buttons .c-back .back {
   background: #2187CB url(images/button_bg.png) repeat-x scroll 0% 50%;
@@ -969,7 +1031,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   font-weight: bold;
   padding: .2em 1em;
   width: 12em;
-} /*Кнопка «Обратно»*/
+} /*РљРЅРѕРїРєР° В«РћР±СЂР°С‚РЅРѕВ»*/
 
 #ts_ag_reservation .buttons .c-back .back:hover,
 #ts_ag_reservation .buttons .c-back .back:focus {
@@ -981,11 +1043,11 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   float: right;
   margin-bottom: .5em;
   text-align: right;
-} /*Блок кнопки «Далее»*/
+} /*Р‘Р»РѕРє РєРЅРѕРїРєРё В«Р”Р°Р»РµРµВ»*/
 
 #ts_ag_reservation .buttons .ticket {
   margin-left: 0.2em;
-} /*Блок кнопки «Далее»*/
+} /*Р‘Р»РѕРє РєРЅРѕРїРєРё В«Р”Р°Р»РµРµВ»*/
 
 #ts_ag_reservation .buttons .c-next .next {
   font-size: 100%;
@@ -999,7 +1061,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   width: 12em;
   padding: .2em 1em;
   cursor: pointer;
-} /*Кнопка «Далее»*/
+} /*РљРЅРѕРїРєР° В«Р”Р°Р»РµРµВ»*/
 
 #ts_ag_reservation .buttons .c-next .next:hover,
 #ts_ag_reservation .buttons .c-next .next:focus {
@@ -1007,7 +1069,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   outline: 3px solid #FF6633;
 }
 
-/* Текущее состояние  - по умолчанию/разрешена/заблокирована */
+/* РўРµРєСѓС‰РµРµ СЃРѕСЃС‚РѕСЏРЅРёРµ  - РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ/СЂР°Р·СЂРµС€РµРЅР°/Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅР° */
 #ts_ag_reservation .buttons .state_default,
 #ts_ag_reservation .buttons .state_disabled {
   display: none !important;
@@ -1019,12 +1081,12 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
 #ts_ag_reservation .authorization {
   margin-top: 1em;
   font-size: 90%;
-} /*Блок авторизации*/
+} /*Р‘Р»РѕРє Р°РІС‚РѕСЂРёР·Р°С†РёРё*/
 
 #ts_ag_reservation .authorization .auth_title {
   font-weight: bold;
   margin-bottom: 1em;
-} /*Заголовок блока авторизации*/
+} /*Р—Р°РіРѕР»РѕРІРѕРє Р±Р»РѕРєР° Р°РІС‚РѕСЂРёР·Р°С†РёРё*/
 
 #ts_ag_reservation .authorization .auth_error {
   color: red;
@@ -1041,24 +1103,24 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   width: 40%;
   padding-right: 5em;
   border-right: solid 1px #58ACE4;
-} /*Блок ввода логина и пароля*/
+} /*Р‘Р»РѕРє РІРІРѕРґР° Р»РѕРіРёРЅР° Рё РїР°СЂРѕР»СЏ*/
 
 #ts_ag_reservation .authorization .auth .data {
   margin-bottom: .2em;
-} /*Блок поля ввода*/
+} /*Р‘Р»РѕРє РїРѕР»СЏ РІРІРѕРґР°*/
 
 #ts_ag_reservation .authorization .auth .data .title {
   width: 5em;
   padding-right: .2em;
   float: left;
   margin-top: .2em;
-} /*Название поля ввода*/
+} /*РќР°Р·РІР°РЅРёРµ РїРѕР»СЏ РІРІРѕРґР°*/
 
 #ts_ag_reservation .authorization .auth .data .input {
   width: 60%;
   border: 1px solid #58ACE4;
   font-size: 110%;
-} /*Поле ввода*/
+} /*РџРѕР»Рµ РІРІРѕРґР°*/
 
 #ts_ag_reservation .authorization .auth .data .input:hover,
 #ts_ag_reservation .authorization .auth .data .input:focus {
@@ -1068,21 +1130,21 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
 #ts_ag_reservation .authorization .ext_actions {
   float: left;
   padding-left: 2em;
-} /*Блок ссылок*/
+} /*Р‘Р»РѕРє СЃСЃС‹Р»РѕРє*/
 
 #ts_ag_reservation .authorization .ext_actions .action a {
   margin-bottom: .5em;
-} /*Ссылка*/
+} /*РЎСЃС‹Р»РєР°*/
 
 /*
 
-ШАГ 3. ПАССАЖИРЫ И КОНТАКТНАЯ ИНФОРМАЦИЯ
-новая версия, после перехода убрать лишние классы и стили.
+РЁРђР“ 3. РџРђРЎРЎРђР–РР Р« Р РљРћРќРўРђРљРўРќРђРЇ РРќР¤РћР РњРђР¦РРЇ
+РЅРѕРІР°СЏ РІРµСЂСЃРёСЏ, РїРѕСЃР»Рµ РїРµСЂРµС…РѕРґР° СѓР±СЂР°С‚СЊ Р»РёС€РЅРёРµ РєР»Р°СЃСЃС‹ Рё СЃС‚РёР»Рё.
 
 */
 
 #ts_ag_reservation .personal_data{
-} /* Данные пассажиров */
+} /* Р”Р°РЅРЅС‹Рµ РїР°СЃСЃР°Р¶РёСЂРѕРІ */
 
 #ts_ag_reservation .personal_data .cl{
   clear:both;
@@ -1094,7 +1156,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   font-weight: bold;
   margin: 0 0 0.5em;
   padding: 0;
-} /* Заголовки пассажиров */
+} /* Р—Р°РіРѕР»РѕРІРєРё РїР°СЃСЃР°Р¶РёСЂРѕРІ */
 
 #ts_ag_reservation .personal_data .profiles{
 }
@@ -1123,14 +1185,14 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   font-size:.9em;
   margin:0;
   padding:.6em 1.3em 1.1em;
-} /* Один профиль */
+} /* РћРґРёРЅ РїСЂРѕС„РёР»СЊ */
 
 #ts_ag_reservation .personal_data .no-profiles,
 #ts_ag_reservation .personal_data_services .new_profile,
 #ts_ag_reservation .personal_data .profiles .profile-active{
   background:#CDE7F8;
   border:1px solid #58ACE4;
-} /* Активный профиль и вариант, когда профилей нет */
+} /* РђРєС‚РёРІРЅС‹Р№ РїСЂРѕС„РёР»СЊ Рё РІР°СЂРёР°РЅС‚, РєРѕРіРґР° РїСЂРѕС„РёР»РµР№ РЅРµС‚ */
 
 #ts_ag_reservation .personal_data_services .profiles .new_profile{
 	margin-bottom:1em;
@@ -1257,7 +1319,7 @@ html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .docexpirat
 #ts_ag_reservation .personal_data .profiles .profile_form_services .fprefer{
 	width:auto;
 }
-/* Подсказки в полях */
+/* РџРѕРґСЃРєР°Р·РєРё РІ РїРѕР»СЏС… */
 #ts_ag_reservation .personal_data .profiles .profile_form .placeholder_input,
 #ts_ag_reservation .personal_data .profiles .profile_form .placeholder{
   color:#999;
@@ -1296,7 +1358,7 @@ html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .docexpirat
 
 /*
 
-ПОДСКАЗКА К ПОЛЯМ
+РџРћР”РЎРљРђР—РљРђ Рљ РџРћР›РЇРњ
 
 */
 #tooltip_passenger, #tooltip_warning {
@@ -1344,13 +1406,13 @@ html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .docexpirat
 
 /*
 
-ШАГ 3. ПАССАЖИРЫ
-старая версия, только на переходный период.
+РЁРђР“ 3. РџРђРЎРЎРђР–РР Р«
+СЃС‚Р°СЂР°СЏ РІРµСЂСЃРёСЏ, С‚РѕР»СЊРєРѕ РЅР° РїРµСЂРµС…РѕРґРЅС‹Р№ РїРµСЂРёРѕРґ.
 
 */
 #ts_ag_reservation .personal_data_old .passenger {
   margin-bottom: 2em;
-} /*Блок информации о каждом пассажире*/
+} /*Р‘Р»РѕРє РёРЅС„РѕСЂРјР°С†РёРё Рѕ РєР°Р¶РґРѕРј РїР°СЃСЃР°Р¶РёСЂРµ*/
 
 #ts_ag_reservation .personal_data_old .passenger .caption {
   color: #000000;
@@ -1358,7 +1420,7 @@ html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .docexpirat
   font-weight: normal;
   margin: 0 0 .5em 0;
   padding: 0;
-} /*Название пассажира*/
+} /*РќР°Р·РІР°РЅРёРµ РїР°СЃСЃР°Р¶РёСЂР°*/
 
 #ts_ag_reservation .personal_data_old .passenger .profiles {
   border: 1px solid #58ACE4;
@@ -1366,12 +1428,12 @@ html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .docexpirat
   margin: 0 0 0.5em 0;
   max-height: 250px;
   overflow: auto;
-} /*Блок профилей */
+} /*Р‘Р»РѕРє РїСЂРѕС„РёР»РµР№ */
 
 #ts_ag_reservation .personal_data_old .passenger .profiles .profile {
   font-size: 90%;
   margin: 0 0 .5em .5em;
-} /*Один профиль*/
+} /*РћРґРёРЅ РїСЂРѕС„РёР»СЊ*/
 
 #ts_ag_reservation.passengers-contacts .profile-active {
   background-color: #CDE7F8;
@@ -1392,13 +1454,13 @@ html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .docexpirat
 #ts_ag_reservation .personal_data_old .passenger .profiles .profile .name {
   display: block;
   font-weight: bold;
-} /*Название профиля*/
+} /*РќР°Р·РІР°РЅРёРµ РїСЂРѕС„РёР»СЏ*/
 
 #ts_ag_reservation .personal_data_old .passenger .profiles .profile .profile_info {
   display: block;
   font-size: 80%;
   font-style: italic;
-} /*Содержание профиля*/
+} /*РЎРѕРґРµСЂР¶Р°РЅРёРµ РїСЂРѕС„РёР»СЏ*/
 
 #ts_ag_reservation .personal_data_old .passenger #button {
   font-size: 90%;
@@ -1413,7 +1475,7 @@ html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .docexpirat
   padding: .2em 1em;
   cursor: pointer;
   margin-bottom: .5em;
-} /*Кнопка «Выбор»*/
+} /*РљРЅРѕРїРєР° В«Р’С‹Р±РѕСЂВ»*/
 
 #ts_ag_reservation .personal_data_old .passenger #button:hover,
 #ts_ag_reservation .personal_data_old .passenger #button:focus {
@@ -1426,7 +1488,7 @@ html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .docexpirat
   padding: 1em 1em .5em 1em;
   border: solid 1px #58ACE4;
   font-size: .9em;
-} /*Информация о пассажире*/
+} /*РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїР°СЃСЃР°Р¶РёСЂРµ*/
 
 #ts_ag_reservation .personal_data_old .passenger .info table {
   width: 100%;
@@ -1434,51 +1496,51 @@ html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .docexpirat
 
 #ts_ag_reservation .personal_data_old .passenger .info tbody td {
   padding: 0 .5em .5em 0;
-} /*Ячейки*/
+} /*РЇС‡РµР№РєРё*/
 
 #ts_ag_reservation .personal_data_old .passenger .info .title {
   width: 30%;
   line-height: 1.2em;
-} /*Название поля ввода*/
+} /*РќР°Р·РІР°РЅРёРµ РїРѕР»СЏ РІРІРѕРґР°*/
 
 #ts_ag_reservation .personal_data_old .passenger .info .required_title {
   font-weight: bold;
-} /*Признак обязательного заполнения*/
+} /*РџСЂРёР·РЅР°Рє РѕР±СЏР·Р°С‚РµР»СЊРЅРѕРіРѕ Р·Р°РїРѕР»РЅРµРЅРёСЏ*/
 
 #ts_ag_reservation .personal_data_old .passenger .info .error_title {
   color: #f00;
-} /*Признак неправильного заполнения*/
+} /*РџСЂРёР·РЅР°Рє РЅРµРїСЂР°РІРёР»СЊРЅРѕРіРѕ Р·Р°РїРѕР»РЅРµРЅРёСЏ*/
 
 #ts_ag_reservation .personal_data_old .passenger .info input.input {
   width: 98%;
   border: solid 1px #58ACE4;
-} /*Поле ввода*/
+} /*РџРѕР»Рµ РІРІРѕРґР°*/
 
 #ts_ag_reservation .personal_data_old .passenger .info input.input:hover,
 #ts_ag_reservation .personal_data_old .passenger .info input.input:focus {
   border: solid 1px #FF6633;
-} /*Поля ввода и выпадающие списки в фокусе*/
+} /*РџРѕР»СЏ РІРІРѕРґР° Рё РІС‹РїР°РґР°СЋС‰РёРµ СЃРїРёСЃРєРё РІ С„РѕРєСѓСЃРµ*/
 
 #ts_ag_reservation .personal_data_old .passenger .info select.input {
-} /*Выпадающий список*/
+} /*Р’С‹РїР°РґР°СЋС‰РёР№ СЃРїРёСЃРѕРє*/
 
 #ts_ag_reservation .personal_data_old .passenger .info .error_input {
-} /*Признак неправильного заполнения*/
+} /*РџСЂРёР·РЅР°Рє РЅРµРїСЂР°РІРёР»СЊРЅРѕРіРѕ Р·Р°РїРѕР»РЅРµРЅРёСЏ*/
 
 #ts_ag_reservation .personal_data_old .passenger .info .incomplete_input {
   color: #3AF;
-} /*Признак незавершенного заполнения*/
+} /*РџСЂРёР·РЅР°Рє РЅРµР·Р°РІРµСЂС€РµРЅРЅРѕРіРѕ Р·Р°РїРѕР»РЅРµРЅРёСЏ*/
 
-/* Ширина любой таблицы, созданной через CFormRenderer */
+/* РЁРёСЂРёРЅР° Р»СЋР±РѕР№ С‚Р°Р±Р»РёС†С‹, СЃРѕР·РґР°РЅРЅРѕР№ С‡РµСЂРµР· CFormRenderer */
 #ts_ag_reservation  table.c_form_renderer {
   width: 100%;
 }
-/* Первая ячейка в таблице ранее созданных профилей */
+/* РџРµСЂРІР°СЏ СЏС‡РµР№РєР° РІ С‚Р°Р±Р»РёС†Рµ СЂР°РЅРµРµ СЃРѕР·РґР°РЅРЅС‹С… РїСЂРѕС„РёР»РµР№ */
 #ts_ag_reservation .personal_data_old .passenger .profiles  table.c_form_renderer td.render_col_1,
 #ts_ag_reservation .personal_data_old .contacts .profiles table.c_form_renderer  td.render_col_1 {
   width: 1%;
 }
-/* Ширина колонок для формы */
+/* РЁРёСЂРёРЅР° РєРѕР»РѕРЅРѕРє РґР»СЏ С„РѕСЂРјС‹ */
 #ts_ag_reservation .personal_data_old .passenger .info table.c_form_renderer td.render_col_1,
 #ts_ag_reservation .personal_data_old .contacts .info table.c_form_renderer  td.render_col_1 {
   width: 30%;
@@ -1488,7 +1550,7 @@ html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .docexpirat
   width: 70%;
 }
 
-/* Участник программы / Добавить в программу */
+/* РЈС‡Р°СЃС‚РЅРёРє РїСЂРѕРіСЂР°РјРјС‹ / Р”РѕР±Р°РІРёС‚СЊ РІ РїСЂРѕРіСЂР°РјРјСѓ */
 #ts_ag_reservation .personal_data_old .passenger .ffrelation_note {
   font-weight: bold;
   font-size: 80%;
@@ -1497,7 +1559,7 @@ html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .docexpirat
   width: 50%;
 }
 
-/* Автоматическая регистрация пользователя */
+/* РђРІС‚РѕРјР°С‚РёС‡РµСЃРєР°СЏ СЂРµРіРёСЃС‚СЂР°С†РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ */
 #ts_ag_reservation #auto_registration_container {
   margin: 1em 0 0 0;
 }
@@ -1531,7 +1593,7 @@ html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .docexpirat
 #ts_ag_reservation .buttons .c-save {
   float: left;
   margin-bottom: .5em;
-} /*Блок кнопки «Сохранить»*/
+} /*Р‘Р»РѕРє РєРЅРѕРїРєРё В«РЎРѕС…СЂР°РЅРёС‚СЊВ»*/
 
 #ts_ag_reservation .buttons .c-save .save {
   font-size: 1em;
@@ -1546,7 +1608,7 @@ html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .docexpirat
   padding: .2em 1em;
   cursor: pointer;
   margin: 0 1em;
-} /*Кнопка «Сохранить»*/
+} /*РљРЅРѕРїРєР° В«РЎРѕС…СЂР°РЅРёС‚СЊВ»*/
 
 #ts_ag_reservation .buttons .c-save .save:hover,
 #ts_ag_reservation .buttons .c-save .save:focus {
@@ -1557,16 +1619,16 @@ html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .docexpirat
 #ts_ag_reservation .personal_data_old .passenger .info input.readonly {
   background-color:ButtonFace;
   color:GrayText;
-} /*Поле ввода read-only (вместо disabled)*/
+} /*РџРѕР»Рµ РІРІРѕРґР° read-only (РІРјРµСЃС‚Рѕ disabled)*/
 
 /*
 
-ШАГ 3. ОПЛАТА. ВВОД КОНТАКТНОЙ ИНФОРМАЦИИ
-старая версия, только на переходный период.
+РЁРђР“ 3. РћРџР›РђРўРђ. Р’Р’РћР” РљРћРќРўРђРљРўРќРћР™ РРќР¤РћР РњРђР¦РР
+СЃС‚Р°СЂР°СЏ РІРµСЂСЃРёСЏ, С‚РѕР»СЊРєРѕ РЅР° РїРµСЂРµС…РѕРґРЅС‹Р№ РїРµСЂРёРѕРґ.
 
 */
 #ts_ag_reservation .personal_data_old .contacts {
-} /*Блок контактной информации */
+} /*Р‘Р»РѕРє РєРѕРЅС‚Р°РєС‚РЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё */
 
 #ts_ag_reservation .personal_data_old .contacts .profiles {
   border: solid 1px #58ACE4;
@@ -1574,31 +1636,31 @@ html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .docexpirat
   margin: 0 0 .5em 0;
   max-height: 250px;
   overflow: auto;
-} /*Блок профилей */
+} /*Р‘Р»РѕРє РїСЂРѕС„РёР»РµР№ */
 
 #ts_ag_reservation .personal_data_old .contacts .profiles .profile {
   font-size: 90%;
   margin-bottom: .5em;
   margin-left: 0.5em;
-} /*Один профиль*/
+} /*РћРґРёРЅ РїСЂРѕС„РёР»СЊ*/
 
 #ts_ag_reservation .personal_data_old .contacts .profiles .profile .name {
   font-weight: bolder;
   display: block;
-} /*Название профиля*/
+} /*РќР°Р·РІР°РЅРёРµ РїСЂРѕС„РёР»СЏ*/
 
 #ts_ag_reservation .personal_data_old .contacts .profiles .profile .profile_info {
   font-size: 80%;
   display: block;
   font-style: italic;
-} /*Содержание профиля*/
+} /*РЎРѕРґРµСЂР¶Р°РЅРёРµ РїСЂРѕС„РёР»СЏ*/
 
 #ts_ag_reservation .personal_data_old .contacts .info {
   background:#CDE7F8;
   border: 1px solid #58ACE4;
   font-size: 90%;
   padding: 1em 1em .5em 1em;
-} /*Контактная информация*/
+} /*РљРѕРЅС‚Р°РєС‚РЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ*/
 
 #ts_ag_reservation .personal_data_old .contacts .info table {
   width: 100%;
@@ -1606,52 +1668,52 @@ html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .docexpirat
 
 #ts_ag_reservation .personal_data_old .contacts .info tbody td {
   padding: 0 .5em .5em 0;
-} /*Ячейки*/
+} /*РЇС‡РµР№РєРё*/
 
 #ts_ag_reservation .personal_data_old .contacts .info .title {
   line-height: 1.2em;
   width: 30%;
-} /*Название поля ввода*/
+} /*РќР°Р·РІР°РЅРёРµ РїРѕР»СЏ РІРІРѕРґР°*/
 
 #ts_ag_reservation .personal_data_old .contacts .info .required_title {
   font-weight: bold;
-} /*Признак обязательного заполнения*/
+} /*РџСЂРёР·РЅР°Рє РѕР±СЏР·Р°С‚РµР»СЊРЅРѕРіРѕ Р·Р°РїРѕР»РЅРµРЅРёСЏ*/
 
 #ts_ag_reservation .personal_data_old .contacts .info .incomplete_input {
   color: #3AF;
-} /*Признак незавершенного заполнения*/
+} /*РџСЂРёР·РЅР°Рє РЅРµР·Р°РІРµСЂС€РµРЅРЅРѕРіРѕ Р·Р°РїРѕР»РЅРµРЅРёСЏ*/
 
 #ts_ag_reservation .personal_data_old .contacts .info .error_title {
   color: #FF0000;
-} /*Признак неправильного заполнения*/
+} /*РџСЂРёР·РЅР°Рє РЅРµРїСЂР°РІРёР»СЊРЅРѕРіРѕ Р·Р°РїРѕР»РЅРµРЅРёСЏ*/
 
 #ts_ag_reservation .personal_data_old .contacts .info input.input {
   width: 98%;
   border: 1px solid #58ACE4;
-} /*Поле ввода*/
+} /*РџРѕР»Рµ РІРІРѕРґР°*/
 
 #ts_ag_reservation .personal_data_old .contacts .info input.input:hover,
 #ts_ag_reservation .personal_data_old .contacts .info input.input:focus {
   border: 1px solid #FF6633;
-} /*Поля ввода и выпадающие списки в фокусе*/
+} /*РџРѕР»СЏ РІРІРѕРґР° Рё РІС‹РїР°РґР°СЋС‰РёРµ СЃРїРёСЃРєРё РІ С„РѕРєСѓСЃРµ*/
 
 #ts_ag_reservation .personal_data_old .contacts .info select.input {
-} /*Выпадающий список*/
+} /*Р’С‹РїР°РґР°СЋС‰РёР№ СЃРїРёСЃРѕРє*/
 
 #ts_ag_reservation .personal_data_old .contacts .info .error_input {
-} /*Признак неправильного заполнения*/
+} /*РџСЂРёР·РЅР°Рє РЅРµРїСЂР°РІРёР»СЊРЅРѕРіРѕ Р·Р°РїРѕР»РЅРµРЅРёСЏ*/
 
 #ts_ag_reservation .corp_code {
   padding-top:.5em;
-} /* Внутренний корпоративный код заказа */
+} /* Р’РЅСѓС‚СЂРµРЅРЅРёР№ РєРѕСЂРїРѕСЂР°С‚РёРІРЅС‹Р№ РєРѕРґ Р·Р°РєР°Р·Р° */
 
 #ts_ag_reservation .corp_code input {
   margin-left:1em;
-} /* Внутренний корпоративный код заказа - поле ввода */
+} /* Р’РЅСѓС‚СЂРµРЅРЅРёР№ РєРѕСЂРїРѕСЂР°С‚РёРІРЅС‹Р№ РєРѕРґ Р·Р°РєР°Р·Р° - РїРѕР»Рµ РІРІРѕРґР° */
 
 
 /*
-УСЛУГИ
+РЈРЎР›РЈР“Р
 */
 #ts_ag_reservation .services {
 }
@@ -1824,7 +1886,7 @@ html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .docexpirat
 
 .ts-ag-reservation-cabin {
 	font-size:.7em;
-}/*салон самолёта*/
+}/*СЃР°Р»РѕРЅ СЃР°РјРѕР»С‘С‚Р°*/
 
 .ts-ag-reservation-cabin .cabin-passenger-title {
   margin: 0 0 1em 0;
@@ -1959,11 +2021,11 @@ html.msie7 .ts-ag-reservation-cabin .legend li span {
 
 /*
 
-ШАГ 4. ОПЛАТА. ВЫБОР СПОСОБА ОПЛАТЫ
+РЁРђР“ 4. РћРџР›РђРўРђ. Р’Р«Р‘РћР  РЎРџРћРЎРћР‘Рђ РћРџР›РђРўР«
 
 */
 #ts_ag_reservation .payment {
-} /*Блок способов оплаты */
+} /*Р‘Р»РѕРє СЃРїРѕСЃРѕР±РѕРІ РѕРїР»Р°С‚С‹ */
 
 #ts_ag_reservation .payment .info,
 #ts_ag_reservation .payment .pay-methods,
@@ -2051,7 +2113,7 @@ html.msie7 .ts-ag-reservation-cabin .legend li span {
   font-weight: bold;
   margin-left:1.7em;
   text-align: left;
-} /*Название платежной системы*/
+} /*РќР°Р·РІР°РЅРёРµ РїР»Р°С‚РµР¶РЅРѕР№ СЃРёСЃС‚РµРјС‹*/
 
 #ts_ag_reservation .payment .pay-methods .payment_label label .summ{
   color:#50ACE6;
@@ -2066,7 +2128,7 @@ html.msie7 .ts-ag-reservation-cabin .legend li span {
   font-size: .9em;
   padding-left: 2em;
   margin: .5em 0 0;
-} /*Описание платежной системы*/
+} /*РћРїРёСЃР°РЅРёРµ РїР»Р°С‚РµР¶РЅРѕР№ СЃРёСЃС‚РµРјС‹*/
 
 #ts_ag_reservation .payment .pay-methods .description p,
 #ts_ag_reservation .payment .pay-methods .description li{
@@ -2097,7 +2159,7 @@ html.msie7 .ts-ag-reservation-cabin .legend li span {
   font-size: .9em;
   padding-left: 2em;
   margin-top: .5em;
-} /*Дополнительные параметры платежной системы*/
+} /*Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ РїР»Р°С‚РµР¶РЅРѕР№ СЃРёСЃС‚РµРјС‹*/
 
 #ts_ag_reservation .payment .pay-methods .options p {
   margin:.4em 0 0;
@@ -2173,12 +2235,12 @@ html.msie7 .ts-ag-reservation-cabin .legend li span {
 
 /*
 
-ШАГ 5. ДОСТАВКА
+РЁРђР“ 5. Р”РћРЎРўРђР’РљРђ
 
 */
 #ts_ag_reservation .delivery {
   clear: both;
-} /*Блок информации о доставке*/
+} /*Р‘Р»РѕРє РёРЅС„РѕСЂРјР°С†РёРё Рѕ РґРѕСЃС‚Р°РІРєРµ*/
 
 #ts_ag_reservation .delivery .caption {
   padding: 0;
@@ -2186,28 +2248,28 @@ html.msie7 .ts-ag-reservation-cabin .legend li span {
   font-size: 1em;
   font-weight: bold;
   color: #000;
-} /*Заголовки блоков*/
+} /*Р—Р°РіРѕР»РѕРІРєРё Р±Р»РѕРєРѕРІ*/
 
 #ts_ag_reservation .delivery .location .input {
   font-size: .9em;
   margin: -.2em 0 1em 0;
-} /*Список местоположений доставки */
+} /*РЎРїРёСЃРѕРє РјРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёР№ РґРѕСЃС‚Р°РІРєРё */
 
 #ts_ag_reservation .delivery .methods {
   margin: 1.5em 0;
-} /*Блок способов доставки*/
+} /*Р‘Р»РѕРє СЃРїРѕСЃРѕР±РѕРІ РґРѕСЃС‚Р°РІРєРё*/
 
 #ts_ag_reservation .delivery .methods .method {
   font-size: .9em;
   margin-bottom: 1em;
-} /*Один способ доставки*/
+} /*РћРґРёРЅ СЃРїРѕСЃРѕР± РґРѕСЃС‚Р°РІРєРё*/
 
 #ts_ag_reservation .delivery .methods .method hr {
   display: none;
 }
 
 #ts_ag_reservation .delivery .methods .method .title {
-} /*Название способа доставки*/
+} /*РќР°Р·РІР°РЅРёРµ СЃРїРѕСЃРѕР±Р° РґРѕСЃС‚Р°РІРєРё*/
 
 #ts_ag_reservation .delivery .profiles {
   border: solid 1px #58ACE4;
@@ -2215,24 +2277,24 @@ html.msie7 .ts-ag-reservation-cabin .legend li span {
   margin-bottom: 0.5em;
   max-height: 250px;
   overflow: auto;
-} /*Блок профилей */
+} /*Р‘Р»РѕРє РїСЂРѕС„РёР»РµР№ */
 
 #ts_ag_reservation .delivery .profiles .profile {
   font-size: .9em;
   margin-bottom: .5em;
   margin-left: 0.5em;
-} /*Один профиль*/
+} /*РћРґРёРЅ РїСЂРѕС„РёР»СЊ*/
 
 #ts_ag_reservation .delivery .profiles .profile .name {
   font-weight: bolder;
   display: block;
-} /*Название профиля*/
+} /*РќР°Р·РІР°РЅРёРµ РїСЂРѕС„РёР»СЏ*/
 
 #ts_ag_reservation .delivery .profiles .profile .profile_info {
   font-size: .8em;
   display: block;
   font-style: italic;
-} /*Содержание профиля*/
+} /*РЎРѕРґРµСЂР¶Р°РЅРёРµ РїСЂРѕС„РёР»СЏ*/
 
 #ts_ag_reservation .delivery .profiles .profile_container .profile-delete {
   background: transparent url(images/profile-delete.gif) 100% 50% no-repeat;
@@ -2249,7 +2311,7 @@ html.msie7 .ts-ag-reservation-cabin .legend li span {
   padding: 1em 1em .5em 1em;
   border: solid 1px #58ACE4;
   font-size: .9em;
-} /*Информация о доставке*/
+} /*РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РґРѕСЃС‚Р°РІРєРµ*/
 
 #ts_ag_reservation .delivery .info table {
   width: 100%;
@@ -2257,74 +2319,74 @@ html.msie7 .ts-ag-reservation-cabin .legend li span {
 
 #ts_ag_reservation .delivery .info tbody td {
   padding: 0 .5em .5em 0;
-} /*Ячейки*/
+} /*РЇС‡РµР№РєРё*/
 
 #ts_ag_reservation .delivery .info .title {
   width: 30%;
   line-height: 1.2em;
-} /*Название поля ввода*/
+} /*РќР°Р·РІР°РЅРёРµ РїРѕР»СЏ РІРІРѕРґР°*/
 
 #ts_ag_reservation .delivery .info .required_title {
   font-weight: bold;
-} /*Признак обязательного заполнения*/
+} /*РџСЂРёР·РЅР°Рє РѕР±СЏР·Р°С‚РµР»СЊРЅРѕРіРѕ Р·Р°РїРѕР»РЅРµРЅРёСЏ*/
 
 #ts_ag_reservation .delivery .info .error_title {
   color: #f00;
-} /*Признак неправильного заполнения*/
+} /*РџСЂРёР·РЅР°Рє РЅРµРїСЂР°РІРёР»СЊРЅРѕРіРѕ Р·Р°РїРѕР»РЅРµРЅРёСЏ*/
 
 #ts_ag_reservation .delivery .info input.input,
 #ts_ag_reservation .delivery .info textarea.input {
   width: 98%;
   border: solid 1px #58ACE4;
-} /*Поле ввода*/
+} /*РџРѕР»Рµ РІРІРѕРґР°*/
 
 #ts_ag_reservation .delivery .info input.input:hover,
 #ts_ag_reservation .delivery .info input.input:focus,
 #ts_ag_reservation .delivery .info textarea.input:hover,
 #ts_ag_reservation .delivery .info textarea.input:focus {
   border: solid 1px #FF6633;
-} /*Поля ввода и выпадающие списки в фокусе*/
+} /*РџРѕР»СЏ РІРІРѕРґР° Рё РІС‹РїР°РґР°СЋС‰РёРµ СЃРїРёСЃРєРё РІ С„РѕРєСѓСЃРµ*/
 
 #ts_ag_reservation .delivery .info select.input {
-} /*Выпадающий список*/
+} /*Р’С‹РїР°РґР°СЋС‰РёР№ СЃРїРёСЃРѕРє*/
 
 #ts_ag_reservation .delivery .info .error_input {
-} /*Признак неправильного заполнения*/
+} /*РџСЂРёР·РЅР°Рє РЅРµРїСЂР°РІРёР»СЊРЅРѕРіРѕ Р·Р°РїРѕР»РЅРµРЅРёСЏ*/
 
-/* ШАГ 5. ПОДТВЕРЖДЕНИЕ */
+/* РЁРђР“ 5. РџРћР”РўР’Р•Р Р–Р”Р•РќРР• */
 #ts_ag_reservation .order .caption {
   padding: 0;
   margin: 0 0 .5em 0;
   font-size: 1.4em;
   font-weight: bold;
   color: #000;
-} /*Номер заказа*/
+} /*РќРѕРјРµСЂ Р·Р°РєР°Р·Р°*/
 
 #ts_ag_reservation .order .date {
   font-weight: bold;
   margin-bottom: .2em;
   font-size: .9em;
-} /*Дата и время создания заказа*/
+} /*Р”Р°С‚Р° Рё РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Р·Р°РєР°Р·Р°*/
 
 #ts_ag_reservation .order .status {
   font-weight: bold;
   margin-bottom: 1em;
   font-size: .9em;
-} /*Статус заказа*/
+} /*РЎС‚Р°С‚СѓСЃ Р·Р°РєР°Р·Р°*/
 
 #ts_ag_reservation .order .pnr_title {
   font-weight: bold;
   margin-top: .2em;
   font-size: .9em;
-} /*Номер брони*/
+} /*РќРѕРјРµСЂ Р±СЂРѕРЅРё*/
 
 #ts_ag_reservation .order .passengers {
   font-size: .8em;
-} /*Пассажиры*/
+} /*РџР°СЃСЃР°Р¶РёСЂС‹*/
 
 #ts_ag_reservation .order .passengers table {
   width: 100%;
-} /*Таблица с пассажирами*/
+} /*РўР°Р±Р»РёС†Р° СЃ РїР°СЃСЃР°Р¶РёСЂР°РјРё*/
 
 #ts_ag_reservation .order .passengers th {
   color: #999;
@@ -2333,83 +2395,83 @@ html.msie7 .ts-ag-reservation-cabin .legend li span {
   padding-bottom: .3em;
   border-bottom: solid 1px #999;
   text-align: left;
-} /*Заголовки столбцов таблицы с пассажирами*/
+} /*Р—Р°РіРѕР»РѕРІРєРё СЃС‚РѕР»Р±С†РѕРІ С‚Р°Р±Р»РёС†С‹ СЃ РїР°СЃСЃР°Р¶РёСЂР°РјРё*/
 
 #ts_ag_reservation .order .passengers .passenger {
-} /*Строка с одним пассажиром*/
+} /*РЎС‚СЂРѕРєР° СЃ РѕРґРЅРёРј РїР°СЃСЃР°Р¶РёСЂРѕРј*/
 
 #ts_ag_reservation .order .passengers .passenger td {
   padding: .2em .5em .2em 0;
   border-bottom: solid 1px #999;
-} /*Ячейки строки с одним пассажиром*/
+} /*РЇС‡РµР№РєРё СЃС‚СЂРѕРєРё СЃ РѕРґРЅРёРј РїР°СЃСЃР°Р¶РёСЂРѕРј*/
 
 #ts_ag_reservation .order .add_info {
   margin-top: 1.5em;
   font-size: .9em;
-} /*Дополнительная информация*/
+} /*Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ*/
 
 #ts_ag_reservation .order .add_info .contact_title {
   font-weight: bold;
   margin-bottom: .2em;
-} /*Заголовок «Контактное лицо»*/
+} /*Р—Р°РіРѕР»РѕРІРѕРє В«РљРѕРЅС‚Р°РєС‚РЅРѕРµ Р»РёС†РѕВ»*/
 
 #ts_ag_reservation .order .add_info .contact {
   font-size: .9em;
-} /*Контактное лицо*/
+} /*РљРѕРЅС‚Р°РєС‚РЅРѕРµ Р»РёС†Рѕ*/
 
 #ts_ag_reservation .order .add_info .payment_title {
   font-weight: bold;
   margin-bottom: .2em;
   margin-top: 1em;
-} /*Заголовок «Способ оплаты»*/
+} /*Р—Р°РіРѕР»РѕРІРѕРє В«РЎРїРѕСЃРѕР± РѕРїР»Р°С‚С‹В»*/
 
 #ts_ag_reservation .order .add_info .payment {
   font-size: .9em;
   margin-bottom: 1em;
-} /*Способ оплаты*/
+} /*РЎРїРѕСЃРѕР± РѕРїР»Р°С‚С‹*/
 
 #ts_ag_reservation .order .add_info .receipt {
   font-weight: bold;
   margin-bottom: .2em;
   margin-top: 1em;
-} /*Информация о крайнем сроке получения билетов*/
+} /*РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РєСЂР°Р№РЅРµРј СЃСЂРѕРєРµ РїРѕР»СѓС‡РµРЅРёСЏ Р±РёР»РµС‚РѕРІ*/
 
 #ts_ag_reservation .order .add_info .delivery_title {
   font-weight: bold;
   margin-bottom: .2em;
   margin-top: 1em;
-} /*Заголовок «Доставка»*/
+} /*Р—Р°РіРѕР»РѕРІРѕРє В«Р”РѕСЃС‚Р°РІРєР°В»*/
 
 #ts_ag_reservation .order .add_info .delivery {
   font-size: .9em;
   margin-bottom: 1em;
-} /*Доставка*/
+} /*Р”РѕСЃС‚Р°РІРєР°*/
 
 #ts_ag_reservation .order .add_info .address_title {
   font-weight: bold;
   margin-bottom: .2em;
-} /*Подпись «по адресу:»*/
+} /*РџРѕРґРїРёСЃСЊ В«РїРѕ Р°РґСЂРµСЃСѓ:В»*/
 
 #ts_ag_reservation .order .add_info .address {
   font-size: .9em;
-} /*Адрес получения билетов*/
+} /*РђРґСЂРµСЃ РїРѕР»СѓС‡РµРЅРёСЏ Р±РёР»РµС‚РѕРІ*/
 
 #ts_ag_reservation span.old_price {
   color:silver;
   text-decoration:line-through;
-} /*Старая цена (до попытки бронирования)*/
+} /*РЎС‚Р°СЂР°СЏ С†РµРЅР° (РґРѕ РїРѕРїС‹С‚РєРё Р±СЂРѕРЅРёСЂРѕРІР°РЅРёСЏ)*/
 
 #ts_ag_reservation span.old_price_dashed {
   border-bottom:dashed 1px gray;
   cursor:help;
-} /*Старая цена (до попытки бронирования) с расшифровкой*/
+} /*РЎС‚Р°СЂР°СЏ С†РµРЅР° (РґРѕ РїРѕРїС‹С‚РєРё Р±СЂРѕРЅРёСЂРѕРІР°РЅРёСЏ) СЃ СЂР°СЃС€РёС„СЂРѕРІРєРѕР№*/
 
 #ts_ag_reservation .flights .flight .old_date {
   color:silver;
   text-decoration:line-through;
-} /*Старые дата/время (до попытки бронирования)*/
+} /*РЎС‚Р°СЂС‹Рµ РґР°С‚Р°/РІСЂРµРјСЏ (РґРѕ РїРѕРїС‹С‚РєРё Р±СЂРѕРЅРёСЂРѕРІР°РЅРёСЏ)*/
 
-/* ШАГ 5. ПОДТВЕРЖДЕНИЕ. all-in-one */
+/* РЁРђР“ 5. РџРћР”РўР’Р•Р Р–Р”Р•РќРР•. all-in-one */
 #ts_ag_reservation_container__precommit .header{
   padding-top:1em;
 }
@@ -2527,12 +2589,12 @@ html.msie7 .ts-ag-reservation-cabin .legend li span {
     display: none !important;
 }
 
-/*ШАГ 7. РЕЗУЛЬТАТ*/
+/*РЁРђР“ 7. Р Р•Р—РЈР›Р¬РўРђРў*/
 #ts_ag_reservation .order .actions {
   margin: 1em 0;
   padding: 1em 1.2em 0;
   background: #CDE7F8;
-} /*Блок ссылок на дополнительные действия*/
+} /*Р‘Р»РѕРє СЃСЃС‹Р»РѕРє РЅР° РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РґРµР№СЃС‚РІРёСЏ*/
 
 html.msie6 #ts_ag_reservation .order .actions,
 html.msie7 #ts_ag_reservation .order .actions {
@@ -2544,10 +2606,10 @@ html.msie7 #ts_ag_reservation .order .actions {
   float:left;
   margin: 0 1em 1em 0;
   padding:3px;
-} /*Блок ссылки на дополнительное действие*/
+} /*Р‘Р»РѕРє СЃСЃС‹Р»РєРё РЅР° РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕРµ РґРµР№СЃС‚РІРёРµ*/
 
-#ts_ag_reservation .order .actions .action input, /* новая версия */
-#ts_ag_reservation .order .actions .action a { /* старая версия */
+#ts_ag_reservation .order .actions .action input, /* РЅРѕРІР°СЏ РІРµСЂСЃРёСЏ */
+#ts_ag_reservation .order .actions .action a { /* СЃС‚Р°СЂР°СЏ РІРµСЂСЃРёСЏ */
   outline: 3px solid #fff;
   padding: .2em 1em;
   font-size: 1em;
@@ -2561,12 +2623,12 @@ html.msie7 #ts_ag_reservation .order .actions {
   text-decoration: none;
   display:block;
   white-space:nowrap;
-} /*Ссылка дополнительное действие*/
+} /*РЎСЃС‹Р»РєР° РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕРµ РґРµР№СЃС‚РІРёРµ*/
 
-#ts_ag_reservation .order .actions .action input:hover, /* новая версия */
-#ts_ag_personal .order .actions .action input:focus, /* новая версия */
-#ts_ag_reservation .order .actions .action a:hover, /* старая версия */
-#ts_ag_personal .order .actions .action a:focus { /* старая версия */
+#ts_ag_reservation .order .actions .action input:hover, /* РЅРѕРІР°СЏ РІРµСЂСЃРёСЏ */
+#ts_ag_personal .order .actions .action input:focus, /* РЅРѕРІР°СЏ РІРµСЂСЃРёСЏ */
+#ts_ag_reservation .order .actions .action a:hover, /* СЃС‚Р°СЂР°СЏ РІРµСЂСЃРёСЏ */
+#ts_ag_personal .order .actions .action a:focus { /* СЃС‚Р°СЂР°СЏ РІРµСЂСЃРёСЏ */
   text-decoration: underline;
   outline: 3px solid #FF6633;
   background: #0984FF url(images/button_act_bg.png) repeat-x scroll 0% 50%;
@@ -2576,27 +2638,27 @@ html.msie7 #ts_ag_reservation .order .actions {
 #ts_ag_reservation .not_final_price {
   color: Red;
   font-weight: bolder;
-} /* Признак неокончательной цены */
+} /* РџСЂРёР·РЅР°Рє РЅРµРѕРєРѕРЅС‡Р°С‚РµР»СЊРЅРѕР№ С†РµРЅС‹ */
 
 #ts_ag_reservation .not_final_price_text_preview {
   color: #FF0000;
   font-size: .7em;
   margin-top: 1em;
-} /* Пояснение о неокончательности цены */
+} /* РџРѕСЏСЃРЅРµРЅРёРµ Рѕ РЅРµРѕРєРѕРЅС‡Р°С‚РµР»СЊРЅРѕСЃС‚Рё С†РµРЅС‹ */
 
 #ts_ag_personal .not_final_price_text,
 #ts_ag_reservation .not_final_price_text {
   color: Red;
   font-weight: bolder;
-} /* Пояснение о неокончательности цены */
+} /* РџРѕСЏСЃРЅРµРЅРёРµ Рѕ РЅРµРѕРєРѕРЅС‡Р°С‚РµР»СЊРЅРѕСЃС‚Рё С†РµРЅС‹ */
 
 #ts_ag_reservation .order .add_info .timelimit_info {
   margin: 1em 0;
   color: #ff0000;
   font-size: 90%;
-} /* Предупреждение о снятии таймлимита */
+} /* РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ Рѕ СЃРЅСЏС‚РёРё С‚Р°Р№РјР»РёРјРёС‚Р° */
 
-/* НАЗНАЧЕНИЕ ТАЙМЛИМИТА ИЗ ФРОНТОФИСА */
+/* РќРђР—РќРђР§Р•РќРР• РўРђР™РњР›РРњРРўРђ РР— Р¤Р РћРќРўРћР¤РРЎРђ */
 #ts_ag_reservation div.set_timelimit {
 }
 
@@ -2612,7 +2674,7 @@ html.msie7 #ts_ag_reservation .order .actions {
   font-weight: normal;
   text-align: left;
   vertical-align: bottom;
-} /* Время вылета и таймлимит */
+} /* Р’СЂРµРјСЏ РІС‹Р»РµС‚Р° Рё С‚Р°Р№РјР»РёРјРёС‚ */
 
 #ts_ag_reservation div.set_timelimit table#order_data td span {
   font-family: tahoma, sans-serif;
@@ -2624,7 +2686,7 @@ html.msie7 #ts_ag_reservation .order .actions {
 
 #ts_ag_reservation div.set_timelimit div.item {
   margin: .5em 0;
-} /* Радиокнопки  */
+} /* Р Р°РґРёРѕРєРЅРѕРїРєРё  */
 
 #ts_ag_reservation div.set_timelimit div.item div.date {
   margin-top: .5em;
@@ -2633,27 +2695,27 @@ html.msie7 #ts_ag_reservation .order .actions {
 #ts_ag_reservation div.set_timelimit div.item div.date #dateto {
   width: 6em;
   margin: 0 1em 0 .25em;
-} /* Дата */
+} /* Р”Р°С‚Р° */
 
 #ts_ag_reservation div.set_timelimit div.item div.date #time {
   width: 4em;
   margin-left: .25em;
-} /* Время */
+} /* Р’СЂРµРјСЏ */
 
 #ts_ag_reservation div.set_timelimit div.item #custom_timelimit {
   display: none;
-} /* Произвольный таймлимит, в частности */
+} /* РџСЂРѕРёР·РІРѕР»СЊРЅС‹Р№ С‚Р°Р№РјР»РёРјРёС‚, РІ С‡Р°СЃС‚РЅРѕСЃС‚Рё */
 
 #ts_ag_reservation div.set_timelimit #timezone_note {
-} /* Примечание */
+} /* РџСЂРёРјРµС‡Р°РЅРёРµ */
 
 #ts_ag_reservation div.set_timelimit div.c-next {
   display: none;
   float: right;
-} /* Кнопка "Далее" */
+} /* РљРЅРѕРїРєР° "Р”Р°Р»РµРµ" */
 
 
-/* МАРШРУТ-КВИТАНЦИЯ */
+/* РњРђР РЁР РЈРў-РљР’РРўРђРќР¦РРЇ */
 #ts_ag_reservation .buttons .c-close {
   display: inline;
 }
@@ -2739,7 +2801,7 @@ html.msie7 #ts_ag_reservation .order .actions {
 
 /*
 
-ОПЛАТА КАРТОЙ
+РћРџР›РђРўРђ РљРђР РўРћР™
 
 */
 #ts_ag_reservation .card {
@@ -2770,7 +2832,7 @@ html.msie7 #ts_ag_reservation .order .actions {
   margin: 0 1em 0 0;
 }
 
-/* Блок с внутренней тенью/со стрелкой */
+/* Р‘Р»РѕРє СЃ РІРЅСѓС‚СЂРµРЅРЅРµР№ С‚РµРЅСЊСЋ/СЃРѕ СЃС‚СЂРµР»РєРѕР№ */
 .block-si,
 .block-arr-si {
   background:transparent url(images/asi-bg.png) repeat;
@@ -2818,7 +2880,7 @@ html.msie7 #ts_ag_reservation .order .actions {
   padding:2em 4em 2em 2em;
 }
 
-/* Стрелка */
+/* РЎС‚СЂРµР»РєР° */
 .block-arr-si .arr {
   height:27px;
   position:absolute;
@@ -2828,11 +2890,11 @@ html.msie7 #ts_ag_reservation .order .actions {
 
 .block-arr-si .arr-t {
   top:-15px;
-}   /* Стрелка вверху блока, блок "выпадает вниз" */
+}   /* РЎС‚СЂРµР»РєР° РІРІРµСЂС…Сѓ Р±Р»РѕРєР°, Р±Р»РѕРє "РІС‹РїР°РґР°РµС‚ РІРЅРёР·" */
 
 .block-arr-si .arr-b {
   bottom:-15px;
-} /* Стрелка внизу блока, блок "выпадает вверх" */
+} /* РЎС‚СЂРµР»РєР° РІРЅРёР·Сѓ Р±Р»РѕРєР°, Р±Р»РѕРє "РІС‹РїР°РґР°РµС‚ РІРІРµСЂС…" */
 
 .block-arr-si .arr .at {
   height:15px;
@@ -2866,7 +2928,7 @@ html.msie7 #ts_ag_reservation .order .actions {
   top:0;
 }
 
-/* Кнопка "закрыть" */
+/* РљРЅРѕРїРєР° "Р·Р°РєСЂС‹С‚СЊ" */
 .block-arr-si .close {
   background:transparent url(images/asi-close.png) 50% 50% no-repeat;
   display:block;
@@ -2910,7 +2972,7 @@ html.msie6 .block-arr-si .arr-t {
 
 html.msie6 .block-arr-si .arr-b {
   bottom:-15px;
-} /* Стрелка внизу блока, блок "выпадает вверх" */
+} /* РЎС‚СЂРµР»РєР° РІРЅРёР·Сѓ Р±Р»РѕРєР°, Р±Р»РѕРє "РІС‹РїР°РґР°РµС‚ РІРІРµСЂС…" */
 
 html.msie6 .block-arr-si .arr .ab {
   background-color:transparent;
@@ -2930,10 +2992,10 @@ html.msie6 .block-arr-si .close {
   background-image:url(images/asi-close-ie.png);
 }
 
-/* Помощь */
+/* РџРѕРјРѕС‰СЊ */
 .help-element {
   font-size: .9em;
-} /*Всплывающая контекстная помощь*/
+} /*Р’СЃРїР»С‹РІР°СЋС‰Р°СЏ РєРѕРЅС‚РµРєСЃС‚РЅР°СЏ РїРѕРјРѕС‰СЊ*/
 
 .help-element p {
   margin: 1em 0;
@@ -2944,7 +3006,7 @@ html.msie6 .block-arr-si .close {
   padding: 0px 0px 0px 20px;
 }
 
-/* окно помощи на базе Highslide */
+/* РѕРєРЅРѕ РїРѕРјРѕС‰Рё РЅР° Р±Р°Р·Рµ Highslide */
 #popup-help .clearfix:after {
   clear:both;
   content:".";
@@ -3021,11 +3083,11 @@ html.msie6 .block-arr-si .close {
 
 /*
 
-Окно "Пожалуйста, подождите", waitwindow.js
+РћРєРЅРѕ "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕРґРѕР¶РґРёС‚Рµ", waitwindow.js
 
 */
 
-/* Шторка */
+/* РЁС‚РѕСЂРєР° */
 .ww_background {
   display: block;
   position: absolute;
@@ -3037,7 +3099,7 @@ html.msie6 .block-arr-si .close {
   opacity: 0.8;
 }
 
-/* Окно с сообщением
+/* РћРєРЅРѕ СЃ СЃРѕРѕР±С‰РµРЅРёРµРј
 .ww_message {
   background: #cde7f8;
   border: 5px solid #58ace4;
@@ -3054,7 +3116,7 @@ html.msie6 .block-arr-si .close {
   z-Index: 2002;
 }
 
-/* Тест сообщения */
+/* РўРµСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ */
 .ww_text {
   padding: 16px 12px;
   color: #000;
@@ -3063,7 +3125,7 @@ html.msie6 .block-arr-si .close {
   text-align: center;
 }
 
-/* Кнопка "Закрыть" */
+/* РљРЅРѕРїРєР° "Р—Р°РєСЂС‹С‚СЊ" */
 .ww_button_close a {
   text-decoration: none;
   color: #FFF;

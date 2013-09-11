@@ -49,49 +49,53 @@ function fnPassengersNotice(){
 }
 </script>
 
-<form action="<?= $arResult['form']['action'] ?>" class="form-order clearfix" method="post" name="reg_form" onsubmit="<?= $arResult['form']['onsubmit'] ?>" style="<?= $arResult['form']['style'] ?>" id="<?= $arResult['form']['~id'] ?>">
+<form action="<?= $arResult['form']['action'] ?>" class="form-order clearfix <?= ( $arResult['rt_checked'] ? 'form_rt' : 'form_ow' ) ?>" method="post" name="reg_form" onsubmit="<?= $arResult['form']['onsubmit'] ?>" style="<?= $arResult['form']['style'] ?>" id="<?= $arResult['form']['~id'] ?>">
   <input name="next_page" type="hidden" value="<?= $arResult['next_page']; ?>" />
   <input name="date_format" type="hidden" value="site" />
-  <input type="hidden" name="RT_OW" id="rt-ow-val_top" value="<?= ( $arResult['rt_checked'] ? 'RT' : 'OW' ) ?>" />
-  <input type="hidden" name="adult" id="form_top_adult" value="<?= $arResult['select_pcl_adult_selected'] ?>" />
-  <input type="hidden" name="child" id="form_top_child" value="<?= $arResult['select_pcl_child_selected'] ?>" />
-  <input type="hidden" name="infant" id="form_top_infant" value="<?= $arResult['select_pcl_infant_selected'] ?>" />
-  <div class="top_form_points">
+
+  <fieldset class="route-types clearfix">
+    <input type="hidden" name="RT_OW" id="rt-ow-val_top" value="<?= ( $arResult['rt_checked'] ? 'RT' : 'OW' ) ?>" />
+    <div class="type type_rt<? if($arResult['rt_checked']){ ?> selected<? } ?>"><?=GetMessage("TS_STEP1_SEARCHFORM_ROUTE_TYPE_RT") ?></div>
+    <div class="type type_ow<? if($arResult['ow_checked']){ ?> selected<? } ?>"><?=GetMessage("TS_STEP1_SEARCHFORM_ROUTE_TYPE_OW") ?></div>
+  </fieldset>
+
+  <fieldset class="top_form_points clearfix">
     <div class="point departure">
-      <label class="title" for="depart_top"><?=GetMessage("TS_STEP1_SEARCHFORM_DEPARTURE") ?></label>
       <div class="location">
         <input class="text" id="depart_top" name="depart" type="text" value="<?=$arResult['depart'] ?>" />
         <div class="link-container"><?=CTemplateToolsPoint::Link("depart", GetMessage("TS_STEP1_SEARCHFORM_TOOLS_POINT_DEPARTURE_SHORT_TITLE"), GetMessage("TS_STEP1_SEARCHFORM_TOOLS_POINT_DEPARTURE_TITLE")); ?></div>
       </div>
     </div>
+    <div id="route_switch" class="point"></div>
     <div class="point arrival">
-      <label class="title" for="arrival"><?=GetMessage("TS_STEP1_SEARCHFORM_ARRIVAL") ?></label>
       <div class="location">
         <input class="text" id="arrival_top" name="arrival" type="text" value="<?=$arResult['arrival'] ?>" />
         <div class="link-container"><?=CTemplateToolsPoint::Link("arrival", GetMessage("TS_STEP1_SEARCHFORM_TOOLS_POINT_ARRIVAL_SHORT_TITLE"), GetMessage("TS_STEP1_SEARCHFORM_TOOLS_POINT_ARRIVAL_TITLE")); ?></div>
       </div>
     </div>
-  </div>
-  <div class="top_form_dates">
-    <div class="date">
-      <label class="title" for="dateto_top"><?=GetMessage("TS_STEP1_SEARCHFORM_DEPARTURE_DATE") ?></label>
+  </fieldset>
+
+  <fieldset class="top_form_dates">
+    <div class="date date_to">
       <div class="date-container">
         <input type="text" id="dateto_top" name="dateto" maxlength="10" size="10" value="<?=$arResult['d_to'] ?>" />
       </div>
     </div>
-
-    <? if ( $arResult['rt_checked'] ): ?>
-    <div class="date">
-      <label class="title" for="dateback_top"><?=GetMessage("TS_STEP1_SEARCHFORM_ARRIVAL_DATE") ?></label>
-      <div class="date-container">
+    <div class="date date_back">
+      <div id="add_dateback"><?= GetMessage('TS_STEP1_SEARCHFORM_ADD_ARRIVAL_DATE') ?></div>
+      <div class="date-container" id="form_dateback_top">
         <input type="text" id="dateback_top" name="dateback" maxlength="10" size="10" value="<?=$arResult['d_back'] ?>" />
       </div>
     </div>
-    <? endif; ?>
-  </div>
-  <div class="top_form_submit">
+  </fieldset>
+    
+  <input type="hidden" name="adult" id="form_top_adult" value="<?= $arResult['select_pcl_adult_selected'] ?>" />
+  <input type="hidden" name="child" id="form_top_child" value="<?= $arResult['select_pcl_child_selected'] ?>" />
+  <input type="hidden" name="infant" id="form_top_infant" value="<?= $arResult['select_pcl_infant_selected'] ?>" />
+  
+  <fieldset class="top_form_submit">
     <input class="button" type="submit" value="<?= GetMessage('TS_STEP1_SEARCHFORM_SEARCH') ?>" id="<?= $arResult[ 'SUBMIT' ][ '~ID' ] ?>" style=" <?= $arResult[ 'SUBMIT' ][ 'STYLE' ] ?>" />
-  </div>
+  </fieldset>
   <div class="form_top_notice" id="form_top_passengers_notice"></div>
   <script type="text/javascript">
   // <![CDATA[
@@ -109,11 +113,35 @@ function fnPassengersNotice(){
 
 <? if ( isset( $arResult[ "PROGRESS" ] ) ) : ?>
 <div class="progress_below_form" id="<?= $arResult[ "PROGRESS" ][ "~ID" ] ?>" style="<?= $arResult[ "PROGRESS" ][ "STYLE" ] ?>">
-	<? include( dirname( __FILE__ )."/progress.php" ); ?>
+  <? include( dirname( __FILE__ )."/progress.php" ); ?>
 </div>
 <? endif; ?>
 <script type="text/javascript">
 // <![CDATA[
+function switchRouteType(type_val){
+  var type = type_val.toLowerCase();
+  form = $('#<?= $arResult['form']['~id'] ?>');
+  if ( $('.route-types .type_'+type).hasClass('selected') || form.hasClass('form_'+type) ) return;
+  var prev_type_val = $('#rt-ow-val_top').val(),
+  prev_type = prev_type_val.toLowerCase();
+  $('.route-types .selected').removeClass('selected');
+  $('.route-types .type_'+type).addClass('selected');
+  form.removeClass('form_'+prev_type).addClass('form_'+type);
+  $('#rt-ow-val_top').val(type_val);
+}
+$('.route-types .type').click(function() {
+  var type = $(this),
+  type_val = type.hasClass('type_rt') ? 'RT' : 'OW';
+  switchRouteType(type_val);
+});
+$('#add_dateback').click(function(){ switchRouteType('RT'); });
+
+$('#route_switch').click(function(){
+  var point = $('#depart_top').val();
+  $('#depart_top').val($('#arrival_top').val());
+  $('#arrival_top').val(point);
+});
+
 formInit();
 
 // Выделяем содержимое поля ввода пунктов при фокусе
@@ -225,8 +253,8 @@ function calendarsTopSetup() {
   tooltip(calendarBackTop.parent());
 
   /* Дни недели */
-  //$('#dateto_top-day').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNames[defaultDateTo.getDay()] );
-  //$('#dateback_top-day').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNames[defaultDateBack.getDay()] );
+  $('#dateto_top-day').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNames[defaultDateTo.getDay()] );
+  $('#dateback_top-day').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNames[defaultDateBack.getDay()] );
 }
 
 safeCall(calendarsTopSetup);
@@ -234,7 +262,7 @@ safeCall(calendarsTopSetup);
 // Выбор даты рейса "туда"
 function selectForwardDateTop(dateText) {
   $('#dateto_top').val(dateText);
-  //$('#dateto_top-day').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNames[calendarToTop.datepicker('getDate').getDay()] );
+  $('#dateto_top-day').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNames[calendarToTop.datepicker('getDate').getDay()] );
 
   // если дата вылета становится больше даты возврата, то добавляем к дате возврата разницу дней между между датой возврата по умолчанию и датой вылета по умолчанию
   if (calendarToTop.datepicker('getDate') > calendarBackTop.datepicker('getDate')) {
@@ -242,7 +270,7 @@ function selectForwardDateTop(dateText) {
     newDate = new Date(newDate);
     calendarBackTop.datepicker('setDate', newDate);
 
-    //$('#dateback_top-day').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNames[newDate.getDay()] );
+    $('#dateback_top-day').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNames[newDate.getDay()] );
   }
 }
 
@@ -254,10 +282,10 @@ function selectBackDateTop(dateText) {
     newDate = new Date(newDate);
     calendarToTop.datepicker('setDate', newDate);
 
-    //$('#dateto_top-day').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNames[newDate.getDay()] );
+    $('#dateto_top-day').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNames[newDate.getDay()] );
   }
   $('#dateback_top').val(dateText);
-  //$('#dateback_top-day').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNames[calendarBackTop.datepicker('getDate').getDay()] );
+  $('#dateback_top-day').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNames[calendarBackTop.datepicker('getDate').getDay()] );
 }
 
 // Преобразование строки с датой в формате сайте в объект javascript-даты
@@ -271,19 +299,19 @@ function dateSiteToJS(dateSite) {
 
 /* Замена исходной функции Datepicker'a */
 if ( typeof (tooltipChanged) == 'undefined' || !tooltipChanged ) {
-	if(typeof tooltip == 'function') {
-	  /* Замена исходной функции Datepicker'a */
-	  var _updateDatepicker_o = $.datepicker._updateDatepicker;
-	  $.datepicker._updateDatepicker = function(inst){
-		_updateDatepicker_o.apply(this, [inst]);
-		if ( $(".ui-datepicker .ui-datepicker-prev").css('display') == 'none'
-		  || $(".ui-datepicker .ui-datepicker-next").css('display') == 'none') {
-		  $("#tooltip").hide();
-		}
-		tooltip($('#ui-datepicker-div'));
-	  }
-	}
-	var tooltipChanged = true;
+  if(typeof tooltip == 'function') {
+    /* Замена исходной функции Datepicker'a */
+    var _updateDatepicker_o = $.datepicker._updateDatepicker;
+    $.datepicker._updateDatepicker = function(inst){
+    _updateDatepicker_o.apply(this, [inst]);
+    if ( $(".ui-datepicker .ui-datepicker-prev").css('display') == 'none'
+      || $(".ui-datepicker .ui-datepicker-next").css('display') == 'none') {
+      $("#tooltip").hide();
+    }
+    tooltip($('#ui-datepicker-div'));
+    }
+  }
+  var tooltipChanged = true;
 }
 
 // Выделяем содержимое поля ввода пунктов при фокусе
@@ -307,7 +335,7 @@ if ( typeof(clearField) == undefined ) {
 }
 clear_fields.click(function(){ clearField ($(this)); });
 
-<? if( $USE_AUTOCOMPLETE ): // Если используется автозаполнение ?>
+ <? if( $USE_AUTOCOMPLETE ): // Если используется автозаполнение ?>
   // подключаем к полям ввода пунктов Autocomplete
   $("#depart_top, #arrival_top").autocomplete("<?= $componentPath ?>/get_cities.php", {
       extraParams: {
@@ -332,9 +360,11 @@ clear_fields.click(function(){ clearField ($(this)); });
   $('#depart_top').result(function(event, data, formatted) {
     TryFocusObj( $('#arrival_top') );
   });
-<? endif; ?>
+
+ <? endif; ?>
 
 <? if ( is_array($arResult["ROUTES"]) && count($arResult["ROUTES"]) ): // Если задана маршрутная сеть ?>
+
  var routes = {
  <? $count = count($arResult["ROUTES"]);
    foreach ( $arResult["ROUTES"] as $code => $info ): // строим копию массива с маршрутной сетью в JS ?>
@@ -369,7 +399,9 @@ clear_fields.click(function(){ clearField ($(this)); });
  
  buildArrivalListTop();
  $("#ts_ag_reservation form #depart_top").change( function () { buildArrivalListTop() } );
+
 <? endif; // if ( is_array($arResult["ROUTES"]) && count($arResult["ROUTES"]) ): ?>
+
 
 if ( typeof( $.oAjaxSteps ) != 'undefined' ) {
   /* Перед отправкой формы с экрана */
