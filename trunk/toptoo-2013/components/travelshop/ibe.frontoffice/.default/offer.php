@@ -2,6 +2,7 @@
 echo $arResult['SCRIPT']; ?>
 
 <div class="offers_tools clearfix">
+  <? /*
   <div class="c-back">
     <div class="button_link back" id="<?= $arResult['BUTTONS']['BACK']['~ID'] ?>" onclick="<?= $arResult['BUTTONS']['BACK']['ONCLICK'] ?>">
       <?= GetMessage('TS_FRONTOFFICE_BUTTON_BACK_SEARCH') ?>
@@ -18,6 +19,7 @@ echo $arResult['SCRIPT']; ?>
     )
   ); ?>
   </div>
+  */ ?>
   <div id="carrier_matrix" style="display:none;">
   <? // Подключение компонента матрицы авиакомпаний
   if ($arResult['~CARRIER_MATRIX']) {
@@ -61,9 +63,8 @@ echo $arResult['SCRIPT']; ?>
         <thead>
           <tr>
             <th colspan="<?= $colspan - 2 ?>" class="dir_name">
-              <?= count($offer['FLIGHTS']) == 2 ? 
-              '<span>' . $flights['DIRECTION_NAME'].':</span> '.$flights['DIRECTION_ORG']. ' &mdash; ' . $flights['DIRECTION_DEST'] : 
-              $flights['DIRECTION_ORG'] . ' &mdash; ' . $flights['DIRECTION_DEST'] ?>
+              <span class="title"><?= $flights['DIRECTION_NAME'] ?></span>
+              <span class="route"><?= $flights['DIRECTION_ORG']. ' &mdash; ' . $flights['DIRECTION_DEST'] ?></span>
             </th>
             <th class="companies">
               <? $companies = array();
@@ -179,11 +180,11 @@ echo $arResult['SCRIPT']; ?>
       <?=$offer['HIDDEN'] ?>
     <? endif; ?>
     <table>
-      <tr class="rules_and_coditions">
-        <td>
+      <tr>
+        <td class="rules_and_conditions">
           <div class="return_policy"><span class="icon"></span> <?=rtrim($offer['PENALTY'], '.'); ?></div>
         </td>
-        <td>
+        <td class="rules_and_conditions">
           <div class="price_note"><span class="icon"></span> <?=GetMessage("TS_FRONTOFFICE_STEP2_OFFER_INCLUDING_ALL_TAXES") ?></div>
         </td>
         <td class="submit">
