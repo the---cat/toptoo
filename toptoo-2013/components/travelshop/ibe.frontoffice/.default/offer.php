@@ -203,7 +203,7 @@ echo $arResult['SCRIPT']; ?>
           <? endif; ?>
         </td>
       </tr>
-      <? if ( $offer[ 'PRICE' ][ '~FORCE_VERBOSE_FEES' ] && strlen( $offer[ 'PRICE' ][ 'FORCED_VERBOSE_FEES' ] ) > 0 ) : ?>
+      <? if ( 0 ): //$offer[ 'PRICE' ][ '~FORCE_VERBOSE_FEES' ] && strlen( $offer[ 'PRICE' ][ 'FORCED_VERBOSE_FEES' ] ) > 0 ) : ?>
       <tr><td class="debug_info" colspan="3">
         <div class="verbose_fees"><?= $offer[ 'PRICE' ][ 'FORCED_VERBOSE_FEES' ] ?></div>
       </td></tr>

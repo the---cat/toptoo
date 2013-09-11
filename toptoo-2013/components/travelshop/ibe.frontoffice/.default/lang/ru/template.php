@@ -2,6 +2,7 @@
 /* form_top.php */
 $MESS['TS_STEP1_SEARCHFORM_DEPARTURE_DATE'] = 'Туда';
 $MESS['TS_STEP1_SEARCHFORM_ARRIVAL_DATE'] = 'Обратно';
+$MESS['TS_STEP1_SEARCHFORM_ADD_ARRIVAL_DATE'] = '+&nbsp;дата возвращения';
 $MESS['TS_STEP1_SEARCHFORM_SEARCH'] = 'Искать';
 
 /* offer.php */
