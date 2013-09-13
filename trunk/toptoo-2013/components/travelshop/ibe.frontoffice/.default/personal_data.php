@@ -294,34 +294,20 @@ function ControlFieldLength( id_field, chars_max ){
                   <label class="title<? if ( $field['~REQUIRED'] ): ?> required required_title<? endif; ?>" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>">
                     <?= strlen(GetMessage('IBE_FRONTOFFICE_PERSONAL_' . $fieldId)) ? GetMessage('IBE_FRONTOFFICE_PERSONAL_' . $fieldId) : $field['CAPTION'] ?>
                   </label>
-                  <? if ( $uniform ) { ?>
                   <div class="date_wrap">
                     <div class="day_wrap">
                       <select id="<?=$field['~ID'] ?>" name="<?=$field['NAME'] ?>" class="day">
                         <? foreach($field['OPTION'] as $option): ?>
                         <option value="<?= $option['VALUE'] ?>">
-                        <? if ( !$option['VALUE'] ) { ?>
-                        __
-                        <? } else { ?>
-                        <?= str_pad($option['CAPTION'], 2, '0', STR_PAD_LEFT); ?>
-                        <? } ?>
+                          <?= !$option['VALUE'] ? '__' : str_pad($option['CAPTION'], 2, '0', STR_PAD_LEFT); ?>
                         </option>
                         <? endforeach; ?>
                       </select>
                     </div>
-                    <? } else { ?>
-                    <select id="<?=$field['~ID'] ?>" name="<?=$field['NAME'] ?>" class="day">
-                      <? foreach($field['OPTION'] as $option): ?>
-                      <option value="<?= $option['VALUE'] ?>">
-                      <?= !$option['VALUE'] && strlen(GetMessage('TS_FRONTOFFICE_STEP3_PASS_DAY')) ? GetMessage('TS_FRONTOFFICE_STEP3_PASS_DAY') : $option['CAPTION'] ?>
-                      </option>
-                      <? endforeach; ?>
-                    </select>
-                    <? } ?>
+                    <span class="dot">.</span>
                     <? break;
                   case 'BIRTHDATE_MONTH':
                   case 'DOCEXPIRATION_MONTH': ?>
-                    <? if ( $uniform ) { ?>
                     <div class="month_wrap">
                       <select id="<?=$field['~ID'] ?>" name="<?=$field['NAME'] ?>" class="month">
                         <? foreach($field['OPTION'] as $option): ?>
@@ -331,36 +317,20 @@ function ControlFieldLength( id_field, chars_max ){
                         <? endforeach; ?>
                       </select>
                     </div>
-                    <? } else { ?>
-                    <select id="<?=$field['~ID'] ?>" name="<?=$field['NAME'] ?>" class="month">
-                      <? foreach($field['OPTION'] as $option): ?>
-                      <option value="<?=$option['VALUE'] ?>">
-                      <? if( $uniform ) { ?>
-                      <?= !$option['VALUE'] ? '__' : $option['VALUE'] ?>
-                      <? } else { ?>
-                      <?=$option['CAPTION'] ?>
-                      <? } ?>
-                      </option>
-                      <? endforeach; ?>
-                    </select>
-                    <? } ?>
+                    <span class="dot">.</span>
                     <? break;
                   case 'BIRTHDATE_YEAR':
                   case 'DOCEXPIRATION_YEAR': ?>
-                    <? if ( $uniform ) { ?>
                     <div class="year_wrap">
-                      <? } ?>
                       <select id="<?=$field['~ID'] ?>" name="<?=$field['NAME'] ?>" class="year">
                         <? foreach($field['OPTION'] as $option): ?>
                         <option value="<?=$option['VALUE'] ?>">
-                        <?= !$option['VALUE'] && $uniform ? '____': $option['CAPTION'] ?>
+                        <?= !$option['VALUE'] ? '____' : $option['CAPTION'] ?>
                         </option>
                         <? endforeach; ?>
                       </select>
-                      <? if ( $uniform ) { ?>
                     </div>
                   </div>
-                  <? } ?>
                 </div>
                 <? break;
                   case 'DOCTYPE': ?>

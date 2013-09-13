@@ -8,6 +8,7 @@
 	$arResult[ "ORDER" ][ "~IS_CHARTER" ] = $arResult[ "~IS_CHARTER" ]; ?>
   <div class="order">
   <? //trace($arResult) ?>
+  <? // Перелеты ?>
   <div class="flights">
   <? foreach( $arResult['DIRECTIONS'] as $directionKey => $direction ): ?>
     <? $diretion_name =  $directionKey == 0 ? 'outbound' : 'inbound'; ?>
