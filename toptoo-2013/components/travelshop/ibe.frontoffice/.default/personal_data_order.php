@@ -38,9 +38,8 @@
         <tr class="top">
         <?  $oak = ( !empty( $flight['~OAK'] ) && $flight['~OAK'] != $flight['~AK'] ); $oakClass = ''; $oakCode = '';
         if( $arResult['LOGOS'] ){
-          if( $oak ) { $oakClass = ' oak'; $oakCode = '<span class="oak_star">*</span>'; }
               $akTitle = $flight['TITLE'] ? $flight['TITLE'] : $flight['~AK']; ?>
-        <td class="logo logo-normal-<?= $arResult['LOGOS'][$flight['~AK']]['IATACODE'] . $oakClass ?>" rowspan="2"<?= $akTitle ? ' title="' . $akTitle . '"' : '' ?>><?= $oakCode ?></td>
+        <td class="logo logo-normal-<?= $arResult['LOGOS'][$flight['~AK']]['IATACODE'] ?>" rowspan="2"<?= $akTitle ? ' title="' . $akTitle . '"' : '' ?>>&nbsp;</td>
         <? } ?>
         <td class="time"><?= $flight['DEPARTURE']['TIME'] ?></td>
         <td class="point"><?= $flight['DEPARTURE']['LOC_NAME'] ?></td>
