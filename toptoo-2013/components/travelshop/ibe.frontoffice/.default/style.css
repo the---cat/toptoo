@@ -1,12 +1,12 @@
 #ts_ag_reservation_container__form_top .top_form_wrap{
-  background: #f4b422;
-  background: -moz-linear-gradient(top, #f4b422 0%, #faba28 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f4b422), color-stop(100%,#faba28));
-  background: -webkit-linear-gradient(top, #f4b422 0%,#faba28 100%);
-  background: -o-linear-gradient(top, #f4b422 0%,#faba28 100%);
-  background: -ms-linear-gradient(top, #f4b422 0%,#faba28 100%);
-  background: linear-gradient(to bottom, #f4b422 0%,#faba28 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4b422', endColorstr='#faba28',GradientType=0 );
+  background: #ffb433;
+  background: -moz-linear-gradient(top, #ffb433 0%, #ffb93d 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffb433), color-stop(100%,#ffb93d));
+  background: -webkit-linear-gradient(top, #ffb433 0%,#ffb93d 100%);
+  background: -o-linear-gradient(top, #ffb433 0%,#ffb93d 100%);
+  background: -ms-linear-gradient(top, #ffb433 0%,#ffb93d 100%);
+  background: linear-gradient(to bottom, #ffb433 0%,#ffb93d 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb433', endColorstr='#ffb93d',GradientType=0 );
   margin: 0;
   min-width:960px;
   width: 100%;
@@ -28,10 +28,16 @@
 #ts_ag_reservation_container__offer{
   margin: 0 auto;
   min-width:960px;
-  max-width: 1030px;
+  max-width: 1000px;
 }
 
 #ts_ag_reservation { position:relative; }
+
+#ts_ag_reservation a{
+  color: #003399;
+  text-decoration: underline;
+}
+#ts_ag_reservation a:hover{ text-decoration: none;}
 
 #ts_ag_reservation input.text,
 #ts_ag_reservation input.password,
@@ -69,24 +75,13 @@
 #ts_ag_reservation .c-back{ float:left; }
 #ts_ag_reservation .c-next{ float:right; }
 
-#ts_ag_reservation .button {
-  background: #ff0066;
-  background: -moz-linear-gradient(top,  #ff0e6e 0%, #ff0066 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff0e6e), color-stop(100%,#ff0066));
-  background: -webkit-linear-gradient(top,  #ff0e6e 0%,#ff0066 100%);
-  background: -o-linear-gradient(top,  #ff0e6e 0%,#ff0066 100%);
-  background: -ms-linear-gradient(top,  #ff0e6e 0%,#ff0066 100%);
-  background: linear-gradient(to bottom,  #ff0e6e 0%,#ff0066 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0e6e', endColorstr='#ff0066',GradientType=0 );
+#ts_ag_reservation .button,
+#ts_ag_reservation .button_buy {
+  background: #ff036d;
   border:none;
   color: #ffffff;
   cursor: pointer;
-  display: block;
-  font-size: 15px;
-  font-weight: normal;
-  height:52px;
-  line-height: 32px;
-  padding: 10px;
+  display: inline-block;
   overflow: visible;
   text-align: center;
   text-decoration: none;
@@ -97,7 +92,23 @@
   box-sizing: border-box;
 } /* Кнопка */
 
-#ts_ag_reservation .button .price{
+#ts_ag_reservation .button{
+  font-size:12px;
+  font-weight:bold;
+  height:35px;
+  min-width:125px;
+  padding:5px;
+  text-transform: uppercase;
+}
+#ts_ag_reservation .button_buy {
+  font-size: 15px;
+  font-weight: normal;
+  height:52px;
+  line-height: 32px;
+  padding: 10px;
+}
+
+#ts_ag_reservation .button_buy .price{
   font-size:24px;
   font-weight:bold;
 }
@@ -115,12 +126,13 @@
 #ts_ag_reservation .button_hidden{ display: none; }
 
 #ts_ag_reservation .info_caption {
-  background: #1ec4ce;
+  background: #00c5cb;
   color: #ffffff;
   display: inline-block;
   font-size:24px;
   font-weight:normal;
   line-height: 1.75;
+  margin-bottom:-1px;
   padding: 0 21px;
 } /* Заголовки */
 
@@ -220,7 +232,7 @@
 #ts_ag_reservation .form-order .route .point select { width: 15em; }
 
 #ts_ag_reservation .form-order .route .point input {
-  background: #fff url(images/clear.png) 100% 50% no-repeat;
+  background: #ffffff url(images/clear.png) 100% 50% no-repeat;
   display: block;
   position: relative;
   z-index: 1;
@@ -245,7 +257,7 @@
 }
 
 html.msie #ts_ag_reservation .form-order .route .point .clear_field{
-  background: #fff;
+  background: #ffffff;
   filter:Alpha(opacity=5);
   opacity:.1;
 }
@@ -423,7 +435,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
 #ts_ag_reservation_container__form_top .form-order .location,
 #ts_ag_reservation_container__form_top .form-order .date-container{ position:relative; }
 
-#ts_ag_reservation_container__form_top .form-order .point input { font-size:18px; width:240px; }
+#ts_ag_reservation_container__form_top .form-order .point input { font-size:18px; width:220px; }
 #ts_ag_reservation_container__form_top .form-order .point input.ac_loading{
   background:#ffffff url(images/loader.white.gif) 90% 50% no-repeat;
 }
@@ -499,25 +511,13 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   background: -ms-linear-gradient(top, #f0efef 0%,#dcdcdd 100%);
   background: linear-gradient(to bottom, #f0efef 0%,#dcdcdd 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0efef', endColorstr='#dcdcdd',GradientType=0 );
-
-  border:none;
-
   color:#000000;
-  font-size:12px;
-  font-weight:bold;
-  
   height:33px;
   padding: 5px;
-  text-align: center;
-  text-transform: uppercase;
-  width:130px;
 }
 
 #ts_ag_reservation_container__form_top .form_tools{ padding:11px 0; }
 
-@media (max-width:981px){
-  #ts_ag_reservation_container__form_top .form-order .point input{ width:220px; }
-}
 /* ВЫБОР РЕЙСОВ. РЕКОМЕНДАЦИЯ ОПТИМАЛЬНЫХ ТАРИФОВ */
 /* Список рекомендаций */
 #ts_ag_reservation .offers_tools{ display: none; }
@@ -540,10 +540,13 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
 #ts_ag_reservation .offers .offer .direction{
   border: solid;
   border-width: 1px 1px 0;
-  margin:-1px -1px 10px;
+  margin:-1px -1px 0;
 }
-#ts_ag_reservation .offers .offer .outbound{ border-color: #71c3cc; }
-#ts_ag_reservation .offers .offer .inbound{ border-color: #fab414; }
+#ts_ag_reservation .offers .offer .outbound{ border-color: #00c5cb; }
+#ts_ag_reservation .offers .offer .inbound{
+  border-color: #fab414;
+  margin-top:8px;
+}
 
 #ts_ag_reservation .offers .offer .direction th{
   color:#ffffff;
@@ -552,8 +555,8 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   padding:9px 15px;
   vertical-align: bottom;
 }
-#ts_ag_reservation .offers .offer .outbound th{ background: #71c3cc; }
-#ts_ag_reservation .offers .offer .inbound th{ background: #f7941e; }
+#ts_ag_reservation .offers .offer .outbound th{ background: #00c5cb; }
+#ts_ag_reservation .offers .offer .inbound th{ background: #ffb433; }
 
 #ts_ag_reservation .offers .offer .direction .dir_name{ text-align: left; }
 #ts_ag_reservation .offers .offer .direction .companies { text-align: left; }
@@ -574,8 +577,8 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   cursor:pointer;
 }
 
-#ts_ag_reservation .offers .offer .outbound .selected { background:#bff1f6; }
-#ts_ag_reservation .offers .offer .inbound .selected { background:#ffd880; }
+#ts_ag_reservation .offers .offer .outbound .selected { background:#a1f2f6; }
+#ts_ag_reservation .offers .offer .inbound .selected { background:#ffd889; }
 
 #ts_ag_reservation .offers .offer .direction .variant td{
   border-bottom:1px solid;
@@ -583,8 +586,8 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   text-align: left;
   vertical-align: middle;
 }
-#ts_ag_reservation .offers .offer .outbound .variant td{ border-bottom-color:#71c3cc;}
-#ts_ag_reservation .offers .offer .inbound .variant td{ border-bottom-color:#f7941e;}
+#ts_ag_reservation .offers .offer .outbound .variant td{ border-bottom-color:#00c5cb;}
+#ts_ag_reservation .offers .offer .inbound .variant td{ border-bottom-color:#ffb433;}
 
 #ts_ag_reservation .offers .offer .direction .variant td.select{
   text-align: center;
@@ -675,8 +678,8 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
 }
 
 
-#ts_ag_reservation .offers .offer .outbound .variant .flight_info .stop{ background: #71c3cc; }
-#ts_ag_reservation .offers .offer .inbound .variant .flight_info .stop{ background: #f7941e; }
+#ts_ag_reservation .offers .offer .outbound .variant .flight_info .stop{ background: #00c5cb; }
+#ts_ag_reservation .offers .offer .inbound .variant .flight_info .stop{ background: #ffb433; }
 #ts_ag_reservation .offers .offer .direction .variant .add_info{ 
   font-size:13px;
   line-height: 1.5;
@@ -699,7 +702,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   padding: 12px 15px;
   text-align: right;
 }
-#ts_ag_reservation .offers .offer .submit .button{ min-width:200px; }
+#ts_ag_reservation .offers .offer .submit .button_buy{ min-width:200px; }
 
 
 /* ВЫБОР РЕЙСОВ. ПРОМЕЖУТОЧНЫЙ ИТОГ */
@@ -712,8 +715,8 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
 #ts_ag_reservation .order .flights .direction { 
   border: solid 1px;
 }
-#ts_ag_reservation .order .flights .outbound { border-color: #71c3cc; margin-bottom:8px; }
-#ts_ag_reservation .order .flights .inbound { border-color: #F7941E; }
+#ts_ag_reservation .order .flights .outbound { border-color: #00c5cb; margin-bottom:8px; }
+#ts_ag_reservation .order .flights .inbound { border-color: #ffb433; }
 
 #ts_ag_reservation .order .flights .direction .direction_caption {}
 #ts_ag_reservation .order .flights .direction .direction_caption th {
@@ -723,8 +726,8 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   padding: 9px 15px;
   vertical-align: bottom;
 }
-#ts_ag_reservation .order .flights .outbound .direction_caption th { background: #71C3CC; }
-#ts_ag_reservation .order .flights .inbound .direction_caption th { background: #F7941E; }
+#ts_ag_reservation .order .flights .outbound .direction_caption th { background: #00c5cb; }
+#ts_ag_reservation .order .flights .inbound .direction_caption th { background: #ffb433; }
 
 #ts_ag_reservation .order .flights .direction .direction_caption .dir_name,
 #ts_ag_reservation .order .flights .direction .direction_caption .companies { text-align: left;  }
@@ -804,12 +807,9 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   text-align: right;
   vertical-align: middle;
 }
-/*
 
-ПАССАЖИРЫ И КОНТАКТНАЯ ИНФОРМАЦИЯ
 
-*/
-
+/* ПАССАЖИРЫ И КОНТАКТНАЯ ИНФОРМАЦИЯ */
 #ts_ag_reservation .personal_data {
   border:1px solid #d2d2d2;
   padding:20px;
@@ -847,7 +847,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
 #ts_ag_reservation .personal_data .profiles .profile_form .field {
   float: left;
   line-height: 1;
-  margin: 0 40px 20px 0;
+  margin: 0 30px 20px 0;
   padding-right: 26px;
   position: relative;
   zoom: 1;
@@ -860,6 +860,8 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   height: 0;
   visibility: hidden;
 }
+
+#ts_ag_reservation .personal_data .profiles .profile_form .ffak_wrap { float: left; }
 
 #ts_ag_reservation .personal_data .profiles .profile_form .field .subtitle {
   color: #666666;
@@ -888,6 +890,9 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
 #ts_ag_reservation .personal_data .profiles .profile_form select { 
   height: 35px;
   padding:6px 2px;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
 }
 
 #ts_ag_reservation .personal_data .profiles .profile_form .gender,
@@ -900,34 +905,26 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
 }
 
 #ts_ag_reservation .personal_data .profiles .profile_form .gender { width: 85px; }
-#ts_ag_reservation .personal_data .profiles .profile_form .psgr_fname,
-#ts_ag_reservation .personal_data .profiles .profile_form .psgr_name { width: 265px; }
-#ts_ag_reservation .personal_data .profiles .profile_form .date { width: auto; margin-right: 0; }
+#ts_ag_reservation .personal_data .profiles .profile_form .psgr_name { width: 275px; }
+#ts_ag_reservation .personal_data .profiles .profile_form .psgr_fname { width: 250px; }
+#ts_ag_reservation .personal_data .profiles .profile_form .date { width: auto; }
+#ts_ag_reservation .personal_data .profiles .profile_form .birthdate{ margin:0; }
 #ts_ag_reservation .personal_data .profiles .profile_form .doctype { width: 215px; }
-#ts_ag_reservation .personal_data .profiles .profile_form .doccountry { width: 215px; }
-#ts_ag_reservation .personal_data .profiles .profile_form .docnumber { width: 115px; }
+#ts_ag_reservation .personal_data .profiles .profile_form .doccountry { width: 275px; }
+#ts_ag_reservation .personal_data .profiles .profile_form .docnumber { width: 125px; }
 #ts_ag_reservation .personal_data .profiles .profile_form .ffcardnmbr { width: 110px; }
-html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .ffak { width: 215px; }
+#ts_ag_reservation .personal_data .profiles .profile_form .ffak { width: 275px; }
+#ts_ag_reservation .personal_data .profiles .profile_form .ffcardnmbr { margin-right:0;  width: 105px; }
 
 #ts_ag_reservation .personal_data .profiles .profile_form .name,
-#ts_ag_reservation .personal_data .profiles .profile_form .phone,
-#ts_ag_reservation .personal_data .profiles .profile_form .mail { width: 200px; }
-
-#ts_ag_reservation .personal_data .profiles .profile_form .row-separator { clear: both; }
-#ts_ag_reservation .personal_data .profiles .profile_form .date select { margin-right: 17px; }
-#ts_ag_reservation .personal_data .profiles .profile_form .date select.day { width: 65px; }
-#ts_ag_reservation .personal_data .profiles .profile_form .date select.month { width: 90px; }
-#ts_ag_reservation .personal_data .profiles .profile_form .date select.year { width: 75px; }
+#ts_ag_reservation .personal_data .profiles .profile_form .phone{ width: 190px; }
+#ts_ag_reservation .personal_data .profiles .profile_form .mail { width:250px; }
 
 #ts_ag_reservation .personal_data .profiles .profile_form div.docnumber,
-#ts_ag_reservation .personal_data .profiles .profile_form div.ffcardnmbr { padding-right: 52px }
+#ts_ag_reservation .personal_data .profiles .profile_form div.ffcardnmbr { padding-right: 47px }
 
 #ts_ag_reservation .personal_data .profiles .profile_form div.docnumber input,
-#ts_ag_reservation .personal_data .profiles .profile_form div.ffcardnmbr input { padding-left: 40px; }
-
-#ts_ag_reservation .personal_data .profiles .profile_form .date select { float: left; }
-
-#ts_ag_reservation .personal_data .profiles .profile_form .doccountry select { max-width: 297px; width: auto; }
+#ts_ag_reservation .personal_data .profiles .profile_form div.ffcardnmbr input { padding-left: 32px; }
 
 #ts_ag_reservation .personal_data .profiles .profile_form .gender .gender_switcher {
   height: 35px;
@@ -946,20 +943,67 @@ html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .ffak { wid
 #ts_ag_reservation .personal_data .profiles .profile_form .gender .gender_F{ background-position:-41px 0; }
 
 #ts_ag_reservation .personal_data .profiles .profile_form .gender .gender_switcher.M_selected .gender_M {
-  background-color: #1ec4ce;
+  background-color: #00c5cb;
   background-position: 0 -33px;
   border-color:#bdd6d7;
   cursor: default;
 }
 #ts_ag_reservation .personal_data .profiles .profile_form .gender .gender_switcher.M_selected .gender_F{ border-left-color:#bdd6d7;}
 #ts_ag_reservation .personal_data .profiles .profile_form .gender .gender_switcher.F_selected .gender_F {
-  background-color: #1ec4ce;
+  background-color: #00c5cb;
   background-position: -41px -33px;
   border-color:#bdd6d7;
   cursor: default;
 }
 
-#ts_ag_reservation .personal_data .profiles .profile_form .ffak_wrap { float: left; }
+#ts_ag_reservation .personal_data .profiles .profile_form .date_wrap{
+  border:1px solid #cccccc;
+  padding:0 12px;
+  *zoom:1;
+}
+#ts_ag_reservation .personal_data .profiles .profile_form .date_wrap:after{ content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+#ts_ag_reservation .personal_data .profiles .profile_form .date .day_wrap,
+#ts_ag_reservation .personal_data .profiles .profile_form .date .month_wrap,
+#ts_ag_reservation .personal_data .profiles .profile_form .date .year_wrap{
+  float:left;
+  position: relative;
+}
+#ts_ag_reservation .personal_data .profiles .profile_form .date .dot{
+  display: block;
+  float:left;
+  height:33px;
+  line-height: 35px;
+  text-align: center;
+  width:20px;
+}
+#ts_ag_reservation .personal_data .profiles .profile_form .date select{
+  border:none;
+  height:33px;
+  padding:6px 0;
+}
+#ts_ag_reservation .personal_data .profiles .profile_form .date select.day, 
+#ts_ag_reservation .personal_data .profiles .profile_form .date select.month { width: 20px; }
+#ts_ag_reservation .personal_data .profiles .profile_form .date select.year { width: 45px; }
+
+html.opera #ts_ag_reservation .personal_data .profiles .profile_form .date .day_wrap,
+html.opera #ts_ag_reservation .personal_data .profiles .profile_form .date .month_wrap { 
+  overflow: hidden;
+  width: 20px;
+}
+html.opera #ts_ag_reservation .personal_data .profiles .profile_form .date .year_wrap{
+  overflow: hidden;
+  width: 45px;
+}
+html.opera #ts_ag_reservation .personal_data .profiles .profile_form .date select.day, 
+html.opera #ts_ag_reservation .personal_data .profiles .profile_form .date select.month { width: 40px; }
+html.opera #ts_ag_reservation .personal_data .profiles .profile_form .date select.year { width: 65px; }
+
+#ts_ag_reservation .personal_data .profiles .profile_form .fprefer{ display: none; }
+#ts_ag_reservation .personal_data .profiles .profile_form .fprefer title{ display: inline-block; }
+#ts_ag_reservation .personal_data .profiles .profile_form .fprefer input{ 
+  float:left;
+  margin:.2em .5em 0 0;
+}
 
 /* Вариант с использованием кастомизированных селектов *
 #ts_ag_reservation .personal_data .profiles .profile_form .custom div.selector span {
@@ -1063,9 +1107,7 @@ html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .date.custo
 }
 
 /* Автоматическая регистрация пользователя */
-#ts_ag_reservation .personal_data .contacts .profile_form_container,
-#ts_ag_reservation .personal_data .contacts .auto_registration { float: left; }
-#ts_ag_reservation .personal_data .contacts .auto_registration { padding: 29px 0 15px; }
+#ts_ag_reservation .personal_data .contacts .auto_registration { padding: 20px 0 0; }
 
 #ts_ag_reservation #auto_registration_container input,
 #ts_ag_reservation #auto_registration_container div.checker {
@@ -1084,10 +1126,15 @@ html.msie7 #ts_ag_reservation .personal_data .profiles .profile_form .date.custo
 
 #ts_ag_reservation_container__personal_data .buttons {
   float:right;
+  padding:25px 55px 0 0;
   text-align: right;
 }
-
-#ts_ag_reservation .personal_data .buttons .c-continue { text-align: center; }
+#ts_ag_reservation_container__personal_data .buttons .button{
+  background-image: url(images/next.png);
+  background-position: 100% 50%;
+  background-repeat: no-repeat;
+  padding-right:25px;
+}
 
 /*
 

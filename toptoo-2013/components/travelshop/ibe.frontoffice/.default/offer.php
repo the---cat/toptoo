@@ -189,7 +189,7 @@ echo $arResult['SCRIPT']; ?>
         </td>
         <td class="submit">
           <? if ( $bValidOffer ) : ?>
-          <div class="button" onclick="$(this).closest('.submit').find('input').trigger('click');">
+          <div class="button_buy" onclick="$(this).closest('.submit').find('input').trigger('click');">
             <?= GetMessage('TS_FRONTOFFICE_STEP2_OFFER_BUY') ?>
             <span class="price"><?=$offer['PRICE']['CAPTION_AMOUNT'] ?></span>
           </div>
