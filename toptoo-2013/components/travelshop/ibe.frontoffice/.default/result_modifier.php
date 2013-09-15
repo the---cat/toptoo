@@ -16,20 +16,6 @@ if ( $arResult["processor"] == "form_order" && strlen($arParams["REDIRECT_HOST"]
 }
 
 if ( $arResult['~FORM_TYPE'] == 'personal_data' ){
-   foreach ( $arResult['FORM']['PASSENGERS'] as $k => & $v ) {
-    $fields_number = count($arResult['FORM']['PASSENGERS'][$k]['PROFILES']['FIELDS']);
-    if ( $arResult['FORM']['PASSENGERS'][$k]['~DATA']['TYPE'] == 'PASSENGER_BLOCK'  && $fields_number > 1){
-      $new_profile = end($arResult['FORM']['PASSENGERS'][$k]['PROFILES']['FIELDS']);
-      unset($arResult['FORM']['PASSENGERS'][$k]['PROFILES']['FIELDS']);
-      $arResult['FORM']['PASSENGERS'][$k]['PROFILES']['FIELDS'][0] = $new_profile;
-    } 
-  }
-  if ( ($fields_number = count($arResult['FORM']['CONTACTS']['PROFILES']['FIELDS'])) > 1 ) {
-    $new_profile = end($arResult['FORM']['CONTACTS']['PROFILES']['FIELDS']);
-    unset($arResult['FORM']['CONTACTS']['PROFILES']['FIELDS']);
-    $arResult['FORM']['CONTACTS']['PROFILES']['FIELDS'][0] = $new_profile;
-  }  
-  /*
 	// В списке ранее введенных профилей пассажиров строку "Новый пассажир" поставить вверху списка
 	foreach ( $arResult['FORM']['PASSENGERS'] as $k => $v ) {
 		$fields_number = count($arResult['FORM']['PASSENGERS'][$k]['PROFILES']['FIELDS']); 
@@ -65,6 +51,5 @@ if ( $arResult['~FORM_TYPE'] == 'personal_data' ){
 		unset($arResult['FORM']['CONTACTS']['PROFILES']['FIELDS'][$fields_number]);
   }
   //trace($arResult['FORM']);
-  */
 }
 ?>

@@ -126,7 +126,7 @@
 #ts_ag_reservation .button_hidden{ display: none; }
 
 #ts_ag_reservation .info_caption {
-  background: #00c5cb;
+  background: #71c3cc;
   color: #ffffff;
   display: inline-block;
   font-size:24px;
@@ -494,7 +494,6 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e7e7e7', endColorstr='#bababa',GradientType=0 );
   float:right;
   padding:1px;
-  width:125px;
 }
 #ts_ag_reservation_container__form_top .form-order .top_form_submit .button{
   background: #f0efef;
@@ -508,11 +507,11 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   color:#000000;
   height:33px;
   padding: 5px;
-  width:125px;
 }
 
 #ts_ag_reservation_container__form_top .form_tools{ padding:11px 0; }
-
+html.msie9 #ts_ag_reservation_container__form_top .form-order .top_form_submit,
+html.msie9 #ts_ag_reservation_container__form_top .form-order .top_form_submit .button{ width:125px; }
 
 /* ВЫБОР РЕЙСОВ. РЕКОМЕНДАЦИЯ ОПТИМАЛЬНЫХ ТАРИФОВ */
 /* Список рекомендаций */
@@ -538,7 +537,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   border-width: 1px 1px 0;
   margin:-1px -1px 0;
 }
-#ts_ag_reservation .offers .offer .outbound{ border-color: #00c5cb; }
+#ts_ag_reservation .offers .offer .outbound{ border-color: #71c3cc; }
 #ts_ag_reservation .offers .offer .inbound{
   border-color: #fab414;
   margin-top:8px;
@@ -551,7 +550,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   padding:9px 15px;
   vertical-align: bottom;
 }
-#ts_ag_reservation .offers .offer .outbound th{ background: #00c5cb; }
+#ts_ag_reservation .offers .offer .outbound th{ background: #71c3cc; }
 #ts_ag_reservation .offers .offer .inbound th{ background: #ffb433; }
 
 #ts_ag_reservation .offers .offer .direction .dir_name{ text-align: left; }
@@ -582,7 +581,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   text-align: left;
   vertical-align: middle;
 }
-#ts_ag_reservation .offers .offer .outbound .variant td{ border-bottom-color:#00c5cb;}
+#ts_ag_reservation .offers .offer .outbound .variant td{ border-bottom-color:#71c3cc;}
 #ts_ag_reservation .offers .offer .inbound .variant td{ border-bottom-color:#ffb433;}
 
 #ts_ag_reservation .offers .offer .direction .variant td.select{
@@ -674,7 +673,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
 }
 
 
-#ts_ag_reservation .offers .offer .outbound .variant .flight_info .stop{ background: #00c5cb; }
+#ts_ag_reservation .offers .offer .outbound .variant .flight_info .stop{ background: #71c3cc; }
 #ts_ag_reservation .offers .offer .inbound .variant .flight_info .stop{ background: #ffb433; }
 #ts_ag_reservation .offers .offer .direction .variant .add_info{ 
   font-size:13px;
@@ -711,7 +710,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
 #ts_ag_reservation .order .flights .direction { 
   border: solid 1px;
 }
-#ts_ag_reservation .order .flights .outbound { border-color: #00c5cb; margin-bottom:8px; }
+#ts_ag_reservation .order .flights .outbound { border-color: #71c3cc; margin-bottom:8px; }
 #ts_ag_reservation .order .flights .inbound { border-color: #ffb433; }
 
 #ts_ag_reservation .order .flights .direction .direction_caption {}
@@ -722,7 +721,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   padding: 9px 15px;
   vertical-align: bottom;
 }
-#ts_ag_reservation .order .flights .outbound .direction_caption th { background: #00c5cb; }
+#ts_ag_reservation .order .flights .outbound .direction_caption th { background: #71c3cc; }
 #ts_ag_reservation .order .flights .inbound .direction_caption th { background: #ffb433; }
 
 #ts_ag_reservation .order .flights .direction .direction_caption .dir_name,
@@ -941,14 +940,14 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
 #ts_ag_reservation .personal_data .profiles .profile_form .gender .gender_F{ background-position:-41px 0; }
 
 #ts_ag_reservation .personal_data .profiles .profile_form .gender .gender_switcher.M_selected .gender_M {
-  background-color: #00c5cb;
+  background-color: #71c3cc;
   background-position: 0 -33px;
   border-color:#bdd6d7;
   cursor: default;
 }
 #ts_ag_reservation .personal_data .profiles .profile_form .gender .gender_switcher.M_selected .gender_F{ border-left-color:#bdd6d7;}
 #ts_ag_reservation .personal_data .profiles .profile_form .gender .gender_switcher.F_selected .gender_F {
-  background-color: #00c5cb;
+  background-color: #71c3cc;
   background-position: -41px -33px;
   border-color:#bdd6d7;
   cursor: default;
@@ -1229,525 +1228,667 @@ html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date sele
 
 /*
 
-ШАГ 4. ОПЛАТА. ВЫБОР СПОСОБА ОПЛАТЫ
+ОПЛАТА. ВЫБОР СПОСОБА ОПЛАТЫ
 
 */
-#ts_ag_reservation .payment {
-} /*Блок способов оплаты */
-
-#ts_ag_reservation .payment .info,
-#ts_ag_reservation .payment .pay-methods,
-#ts_ag_reservation .payment .auth_title,
-#ts_ag_reservation .payment .timelimit {
-  margin: 0 0 1em 0;
-}
-
-#ts_ag_reservation .payment .auth_title,
-#ts_ag_reservation .payment .timelimit {
-  color: #FF0000;
-  font-weight: bold;
-  margin-top:20px;
-}
-
-#ts_ag_reservation .payment .auth_title {
-  /* font-size: 111%; */
-}
-
-#ts_ag_reservation .payment .info {
-  padding: 1em;
-  background-color: #EEEEEE;
-}
-
-#ts_ag_reservation .payment .info .price {
-  font-size: .9em;
-}
-
-#ts_ag_reservation .payment .info .price.nedde-price {
-  font-weight: bold;
-}
-
-#ts_ag_reservation .payment .chosen-pay-systems {
-  margin: 0;
-  padding: 0 0 0 2em;
-}
-#ts_ag_reservation .payment .chosen-pay-systems li {
-  padding-bottom: 1em;
-  margin-bottom: 1em;
-  border-bottom: 1px dotted #58ACE4;
-}
-
-#ts_ag_reservation .payment .pay-methods {
-  padding:0;
-}
-#ts_ag_reservation .payment .pay-methods .pay_method{
-  border-color:#58ACE4 transparent transparent;
-  border-style: dotted;
-  border-width:1px 1px 0;
-  cursor:pointer;
-  margin:0;
-  padding:1em;
-}
-#ts_ag_reservation .payment .pay-methods .pay_method *{ cursor: pointer; }
-#ts_ag_reservation .payment .pay-methods .pay_method:first-child{
-  border-top-color:transparent;
-}
-#ts_ag_reservation .payment .pay-methods .pay_method.selected{
-  background: #CDE7F8;
-  border:1px solid #58ACE4;
-  cursor: default;
-  margin-bottom:-1px;
-}
-#ts_ag_reservation .payment .pay-methods .pay_method.selected *{ cursor: default; }
-#ts_ag_reservation .payment .pay-methods .method {
-}
-
-#ts_ag_reservation .payment .pay-methods .paysystem_label_container {
-  float:left;
+#ts_ag_reservation .pay_method{ border:1px solid #D2D2D2; }
+#ts_ag_reservation .pay_method table{ width:100%; }
+#ts_ag_reservation .pay_method table td{
+  padding:15px 0;
+  vertical-align:top;
   width:50%;
 }
+#ts_ag_reservation .pay_method td.paymethods{ border-right:1px solid #71c3cc; }
 
-#ts_ag_reservation .payment .pay-methods .full {
+#ts_ag_reservation .pay_method .group_name{
+  color:#666666;
+  cursor:pointer;
+  font-size:18px;
+  font-weight:bold;
+  margin:15px 0 0 ;
+  padding:0 10px 7px 140px;
+  text-decoration:none;
+}
+#ts_ag_reservation .pay_method .group_name.no_close{ cursor:default; }
+#ts_ag_reservation .pay_method .group_name .name{
+  border-bottom:1px dashed;
+}
+#ts_ag_reservation .pay_method .group_name:hover{ text-decoration:none;}
+#ts_ag_reservation .pay_method .group_name.opened{}
+
+#ts_ag_reservation .pay_method .group_name:hover .name{}
+#ts_ag_reservation .pay_method .group_name.opened .name{}
+
+#ts_ag_reservation .pay_method .paymethods_group{
+  margin-bottom:25px;
+  position:relative;
   width:100%;
 }
 
-#ts_ag_reservation .payment .pay-methods .payment_label { margin-right:1em; }
-#ts_ag_reservation .payment .pay-methods .full  .payment_label { margin-right:0; }
-#ts_ag_reservation .payment .pay-methods .payment_label input{
-  float:left;
-  margin-top:.2em;
-}
-#ts_ag_reservation .payment .pay-methods .payment_label label{
+#ts_ag_reservation .pay_method .paymethods_group.last{ margin-bottom:0; }
+
+#ts_ag_reservation .pay_method .item{
   display:block;
-  font-weight: bold;
-  margin-left:1.7em;
-  text-align: left;
-} /*Название платежной системы*/
-
-#ts_ag_reservation .payment .pay-methods .payment_label label .summ{
-  color:#50ACE6;
-  font-size:1.125em;
-  font-weight:bold;
-  margin-right: .5em;
-  text-shadow:1px 1px 0 #ffffff;
-}
-
-#ts_ag_reservation .payment .pay-methods .description {
-  clear: both;
-  font-size: .9em;
-  padding-left: 2em;
-  margin: .5em 0 0;
-} /*Описание платежной системы*/
-
-#ts_ag_reservation .payment .pay-methods .description p,
-#ts_ag_reservation .payment .pay-methods .description li{
-  border:none;
-  margin:.4em 0 0;
   padding:0;
 }
-#ts_ag_reservation .payment .pay-methods .description ul,
-#ts_ag_reservation .payment .pay-methods .description p:first-child,
-#ts_ag_reservation .payment .pay-methods .description li:first-child,
-#ts_ag_reservation .payment .pay-methods .description:empty,
-#ts_ag_reservation .payment .pay-methods .description p:empty,
-#ts_ag_reservation .payment .pay-methods .description li:empty{ 
-  margin:0;
-  padding: 0;
-}
 
-#ts_ag_reservation .payment .pay-methods .paysystem_image {
-  float:left;
-  width:45%
-}
+#ts_ag_reservation .pay_method .item input[type="radio"]{ display:none; }
 
-#ts_ag_reservation .payment .pay-methods .paysystem_label_footer {
-  clear:both;
-}
-
-#ts_ag_reservation .payment .pay-methods .options {
-  font-size: .9em;
-  padding-left: 2em;
-  margin-top: .5em;
-} /*Дополнительные параметры платежной системы*/
-
-#ts_ag_reservation .payment .pay-methods .options p {
-  margin:.4em 0 0;
-}
-#ts_ag_reservation .payment .pay-methods .options label{
-  margin-right:.5em;
-}
-#ts_ag_reservation .payment .pay_methods_groups{}
-#ts_ag_reservation .payment .pay_methods_groups .group_name{
-  color:#000000;
-  cursor: pointer;
-  font-size:1.2em;
-  font-weight:bold;
-  margin:20px 0 0;
-}
-#ts_ag_reservation .payment .pay_methods_groups .group_name .wrap{
-  display:inline-block;
-  text-align: center;
-}
-#ts_ag_reservation .payment .pay_methods_groups .group_name .name{
-  border-bottom:1px dotted #000000;
-  vertical-align: middle;
-}
-#ts_ag_reservation .payment .pay_methods_groups .group_name .caret:before{
-  content: '\25BC';
+#ts_ag_reservation .pay_method .item label{
+  background: transparent url(images/radio.png) 15px 50% no-repeat;
+  color:#666666;
+  display:block;
   font-size:13px;
+  padding:7px 15px 7px 50px;
 }
-#ts_ag_reservation .payment .pay_methods_groups .group_name.opened .caret:before{
-  content: '\25B2';
-}
-#ts_ag_reservation .payment .pay_methods_groups .group_name .caret:after{
-  content: '';
-  display: block;
-}
-#ts_ag_reservation .payment .pay_methods_groups .group_name .arr{
-  background: transparent url(images/ps_arr.png) 0 3px no-repeat;
-  display: block;
-  height:0;
-  margin:0 auto -1px;
-  padding-right: 20px;
-  position: relative;
-  width:24px;
-  z-index: 1;
-}
-#ts_ag_reservation .payment .pay_methods_groups .group_name.opened .arr{ height:15px;}
-#ts_ag_reservation .payment .pay_methods_groups .group_name:hover { color:#FF4000;}
-#ts_ag_reservation .payment .pay_methods_groups .group_name:hover .name{ border-bottom-color:#FF4000; }
+#ts_ag_reservation .pay_method .item label:hover{ color:#ff0068; }
 
-#ts_ag_reservation .payment .pay_methods_groups .no_close:hover { color:#000000; cursor: default; }
-#ts_ag_reservation .payment .pay_methods_groups .no_close:hover .name { border-bottom-color:#000000; }
-
-#ts_ag_reservation .payment .pay_methods_groups .paymethods_group { position: relative; }
-#ts_ag_reservation .payment .pay_methods_groups .paymethods_group .pay-methods{
-  border:1px solid #dddddd;
-  margin:0;
-  padding:1em;
-  position: relative;
-
-  -moz-box-shadow:0 0 0 rgba(102,102,102,0);
-  -webkit-box-shadow:0 0 0 rgba(102,102,102,0);
-  box-shadow:0 0 0 rgba(102,102,102,0);
-
-  -moz-transition: -moz-box-shadow .3s ease-in-out .2s;
-  -webkit-transition: -webkit-box-shadow .3s ease-in-out .2s;
-  transition: box-shadow .3s ease-in-out .2s;
+#ts_ag_reservation .pay_method .selected label,
+#ts_ag_reservation .pay_method .selected label:hover { 
+  color: #ffffff;
+  background-color:#ff0068;
+  background-image:url(images/radio_ch.png);
 }
 
-#ts_ag_reservation .payment .pay_methods_groups .paymethods_group.opened .pay-methods{
-  -moz-box-shadow:0 10px 20px rgba(102,102,102,.65);
-  -webkit-box-shadow:0 10px 20px rgba(102,102,102,.65);
-  box-shadow:0 10px 20px rgba(102,102,102,.65);
-}
-
-/*
-
-ШАГ 5. ДОСТАВКА
-
-*/
-#ts_ag_reservation .delivery {
-  clear: both;
-} /*Блок информации о доставке*/
-
-#ts_ag_reservation .delivery .caption {
-  padding: 0;
-  margin: 0 0 .5em 0;
-  font-size: 1em;
-  font-weight: bold;
-  color: #000;
-} /*Заголовки блоков*/
-
-#ts_ag_reservation .delivery .location .input {
-  font-size: .9em;
-  margin: -.2em 0 1em 0;
-} /*Список местоположений доставки */
-
-#ts_ag_reservation .delivery .methods {
-  margin: 1.5em 0;
-} /*Блок способов доставки*/
-
-#ts_ag_reservation .delivery .methods .method {
-  font-size: .9em;
-  margin-bottom: 1em;
-} /*Один способ доставки*/
-
-#ts_ag_reservation .delivery .methods .method hr {
-  display: none;
-}
-
-#ts_ag_reservation .delivery .methods .method .title {
-} /*Название способа доставки*/
-
-#ts_ag_reservation .delivery .profiles {
-  border: solid 1px #58ACE4;
-  padding: 0.2em;
-  margin-bottom: 0.5em;
-  max-height: 250px;
-  overflow: auto;
-} /*Блок профилей */
-
-#ts_ag_reservation .delivery .profiles .profile {
-  font-size: .9em;
-  margin-bottom: .5em;
-  margin-left: 0.5em;
-} /*Один профиль*/
-
-#ts_ag_reservation .delivery .profiles .profile .name {
-  font-weight: bolder;
-  display: block;
-} /*Название профиля*/
-
-#ts_ag_reservation .delivery .profiles .profile .profile_info {
-  font-size: .8em;
-  display: block;
-  font-style: italic;
-} /*Содержание профиля*/
-
-#ts_ag_reservation .delivery .profiles .profile_container .profile-delete {
-  background: transparent url(images/profile-delete.gif) 100% 50% no-repeat;
-  min-height: 16px;
-  padding-right: 20px;
-  margin-left: 5px;
-  float: right;
-  cursor: pointer;
-  font-size: .75em;
-  color: #ff0000;
-}
-
-#ts_ag_reservation .delivery .info {
-  padding: 1em 1em .5em 1em;
-  border: solid 1px #58ACE4;
-  font-size: .9em;
-} /*Информация о доставке*/
-
-#ts_ag_reservation .delivery .info table {
-  width: 100%;
-}
-
-#ts_ag_reservation .delivery .info tbody td {
-  padding: 0 .5em .5em 0;
-} /*Ячейки*/
-
-#ts_ag_reservation .delivery .info .title {
-  width: 30%;
-  line-height: 1.2em;
-} /*Название поля ввода*/
-
-#ts_ag_reservation .delivery .info .required_title {
-  font-weight: bold;
-} /*Признак обязательного заполнения*/
-
-#ts_ag_reservation .delivery .info .error_title {
-  color: #f00;
-} /*Признак неправильного заполнения*/
-
-#ts_ag_reservation .delivery .info input.input,
-#ts_ag_reservation .delivery .info textarea.input {
-  width: 98%;
-  border: solid 1px #58ACE4;
-} /*Поле ввода*/
-
-#ts_ag_reservation .delivery .info input.input:hover,
-#ts_ag_reservation .delivery .info input.input:focus,
-#ts_ag_reservation .delivery .info textarea.input:hover,
-#ts_ag_reservation .delivery .info textarea.input:focus {
-  border: solid 1px #FF6633;
-} /*Поля ввода и выпадающие списки в фокусе*/
-
-#ts_ag_reservation .delivery .info select.input {
-} /*Выпадающий список*/
-
-#ts_ag_reservation .delivery .info .error_input {
-} /*Признак неправильного заполнения*/
-
-
-/* ШАГ 5. ПОДТВЕРЖДЕНИЕ. all-in-one */
-#ts_ag_reservation_container__precommit .header{
-  padding-top:1em;
-}
-#ts_ag_reservation .precommit{}
-
-#ts_ag_reservation .precommit .info_caption{}
-#ts_ag_reservation .precommit .info_caption .timelimit{
-  font-size:.833em;
-  font-weight: normal;
-  text-transform: none;
-}
-
-#ts_ag_reservation .precommit table{width:100%;}
-#ts_ag_reservation .precommit table td{ vertical-align: top; }
-
-#ts_ag_reservation .precommit .heading{
-  color:#333333;
-  font-size:.68em;
-  font-weight:normal;
-  margin:0;
-  padding-bottom:.5em;
-  text-align: left;
-  text-transform: uppercase;
-}
-#ts_ag_reservation .precommit .link{
-  border-bottom:1px dashed;
-  text-decoration: none;
-}
-#ts_ag_reservation .precommit table .rules_and_contitions{ 
-  vertical-align: top;
-  width: 40%;
-}
-#ts_ag_reservation .precommit .basket{ 
-  min-width:60%;
-  padding-right:1em;
-  vertical-align: top;
-}
-
-#ts_ag_reservation .precommit .basket .basket_wait{
-  background: #ffffff;
-}
-
-#ts_ag_reservation .precommit .basket td{
-  font-size:.875em;
-  padding: 0 1em .5em 0;
-  text-align: left;
+#ts_ag_reservation .pay_method .item label > div,
+#ts_ag_reservation .pay_method .item label > span{
+  display:inline-block;
   vertical-align:middle;
 }
-#ts_ag_reservation .precommit .basket td.quantity{ width:10%; }
-#ts_ag_reservation .precommit .basket td.price{
-  font-size:1em;
-  font-weight:bold;
-  width:25%;
+html.msie7 #ts_ag_reservation .pay_method .item label > div,
+html.msie7 #ts_ag_reservation .pay_method .item label > span{
+  display:block;
+  float:left;
 }
 
-#ts_ag_reservation .precommit .return_policy{
-  font-size:.875em;
-}
-#ts_ag_reservation .precommit .return_policy .tariff_info {
-  display:none;
-}
-#ts_ag_reservation .precommit .return_policy .tariff_title {
-    color: #333333;
-    font-size: 1em;
-    font-weight: bold;
-    margin: .5em 0 .3em;
-    padding: 0;
-}
-#ts_ag_reservation .precommit .return_policy .tariff_condition {
-    background:#EEEEEE;
-    border: 1px solid #999999;
-    font-size: .75em;
-    height: 10em;
-    line-height: 150%;
-    overflow: auto;
-    padding: 0.5em;
-    width: 97%;
+#ts_ag_reservation .pay_method .summ{
+  font-weight:bold;
+  text-transform:lowercase;
+  white-space:nowrap;
+  width:85px;
 }
 
-#ts_ag_reservation .precommit .agreements{
-  padding-right:2em;
+#ts_ag_reservation .pay_method .paysystem_icon{
+  background:transparent url(images/paysys.png) 0 0 no-repeat;
+  height:20px;
+  margin-right:3px;
+  width:20px;
 }
-#ts_ag_reservation .precommit .agreements .caption{
-  color:#333333;
-  font-size:.875em;
+html.msie7 #ts_ag_reservation .pay_method .paysystem_icon{margin-right:5px;}
+
+#ts_ag_reservation .pay_method .paysystem_name{
+  font-weight:normal;
+  text-decoration:underline;
+  width:66%;
+}
+
+html.msie7 #ts_ag_reservation .pay_method .summ,
+html.msie7 #ts_ag_reservation .pay_method .paysystem_name{
+  line-height:28px;
+}
+
+#ts_ag_reservation .pay_method .paymethods_group .paysystem_name{}
+
+#ts_ag_reservation .pay_method .paymethods_group .item:hover .paysystem_name,
+#ts_ag_reservation .pay_method .paymethods_group .item.selected .paysystem_name{}
+
+#ts_ag_reservation .pay_method .paysystem_creditcard_ak .paysystem_icon{background-position:-20px 0;}
+#ts_ag_reservation .pay_method .paysystem_creditcard_ak:hover .paysystem_icon,
+#ts_ag_reservation .pay_method .selected .paysystem_creditcard_ak .paysystem_icon{background-position:-20px -20px;}
+
+#ts_ag_reservation .pay_method .paysystem_creditcard .paysystem_icon{background-position:-40px 0;}
+#ts_ag_reservation .pay_method .paysystem_creditcard:hover .paysystem_icon,
+#ts_ag_reservation .pay_method .selected .paysystem_creditcard .paysystem_icon{background-position:-40px -20px;}
+
+#ts_ag_reservation .pay_method .paysystem_ts_cash .paysystem_icon,
+#ts_ag_reservation .pay_method .pay_method_self .paysystem_icon{background-position:-60px 0;}
+#ts_ag_reservation .pay_method .paysystem_ts_cash:hover .paysystem_icon,
+#ts_ag_reservation .pay_method .selected .paysystem_ts_cash .paysystem_icon,
+#ts_ag_reservation .pay_method .pay_method_self:hover .paysystem_icon,
+#ts_ag_reservation .pay_method .selected .pay_method_self .paysystem_icon{background-position:-60px -20px;}
+
+#ts_ag_reservation .pay_method .pay_method_cour .paysystem_icon{background-position:-80px 0;}
+#ts_ag_reservation .pay_method .pay_method_cour:hover .paysystem_icon,
+#ts_ag_reservation .pay_method .selected .pay_method_cour .paysystem_icon{background-position:-80px -20px;}
+
+#ts_ag_reservation .pay_method .paysystem_alfaclick .paysystem_icon,
+#ts_ag_reservation .pay_method .paysystem_alfaclick_biletix .paysystem_icon{background-position:0 -40px;}
+#ts_ag_reservation .pay_method .paysystem_alfaclick:hover .paysystem_icon,
+#ts_ag_reservation .pay_method .selected .paysystem_alfaclick .paysystem_icon,
+#ts_ag_reservation .pay_method .paysystem_alfaclick_biletix:hover .paysystem_icon,
+#ts_ag_reservation .pay_method .selected .paysystem_alfaclick_biletix .paysystem_icon{background-position:0 -60px;}
+
+#ts_ag_reservation .pay_method .paysystem_yandexmoney .paysystem_icon{background-position:-20px -40px;}
+#ts_ag_reservation .pay_method .paysystem_yandexmoney:hover .paysystem_icon,
+#ts_ag_reservation .pay_method .selected .paysystem_yandexmoney .paysystem_icon{background-position:-20px -40px;}
+
+#ts_ag_reservation .pay_method .paysystem_webmoneyrbank .paysystem_icon{background-position:-40px -40px;}
+#ts_ag_reservation .pay_method .paysystem_webmoneyrbank:hover .paysystem_icon,
+#ts_ag_reservation .pay_method .selected .paysystem_webmoneyrbank .paysystem_icon{background-position:-40px -60px;}
+
+#ts_ag_reservation .pay_method table td.rules_and_coditions{
+  color:#666666;
+  font-size:11px;
+  padding:15px 20px 0;
+}
+
+#ts_ag_reservation .pay_method table td.rules_and_coditions .timelimit,
+#ts_ag_reservation .pay_method table td.rules_and_coditions .travsit_visa,
+#ts_ag_reservation .pay_method table td.rules_and_coditions .return-policy{ clear: both; }
+
+#ts_ag_reservation .pay_method table td.rules_and_coditions .caption{
+  font-size:15px;
   font-weight:bold;
+  float:left;
+  font-weight:bold;
+  padding-bottom:20px;
+  width:50%;
 }
-#ts_ag_reservation .precommit .agreements ul{
-  font-size:.75em;
-  list-style: disc;
-  padding-left:1.2em;
+#ts_ag_reservation .pay_method table td.rules_and_coditions .caption a,
+#ts_ag_reservation .pay_method table td.rules_and_coditions .caption .link{
+  border-bottom:1px dashed;
+  color:#003399;
+  font-weight:normal;
+  text-decoration: none;
 }
-#ts_ag_reservation .precommit .agreements ul li{
-  list-style: disc;
-  margin: 0 0 .5em;
+
+#ts_ag_reservation .pay_method table td.rules_and_coditions .info{
+  float:left;
+  padding-bottom:20px;
+  width:50%;
 }
-#ts_ag_reservation .precommit .submit{
-  vertical-align: bottom;
+
+#ts_ag_reservation .pay_method table .limits{
+  clear:both;
+  padding:15px 0 20px;
 }
-#ts_ag_reservation .precommit .submit .buttons{ padding-top:0; }
-#ts_ag_reservation .precommit .submit .c-continue{ 
-  display: block !important;
+
+#ts_ag_reservation .pay_method table .limits .limits_caption{
+  color:#ff0068;
   float:none;
-  margin:1em 0 0;
+  font-size:18px;
+  font-weight:bold;
+  padding-bottom:15px;
+  width: auto;
 }
-#ts_ag_reservation .precommit .submit .c-continue .button{
+#ts_ag_reservation .pay_method table .limits li{
+  background:transparent url(images/bullet.png) 0 5px no-repeat;
+  padding:0 0 10px 35px;
+}
+#ts_ag_reservation .pay_method table .limits li a{
+  color:#003399;
+  text-decoration:underline;
+}
+#ts_ag_reservation .pay_method table .limits li a:hover{ text-decoration:none; }
+
+#ts_ag_reservation .pay_method table .warning {
+  color:#666666;
+  cursor:pointer;
+  font-size:18px;
+  font-weight:normal;
+  padding:15px 20px 20px 0;
+  text-align:left;
+  text-decoration: underline;
+}
+
+#ts_ag_reservation .pay_method table .warning:hover{ text-decoration:none; }
+
+#ts_ag_reservation .pay_method .description_container{
+  border:solid #bdc5c8;
+  border-width:0 1px;
+}
+#ts_ag_reservation .pay_method .pay_method_description{
+  color:#666666;
+  font-size:13px;
+  font-weight:normal;
+}
+#ts_ag_reservation .pay_method .pay_method_description .comment{
+  color:#ff0068;
+  font-size:13px;
+  font-weight:normal;
+  padding-top:5px;
+}
+#ts_ag_reservation .pay_method .pay_method_description img{ max-width:100%; }
+
+#ts_ag_reservation .pay_method .pay_method_description .cards_pic_ak,
+#ts_ag_reservation .pay_method .pay_method_description .cards_pic_ag{
+  background:transparent 0 0 no-repeat;
+  height:35px;
+  margin-bottom:10px;
+}
+#ts_ag_reservation .pay_method .pay_method_description .cards_pic_ak{ background-image:url(images/paysystem/paysystem_ak.png); }
+#ts_ag_reservation .pay_method .pay_method_description .cards_pic_ag{ background-image:url(images/paysystem/paysystem_ag.png); }
+#ts_ag_reservation .pay_method .pay_method_description .cards_pic_pcs{
+  background:transparent url(images/paysystem/paysystem_pcs.png) 0 0 no-repeat;
+  height:90px;
+  margin-bottom:10px;
+}
+#ts_ag_reservation .pay_method .description{
+  padding:18px 40px 7px;
+}
+#ts_ag_reservation .pay_method .description_left,
+#ts_ag_reservation .pay_method .description_right{
+  padding:18px 0 7px;
+  width:50%;
+}
+#ts_ag_reservation .pay_method .description_left {float:left;}
+#ts_ag_reservation .pay_method .description_right{float:right;}
+
+#ts_ag_reservation .pay_method .description_left > div{ margin:0 20px 0 40px; }
+#ts_ag_reservation .pay_method .description_right > div{ margin:0 40px 0 20px; }
+
+#ts_ag_reservation .pay_method table .description_right ul li{ list-style:none; padding:0 0 5px 0; }
+#ts_ag_reservation .pay_method .description_right p{ margin-top:1em; }
+#ts_ag_reservation .pay_method table .pay_method_options{ margin-top:-3px; }
+#ts_ag_reservation .pay_method table .pay_method_options .option label{ color:#555555; font-size:12px; font-weight:bold; }
+
+/* ДОСТАВКА */
+#ts_ag_reservation .delivery {
+  border: solid #D2D2D2;
+  border-width:0 1px;
+  position: relative;
+  clear: both;
+} /*Блок информации о доставке*/
+#ts_ag_reservation .delivery .info_caption{ margin-left:-1px; }
+
+#ts_ag_reservation .delivery .methods { padding:0 15px; }
+#ts_ag_reservation .delivery .delivery_groups{ padding:0; }
+#ts_ag_reservation .delivery .methods .method {
+  font-size:12px;
+  padding:15px 40px 15px 0;
+}
+
+#ts_ag_reservation .delivery .delivery_groups .method_self{ padding:3px 0 10px 0; }
+#ts_ag_reservation .delivery .delivery_groups .method_cour{ padding:0; }
+#ts_ag_reservation .delivery .delivery_groups .method_other{ padding:15px; }
+
+#ts_ag_reservation .delivery .delivery_groups .method .hidden_checker{
+  font-size:0;
+  height:0;
+  overflow:hidden;
+  position:relative;
+}
+
+#ts_ag_reservation .delivery .delivery_groups .method .description_left,
+#ts_ag_reservation .delivery .delivery_groups .method .description_right{
+  color:#666666;
+  font-size:13px;
+  padding-top:15px;
+  width:50%;
+}
+#ts_ag_reservation .delivery .delivery_groups .method .description_left {float:left;}
+#ts_ag_reservation .delivery .delivery_groups .method .description_right{float:right;}
+
+#ts_ag_reservation .delivery .delivery_groups .method .description_left > div{ margin:0 20px 0 45px; }
+#ts_ag_reservation .delivery .delivery_groups .method .description_right > div{ margin:0 40px 0 26px; }
+#ts_ag_reservation .delivery .delivery_groups .method_cour .description_left > div{ margin-left:15px; }
+
+#ts_ag_reservation .delivery .delivery_groups .method_self .description_left { color:#666666; }
+#ts_ag_reservation .delivery .delivery_groups .method_self .address {  color:#ff0068; font-weight:bold;  }
+#ts_ag_reservation .delivery .delivery_groups .method_cour .description_left:empty{ padding-top:5px; }
+#ts_ag_reservation .delivery #addresses{ padding:0 27px; }
+#ts_ag_reservation .delivery #address_form{ padding:0 0 0 27px; }
+
+#ts_ag_reservation .delivery .profiles_links {
+  display: none !important;
+  float:right;
+  padding:7px 15px 0 0;
+  width:60%;
+}
+/*
+#ts_ag_reservation .delivery .profiles_links li {
+  border-bottom:1px dotted #8ba2ad;
+  color:#8ba2ad;
+  cursor:pointer;
+  font-size:14px;
+  float:left;
+  margin-left:25px;
+}
+
+#ts_ag_reservation .delivery .profiles_links li:hover { border-color:transparent; }
+
+#ts_ag_reservation .delivery .profiles_links li.new_profile { font-weight:bold; }
+
+#ts_ag_reservation .delivery .profiles_links li.selected {
+  border-color:transparent;
+  color:#ec008c;
+  font-weight:bold;
+}
+
+#ts_ag_reservation .delivery .popup_block_wrap { display:none; }
+
+#ts_ag_reservation .delivery .popup_block.profiles {
+  margin-left:-360px;
+  width:720px;
+}
+
+#ts_ag_reservation .delivery .profiles.popup_block .wrap {
+  border:none;
+  padding-right:0;
+}
+
+#ts_ag_reservation .delivery .profiles.popup_block .viewport { max-height:290px; }
+
+#ts_ag_reservation .delivery .profiles table { width:674px; }
+
+#ts_ag_reservation .delivery .profiles th {
+  border-bottom:3px solid;
+  color:#005376;
+  font-zie:12px;
+  font-weight:bold;
+  padding:0 10px 2px 0;
+  text-align:left;
+  vertical-align:bottom;
+}
+
+#ts_ag_reservation .delivery .profiles th.address { border-color:#ec008c; }
+
+#ts_ag_reservation .delivery .profiles th.delete {
+  border-color:transparent;
+  width:36px;
+}
+
+#ts_ag_reservation .delivery .profiles td {
+  color:#005376;
+  font-size:12px;
+  text-align:left;
+  padding:5px 15px;
+  vertical-align:middle;
+}
+
+#ts_ag_reservation .delivery .profiles td.address {
+  background:#f1e8ef;
+  cursor:pointer;
+}
+
+#ts_ag_reservation .delivery .profiles .even td.address { background:#fef2f9; }
+
+#ts_ag_reservation .delivery .profiles tr:hover td.address { background:#b8d7eb; }
+
+#ts_ag_reservation .delivery .profiles tr.even:hover td.address { background:#c2def2; }
+
+#ts_ag_reservation .delivery .profiles.popup_block td.delete { width:16px; }
+
+#ts_ag_reservation .delivery .profiles td.delete .profile-delete {
+  background:transparent url(images/profile_delete.png) 50% 50% no-repeat;
+  display:inline-block;
+  cursor:pointer;
+  height:16px;
+  width:16px;
+}
+
+html.msie7 #ts_ag_reservation .delivery .profiles th.delete .profile-delete {
+  display:inline;
+  line-height:16px;
+}
+
+#ts_ag_reservation .delivery .profiles .profile_checker { display:none; }
+
+#ts_ag_reservation .delivery .profiles .profile_checker div.radio input { opacity:1 !important; }
+*/
+#ts_ag_reservation .delivery .profile_form { padding:10px 0 0; }
+
+#ts_ag_reservation .delivery .profile_form .field {
+  float:left;
+  line-height:1;
+  margin:0 17px 20px 0;
+  padding-right:22px;
+  position:relative;
+  width:80px;
+}
+
+html.msie7 #ts_ag_reservation .delivery .profile_form .field {
+  margin-right:0;
+}
+
+#ts_ag_reservation .delivery .profile_form .subway{
+  padding-right:0;
+  width:155px;
+}
+
+#ts_ag_reservation .delivery .profile_form .street{
+  width:270px;
+}
+
+#ts_ag_reservation .delivery .profile_form .hours{
+  width:auto;
+}
+
+#ts_ag_reservation .delivery .profile_form .title {
+  color:#8ba2ad;
+  display:block;
+  font-size:12px;
+  font-weight:normal;
+  line-height:12px;
+  padding-bottom:5px;
+  white-space:nowrap;
+}
+
+#ts_ag_reservation .delivery .profile_form input[type="text"],
+#ts_ag_reservation .delivery .profile_form select {
+  color:#104560;
+  font-size:14px;
+  width:100%;
+}
+
+html.msie7 #ts_ag_reservation .delivery .profile_form input[type="text"],
+html.msie7 #ts_ag_reservation .delivery .profile_form select { 
+  width:auto;
+}
+
+#ts_ag_reservation .delivery .profile_form input[type="text"] { height:22px; }
+
+#ts_ag_reservation .delivery .profile_form select { height:31px; }
+
+#ts_ag_reservation .delivery .profile_form .field.custom {
+  margin-right:17px;
+  padding-right:12px;
+}
+
+#ts_ag_reservation .delivery .profile_form .field.custom div.selector { width:100%; }
+html.msie7 #ts_ag_reservation .delivery .profile_form .field.custom div.selector { width:auto; }
+
+
+#ts_ag_reservation .delivery .profile_form .field.custom div.selector span {
+  color:#104560;
+  font-size:14px;
+}
+
+/* 
+
+ПОДТВЕРЖДЕНИЕ
+
+ */
+#ts_ag_reservation .precommit {
+  margin:0 auto;
+  width:1000px;
+}
+
+#ts_ag_reservation .precommit .wrap{
+  background:#fff;
+  border:solid #bdc5c8;
+  border-width:0 1px 1px;
+  padding:23px 170px 35px 150px;
+  position:relative;
+}
+#ts_ag_reservation .precommit .rules_and_coditions { }
+
+#ts_ag_reservation .precommit .rules_and_coditions .tariff_agree { text-align:center; }
+
+#ts_ag_reservation .precommit .tariff_agree .checker{
+  border:2px solid #ec008c;
+  display:block;
+  float:left;
+  margin:3px 0 0 -37px;
+}
+
+html.msie7 #ts_ag_reservation .precommit .tariff_agree .checker{
+  margin-left:0;
+  margin-right:16px;
+}
+
+#ts_ag_reservation .precommit .tariff_agree label {
+  color:#104560;
+  font-size:12px;
+  font-weight:0;
+  vertical-align:middle;
+}
+#ts_ag_reservation .precommit .tariff_agree label{
+  display:block;
+  padding-bottom:15px;
+  padding-left:35px;
+}
+
+html.msie7 #ts_ag_reservation .precommit .tariff_agree label{
+  padding-left:0;
+}
+
+#ts_ag_reservation .precommit .tariff_agree label a {
+  color:#50ade4;
+  text-decoration:underline;
+}
+
+#ts_ag_reservation .precommit .tariff_agree label a:hover { text-decoration:none; }
+
+#ts_ag_reservation .precommit .tariff_agree label .link {
+  background:transparent url(images/icon_link_ext.png) 100% 6px no-repeat;
+  display:inline-block;
+  margin-right:2px;
+  min-height:8px;
+  padding-right:12px;
+  text-decoration:underline;
+}
+
+#ts_ag_reservation .precommit .warning {
+  color:#104560;
+  font-size:12px;
+  font-weight:normal;
+  text-align:left;
+}
+
+#ts_ag_reservation .precommit .warning a{
+  display:inline-block;
+  min-height:8px;
+  text-decoration:underline;
+}
+
+#ts_ag_reservation .precommit .buttons{
+  float:right;
+  padding:0 0 0 25px;
+  text-align:right;
+}
+  
+#ts_ag_reservation .precommit .buttons .c-continue {
+  display:block !important;
+  float:none;
   margin:0;
   text-align:center;
-  width:9em;
-}
-#ts_ag_reservation .precommit .submit .book .button{ width:11.1em; }
-
-#ts_ag_reservation .precommit .buttons .c-continue .ticket, 
-#ts_ag_reservation .precommit #forward {
-    display: none !important;
 }
 
-/*ШАГ 7. РЕЗУЛЬТАТ*/
-#ts_ag_reservation .order .actions {
-  margin: 1em 0;
-  padding: 1em 1.2em 0;
-  background: #CDE7F8;
-} /*Блок ссылок на дополнительные действия*/
-
-html.msie6 #ts_ag_reservation .order .actions,
-html.msie7 #ts_ag_reservation .order .actions {
-  padding-bottom:1em;
+#ts_ag_reservation .precommit .buttons .c-continue {
+  float:right;
 }
 
-#ts_ag_reservation .order .actions .action {
-  display: inline;
-  float:left;
-  margin: 0 1em 1em 0;
-  padding:3px;
-} /*Блок ссылки на дополнительное действие*/
+#ts_ag_reservation .precommit .buttons .c-continue .ticket,
+#ts_ag_reservation .precommit .buttons .c-continue .book,
+#ts_ag_reservation .precommit #forward { display:none; }
 
-#ts_ag_reservation .order .actions .action input, /* новая версия */
-#ts_ag_reservation .order .actions .action a { /* старая версия */
-  outline: 3px solid #fff;
-  padding: .2em 1em;
-  font-size: 1em;
-  font-weight: bold;
-  border-top: 1px solid #CDE7F8;
-  border-right: 1px solid #58ACE4;
-  border-bottom: 1px solid #58ACE4;
-  border-left: 1px solid #CDE7F8;
-  color: #fff;
-  background: #2187CB url(images/button_bg.png) repeat-x scroll 0% 50%;
-  text-decoration: none;
+#ts_ag_reservation .precommit .buttons .c-continue .button_wrap{
+  background: #8594a0; /* Old browsers */
+  background: -moz-linear-gradient(top,  #adb9bd 0%, #8594a0 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#adb9bd), color-stop(100%,#8594a0)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #adb9bd 0%,#8594a0 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #adb9bd 0%,#8594a0 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #adb9bd 0%,#8594a0 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #adb9bd 0%,#8594a0 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#adb9bd', endColorstr='#8594a0',GradientType=0 ); /* IE6-9 */
+  
+  display:inline-block;
+  padding:1px;
+}
+
+html.msie7 #ts_ag_reservation .precommit .buttons .c-continue .button_wrap{
+  display:inline;
+}
+
+#ts_ag_reservation .precommit .buttons .state_enabled .button_wrap{
+  background:#c10073;
+  
+}
+
+#ts_ag_reservation .precommit .buttons .c-continue .button{
+  background: #f100ae; /* Old browsers */
+  background: -moz-linear-gradient(top, #f100ae 0%, #e7006c 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f100ae), color-stop(100%, #e7006c)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f100ae 0%, #e7006c 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f100ae 0%, #e7006c 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f100ae 0%, #e7006c 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #f100ae 0%, #e7006c 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f100ae', endColorstr='#e7006c', GradientType=0 ); /* IE6-9 */
+  
+  color:#fff;
+  cursor:pointer;
+  text-shadow:0 1px 0 #ba005c;
+  
+  border:none;
+  -webkit-box-shadow:none;
+  -moz-box-shadow:none;
+  box-shadow:none;
+  height:52px;
+  margin:0;
+  padding:0;
+  width:auto;
+}
+
+#ts_ag_reservation .precommit .buttons .c-continue .button .button_loading_overlay {
+  -webkit-box-shadow:inset 0 1px 0 #f880d7;
+  -moz-box-shadow:inset 0 1px 0 #f880d7;
+  box-shadow:inset 0 1px 0 #f880d7;
+  
+  height:43px;
+  line-height:1;
+  min-width:160px;
+  padding:4px 5px 5px;
+  text-transform:none;
+}
+
+#ts_ag_reservation .precommit .buttons .c-continue .button .title {
+  font-size:18px;
+  text-align:center;
+}
+
+#ts_ag_reservation .precommit .buttons .c-continue .button .price {
+  font-size:24px;
+  text-align:center;
+}
+
+#ts_ag_reservation .precommit .buttons .c-continue .button .button_loading_overlay .loading,
+#ts_ag_reservation .precommit .buttons .c-continue input {
+  background:none;
+  margin:0;
+  padding:0;
+  display:none;
+}
+
+html.msie7 #ts_ag_reservation .precommit .buttons .c-continue input {
+  display:none !important;
+}
+
+#ts_ag_reservation .precommit .buttons .c-continue.state_loading .button .button_loading_overlay {
+  opacity:.3;
+}
+
+#ts_ag_reservation .precommit .buttons .state_loading .button .button_loading_overlay {
+  opacity:1;
+}
+
+#ts_ag_reservation .precommit .buttons .state_loading .button .button_loading_overlay .title,
+#ts_ag_reservation .precommit .buttons .state_loading .button .button_loading_overlay .price { display:none; }
+
+#ts_ag_reservation .precommit .buttons .state_loading .button .button_loading_overlay .loading {
   display:block;
-  white-space:nowrap;
-} /*Ссылка дополнительное действие*/
-
-#ts_ag_reservation .order .actions .action input:hover, /* новая версия */
-#ts_ag_personal .order .actions .action input:focus, /* новая версия */
-#ts_ag_reservation .order .actions .action a:hover, /* старая версия */
-#ts_ag_personal .order .actions .action a:focus { /* старая версия */
-  text-decoration: underline;
-  outline: 3px solid #FF6633;
-  background: #0984FF url(images/button_act_bg.png) repeat-x scroll 0% 50%;
-  text-decoration: none
+  height:43px;
 }
-
-#ts_ag_reservation .not_final_price {
-  color: Red;
-  font-weight: bolder;
-} /* Признак неокончательной цены */
-
-#ts_ag_reservation .not_final_price_text_preview {
-  color: #FF0000;
-  font-size: .7em;
-  margin-top: 1em;
-} /* Пояснение о неокончательности цены */
-
-#ts_ag_personal .not_final_price_text,
-#ts_ag_reservation .not_final_price_text {
-  color: Red;
-  font-weight: bolder;
-} /* Пояснение о неокончательности цены */
-
-#ts_ag_reservation .order .add_info .timelimit_info {
-  margin: 1em 0;
-  color: #ff0000;
-  font-size: 90%;
-} /* Предупреждение о снятии таймлимита */
 
 /* НАЗНАЧЕНИЕ ТАЙМЛИМИТА ИЗ ФРОНТОФИСА */
 #ts_ag_reservation div.set_timelimit {
@@ -1807,96 +1948,11 @@ html.msie7 #ts_ag_reservation .order .actions {
 
 
 /* МАРШРУТ-КВИТАНЦИЯ */
-#ts_ag_reservation .buttons .c-close {
-  display: inline;
-}
+#ts_ag_reservation .routecoupon { font-family: 'Courier New', Courier, monospace; }
+#ts_ag_reservation .routecoupon .buttons { font-family:Arial, Helvetica, sans-serif; }
 
-#ts_ag_reservation .buttons .c-close .close {
-  font-size: 1em;
-  border-top: 1px solid #CDE7F8;
-  border-right: 1px solid #58ACE4;
-  border-bottom: 1px solid #58ACE4;
-  border-left: 1px solid #CDE7F8;
-  color: #fff;
-  background: #2187CB url(images/button_bg.png) repeat-x scroll 0% 50%;
-  font-weight: bold;
-  width: 12em;
-  padding: .2em 1em;
-  cursor: hand;
-  cursor: pointer;
-}
-
-#ts_ag_reservation .buttons .c-close .close:hover,
-#ts_ag_reservation .buttons .c-close .close:focus {
-  outline: 3px solid #FF6633;
-  background: #0984FF url(images/button_act_bg.png) repeat-x scroll 0% 50%;
-}
-
-#ts_ag_reservation .buttons .c-print {
-  display: inline;
-}
-
-#ts_ag_reservation .buttons .c-print .print {
-  font-size: 1em;
-  border-top: 1px solid #CDE7F8;
-  border-right: 1px solid #58ACE4;
-  border-bottom: 1px solid #58ACE4;
-  border-left: 1px solid #CDE7F8;
-  color: #fff;
-  background: #2187CB url(images/button_bg.png) repeat-x scroll 0% 50%;
-  font-weight: bold;
-  width: 12em;
-  padding: .2em 1em;
-  cursor: hand;
-  cursor: pointer;
-}
-
-#ts_ag_reservation .buttons .c-print .print:hover,
-#ts_ag_reservation .buttons .c-print .print:focus {
-  outline: 3px solid #FF6633;
-  background: #0984FF url(images/button_act_bg.png) repeat-x scroll 0% 50%;
-}
-
-#ts_ag_reservation .buttons .c-showpdf {
-  display: inline;
-}
-
-#ts_ag_reservation .buttons .c-showpdf .showpdf {
-  font-size: 1em;
-  border-top: 1px solid #CDE7F8;
-  border-right: 1px solid #58ACE4;
-  border-bottom: 1px solid #58ACE4;
-  border-left: 1px solid #CDE7F8;
-  color: #fff;
-  background: #2187CB url(images/button_bg.png) repeat-x scroll 0% 50%;
-  font-weight: bold;
-  width: 12em;
-  padding: .2em 1em;
-  cursor: hand;
-  cursor: pointer;
-}
-
-#ts_ag_reservation .buttons .c-showpdf .showpdf:hover,
-#ts_ag_reservation .buttons .c-showpdf .showpdf:focus {
-  outline: 3px solid #FF6633;
-  background: #0984FF url(images/button_act_bg.png) repeat-x scroll 0% 50%;
-}
-
-#ts_ag_reservation .routecoupon {
-  font-family: Courier;
-}
-
-#ts_ag_reservation .routecoupon .buttons {
-  font-family:Arial, Helvetica, sans-serif;
-}
-
-/*
-
-ОПЛАТА КАРТОЙ
-
-*/
-#ts_ag_reservation .card {
-}
+/* ОПЛАТА КАРТОЙ */
+#ts_ag_reservation .card { }
 
 #ts_ag_reservation .card .caption {
   font-size: 115%;
@@ -1923,260 +1979,9 @@ html.msie7 #ts_ag_reservation .order .actions {
   margin: 0 1em 0 0;
 }
 
-/* Блок с внутренней тенью/со стрелкой */
-.block-si,
-.block-arr-si {
-  background:transparent url(images/asi-bg.png) repeat;
-  position:relative;
-  z-index:200;
-  width:100%;
-}
 
-.block-arr-si {
-  position:absolute;
-  zoom:1;
-}
 
-.block-si .st,
-.block-arr-si .st {
-  background:transparent url(images/asi-t.png) 0 0 repeat-x;
-}
-
-.block-si .sb,
-.block-arr-si .sb {
-  background:transparent url(images/asi-b.png) 0 100% repeat-x;
-}
-
-.block-si .sl,
-.block-arr-si .sl {
-  background:transparent url(images/asi-l.png) 0 0 repeat-y;
-}
-
-.block-si .sr,
-.block-arr-si .sr {
-  background:transparent url(images/asi-r.png) 100% 0 repeat-y;
-}
-
-.block-si .inner {
-  padding:1em;
-  position:relative;
-}
-
-.block-arr-si .inner {
-  height:auto;
-  padding-right:1em;
-}
-
-.block-arr-si .sb {
-  padding:2em 4em 2em 2em;
-}
-
-/* Стрелка */
-.block-arr-si .arr {
-  height:27px;
-  position:absolute;
-  width:40px;
-  z-index:201;
-}
-
-.block-arr-si .arr-t {
-  top:-15px;
-}   /* Стрелка вверху блока, блок "выпадает вниз" */
-
-.block-arr-si .arr-b {
-  bottom:-15px;
-} /* Стрелка внизу блока, блок "выпадает вверх" */
-
-.block-arr-si .arr .at {
-  height:15px;
-  position:absolute;
-  width:40px;
-}
-
-.block-arr-si .arr .ab {
-  height:12px;
-  position:absolute;
-  width:40px;
-}
-
-.block-arr-si .arr-t .at {
-  background:transparent url(images/asi-at.png) 50% 0 no-repeat;
-  top:0;
-}
-
-.block-arr-si .arr-t .ab {
-  background:#fff url(images/asi-at.png) 50% 100% no-repeat;
-  bottom:0;
-}
-
-.block-arr-si .arr-b .at {
-  background:transparent url(images/asi-ab.png) 50% 100% no-repeat;
-  bottom:0;
-}
-
-.block-arr-si .arr-b .ab {
-  background:#fff url(images/asi-ab.png) 50% 0 no-repeat;
-  top:0;
-}
-
-/* Кнопка "закрыть" */
-.block-arr-si .close {
-  background:transparent url(images/asi-close.png) 50% 50% no-repeat;
-  display:block;
-  height:30px;
-  position:absolute;
-  right:1em;
-  text-decoration:none;
-  top:25px;
-  width:30px;
-  z-index:205;
-}
-
-html.msie6 .block-si,
-html.msie6 .block-arr-si {
-  background:#6e6e6e;
-}
-
-html.msie6 .block-si .st,
-html.msie6 .block-arr-si .st {
-  background-image:url(images/asi-t.gif);
-}
-
-html.msie6 .block-si .sb,
-html.msie6 .block-arr-si .sb {
-  background-image:url(images/asi-b.gif);
-}
-
-html.msie6 .block-si .sl,
-html.msie6 .block-arr-si .sl {
-  background-image:url(images/asi-l.gif);
-}
-
-html.msie6 .block-si .sr,
-html.msie6 .block-arr-si .sr {
-  background-image:url(images/asi-r.gif);
-}
-
-html.msie6 .block-arr-si .arr-t {
-  top:-14px;
-}
-
-html.msie6 .block-arr-si .arr-b {
-  bottom:-15px;
-} /* Стрелка внизу блока, блок "выпадает вверх" */
-
-html.msie6 .block-arr-si .arr .ab {
-  background-color:transparent;
-}
-
-html.msie6 .block-arr-si .arr-t .at,
-html.msie6 .block-arr-si .arr-t .ab {
-  background-image:url(images/asi-at-ie.png);
-}
-
-html.msie6 .block-arr-si .arr-b .at,
-html.msie6 .block-arr-si .arr-b .ab {
-  background-image:url(images/asi-ab.gif);
-}
-
-html.msie6 .block-arr-si .close {
-  background-image:url(images/asi-close-ie.png);
-}
-
-/* Помощь */
-.help-element {
-  font-size: .9em;
-} /*Всплывающая контекстная помощь*/
-
-.help-element p {
-  margin: 1em 0;
-}
-
-.help-element ul {
-  margin: 1em 0;
-  padding: 0px 0px 0px 20px;
-}
-
-/* окно помощи на базе Highslide */
-#popup-help .clearfix:after {
-  clear:both;
-  content:".";
-  display:block;
-  height:0;
-  visibility:hidden;
-}
-
-#popup-help .clearfix {
-  zoom: 1;
-}
-
-.highslide-loading {
-  background: #FFFFFF url(images/loader.white.gif) no-repeat 3px 1px;
-  display: block;
-  color: #000000;
-  font-size: .7em;
-  font-weight: bold;
-  text-decoration: none;
-  padding: 2px;
-  border: 1px solid black;
-  padding-left: 22px;
-}
-
-.help-highslide-wrapper .highslide-html-content {
-  background: #FFFFFF;
-}
-
-.highslide-overlay {
-  background: #1a61c9;
-  padding: .3em .5em;
-  display: none !important;
-}
-
-.help-highslide-wrapper .highslide-overlay {
-  display: block !important;
-}
-
-.help-highslide-wrapper .highslide-overlay .highslide-move {
-  cursor: move;
-  height: 1.5em;
-  left: 10px;
-  position: absolute;
-  text-decoration: none;
-}
-
-.help-highslide-wrapper .highslide-overlay .title {
-  color: #FFFFFF;
-  float: left;
-  font-weight: bold;
-  line-height: 1.5em;
-}
-
-.help-highslide-wrapper .highslide-overlay .close {
-  background: url(images/close.png) no-repeat;
-  float: right;
-  height: 23px;
-  text-decoration: none;
-  width: 23px;
-}
-
-.help-highslide-wrapper .highslide-body {
-  margin: .3em .5em;
-}
-
-/* These must be the last of the Highslide rules */
-.highslide-display-block {
-  display: block;
-}
-
-.highslide-display-none {
-  display: none;
-}
-
-/*
-
-Окно "Пожалуйста, подождите", waitwindow.js
-
-*/
+/* Окно "Пожалуйста, подождите", waitwindow.js */
 
 /* Шторка */
 .ww_background {

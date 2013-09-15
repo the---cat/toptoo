@@ -1,5 +1,5 @@
-<?
-/* Для режима USE_MERGED_STEPS = Y экран preview подключается с экрана personal_data */
+<? 
+// Для режима USE_MERGED_STEPS = Y экран preview подключается с экрана personal_data
 if ( $arParams['USE_MERGED_STEPS'] === 'Y' )  {
 
   $arResultOrder = $arResult;
@@ -10,17 +10,15 @@ if ( $arParams['USE_MERGED_STEPS'] === 'Y' )  {
 
   $arResult = $arResultOrder;
 }
-?>
-<? require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/ibe/classes/ibe/json.php");
+
+require_once($_SERVER["DOCUMENT_ROOT"] . "/bitrix/modules/ibe/classes/ibe/json.php");
+
+$dontUseProfiles = true;
 
 echo $arResult['SCRIPT'];
-$form = $arResult['FORM'];
-$pass_profiles_links_num = $cont_profiles_links_num = 3; // Кол-во выводимых ссылок-профилей
-$uniform = defined("__UNIFORM_JS") && true ===__UNIFORM_JS ? true : false;
- ?>
-<script type="text/javascript">
+$form = $arResult['FORM']; ?>
+  <script type="text/javascript">
 // <![CDATA[
-
 function SetGender( el_name, gender ) {
   if ( !$('#' + el_name).length ) {
     return;
@@ -34,33 +32,6 @@ function SetGender( el_name, gender ) {
     case 'F':
       $('#' + el_name + '_SWITCHER').addClass('F_selected');
       break;
-  }
-}
-
-function DeleteProfileB2B( profile_id ) {
-  /* Убрать из всех блоков с профилями */
-  for ( var i = 0; i < intBlocksOnPage; i++ ) {
-
-    if ( !document.getElementById( 'table_popup' + i ) ){
-      continue;
-    }
-    /* Выбрать "новый" если выбран удаляемый профиль */
-    if ( $('#profile_link_' + i + '_' + profile_id ).hasClass( 'selected' ) ){
-      onProfileClick( i, 'new' );
-      onProfileClickB2B( i, 'new' );
-    }
-
-    /* Удалить ссылку */
-    $('#profile_link_' + i + '_' + profile_id ).remove();
-    
-    /* Удалить строку из попап'а */
-    $('#tr_popup' + i + '_' + profile_id  ).remove();
-   
-    /* Не осталось профилей, удалить весь .profiles_links */
-    if ( !document.getElementById( 'table_popup' + i ).rows.length ) {
-      $('#show_profiles_popup' + i ).parent().remove();
-      $('#profiles_popup_block' + i).fadeOut();
-    }
   }
 }
 
@@ -164,22 +135,8 @@ function onProfileClickB2B( block_id, profile_id ) {
 
   /* Выбор пола пассажира */
   SetGender( 'PSGRDATA_GENDER_' + block_id, profilesData[block_id][profile_id]['PSGRDATA_GENDER_' + block_id] );
-
-  /* Подсветка выбранного профиля */
-  $('.passenger' + ( block_id + 1 ) + ' .profiles_links li.profile_link').removeClass( 'selected' );
-  $('.contact' + ( block_id ) + ' .profiles_links li.profile_link').removeClass( 'selected' );
-  $('#profile_link_' + block_id + '_' + profile_id_uc).addClass( 'selected' );
   
-   /*
-  $('#data_form_'+block_id+'_profiles input:radio').removeAttr('checked');
-  $('#IBE_PROFILE_' + profile_id + '_' + block_id).attr('checked', 'checked');
-  */
   onDocTypeChangeB2B( block_id );
-
-  /* Обновить кастомные селекты */
-  if ( typeof( updateUniform ) != 'undefined' ) {
-    updateUniform( $('#form_ibe_profile_' + profile_id + '_' + block_id), 'select' );
-  }
 }
 
 /* Ограничение кол-ва символов */
@@ -210,231 +167,243 @@ function ControlFieldLength( id_field, chars_max ){
           <?= GetMessage( 'TS_FRONTOFFICE_STEP3_PASSENGER' ) . ' ' . $passenger['~DATA']['PASSNUMBER'] . ':' ?>
           <span class="type"><?= GetMessage( 'IBE_PERSONAL_DATA_' . $passenger['~DATA']['PASSTYPE'] ) ?></span>
         </h3>
-        
+
         <? if ( $passenger['PROFILES'] ): ?>
         <div class="profiles<? if(count($passenger['PROFILES']['FIELDS']) < 2) {?> no-profiles<? } ?>" id="<?= $passenger['PROFILES']['~ID'] ?>">
-          <? foreach( $passenger['PROFILES']['FIELDS'] as $profile ): ?>
-          <? if( $profile['VALUE'] == 'NEW' ): ?>
-          <div class="profile_new profile">
-            <div class="profile_checker">
-              <? if(count($passenger['PROFILES']['FIELDS']) > 1): ?>
-              <input id="<?= $profile['~ID'] ?>" name="<?= $profile['NAME'] ?>" onclick="<?= $profile['ONCLICK'] ?>; onProfileClickB2B(<?= $k ?>, '<?= $profile['VALUE']?>');" type="radio" value="<?= $profile['VALUE'] ?>" />
-              <? else: ?>
+            <? foreach( $passenger['PROFILES']['FIELDS'] as $profile ): ?>
+            <? if( $profile['VALUE'] == 'NEW' ): ?>
+            <div class="profile_new profile">
+              <? if( $dontUseProfiles || count($passenger['PROFILES']['FIELDS']) < 2 ): ?>
               <input id="<?= $profile['~ID'] ?>" name="<?= $profile['NAME'] ?>" onclick="<?= $profile['ONCLICK'] ?>; onProfileClickB2B(<?= $k ?>, '<?= $profile['VALUE']?>');" type="hidden" value="<?= $profile['VALUE'] ?>" />
+              <? else: ?>
+              <input id="<?= $profile['~ID'] ?>" name="<?= $profile['NAME'] ?>" onclick="<?= $profile['ONCLICK'] ?>; onProfileClickB2B(<?= $k ?>, '<?= $profile['VALUE']?>');" type="radio" value="<?= $profile['VALUE'] ?>" />
+              <label for="<?= $profile['~ID'] ?>"><span class="name"><?= $profile['CAPTION']  ?></span></label>
               <? endif; ?>
-            </div>
+              
+              <? if ( $passenger['FORM_NEW'] ): ?>
+              <div id="form_<?= ToLower($profile['~ID']) ?>" class="profile_form_container">
+                <div id="pass_form_new_<?=$k?>" class="profile_form clearfix">
+                  <? foreach ( $passenger['FORM_NEW']['FIELDS'] as &$field ):
+                    if ( isset( $field['CODE']) ){
+                      $arFieldsIdsToNames[$k][$field['~ID']] = $field['CODE'];
+                    }
+                    $fieldId = substr($field['~ID'], 9, -2);
+                    $field['CAPTION'] = strlen(GetMessage('TS_FRONTOFFICE_STEP3_PASS_' . $fieldId)) ? GetMessage('TS_FRONTOFFICE_STEP3_PASS_' . $fieldId) : $field['CAPTION'];
 
-            <? if ( $passenger['FORM_NEW'] ): ?>
-            <div id="form_<?= ToLower($profile['~ID']) ?>" class="profile_form_container">
-              <div id="pass_form_new_<?=$k?>" class="profile_form clearfix">
-                <? foreach ( $passenger['FORM_NEW']['FIELDS'] as &$field ):
-                if ( isset( $field['CODE']) ){
-                  $arFieldsIdsToNames[$k][$field['~ID']] = $field['CODE'];
-                }
-                $fieldId = substr($field['~ID'], 9, -2);
-                $field['CAPTION'] = strlen(GetMessage('TS_FRONTOFFICE_STEP3_PASS_' . $fieldId)) ? GetMessage('TS_FRONTOFFICE_STEP3_PASS_' . $fieldId) : $field['CAPTION'];
-
-                switch($fieldId) {
-                  case 'TYPE': ?>
-                <div class="field <?= strtolower( $fieldId ) ?>" style="display: none;">
-                  <input id="<?=$field['~ID'] ?>" name="<?=$field['NAME'] ?>" type="hidden" value="<?=$field['VALUE'] ?>" />
-                </div>
-                <? break;
-                  case 'GENDER': ?>
-                <div class="field <?= strtolower( $fieldId ) ?>">
-                  <label class="title<? if ( $field['~REQUIRED'] ): ?> required required_title<? endif; ?>" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>">
-                    <?= GetMessage('IBE_FRONTOFFICE_PERSONAL_DATA_PLOFILES_TH_GENDER') ?>
-                  </label>
-                  <div class="gender_switcher clearfix" id="<?= $field['~ID'] ?>_SWITCHER">
-                    <div class="gender_type gender_M" title="<?= GetMessage('IBE_FRONTOFFICE_PERSONAL_GENDER_M') ?>" onclick="SetGender( '<?= $field['~ID'] ?>', 'M');"></div>
-                    <div class="gender_type gender_F" title="<?= GetMessage('IBE_FRONTOFFICE_PERSONAL_GENDER_F') ?>" onclick="SetGender( '<?= $field['~ID'] ?>', 'F');"></div>
-                  </div>
-                  <input type="hidden" id="<?= $field['~ID'] ?>" name="<?= $field['NAME'] ?>" <? if ( $field['~REQUIRED'] ): ?> class="required"<? endif; ?> />
-                </div>
-                <? break;
-                  case 'PSGR_NAME': ?>
-                <div class="field <?= strtolower( $fieldId ) ?>">
-                  <label class="title<? if ( $field['~REQUIRED'] ): ?> required required_title<? endif; ?>" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>">
-                    <?= $field['CAPTION'] ?>
-                  </label>
-                  <input class="input-si text <?= strtolower( $fieldId ) ?>" id="<?= $field['~ID'] ?>" name="<?= $field['NAME'] ?>" type="text" value="<?= $field['VALUE'] ?>" size="<?= $field['SIZE'] ?>"  />
-                </div>
-                <? break;
-                  case 'DOCNUMBER': ?>
-                <div class="field <?= strtolower( $fieldId ) ?>">
-                  <label class="title<? if ( $field['~REQUIRED'] ): ?> required required_title<? endif; ?>" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>">
-                    <?= $field['CAPTION'] ?>
-                  </label>
-                  <div class="subtitle">
-                    <?= GetMessage('IBE_FRONTOFFICE_PERSONAL_SUBTITLE_NUMBER') ?>
-                  </div>
-                  <input class="input-si text <?= strtolower( $fieldId ) ?>" id="<?= $field['~ID'] ?>" name="<?= $field['NAME'] ?>" type="text" value="<?= $field['VALUE'] ?>" size="<?= $field['SIZE'] ?>"  />
-                </div>
-                <? break;
-                  case 'PSGR_FNAME': ?>
-                <div class="field <?= strtolower( $fieldId ) ?>">
-                  <label class="title<? if ( $field['~REQUIRED'] ): ?> required required_title<? endif; ?>" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>">
-                    <?= $field['CAPTION'] ?>
-                  </label>
-                  <input class="input-si text <?= strtolower( $fieldId ) ?>" id="<?= $field['~ID'] ?>" name="<?= $field['NAME'] ?>" type="text" value="<?= $field['VALUE'] ?>" size="<?= $field['SIZE'] ?>"  />
-                </div>
-                <? break;
-                  case 'PSGR_MNAME': /*?>
-                <div class="field <?= strtolower( $fieldId ) ?>">
-                  <label class="title<? if ( $field['~REQUIRED'] ): ?> required required_title<? endif; ?>" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>">
-                    <? if ( $field['~REQUIRED'] ): ?><? endif; ?>
-                    <?= $field['CAPTION'] ?>
-                  </label>
-                  <input class="input-si text <?= strtolower( $fieldId ) ?>" id="<?= $field['~ID'] ?>" name="<?= $field['NAME'] ?>" type="text" value="<?= $field['VALUE'] ?>" size="<?= $field['SIZE'] ?>"  />
-                </div>
-                <? */ break;
-                  case 'BIRTHDATE_DAY': 
-                  case 'DOCEXPIRATION_DAY': ?>
-                <div class="select-wrap field date <?= substr(strtolower( $fieldId ), 0, -4) ?><? if( $uniform ) { ?> custom<? } ?>">
-                  <label class="title<? if ( $field['~REQUIRED'] ): ?> required required_title<? endif; ?>" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>">
-                    <?= strlen(GetMessage('IBE_FRONTOFFICE_PERSONAL_' . $fieldId)) ? GetMessage('IBE_FRONTOFFICE_PERSONAL_' . $fieldId) : $field['CAPTION'] ?>
-                  </label>
-                  <div class="date_wrap">
-                    <div class="day_wrap">
-                      <select id="<?=$field['~ID'] ?>" name="<?=$field['NAME'] ?>" class="day">
-                        <? foreach($field['OPTION'] as $option): ?>
-                        <option value="<?= $option['VALUE'] ?>">
-                          <?= !$option['VALUE'] ? '__' : str_pad($option['CAPTION'], 2, '0', STR_PAD_LEFT); ?>
-                        </option>
-                        <? endforeach; ?>
-                      </select>
+                    switch($fieldId) {
+                      case 'TYPE': ?>
+                    <div class="field <?= strtolower( $fieldId ) ?>" style="display: none;">
+                      <input id="<?=$field['~ID'] ?>" name="<?=$field['NAME'] ?>" type="hidden" value="<?=$field['VALUE'] ?>" />
                     </div>
-                    <span class="dot">.</span>
                     <? break;
-                  case 'BIRTHDATE_MONTH':
-                  case 'DOCEXPIRATION_MONTH': ?>
-                    <div class="month_wrap">
-                      <select id="<?=$field['~ID'] ?>" name="<?=$field['NAME'] ?>" class="month">
+                      case 'GENDER': ?>
+                    <div class="field <?= strtolower( $fieldId ) ?>">
+                      <label class="title<? if ( $field['~REQUIRED'] ): ?> required required_title<? endif; ?>" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>">
+                        <?= GetMessage('IBE_FRONTOFFICE_PERSONAL_DATA_PLOFILES_TH_GENDER') ?>
+                      </label>
+                      <div class="gender_switcher clearfix" id="<?= $field['~ID'] ?>_SWITCHER">
+                        <div class="gender_type gender_M" title="<?= GetMessage('IBE_FRONTOFFICE_PERSONAL_GENDER_M') ?>" onclick="SetGender( '<?= $field['~ID'] ?>', 'M');"></div>
+                        <div class="gender_type gender_F" title="<?= GetMessage('IBE_FRONTOFFICE_PERSONAL_GENDER_F') ?>" onclick="SetGender( '<?= $field['~ID'] ?>', 'F');"></div>
+                      </div>
+                      <input type="hidden" id="<?= $field['~ID'] ?>" name="<?= $field['NAME'] ?>" <? if ( $field['~REQUIRED'] ): ?> class="required"<? endif; ?> />
+                    </div>
+                    <? break;
+                      case 'PSGR_NAME': ?>
+                    <div class="field <?= strtolower( $fieldId ) ?>">
+                      <label class="title<? if ( $field['~REQUIRED'] ): ?> required required_title<? endif; ?>" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>">
+                        <?= $field['CAPTION'] ?>
+                      </label>
+                      <input class="input-si text <?= strtolower( $fieldId ) ?>" id="<?= $field['~ID'] ?>" name="<?= $field['NAME'] ?>" type="text" value="<?= $field['VALUE'] ?>" size="<?= $field['SIZE'] ?>"  />
+                    </div>
+                    <? break;
+                      case 'DOCNUMBER': ?>
+                    <div class="field <?= strtolower( $fieldId ) ?>">
+                      <label class="title<? if ( $field['~REQUIRED'] ): ?> required required_title<? endif; ?>" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>">
+                        <?= $field['CAPTION'] ?>
+                      </label>
+                      <div class="subtitle">
+                        <?= GetMessage('IBE_FRONTOFFICE_PERSONAL_SUBTITLE_NUMBER') ?>
+                      </div>
+                      <input class="input-si text <?= strtolower( $fieldId ) ?>" id="<?= $field['~ID'] ?>" name="<?= $field['NAME'] ?>" type="text" value="<?= $field['VALUE'] ?>" size="<?= $field['SIZE'] ?>"  />
+                    </div>
+                    <? break;
+                      case 'PSGR_FNAME': ?>
+                    <div class="field <?= strtolower( $fieldId ) ?>">
+                      <label class="title<? if ( $field['~REQUIRED'] ): ?> required required_title<? endif; ?>" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>">
+                        <?= $field['CAPTION'] ?>
+                      </label>
+                      <input class="input-si text <?= strtolower( $fieldId ) ?>" id="<?= $field['~ID'] ?>" name="<?= $field['NAME'] ?>" type="text" value="<?= $field['VALUE'] ?>" size="<?= $field['SIZE'] ?>"  />
+                    </div>
+                    <? break;
+                      case 'PSGR_MNAME': /*?>
+                    <div class="field <?= strtolower( $fieldId ) ?>">
+                      <label class="title<? if ( $field['~REQUIRED'] ): ?> required required_title<? endif; ?>" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>">
+                        <? if ( $field['~REQUIRED'] ): ?><? endif; ?>
+                        <?= $field['CAPTION'] ?>
+                      </label>
+                      <input class="input-si text <?= strtolower( $fieldId ) ?>" id="<?= $field['~ID'] ?>" name="<?= $field['NAME'] ?>" type="text" value="<?= $field['VALUE'] ?>" size="<?= $field['SIZE'] ?>"  />
+                    </div>
+                    <? */ break;
+                      case 'BIRTHDATE_DAY': 
+                      case 'DOCEXPIRATION_DAY': ?>
+                    <div class="select-wrap field date <?= substr(strtolower( $fieldId ), 0, -4) ?><? if( $uniform ) { ?> custom<? } ?>">
+                      <label class="title<? if ( $field['~REQUIRED'] ): ?> required required_title<? endif; ?>" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>">
+                        <?= strlen(GetMessage('IBE_FRONTOFFICE_PERSONAL_' . $fieldId)) ? GetMessage('IBE_FRONTOFFICE_PERSONAL_' . $fieldId) : $field['CAPTION'] ?>
+                      </label>
+                      <div class="date_wrap">
+                        <div class="day_wrap">
+                          <select id="<?=$field['~ID'] ?>" name="<?=$field['NAME'] ?>" class="day">
+                            <? foreach($field['OPTION'] as $option): ?>
+                            <option value="<?= $option['VALUE'] ?>">
+                              <?= !$option['VALUE'] ? '__' : str_pad($option['CAPTION'], 2, '0', STR_PAD_LEFT); ?>
+                            </option>
+                            <? endforeach; ?>
+                          </select>
+                        </div>
+                        <span class="dot">.</span>
+                        <? break;
+                      case 'BIRTHDATE_MONTH':
+                      case 'DOCEXPIRATION_MONTH': ?>
+                        <div class="month_wrap">
+                          <select id="<?=$field['~ID'] ?>" name="<?=$field['NAME'] ?>" class="month">
+                            <? foreach($field['OPTION'] as $option): ?>
+                            <option value="<?=$option['VALUE'] ?>">
+                            <?= !$option['VALUE'] ? '__' : str_pad($option['VALUE'], 2, '0', STR_PAD_LEFT) ?>
+                            </option>
+                            <? endforeach; ?>
+                          </select>
+                        </div>
+                        <span class="dot">.</span>
+                        <? break;
+                      case 'BIRTHDATE_YEAR':
+                      case 'DOCEXPIRATION_YEAR': ?>
+                        <div class="year_wrap">
+                          <select id="<?=$field['~ID'] ?>" name="<?=$field['NAME'] ?>" class="year">
+                            <? foreach($field['OPTION'] as $option): ?>
+                            <option value="<?=$option['VALUE'] ?>">
+                            <?= !$option['VALUE'] ? '____' : $option['CAPTION'] ?>
+                            </option>
+                            <? endforeach; ?>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <? break;
+                      case 'DOCTYPE': ?>
+                    <div class="cl"></div>
+                    <div class="field <?= strtolower( $fieldId ) ?><? if( $uniform ) { ?> custom<? } ?>">
+                      <label class="title<? if ( $field['~REQUIRED'] ): ?> required required_title<? endif; ?>" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>">
+                        <?= $field['CAPTION'] ?>
+                      </label>
+                      <select id="<?= $field['~ID'] ?>" name="<?= $field['NAME'] ?>" onchange="<?= $field['ONCHANGE'] ?>; onDocTypeChangeB2B('<?=$k?>');">
                         <? foreach($field['OPTION'] as $option): ?>
                         <option value="<?=$option['VALUE'] ?>">
-                        <?= !$option['VALUE'] ? '__' : str_pad($option['VALUE'], 2, '0', STR_PAD_LEFT) ?>
+                        <?=$option['CAPTION'] ?>
                         </option>
                         <? endforeach; ?>
                       </select>
                     </div>
-                    <span class="dot">.</span>
                     <? break;
-                  case 'BIRTHDATE_YEAR':
-                  case 'DOCEXPIRATION_YEAR': ?>
-                    <div class="year_wrap">
-                      <select id="<?=$field['~ID'] ?>" name="<?=$field['NAME'] ?>" class="year">
+                      case 'DOCCOUNTRY': ?>
+                    <div class="select-wrap field <?= strtolower( $fieldId ) ?><? if( $uniform ) { ?> custom<? } ?>">
+                      <label class="title<? if ( $field['~REQUIRED'] ): ?> required required_title<? endif; ?>" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>">
+                        <?= $field['CAPTION'] ?>
+                      </label>
+                      <select id="<?=$field['~ID'] ?>" name="<?=$field['NAME'] ?>">
                         <? foreach($field['OPTION'] as $option): ?>
                         <option value="<?=$option['VALUE'] ?>">
-                        <?= !$option['VALUE'] ? '____' : $option['CAPTION'] ?>
+                        <?=$option['CAPTION'] ?>
                         </option>
                         <? endforeach; ?>
                       </select>
                     </div>
-                  </div>
-                </div>
-                <? break;
-                  case 'DOCTYPE': ?>
-                <div class="cl"></div>
-                <div class="field <?= strtolower( $fieldId ) ?><? if( $uniform ) { ?> custom<? } ?>">
-                  <label class="title<? if ( $field['~REQUIRED'] ): ?> required required_title<? endif; ?>" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>">
-                    <?= $field['CAPTION'] ?>
-                  </label>
-                  <select id="<?= $field['~ID'] ?>" name="<?= $field['NAME'] ?>" onchange="<?= $field['ONCHANGE'] ?>; onDocTypeChangeB2B('<?=$k?>');">
-                    <? foreach($field['OPTION'] as $option): ?>
-                    <option value="<?=$option['VALUE'] ?>">
-                    <?=$option['CAPTION'] ?>
-                    </option>
-                    <? endforeach; ?>
-                  </select>
-                </div>
-                <? break;
-                  case 'DOCCOUNTRY': ?>
-                <div class="select-wrap field <?= strtolower( $fieldId ) ?><? if( $uniform ) { ?> custom<? } ?>">
-                  <label class="title<? if ( $field['~REQUIRED'] ): ?> required required_title<? endif; ?>" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>">
-                    <?= $field['CAPTION'] ?>
-                  </label>
-                  <select id="<?=$field['~ID'] ?>" name="<?=$field['NAME'] ?>">
-                    <? foreach($field['OPTION'] as $option): ?>
-                    <option value="<?=$option['VALUE'] ?>">
-                    <?=$option['CAPTION'] ?>
-                    </option>
-                    <? endforeach; ?>
-                  </select>
-                </div>
-                <?  break;
+                    <?  break;
 
-                  // карта частолетающего пассажира
-                case 'FFAK':  ?>
-                <div class="ffak_wrap clearfix">
-                  <label class="title" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>">
-                    <?= strlen(GetMessage('IBE_FRONTOFFICE_PERSONAL_' . $fieldId)) ? GetMessage('IBE_FRONTOFFICE_PERSONAL_' . $fieldId) : $field['CAPTION'] ?>
-                  </label>
-                  <div id="TR_<?= $field['~ID'] ?>" class="field <?= strtolower( $fieldId ) ?><? if( $uniform ) { ?> custom<? } ?>">
-                    <? switch( $field['~TYPE'] ) {
-                      case 'text': ?>
-                    <input class="input-si text <?= strtolower( $fieldId ) ?>" id="<?= $field['~ID'] ?>" name="<?= $field['NAME'] ?>" type="text" value="<?= $field['VALUE'] ?>" size="<?= $field['SIZE'] ?>"  />
-                    <? break;
-                      case 'select': ?>
-                    <select id="<?=$field['~ID'] ?>" name="<?=$field['NAME'] ?>" onchange="<?=$field['ONCHANGE'] ?>">
-                      <? foreach($field['OPTION'] as $option): ?>
-                      <option value="<?=$option['VALUE'] ?>">
-                      <?=$option['CAPTION'] ?>
-                      </option>
-                      <? endforeach; ?>
-                    </select>
-                    <? break;
-                    } ?>
-                    <? if ( $field['~APPEND'] ): ?>
-                    <?= $field['~APPEND'] ?>
-                    <? endif; // ~APPEND  ?>
-                  </div>
-                  <?  break;
-                // номер карты частолетающего пассажира
-                case 'FFCARDNMBR': ?>
-                  <div id="TR_<?= $field['~ID'] ?>" class="field <?= strtolower( $fieldId ) ?><? if( $uniform ) { ?> custom<? } ?>">
-                    <? /*label class="title" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>"><?= $field['CAPTION'] ?></label */?>
-                    <? switch( $field['~TYPE'] ) {
-                      case 'text': ?>
-                    <div class="subtitle">
-                      <?= GetMessage('IBE_FRONTOFFICE_PERSONAL_SUBTITLE_NUMBER') ?>
+                      // карта частолетающего пассажира
+                    case 'FFAK':  ?>
+                    <div class="ffak_wrap clearfix">
+                      <label class="title" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>">
+                        <?= strlen(GetMessage('IBE_FRONTOFFICE_PERSONAL_' . $fieldId)) ? GetMessage('IBE_FRONTOFFICE_PERSONAL_' . $fieldId) : $field['CAPTION'] ?>
+                      </label>
+                      <div id="TR_<?= $field['~ID'] ?>" class="field <?= strtolower( $fieldId ) ?><? if( $uniform ) { ?> custom<? } ?>">
+                        <? switch( $field['~TYPE'] ) {
+                          case 'text': ?>
+                        <input class="input-si text <?= strtolower( $fieldId ) ?>" id="<?= $field['~ID'] ?>" name="<?= $field['NAME'] ?>" type="text" value="<?= $field['VALUE'] ?>" size="<?= $field['SIZE'] ?>"  />
+                        <? break;
+                          case 'select': ?>
+                        <select id="<?=$field['~ID'] ?>" name="<?=$field['NAME'] ?>" onchange="<?=$field['ONCHANGE'] ?>">
+                          <? foreach($field['OPTION'] as $option): ?>
+                          <option value="<?=$option['VALUE'] ?>">
+                          <?=$option['CAPTION'] ?>
+                          </option>
+                          <? endforeach; ?>
+                        </select>
+                        <? break;
+                        } ?>
+                        <? if ( $field['~APPEND'] ): ?>
+                        <?= $field['~APPEND'] ?>
+                        <? endif; // ~APPEND  ?>
+                      </div>
+                      <?  break;
+                    // номер карты частолетающего пассажира
+                    case 'FFCARDNMBR': ?>
+                      <div id="TR_<?= $field['~ID'] ?>" class="field <?= strtolower( $fieldId ) ?><? if( $uniform ) { ?> custom<? } ?>">
+                        <? /*label class="title" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>"><?= $field['CAPTION'] ?></label */?>
+                        <? switch( $field['~TYPE'] ) {
+                          case 'text': ?>
+                        <div class="subtitle">
+                          <?= GetMessage('IBE_FRONTOFFICE_PERSONAL_SUBTITLE_NUMBER') ?>
+                        </div>
+                        <input class="input-si text <?= strtolower( $fieldId ) ?>" id="<?= $field['~ID'] ?>" name="<?= $field['NAME'] ?>" type="text" value="<?= $field['VALUE'] ?>" />
+                        <? break;
+                          case 'select': ?>
+                        <select id="<?=$field['~ID'] ?>" name="<?=$field['NAME'] ?>" onchange="<?=$field['ONCHANGE'] ?>">
+                          <? foreach($field['OPTION'] as $option): ?>
+                          <option value="<?=$option['VALUE'] ?>">
+                          <?=$option['CAPTION'] ?>
+                          </option>
+                          <? endforeach; ?>
+                        </select>
+                        <? break;
+                        } ?>
+                        <? if ( $field['~APPEND'] ): ?>
+                        <?= $field['~APPEND'] ?>
+                        <? endif; // ~APPEND  ?>
+                      </div>
                     </div>
-                    <input class="input-si text <?= strtolower( $fieldId ) ?>" id="<?= $field['~ID'] ?>" name="<?= $field['NAME'] ?>" type="text" value="<?= $field['VALUE'] ?>" />
                     <? break;
-                      case 'select': ?>
-                    <select id="<?=$field['~ID'] ?>" name="<?=$field['NAME'] ?>" onchange="<?=$field['ONCHANGE'] ?>">
-                      <? foreach($field['OPTION'] as $option): ?>
-                      <option value="<?=$option['VALUE'] ?>">
-                      <?=$option['CAPTION'] ?>
-                      </option>
-                      <? endforeach; ?>
-                    </select>
+                    // Доп. участник
+                    case 'FFRELATION': ?>
+                    <input id="<?= $field['~ID'] ?>" name="<?= $field['NAME'] ?>" type="<?= $field['~TYPE'] ?>" value="<?= $field['VALUE'] ?>" />
                     <? break;
-                    } ?>
-                    <? if ( $field['~APPEND'] ): ?>
-                    <?= $field['~APPEND'] ?>
-                    <? endif; // ~APPEND  ?>
-                  </div>
+                  default: break;
+                  } ?>
+                  <? endforeach; ?>
                 </div>
-                <? break;
-                // Доп. участник
-                case 'FFRELATION': ?>
-                <input id="<?= $field['~ID'] ?>" name="<?= $field['NAME'] ?>" type="<?= $field['~TYPE'] ?>" value="<?= $field['VALUE'] ?>" />
-                <? break;
-              default: break;
-              } ?>
-                <? endforeach; ?>
               </div>
+              <? endif; //if ( $passenger['FORM_NEW'] ) ?>
             </div>
-            <? endif; //if ( $passenger['FORM_NEW'] ) ?>
-          </div>
-          <? else: ?>
-          <div class="profile <?= $profile[ 'CONTAINER_CLASS' ] ?>">
-            <div class="profile_checker">
+            <? else:
+              if ( !$dontUseProfiles ) { ?>
+            <div class="profile <?= $profile[ 'CONTAINER_CLASS' ] ?>">
               <input id="<?= $profile['~ID'] ?>" name="<?= $profile['NAME'] ?>" onclick="<?= $profile['ONCLICK'] ?>; onProfileClickB2B(<?= ($k) ?>, '<?= $profile['VALUE'] ?>');" type="radio" value="<?= $profile['VALUE'] ?>" />
+              <label for="<?= $profile['~ID'] ?>">
+                <? $caption = explode( '  ', $profile['CAPTION'] ); ?>
+                <span class="name"><?= $caption[0] ?></span>
+                <? array_shift( $caption ); ?>
+                <? if ( !empty( $caption ) ): ?>
+                <span class="profile_info"><?= implode( ' ', $caption ) ?></span>
+                <? endif; ?>
+                <? if( isset( $profile[ 'ITEMS' ][ 'DELETE_CONTROLLER' ][ 'ONCLICK' ] ) ): ?>
+                <span class="profile-delete" onclick='<?= $profile[ 'ITEMS' ][ 'DELETE_CONTROLLER' ][ 'ONCLICK' ] ?>'>
+                <?= GetMessage( 'TS_FRONTOFFICE_STEP3_DELETE_PROFILE' ) ?>
+                </span>
+                <? endif; ?>
+              </label>
+              <div id="form_<?= ToLower($profile['~ID']) ?>" class="profile_form_container"></div>
             </div>
-            <div id="form_<?= ToLower($profile['~ID']) ?>" class="profile_form_container"></div>
-          </div>
-          <? endif; //if( $profile['VALUE'] == 'NEW' ) ?>
+              <? } // if ( !$dontUseProfiles ) { 
+            endif; //if( $profile['VALUE'] == 'NEW' ) ?>
           <? endforeach; //foreach( $passenger['PROFILES']['FIELDS'] as $profile ) ?>
         </div>
         <? endif; //if ( $passenger['PROFILES'] ) ?>
@@ -442,7 +411,6 @@ function ControlFieldLength( id_field, chars_max ){
       <? endforeach; //foreach ( $form['PASSENGERS'] as $k => $passenger ) ?>
     </div>
     <? endif; // if ( $form['PASSENGERS'] )?>
-    <!-- /Ввод данных пассажиров --> 
     
     <!-- Ввод контактных данных -->
     <? $BlockID = sizeof( $form['PASSENGERS'] ); ?>
@@ -457,13 +425,12 @@ function ControlFieldLength( id_field, chars_max ){
 
           <? if( $profile['VALUE'] == 'NEW' ): ?>
           <div class="profile_new profile">
-            <div class="profile_checker">
-              <? if(count($form['CONTACTS']['PROFILES']['FIELDS']) > 1): ?>
-              <input id="<?= $profile['~ID'] ?>" name="<?= $profile['NAME'] ?>" onclick="<?= $profile['ONCLICK'] ?>; onProfileClickB2B(<?=$BlockID ?>, '<?= $profile['VALUE']?>'); $('#profile-data-checkbox-div input').removeAttr('checked');" type="radio" value="<?= $profile['VALUE'] ?>" />
-              <? else: ?>
-              <input id="<?= $profile['~ID'] ?>" name="<?= $profile['NAME'] ?>" onclick="<?= $profile['ONCLICK'] ?>; onProfileClickB2B(<?=$BlockID ?>, '<?= $profile['VALUE']?>'); $('#profile-data-checkbox-div input').removeAttr('checked');" type="hidden" value="<?= $profile['VALUE'] ?>" />
-              <? endif; ?>
-            </div>
+            <? if(count($form['CONTACTS']['PROFILES']['FIELDS']) > 1): ?>
+            <input id="<?= $profile['~ID'] ?>" name="<?= $profile['NAME'] ?>" onclick="<?= $profile['ONCLICK'] ?>; onProfileClickB2B(<?= $BlockID ?>, '<?= $profile['VALUE']?>'); $('#profile-data-checkbox-div input').removeAttr('checked');" type="radio" value="<?= $profile['VALUE'] ?>" />
+            <label for="<?= $profile['~ID'] ?>"><span class="name"><?= $profile['CAPTION']  ?></span></label>
+            <? else: ?>
+            <input id="<?= $profile['~ID'] ?>" name="<?= $profile['NAME'] ?>" onclick="<?= $profile['ONCLICK'] ?>; onProfileClickB2B(<?= $BlockID ?>, '<?= $profile['VALUE']?>'); $('#profile-data-checkbox-div input').removeAttr('checked');" type="hidden" value="<?= $profile['VALUE'] ?>" />
+            <? endif; ?>
             <? if ( $form['CONTACTS']['FORM_NEW'] ): ?>
             <div id="form_<?= ToLower($profile['~ID']) ?>" class="profile_form_container">
               <div id="cont_form_new" class="profile_form clearfix">
@@ -503,6 +470,7 @@ function ControlFieldLength( id_field, chars_max ){
                 } ?>
                 </div>
                 <? endforeach; //foreach ( $form['CONTACTS']['FORM_NEW']['FIELDS'] as &$field ) ?>
+
                 <? if ( $arParams['USE_MERGED_STEPS'] == 'Y' ): ?>
                 <div class="buttons clearfix">
                   <? $arResult['FORWARD']['VALUE'] = strlen(GetMessage('IBE_FRONTOFFICE_BUTTON_NEXT')) ? GetMessage('IBE_FRONTOFFICE_BUTTON_NEXT') : $arResult['FORWARD']['VALUE'] ?>
@@ -533,12 +501,23 @@ function ControlFieldLength( id_field, chars_max ){
             <? endif; //if ( $form['CONTACTS']['FORM_NEW'] ) ?>
           </div>
           <? else: //if( $profile['VALUE'] == 'NEW' ) ?>
+            <?  if ( !$dontUseProfiles ) { ?>
           <div class="profile <?= $profile[ 'CONTAINER_CLASS' ] ?>">
             <div class="profile_checker">
-              <input id="<?= $profile['~ID'] ?>" name="<?= $profile['NAME'] ?>" onclick="<?= $profile['ONCLICK'] ?>; onProfileClickB2B(<?=$BlockID ?>, '<?= $profile['VALUE']?>');" type="radio" value="<?= $profile['VALUE'] ?>" />
+              <input id="<?= $profile['~ID'] ?>" name="<?= $profile['NAME'] ?>" onclick="<?= $profile['ONCLICK'] ?>; onProfileClickB2B(<?= $BlockID ?>, '<?= $profile['VALUE']?>');" type="radio" value="<?= $profile['VALUE'] ?>" />
+              <label for="<?=$profile['~ID'] ?>">
+                <? $caption = explode('  ', $profile['CAPTION']); ?>
+                <span class="name"><?=$caption[0] ?></span>
+                <? array_shift($caption); ?>
+                <? if(!empty($caption)): ?><span class="profile_info"><?=implode(' ', $caption) ?></span><? endif; ?>
+                <? if( isset( $profile[ 'ITEMS' ][ 'DELETE_CONTROLLER' ][ 'ONCLICK' ] ) ): ?>
+                <span class="profile-delete" onclick='<?= $profile[ 'ITEMS' ][ 'DELETE_CONTROLLER' ][ 'ONCLICK' ] ?>'><?= GetMessage( 'TS_FRONTOFFICE_STEP3_DELETE_PROFILE' ) ?></span>
+              <? endif; ?>
+              </label>
             </div>
             <div id="form_<?= ToLower($profile['~ID']) ?>" class="profile_form_container"></div>
           </div>
+            <? } // if ( !$dontUseProfiles ) { ?>
           <? endif; //if( $profile['VALUE'] == 'NEW' ) ?>
           <? endforeach; //foreach( $form['CONTACTS']['PROFILES']['FIELDS'] as $profile ) ?>
         </div>
@@ -547,10 +526,11 @@ function ControlFieldLength( id_field, chars_max ){
     </div>
     <? endif; //if ( $form['CONTACTS'] ) ?>
     <!-- /Ввод контактных данных -->
-
+    
     <?=$form['HIDDEN'] ?>
   </form>
 </div>
+
 <script type="text/javascript">
 //<![CDATA[
 /* Лейблы-подсказки к полям */
