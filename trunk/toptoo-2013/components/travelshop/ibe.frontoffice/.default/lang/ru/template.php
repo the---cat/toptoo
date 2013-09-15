@@ -23,6 +23,24 @@ $MESS[ "TS_FRONTOFFICE_STEP3_ORDER_FARE_RULES" ] = "Правила тарифа";
 $MESS[ "TS_FRONTOFFICE_STEP3_ORDER_TIMELIMIT" ] = "Необходимо оплатить до";
 
 /* personal_data.php */
+/* Подсказки к полям */
+$MESS["TS_FRONTOFFICE_STEP3_CYR"] = "Кириллицей";
+$MESS["TS_FRONTOFFICE_STEP3_PASS_LAT"] = "Латиницей";
+$MESS["TS_FRONTOFFICE_STEP3_REQUIRED"] = "Обязательно";
+$MESS["TS_FRONTOFFICE_STEP3_NOT_REQUIRED"] = "Необязательно";
+$MESS["TS_FRONTOFFICE_STEP3_PASS_DOCNUMBER_9"] = "9 цифр";
+$MESS["TS_FRONTOFFICE_STEP3_PASS_DOCNUMBER_10"] = "10 цифр";
+$MESS["TS_FRONTOFFICE_STEP3_CTC_PHONE_TIP"] = "В виде +XXXXXXXXXXX";
+$MESS["TS_FRONTOFFICE_STEP3_CTC_MAIL_TIP"] = "Для отправки маршрут-квитанции";
+$MESS ['TS_FRONTOFFICE_STEP3_PASS_PSGR_FNAME_TITLE'] = 'Введите имя, как написано в документе';
+$MESS ['TS_FRONTOFFICE_STEP3_PASS_PSGR_NAME_TITLE'] = 'Введите фамилию, как написано в документе';
+$MESS ['TS_FRONTOFFICE_STEP3_PASS_DOCTYPE_TITLE'] = 'Выберите тип документа';
+$MESS ['TS_FRONTOFFICE_STEP3_PASS_DOCNUMBER_TITLE'] = 'Римские цифры вводятся латиницей. Знаки «-», «№» и пробел не вводятся.';
+$MESS ['TS_FRONTOFFICE_STEP3_PASS_DOCEXPIRATION_DAY_TITLE'] = 'Документ должен быть действительным на момент вылета последнего рейса';
+$MESS ['TS_FRONTOFFICE_STEP3_PASS_DOCEXPIRATION_MONTH_TITLE'] = 'Документ должен быть действительным на момент вылета последнего рейса';
+$MESS ['TS_FRONTOFFICE_STEP3_PASS_DOCEXPIRATION_YEAR_TITLE'] = 'Документ должен быть действительным на момент вылета последнего рейса';
+$MESS ['TS_FRONTOFFICE_STEP3_PASS_CTC_PHONE_TITLE'] = 'Введите номер в международном формате. Скобки, дефисы и пробелы не вводятся.';
+
 $MESS['IBE_FRONTOFFICE_PERSONAL_GENDER_F'] = 'Ж';
 $MESS['IBE_FRONTOFFICE_PERSONAL_GENDER_M'] = 'М';
 $MESS['IBE_FRONTOFFICE_PERSONAL_SUBTITLE_NUMBER'] = '№';
@@ -36,6 +54,58 @@ $MESS['IBE_FRONTOFFICE_PERSONAL_DATA_CTC_PHONE'] = 'Мобильный телефон';
 $MESS['IBE_FRONTOFFICE_PERSONAL_DATA_CTC_MAIL'] = 'E-mail';
 $MESS['IBE_FRONTOFFICE_PERSONAL_DATA_AUTO_REGISTRATION'] = 'Я разрешаю использовать эти данные для регистрации на сайте.';
 
+/* paymethod.php */
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_GROUP_CARD'] = 
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_GROUP_ONLINE'] = 'Оплатить сейчас онлайн';
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_GROUP_CASH'] = 'Забронировать и оплатить позже';
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_GROUP_OTHER'] = 'Другие способы оплаты';
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_TIMELIMIT'] = 'Оплатить до';
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_PENALTY'] = 'Условия возврата и обмена';
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_LIMITS_CAPTION'] = 'Условия, правила и ограничения';
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_LIMITS_1'] = 'Билетом может воспользоваться только тот человек, на которого он оформлен.';
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_LIMITS_2'] = 'Стоимость включает тариф, сбор и таксы.';
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_LIMITS_3'] = 'Стоимость не включает возможные сборы, взимаемые авиакомпанией напрямую (доп. багаж и другое).';
+
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_WARNING'] = 'Проверьте правильность всех введенных данных.';
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_VISA'] = 'Виза';
+$MESS['IBE_PREVIEW_TRANSIT_VISA_REQUIRED'] = 'Требуется транзитная виза';
+
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_PCS'] = '';
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_CASH'] = 'Рекомендуем Вам не откладывать оплату заказа и по возможности произвести её в течение суток. Указанная первоначально цена может повыситься в случае изменения тарифа авиакомпанией, а также из-за разницы курса валют на момент оплаты билета.';
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_TITLE_AK'] = 'Списание средств с Вашей карты будет произведено авиакомпанией' ;
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_SUM_AK'] = 'в размере %CRS_PAYMENT%';
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_CUR_AK'] = '(эквивалент в рублях посчитан по курсу ЦБ РФ)';
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_LOC_AK'] = 'и Top Too в размере %LOCAL_PAYMENT%';
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_NOTE_AK'] = 'Если валюта карты отличается от валюты оплаты, то конвертация будет проводиться по курсу Вашего банка. Сумму конвертации можно уточнить у Вашего банка.';
+
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_AG'] = 'Списание средств с Вашей карты будет произведено Top Too.<br />
+Если валюта карты отличается от валюты оплаты, то конвертация будет проводиться по курсу Вашего банка. Сумму конвертации можно уточнить у Вашего банка.';
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_COMMENT_AK'] = 'В случае возврата билета выплата денежных средств занимает до 60 банковских дней.';
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_COMMENT_AG'] = 'В случае возврата билета выплата денежных средств занимает до 14 банковских дней.';
+
+$MESS[ "IBE_FRONTOFFICE_PAY_METHOD_CRS_CURRENCY_LOCAL" ] = "";
+$MESS[ "IBE_FRONTOFFICE_PAY_METHOD_CRS_CURRENCY" ] = "в т.ч. %CRS_PAYMENT% в %AK_TITLE%<br/>%CRS_CURRENCY_CONVERSION% <b>К оплате принимаются все карты, кроме VisaElectron и Maestro</b>";
+$MESS[ "IBE_FRONTOFFICE_PAY_METHOD_CRS_CURRENCY_CONVERSION" ] = "Эквивалент в рублях рассчитан по курсу ЦБ РФ<br/>";
+
+/* delivery.php */
+$MESS['IBE_FRONTOFFICE_DELIVERY_SELF_S'] = 'Офис Top Too, в котором Вы сможете оплатить заказ и получить билеты:';
+$MESS['IBE_FRONTOFFICE_DELIVERY_SELF_P'] = 'Выберите офис Top Too, в котором Вы сможете оплатить заказ и получить билеты.';
+$MESS['IBE_FRONTOFFICE_DELIVERY_PLOFILES_POPUP_CAPTION'] = 'Выберите адрес';
+$MESS['IBE_FRONTOFFICE_DELIVERY_PLOFILES_TH_ADDRESS'] = 'Адрес';
+
+/* precommit.php */
+$MESS['IBE_FRONTOFFICE_PRECOMMIT_ACCEPT'] = 'Нажимая кнопку, я принимаю условия выбранных тарифов';
+$MESS['IBE_FRONTOFFICE_PRECOMMIT_FRONTIER_ZONE'] = 'условия пребывания в погранзоне, ';
+$MESS['IBE_FRONTOFFICE_PRECOMMIT_VISA_RULES'] = ' ознакомлен с правилами визового режима, ';
+$MESS['IBE_FRONTOFFICE_PRECOMMIT_OFFER_CONTRACT'] = ' ознакомлен и согласен с <a href="/agreement/" target="_blank" class="link">договором оферты</a>. ';
+
+$MESS['IBE_FRONTOFFICE_PRECOMMIT_AGREE_ALERT'] = 'Чтобы продолжить, необходимо согласиться с условиями выбранных тарифов и договором оферты.';
+$MESS['IBE_FRONTOFFICE_BUTTON_COMMIT_ONLINE'] =
+$MESS['IBE_FRONTOFFICE_BUTTON_COMMIT_CASH'] = 'Купить за';
+$MESS['IBE_FRONTOFFICE_BUTTON_BOOK'] = 'Забронировать';
+
+$MESS[ "IBE_CREATE_PNR_PRICE_CHANGED" ] = 'Внимание! Изменилась стоимость билетов (по сравнению с первоначально предложенной). Если вы согласны с новой ценой, нажмите "Купить" снова.';
+$MESS[ "IBE_CREATE_PNR_DATE_CHANGED" ] = 'Внимание! Изменилось время вылета или прилета (по сравнению с первоначально предложенным). Если вы согласны с измененным временем, нажмите "Купить" снова.';
 
 /* Common */
 $MESS['IBE_FRONTOFFICE_BUTTON_NEXT'] = 'Далее';
