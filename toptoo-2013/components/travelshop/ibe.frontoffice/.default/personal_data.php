@@ -425,11 +425,11 @@ function ControlFieldLength( id_field, chars_max ){
 
           <? if( $profile['VALUE'] == 'NEW' ): ?>
           <div class="profile_new profile">
-            <? if(count($form['CONTACTS']['PROFILES']['FIELDS']) > 1): ?>
+            <? if(count($form['CONTACTS']['PROFILES']['FIELDS']) < 2 || $dontUseProfiles ): ?>
+            <input id="<?= $profile['~ID'] ?>" name="<?= $profile['NAME'] ?>" onclick="<?= $profile['ONCLICK'] ?>; onProfileClickB2B(<?= $BlockID ?>, '<?= $profile['VALUE']?>'); $('#profile-data-checkbox-div input').removeAttr('checked');" type="hidden" value="<?= $profile['VALUE'] ?>" />
+            <? else: ?>
             <input id="<?= $profile['~ID'] ?>" name="<?= $profile['NAME'] ?>" onclick="<?= $profile['ONCLICK'] ?>; onProfileClickB2B(<?= $BlockID ?>, '<?= $profile['VALUE']?>'); $('#profile-data-checkbox-div input').removeAttr('checked');" type="radio" value="<?= $profile['VALUE'] ?>" />
             <label for="<?= $profile['~ID'] ?>"><span class="name"><?= $profile['CAPTION']  ?></span></label>
-            <? else: ?>
-            <input id="<?= $profile['~ID'] ?>" name="<?= $profile['NAME'] ?>" onclick="<?= $profile['ONCLICK'] ?>; onProfileClickB2B(<?= $BlockID ?>, '<?= $profile['VALUE']?>'); $('#profile-data-checkbox-div input').removeAttr('checked');" type="hidden" value="<?= $profile['VALUE'] ?>" />
             <? endif; ?>
             <? if ( $form['CONTACTS']['FORM_NEW'] ): ?>
             <div id="form_<?= ToLower($profile['~ID']) ?>" class="profile_form_container">
@@ -470,40 +470,13 @@ function ControlFieldLength( id_field, chars_max ){
                 } ?>
                 </div>
                 <? endforeach; //foreach ( $form['CONTACTS']['FORM_NEW']['FIELDS'] as &$field ) ?>
-
-                <? if ( $arParams['USE_MERGED_STEPS'] == 'Y' ): ?>
-                <div class="buttons clearfix">
-                  <? $arResult['FORWARD']['VALUE'] = strlen(GetMessage('IBE_FRONTOFFICE_BUTTON_NEXT')) ? GetMessage('IBE_FRONTOFFICE_BUTTON_NEXT') : $arResult['FORWARD']['VALUE'] ?>
-                  <div class="c-continue">
-                    <?=CTemplateToolsUtil::RenderField($arResult['FORWARD']) ?>
-                  </div>
-                </div>
-                <? endif; ?>
               </div>
             </div>
-
-            <? if ( !$USER->IsAuthorized() ): //Авторегистрация ?>
-            <? foreach ( $arResult['FORM']['FIELDS'] as $Fields ): ?>
-            <? if ( $Fields['~ID'] == 'auto_registration_container'): ?>
-            <div id="<?= $Fields['~ID'] ?>" class="auto_registration clearfix">
-              <? foreach ( $Fields['FIELDS'] as $Field ) : ?>
-              <div class="row clearfix">
-                <input type="<?=$Field['~TYPE']?>" id="<?=$Field['~ID']?>" name="<?=$Field['NAME']?>" value="<?=$Field['~TYPE']?>"<?= $Field['~CHECKED'] ? ' checked="checked"' : ''  ?>  />
-                <label for="<?=$Field['~ID']?>">
-                  <?= strlen(GetMessage('IBE_FRONTOFFICE_PERSONAL_DATA_' . ToUpper($Field['~ID']) )) ? GetMessage('IBE_FRONTOFFICE_PERSONAL_DATA_' . ToUpper($Field['~ID']) ) : $Field['CAPTION'] ?>
-                </label>
-              </div>
-              <? endforeach; ?>
-            </div>
-            <? endif; ?>
-            <? endforeach; //foreach ( $arResult['FORM']['FIELDS'] as $fields ) ?>
-            <? endif; //if ( !$USER->IsAuthorized() ):?>
             <? endif; //if ( $form['CONTACTS']['FORM_NEW'] ) ?>
           </div>
           <? else: //if( $profile['VALUE'] == 'NEW' ) ?>
             <?  if ( !$dontUseProfiles ) { ?>
           <div class="profile <?= $profile[ 'CONTAINER_CLASS' ] ?>">
-            <div class="profile_checker">
               <input id="<?= $profile['~ID'] ?>" name="<?= $profile['NAME'] ?>" onclick="<?= $profile['ONCLICK'] ?>; onProfileClickB2B(<?= $BlockID ?>, '<?= $profile['VALUE']?>');" type="radio" value="<?= $profile['VALUE'] ?>" />
               <label for="<?=$profile['~ID'] ?>">
                 <? $caption = explode('  ', $profile['CAPTION']); ?>
@@ -512,9 +485,8 @@ function ControlFieldLength( id_field, chars_max ){
                 <? if(!empty($caption)): ?><span class="profile_info"><?=implode(' ', $caption) ?></span><? endif; ?>
                 <? if( isset( $profile[ 'ITEMS' ][ 'DELETE_CONTROLLER' ][ 'ONCLICK' ] ) ): ?>
                 <span class="profile-delete" onclick='<?= $profile[ 'ITEMS' ][ 'DELETE_CONTROLLER' ][ 'ONCLICK' ] ?>'><?= GetMessage( 'TS_FRONTOFFICE_STEP3_DELETE_PROFILE' ) ?></span>
-              <? endif; ?>
+                <? endif; ?>
               </label>
-            </div>
             <div id="form_<?= ToLower($profile['~ID']) ?>" class="profile_form_container"></div>
           </div>
             <? } // if ( !$dontUseProfiles ) { ?>
@@ -526,7 +498,30 @@ function ControlFieldLength( id_field, chars_max ){
     </div>
     <? endif; //if ( $form['CONTACTS'] ) ?>
     <!-- /Ввод контактных данных -->
-    
+    <? if ( $arParams['USE_MERGED_STEPS'] == 'Y' ): ?>
+    <div class="buttons clearfix">
+      <? $arResult['FORWARD']['VALUE'] = strlen(GetMessage('IBE_FRONTOFFICE_BUTTON_NEXT')) ? GetMessage('IBE_FRONTOFFICE_BUTTON_NEXT') : $arResult['FORWARD']['VALUE'] ?>
+      <div class="c-next c-continue">
+        <?=CTemplateToolsUtil::RenderField($arResult['FORWARD']) ?>
+      </div>
+    </div>
+    <? endif; ?>
+
+    <? if ( !$USER->IsAuthorized() ): //Авторегистрация ?>
+      <? foreach ( $arResult['FORM']['FIELDS'] as $Fields ): ?>
+        <? if ( $Fields['~ID'] == 'auto_registration_container'): ?>
+    <div id="<?= $Fields['~ID'] ?>" class="auto_registration clearfix">
+          <? foreach ( $Fields['FIELDS'] as $Field ) : ?>
+      <div class="row clearfix">
+        <input type="<?=$Field['~TYPE']?>" id="<?=$Field['~ID']?>" name="<?=$Field['NAME']?>" value="<?=$Field['~TYPE']?>"<?= $Field['~CHECKED'] ? ' checked="checked"' : ''  ?>  />
+        <label for="<?=$Field['~ID']?>"><?= strlen(GetMessage('IBE_FRONTOFFICE_PERSONAL_DATA_' . ToUpper($Field['~ID']) )) ? GetMessage('IBE_FRONTOFFICE_PERSONAL_DATA_' . ToUpper($Field['~ID']) ) : $Field['CAPTION'] ?></label>
+      </div>
+          <? endforeach; ?>
+    </div>
+        <? endif; ?>
+      <? endforeach; //foreach ( $arResult['FORM']['FIELDS'] as $fields ) ?>
+    <? endif; //if ( !$USER->IsAuthorized() ):?>
+
     <?=$form['HIDDEN'] ?>
   </form>
 </div>

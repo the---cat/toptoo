@@ -27,7 +27,10 @@ echo GetIbeJsStrings();
   } ?>
   <? if ( $arResult['COMMIT'] && is_array( $arResult['COMMIT']['FIELDS'] ) ) { ?>
   <div class="c-continue <?= $arResult['COMMIT']['CLASS']  ?>" id="<?= $arResult['COMMIT']['~ID'] ?>"<?= $arResult['COMMIT']['STYLE'] ? ' style="' . $arResult['COMMIT']['STYLE'] . '"' : '' ?>>
-    <div class="button" onclick="$('#<?= $arResult['COMMIT']['FIELDS'][0]['~ID'] ?>').click();">
+    <div class="button_buy" onclick="$('#<?= $arResult['COMMIT']['FIELDS'][0]['~ID'] ?>').click();">
+      <?= GetMessage('IBE_FRONTOFFICE_BUTTON_COMMIT_CASH') ?>
+      <span id="price_container_ticket" class="price"><?= $arResult['ORDER']['BASKET']['BASE_TOTAL_PRICE'] ?></span>
+      <? /*
       <div class="button_loading_overlay">
         <div id="price_container_title" class="title">
           <?= GetMessage('IBE_FRONTOFFICE_BUTTON_COMMIT_' . ToUpper($type)) ?>
@@ -37,6 +40,7 @@ echo GetIbeJsStrings();
         </div>
         <span class="loading"></span>
        </div>
+       */ ?>
       </div>
       <? global $IBE_WEB_LOG_OUTPUT; ?>
       <input id="<?= $arResult['COMMIT']['FIELDS'][0]['~ID'] ?>" name="<?= $arResult['COMMIT']['FIELDS'][0]['NAME'] ?>" class="<?=$arResult['COMMIT']['FIELDS'][0]['CLASS']  ?>" type="<?= $arResult['COMMIT']['FIELDS'][0]['~TYPE'] ?>" onclick="_gaq.push(['_trackPageview', '/<?= $IBE_WEB_LOG_OUTPUT["site_id"] ?>/avia/commit/<?= $IBE_WEB_LOG_OUTPUT["meta"] == 1 ? "meta" : "site" ?>/<?= $_SERVER["REMOTE_ADDR"] ?>/<?= $_SERVER["SERVER_NAME"] ?>/<?= $IBE_WEB_LOG_OUTPUT["bought"] >= 2 ? "regular customer" : "new customer" ?>/']); <?= $arResult['COMMIT']['FIELDS'][0]['ONCLICK'] ?>" value="<?= GetMessage('IBE_FRONTOFFICE_BUTTON_COMMIT_ONLINE') ?>" />
@@ -82,9 +86,9 @@ echo GetIbeJsStrings();
       : $fare . ( $link != end($fares) ? ', ' : '' );
     }
     $tairiffAgreeTitle .= '), ';
-    $tairiffAgreeTitle .= $arResult['FRONTIER_ZONE'] ? GetMessage('IBE_FRONTOFFICE_PRECOMMIT_FRONTIER_ZONE') : '';
-    $tairiffAgreeTitle .= $arResult['RUSSIAN_PASSPORT_NOT_ALLOWED'] ? GetMessage('IBE_FRONTOFFICE_PRECOMMIT_VISA_RULES') : '';
-    $tairiffAgreeTitle .= GetMessage('IBE_FRONTOFFICE_PRECOMMIT_OFFER_CONTRACT');
+    $tairiffAgreeTitle .= $arResult['FRONTIER_ZONE'] ? '<br />' . GetMessage('IBE_FRONTOFFICE_PRECOMMIT_FRONTIER_ZONE') : '';
+    $tairiffAgreeTitle .= $arResult['RUSSIAN_PASSPORT_NOT_ALLOWED'] ? '<br />' . GetMessage('IBE_FRONTOFFICE_PRECOMMIT_VISA_RULES') : '';
+    $tairiffAgreeTitle .= '<br />' . GetMessage('IBE_FRONTOFFICE_PRECOMMIT_OFFER_CONTRACT');
     ?>
 		<?//=CTemplateToolsUtil::RenderField($arResult['TARIFF_AGREE']) ?>
     <div style="display:none;">

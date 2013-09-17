@@ -92,6 +92,7 @@ $MESS['IBE_PREVIEW_TRANSIT_VISA_REQUIRED'] = 'Требуется транзитная виза';
 
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_PCS'] = '';
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_CASH'] = 'Рекомендуем Вам не откладывать оплату заказа и по возможности произвести её в течение суток. Указанная первоначально цена может повыситься в случае изменения тарифа авиакомпанией, а также из-за разницы курса валют на момент оплаты билета.';
+
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_TITLE_AK'] = 'Списание средств с Вашей карты будет произведено авиакомпанией' ;
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_SUM_AK'] = 'в размере %CRS_PAYMENT%';
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_CUR_AK'] = '(эквивалент в рублях посчитан по курсу ЦБ РФ)';

@@ -126,7 +126,7 @@
 #ts_ag_reservation .button_hidden{ display: none; }
 
 #ts_ag_reservation .info_caption {
-  background: #71c3cc;
+  background: #00c5cb;
   color: #ffffff;
   display: inline-block;
   font-size:24px;
@@ -537,7 +537,7 @@ html.msie9 #ts_ag_reservation_container__form_top .form-order .top_form_submit .
   border-width: 1px 1px 0;
   margin:-1px -1px 0;
 }
-#ts_ag_reservation .offers .offer .outbound{ border-color: #71c3cc; }
+#ts_ag_reservation .offers .offer .outbound{ border-color: #00c5cb; }
 #ts_ag_reservation .offers .offer .inbound{
   border-color: #fab414;
   margin-top:8px;
@@ -550,7 +550,7 @@ html.msie9 #ts_ag_reservation_container__form_top .form-order .top_form_submit .
   padding:9px 15px;
   vertical-align: bottom;
 }
-#ts_ag_reservation .offers .offer .outbound th{ background: #71c3cc; }
+#ts_ag_reservation .offers .offer .outbound th{ background: #00c5cb; }
 #ts_ag_reservation .offers .offer .inbound th{ background: #ffb433; }
 
 #ts_ag_reservation .offers .offer .direction .dir_name{ text-align: left; }
@@ -581,19 +581,18 @@ html.msie9 #ts_ag_reservation_container__form_top .form-order .top_form_submit .
   text-align: left;
   vertical-align: middle;
 }
-#ts_ag_reservation .offers .offer .outbound .variant td{ border-bottom-color:#71c3cc;}
+#ts_ag_reservation .offers .offer .outbound .variant td{ border-bottom-color:#00c5cb;}
 #ts_ag_reservation .offers .offer .inbound .variant td{ border-bottom-color:#ffb433;}
 
 #ts_ag_reservation .offers .offer .direction .variant td.select{
+  background:url(images/radio.png) 50% 50% no-repeat;
   text-align: center;
   padding-left:15px;
   width:25px;
 }
-#ts_ag_reservation .offers .offer .direction .variant .select div.radio span { background-position: 0 0; position:relative;}
-#ts_ag_reservation .offers .offer .direction .variant:hover .select div.radio span { background-position: -18px 0; }
-#ts_ag_reservation .offers .offer .direction .selected .select  div.radio span,
-#ts_ag_reservation .offers .offer .direction .selected:hover .select  div.radio span { background-position: -36px 0; }
+#ts_ag_reservation .offers .offer .direction .selected td.select{ background-image:url(images/radio_ch.png); }
 
+#ts_ag_reservation .offers .offer .direction .variant td.select input[type="radio"]{ display:none; }
 #ts_ag_reservation .offers .offer .direction .variant .logo{
   background-position: 0 50%;
   background-repeat: no-repeat;
@@ -672,8 +671,7 @@ html.msie9 #ts_ag_reservation_container__form_top .form-order .top_form_submit .
   line-height: 1.2;
 }
 
-
-#ts_ag_reservation .offers .offer .outbound .variant .flight_info .stop{ background: #71c3cc; }
+#ts_ag_reservation .offers .offer .outbound .variant .flight_info .stop{ background: #00c5cb; }
 #ts_ag_reservation .offers .offer .inbound .variant .flight_info .stop{ background: #ffb433; }
 #ts_ag_reservation .offers .offer .direction .variant .add_info{ 
   font-size:13px;
@@ -710,7 +708,7 @@ html.msie9 #ts_ag_reservation_container__form_top .form-order .top_form_submit .
 #ts_ag_reservation .order .flights .direction { 
   border: solid 1px;
 }
-#ts_ag_reservation .order .flights .outbound { border-color: #71c3cc; margin-bottom:8px; }
+#ts_ag_reservation .order .flights .outbound { border-color: #00c5cb; margin-bottom:8px; }
 #ts_ag_reservation .order .flights .inbound { border-color: #ffb433; }
 
 #ts_ag_reservation .order .flights .direction .direction_caption {}
@@ -721,7 +719,7 @@ html.msie9 #ts_ag_reservation_container__form_top .form-order .top_form_submit .
   padding: 9px 15px;
   vertical-align: bottom;
 }
-#ts_ag_reservation .order .flights .outbound .direction_caption th { background: #71c3cc; }
+#ts_ag_reservation .order .flights .outbound .direction_caption th { background: #00c5cb; }
 #ts_ag_reservation .order .flights .inbound .direction_caption th { background: #ffb433; }
 
 #ts_ag_reservation .order .flights .direction .direction_caption .dir_name,
@@ -825,8 +823,6 @@ html.msie9 #ts_ag_reservation_container__form_top .form-order .top_form_submit .
 #ts_ag_reservation .personal_data .passengers .caption .type { font-weight: bold; }
 
 #ts_ag_reservation .personal_data .profiles .profile { clear: both; }
-#ts_ag_reservation .personal_data .profiles .profile .profile_checker { display: none; }
-#ts_ag_reservation .personal_data .profiles .profile .profile_checker div.radio input {}
 
 #ts_ag_reservation .personal_data .profiles .profile_form{ padding: 15px 0 0; }
 
@@ -915,7 +911,7 @@ html.msie9 #ts_ag_reservation_container__form_top .form-order .top_form_submit .
 
 #ts_ag_reservation .personal_data .profiles .profile_form .name,
 #ts_ag_reservation .personal_data .profiles .profile_form .phone{ width: 190px; }
-#ts_ag_reservation .personal_data .profiles .profile_form .mail { width:250px; }
+#ts_ag_reservation .personal_data .profiles .profile_form .mail { width:240px; }
 
 #ts_ag_reservation .personal_data .profiles .profile_form div.docnumber,
 #ts_ag_reservation .personal_data .profiles .profile_form div.ffcardnmbr { padding-right: 47px }
@@ -940,14 +936,14 @@ html.msie9 #ts_ag_reservation_container__form_top .form-order .top_form_submit .
 #ts_ag_reservation .personal_data .profiles .profile_form .gender .gender_F{ background-position:-41px 0; }
 
 #ts_ag_reservation .personal_data .profiles .profile_form .gender .gender_switcher.M_selected .gender_M {
-  background-color: #71c3cc;
+  background-color: #00c5cb;
   background-position: 0 -33px;
   border-color:#bdd6d7;
   cursor: default;
 }
 #ts_ag_reservation .personal_data .profiles .profile_form .gender .gender_switcher.M_selected .gender_F{ border-left-color:#bdd6d7;}
 #ts_ag_reservation .personal_data .profiles .profile_form .gender .gender_switcher.F_selected .gender_F {
-  background-color: #71c3cc;
+  background-color: #00c5cb;
   background-position: -41px -33px;
   border-color:#bdd6d7;
   cursor: default;
@@ -1005,6 +1001,8 @@ html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date sele
   margin:.2em .5em 0 0;
 }
 
+#ts_ag_reservation .personal_data .contacts .profiles .profile_form .field{ margin-bottom:0; }
+
 /* œÓ‰ÒÍ‡ÁÍË ‚ ÔÓÎˇı */
 #ts_ag_reservation .personal_data .profiles .profile_form .field .placeholder_input,
 #ts_ag_reservation .personal_data .profiles .profile_form .field .placeholder {
@@ -1025,7 +1023,8 @@ html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date sele
 
 #ts_ag_reservation_container__personal_data .buttons {
   float:right;
-  padding:25px 55px 0 0;
+  margin-top:-35px;
+  padding-right:55px;
   text-align: right;
 }
 #ts_ag_reservation_container__personal_data .buttons .button{
@@ -1034,6 +1033,8 @@ html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date sele
   background-repeat: no-repeat;
   padding-right:25px;
 }
+
+#ts_ag_reservation_container__personal_data .auto_registration{ padding-top:10px; }
 
 /* œŒƒ— ¿« ¿   œŒÀﬂÃ */
 #tooltip_passenger,
@@ -1231,14 +1232,17 @@ html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date sele
 ŒœÀ¿“¿. ¬€¡Œ– —œŒ—Œ¡¿ ŒœÀ¿“€
 
 */
-#ts_ag_reservation .pay_method{ border:1px solid #D2D2D2; }
+#ts_ag_reservation .pay_method{ 
+  border:solid #D2D2D2;
+  border-width:1px 1px 0;
+}
 #ts_ag_reservation .pay_method table{ width:100%; }
 #ts_ag_reservation .pay_method table td{
-  padding:15px 0;
+  border-bottom:1px solid #d2d2d2;
   vertical-align:top;
   width:50%;
 }
-#ts_ag_reservation .pay_method td.paymethods{ border-right:1px solid #71c3cc; }
+#ts_ag_reservation .pay_method td.paymethods{ border-right:1px solid #00c5cb; }
 
 #ts_ag_reservation .pay_method .group_name{
   color:#666666;
@@ -1264,8 +1268,6 @@ html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date sele
   position:relative;
   width:100%;
 }
-
-#ts_ag_reservation .pay_method .paymethods_group.last{ margin-bottom:0; }
 
 #ts_ag_reservation .pay_method .item{
   display:block;
@@ -1433,10 +1435,7 @@ html.msie7 #ts_ag_reservation .pay_method .paysystem_name{
 
 #ts_ag_reservation .pay_method table .warning:hover{ text-decoration:none; }
 
-#ts_ag_reservation .pay_method .description_container{
-  border:solid #bdc5c8;
-  border-width:0 1px;
-}
+#ts_ag_reservation .pay_method .description_container{}
 #ts_ag_reservation .pay_method .pay_method_description{
   color:#666666;
   font-size:13px;
@@ -1450,19 +1449,6 @@ html.msie7 #ts_ag_reservation .pay_method .paysystem_name{
 }
 #ts_ag_reservation .pay_method .pay_method_description img{ max-width:100%; }
 
-#ts_ag_reservation .pay_method .pay_method_description .cards_pic_ak,
-#ts_ag_reservation .pay_method .pay_method_description .cards_pic_ag{
-  background:transparent 0 0 no-repeat;
-  height:35px;
-  margin-bottom:10px;
-}
-#ts_ag_reservation .pay_method .pay_method_description .cards_pic_ak{ background-image:url(images/paysystem/paysystem_ak.png); }
-#ts_ag_reservation .pay_method .pay_method_description .cards_pic_ag{ background-image:url(images/paysystem/paysystem_ag.png); }
-#ts_ag_reservation .pay_method .pay_method_description .cards_pic_pcs{
-  background:transparent url(images/paysystem/paysystem_pcs.png) 0 0 no-repeat;
-  height:90px;
-  margin-bottom:10px;
-}
 #ts_ag_reservation .pay_method .description{
   padding:18px 40px 7px;
 }
@@ -1478,9 +1464,11 @@ html.msie7 #ts_ag_reservation .pay_method .paysystem_name{
 #ts_ag_reservation .pay_method .description_right > div{ margin:0 40px 0 20px; }
 
 #ts_ag_reservation .pay_method table .description_right ul li{ list-style:none; padding:0 0 5px 0; }
-#ts_ag_reservation .pay_method .description_right p{ margin-top:1em; }
-#ts_ag_reservation .pay_method table .pay_method_options{ margin-top:-3px; }
-#ts_ag_reservation .pay_method table .pay_method_options .option label{ color:#555555; font-size:12px; font-weight:bold; }
+#ts_ag_reservation .pay_method .description_left > div,
+#ts_ag_reservation .pay_method .description_left > .option,
+#ts_ag_reservation .pay_method .description_right > p { margin-bottom:1em; }
+#ts_ag_reservation .pay_method .pay_method_options{}
+#ts_ag_reservation .pay_method .pay_method_options .option label{ font-weight:bold; }
 
 /* ƒŒ—“¿¬ ¿ */
 #ts_ag_reservation .delivery {
@@ -1489,210 +1477,110 @@ html.msie7 #ts_ag_reservation .pay_method .paysystem_name{
   position: relative;
   clear: both;
 } /*¡ÎÓÍ ËÌÙÓÏ‡ˆËË Ó ‰ÓÒÚ‡‚ÍÂ*/
-#ts_ag_reservation .delivery .info_caption{ margin-left:-1px; }
-
-#ts_ag_reservation .delivery .methods { padding:0 15px; }
-#ts_ag_reservation .delivery .delivery_groups{ padding:0; }
-#ts_ag_reservation .delivery .methods .method {
-  font-size:12px;
-  padding:15px 40px 15px 0;
+#ts_ag_reservation .delivery .info_caption{ margin:-1px 0 0 -1px; }
+#ts_ag_reservation .delivery .caption{
+  color:#000000;
+  font-size:18px;
+  font-weight:normal;
 }
-
-#ts_ag_reservation .delivery .delivery_groups .method_self{ padding:3px 0 10px 0; }
-#ts_ag_reservation .delivery .delivery_groups .method_cour{ padding:0; }
-#ts_ag_reservation .delivery .delivery_groups .method_other{ padding:15px; }
-
-#ts_ag_reservation .delivery .delivery_groups .method .hidden_checker{
-  font-size:0;
-  height:0;
-  overflow:hidden;
-  position:relative;
-}
-
-#ts_ag_reservation .delivery .delivery_groups .method .description_left,
-#ts_ag_reservation .delivery .delivery_groups .method .description_right{
-  color:#666666;
-  font-size:13px;
-  padding-top:15px;
+#ts_ag_reservation .delivery .description_left,
+#ts_ag_reservation .delivery .description_right{
+  padding:0;
   width:50%;
 }
-#ts_ag_reservation .delivery .delivery_groups .method .description_left {float:left;}
-#ts_ag_reservation .delivery .delivery_groups .method .description_right{float:right;}
+#ts_ag_reservation .delivery .description_left{ float:left;}
+#ts_ag_reservation .delivery .description_right{ float:right; }
 
-#ts_ag_reservation .delivery .delivery_groups .method .description_left > div{ margin:0 20px 0 45px; }
-#ts_ag_reservation .delivery .delivery_groups .method .description_right > div{ margin:0 40px 0 26px; }
-#ts_ag_reservation .delivery .delivery_groups .method_cour .description_left > div{ margin-left:15px; }
+#ts_ag_reservation .delivery .description_left .methods .method{ margin:10px 20px 0 20px; }
+#ts_ag_reservation .delivery .description_left .methods .method_cour{ margin:0 20px 0 0; }
+#ts_ag_reservation .delivery .description_right > div{ margin:0 20px 0 20px; }
 
-#ts_ag_reservation .delivery .delivery_groups .method_self .description_left { color:#666666; }
-#ts_ag_reservation .delivery .delivery_groups .method_self .address {  color:#ff0068; font-weight:bold;  }
-#ts_ag_reservation .delivery .delivery_groups .method_cour .description_left:empty{ padding-top:5px; }
-#ts_ag_reservation .delivery #addresses{ padding:0 27px; }
-#ts_ag_reservation .delivery #address_form{ padding:0 0 0 27px; }
+#ts_ag_reservation .delivery .description_left .methods .cour_title{ padding:20px 0 0 20px; }
 
-#ts_ag_reservation .delivery .profiles_links {
-  display: none !important;
+#ts_ag_reservation .delivery .hidden_checker{ display:none !important; }
+#ts_ag_reservation .delivery .description_left .methods .method,
+#ts_ag_reservation .delivery .description_left .methods .method labe {
+  color:#666666;
+  font-size:13px;
+  font-weight:normal;
+  line-height: 1.2;
+}
+#ts_ag_reservation .delivery .description_right .description{
+  color:#ff0068;
+  font-size:13px;
+  font-weight:normal;
+  margin-top:10px;
+}
+
+#ts_ag_reservation .delivery #address_form{ 
+  clear:both;
+  padding: 0 0 0 20px;
+}
+
+#ts_ag_reservation .delivery .profiles {
+  display: none;
   float:right;
-  padding:7px 15px 0 0;
+  margin-top:-70px;
+  padding:5px 15px 0 0;
   width:60%;
 }
-/*
-#ts_ag_reservation .delivery .profiles_links li {
-  border-bottom:1px dotted #8ba2ad;
-  color:#8ba2ad;
+
+#ts_ag_reservation .delivery .profiles >div {
+  color:#666666;
   cursor:pointer;
-  font-size:14px;
+  font-size:12px;
   float:left;
   margin-left:25px;
 }
 
-#ts_ag_reservation .delivery .profiles_links li:hover { border-color:transparent; }
-
-#ts_ag_reservation .delivery .profiles_links li.new_profile { font-weight:bold; }
-
-#ts_ag_reservation .delivery .profiles_links li.selected {
-  border-color:transparent;
-  color:#ec008c;
-  font-weight:bold;
-}
-
-#ts_ag_reservation .delivery .popup_block_wrap { display:none; }
-
-#ts_ag_reservation .delivery .popup_block.profiles {
-  margin-left:-360px;
-  width:720px;
-}
-
-#ts_ag_reservation .delivery .profiles.popup_block .wrap {
-  border:none;
-  padding-right:0;
-}
-
-#ts_ag_reservation .delivery .profiles.popup_block .viewport { max-height:290px; }
-
-#ts_ag_reservation .delivery .profiles table { width:674px; }
-
-#ts_ag_reservation .delivery .profiles th {
-  border-bottom:3px solid;
-  color:#005376;
-  font-zie:12px;
-  font-weight:bold;
-  padding:0 10px 2px 0;
-  text-align:left;
-  vertical-align:bottom;
-}
-
-#ts_ag_reservation .delivery .profiles th.address { border-color:#ec008c; }
-
-#ts_ag_reservation .delivery .profiles th.delete {
-  border-color:transparent;
-  width:36px;
-}
-
-#ts_ag_reservation .delivery .profiles td {
-  color:#005376;
-  font-size:12px;
-  text-align:left;
-  padding:5px 15px;
-  vertical-align:middle;
-}
-
-#ts_ag_reservation .delivery .profiles td.address {
-  background:#f1e8ef;
-  cursor:pointer;
-}
-
-#ts_ag_reservation .delivery .profiles .even td.address { background:#fef2f9; }
-
-#ts_ag_reservation .delivery .profiles tr:hover td.address { background:#b8d7eb; }
-
-#ts_ag_reservation .delivery .profiles tr.even:hover td.address { background:#c2def2; }
-
-#ts_ag_reservation .delivery .profiles.popup_block td.delete { width:16px; }
-
-#ts_ag_reservation .delivery .profiles td.delete .profile-delete {
-  background:transparent url(images/profile_delete.png) 50% 50% no-repeat;
-  display:inline-block;
-  cursor:pointer;
-  height:16px;
-  width:16px;
-}
-
-html.msie7 #ts_ag_reservation .delivery .profiles th.delete .profile-delete {
-  display:inline;
-  line-height:16px;
-}
-
-#ts_ag_reservation .delivery .profiles .profile_checker { display:none; }
-
-#ts_ag_reservation .delivery .profiles .profile_checker div.radio input { opacity:1 !important; }
-*/
-#ts_ag_reservation .delivery .profile_form { padding:10px 0 0; }
+#ts_ag_reservation .delivery .profile_form { padding:15px 0 0; }
 
 #ts_ag_reservation .delivery .profile_form .field {
-  float:left;
-  line-height:1;
-  margin:0 17px 20px 0;
-  padding-right:22px;
-  position:relative;
-  width:80px;
+  float: left;
+  line-height: 1;
+  margin: 0 18px 20px 0;
+  padding-right: 10px;
+  position: relative;
+  width:65px;
+  zoom: 1;
 }
-
-html.msie7 #ts_ag_reservation .delivery .profile_form .field {
-  margin-right:0;
-}
-
-#ts_ag_reservation .delivery .profile_form .subway{
-  padding-right:0;
-  width:155px;
-}
-
-#ts_ag_reservation .delivery .profile_form .street{
-  width:270px;
-}
-
-#ts_ag_reservation .delivery .profile_form .hours{
-  width:auto;
-}
-
 #ts_ag_reservation .delivery .profile_form .title {
-  color:#8ba2ad;
-  display:block;
-  font-size:12px;
-  font-weight:normal;
-  line-height:12px;
-  padding-bottom:5px;
-  white-space:nowrap;
+  color: #666666;
+  display: block;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 15px;
+  min-height: 15px;
+  padding-bottom: 10px;
+  white-space: nowrap;
 }
 
 #ts_ag_reservation .delivery .profile_form input[type="text"],
 #ts_ag_reservation .delivery .profile_form select {
-  color:#104560;
-  font-size:14px;
-  width:100%;
+  border:1px solid #cccccc;
+  color: #666666;
+  font-size: 15px;
+  font-weight:normal;
+  width: 100%;
+}
+#ts_ag_reservation .delivery .profile_form input[type="text"] {
+  height: 21px;
+  padding:6px 4px;
+}
+#ts_ag_reservation .delivery .profile_form select {
+  height: 35px;
+  padding:6px 2px;
 }
 
-html.msie7 #ts_ag_reservation .delivery .profile_form input[type="text"],
-html.msie7 #ts_ag_reservation .delivery .profile_form select { 
-  width:auto;
+#ts_ag_reservation .delivery .profile_form .subway{
+  padding-right:0;
+  width:215px;
 }
-
-#ts_ag_reservation .delivery .profile_form input[type="text"] { height:22px; }
-
-#ts_ag_reservation .delivery .profile_form select { height:31px; }
-
-#ts_ag_reservation .delivery .profile_form .field.custom {
-  margin-right:17px;
-  padding-right:12px;
-}
-
-#ts_ag_reservation .delivery .profile_form .field.custom div.selector { width:100%; }
-html.msie7 #ts_ag_reservation .delivery .profile_form .field.custom div.selector { width:auto; }
+#ts_ag_reservation .delivery .profile_form .street{ width:195px; }
+#ts_ag_reservation .delivery .profile_form .comments{ width:205px; }
+#ts_ag_reservation .delivery .profile_form .hours{ width:298px; }
 
 
-#ts_ag_reservation .delivery .profile_form .field.custom div.selector span {
-  color:#104560;
-  font-size:14px;
-}
 
 /* 
 
@@ -1705,76 +1593,25 @@ html.msie7 #ts_ag_reservation .delivery .profile_form .field.custom div.selector
 }
 
 #ts_ag_reservation .precommit .wrap{
-  background:#fff;
-  border:solid #bdc5c8;
+  border:solid #d2d2d2;
   border-width:0 1px 1px;
-  padding:23px 170px 35px 150px;
+  padding:20px;
   position:relative;
 }
-#ts_ag_reservation .precommit .rules_and_coditions { }
-
-#ts_ag_reservation .precommit .rules_and_coditions .tariff_agree { text-align:center; }
-
-#ts_ag_reservation .precommit .tariff_agree .checker{
-  border:2px solid #ec008c;
-  display:block;
-  float:left;
-  margin:3px 0 0 -37px;
-}
-
-html.msie7 #ts_ag_reservation .precommit .tariff_agree .checker{
-  margin-left:0;
-  margin-right:16px;
-}
-
-#ts_ag_reservation .precommit .tariff_agree label {
-  color:#104560;
-  font-size:12px;
-  font-weight:0;
-  vertical-align:middle;
-}
-#ts_ag_reservation .precommit .tariff_agree label{
-  display:block;
-  padding-bottom:15px;
-  padding-left:35px;
-}
-
-html.msie7 #ts_ag_reservation .precommit .tariff_agree label{
-  padding-left:0;
-}
-
-#ts_ag_reservation .precommit .tariff_agree label a {
-  color:#50ade4;
-  text-decoration:underline;
-}
-
-#ts_ag_reservation .precommit .tariff_agree label a:hover { text-decoration:none; }
-
-#ts_ag_reservation .precommit .tariff_agree label .link {
-  background:transparent url(images/icon_link_ext.png) 100% 6px no-repeat;
-  display:inline-block;
-  margin-right:2px;
-  min-height:8px;
-  padding-right:12px;
-  text-decoration:underline;
-}
-
 #ts_ag_reservation .precommit .warning {
-  color:#104560;
+  color:#666666;
   font-size:12px;
   font-weight:normal;
   text-align:left;
 }
-
 #ts_ag_reservation .precommit .warning a{
-  display:inline-block;
-  min-height:8px;
-  text-decoration:underline;
+  border-bottom:1px dashed;
+  text-decoration: none;
 }
 
 #ts_ag_reservation .precommit .buttons{
   float:right;
-  padding:0 0 0 25px;
+  padding:0 140px 0 25px;
   text-align:right;
 }
   
@@ -1785,82 +1622,11 @@ html.msie7 #ts_ag_reservation .precommit .tariff_agree label{
   text-align:center;
 }
 
-#ts_ag_reservation .precommit .buttons .c-continue {
-  float:right;
-}
+#ts_ag_reservation .precommit .buttons .c-continue { float:right; }
 
 #ts_ag_reservation .precommit .buttons .c-continue .ticket,
 #ts_ag_reservation .precommit .buttons .c-continue .book,
 #ts_ag_reservation .precommit #forward { display:none; }
-
-#ts_ag_reservation .precommit .buttons .c-continue .button_wrap{
-  background: #8594a0; /* Old browsers */
-  background: -moz-linear-gradient(top,  #adb9bd 0%, #8594a0 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#adb9bd), color-stop(100%,#8594a0)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  #adb9bd 0%,#8594a0 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  #adb9bd 0%,#8594a0 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  #adb9bd 0%,#8594a0 100%); /* IE10+ */
-  background: linear-gradient(to bottom,  #adb9bd 0%,#8594a0 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#adb9bd', endColorstr='#8594a0',GradientType=0 ); /* IE6-9 */
-  
-  display:inline-block;
-  padding:1px;
-}
-
-html.msie7 #ts_ag_reservation .precommit .buttons .c-continue .button_wrap{
-  display:inline;
-}
-
-#ts_ag_reservation .precommit .buttons .state_enabled .button_wrap{
-  background:#c10073;
-  
-}
-
-#ts_ag_reservation .precommit .buttons .c-continue .button{
-  background: #f100ae; /* Old browsers */
-  background: -moz-linear-gradient(top, #f100ae 0%, #e7006c 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f100ae), color-stop(100%, #e7006c)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #f100ae 0%, #e7006c 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #f100ae 0%, #e7006c 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #f100ae 0%, #e7006c 100%); /* IE10+ */
-  background: linear-gradient(to bottom, #f100ae 0%, #e7006c 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f100ae', endColorstr='#e7006c', GradientType=0 ); /* IE6-9 */
-  
-  color:#fff;
-  cursor:pointer;
-  text-shadow:0 1px 0 #ba005c;
-  
-  border:none;
-  -webkit-box-shadow:none;
-  -moz-box-shadow:none;
-  box-shadow:none;
-  height:52px;
-  margin:0;
-  padding:0;
-  width:auto;
-}
-
-#ts_ag_reservation .precommit .buttons .c-continue .button .button_loading_overlay {
-  -webkit-box-shadow:inset 0 1px 0 #f880d7;
-  -moz-box-shadow:inset 0 1px 0 #f880d7;
-  box-shadow:inset 0 1px 0 #f880d7;
-  
-  height:43px;
-  line-height:1;
-  min-width:160px;
-  padding:4px 5px 5px;
-  text-transform:none;
-}
-
-#ts_ag_reservation .precommit .buttons .c-continue .button .title {
-  font-size:18px;
-  text-align:center;
-}
-
-#ts_ag_reservation .precommit .buttons .c-continue .button .price {
-  font-size:24px;
-  text-align:center;
-}
 
 #ts_ag_reservation .precommit .buttons .c-continue .button .button_loading_overlay .loading,
 #ts_ag_reservation .precommit .buttons .c-continue input {
@@ -1868,26 +1634,6 @@ html.msie7 #ts_ag_reservation .precommit .buttons .c-continue .button_wrap{
   margin:0;
   padding:0;
   display:none;
-}
-
-html.msie7 #ts_ag_reservation .precommit .buttons .c-continue input {
-  display:none !important;
-}
-
-#ts_ag_reservation .precommit .buttons .c-continue.state_loading .button .button_loading_overlay {
-  opacity:.3;
-}
-
-#ts_ag_reservation .precommit .buttons .state_loading .button .button_loading_overlay {
-  opacity:1;
-}
-
-#ts_ag_reservation .precommit .buttons .state_loading .button .button_loading_overlay .title,
-#ts_ag_reservation .precommit .buttons .state_loading .button .button_loading_overlay .price { display:none; }
-
-#ts_ag_reservation .precommit .buttons .state_loading .button .button_loading_overlay .loading {
-  display:block;
-  height:43px;
 }
 
 /* Õ¿«Õ¿◊≈Õ»≈ “¿…ÃÀ»Ã»“¿ »« ‘–ŒÕ“Œ‘»—¿ */
