@@ -23,6 +23,25 @@ $MESS[ "TS_FRONTOFFICE_STEP3_ORDER_INBOUND" ] = "Обратно:";
 $MESS[ "TS_FRONTOFFICE_STEP3_ORDER_FARE_RULES" ] = "Правила тарифа";
 $MESS[ "TS_FRONTOFFICE_STEP3_ORDER_TIMELIMIT" ] = "Необходимо оплатить до";
 
+/* ШАГ 2. Выбор рейсов */
+$MESS[ "TS_FRONTOFFICE_STEP2_OFFER_SELECT1" ] = 'Купить';
+$MESS[ "TS_FRONTOFFICE_OPTIMAL_H1" ] = 'Дешевые авиабилеты %DEPARTURE% - %ARRIVAL%';
+$MESS[ "TS_FRONTOFFICE_OPTIMAL_DESCRIPTION" ] = 'TOPTOO.COM &#9992; Дешевые авиабилеты из %DEPARTURE% в %ARRIVAL%%MIN_PRICE%%AK%'; 
+$MESS[ "TS_FRONTOFFICE_OPTIMAL_DESCRIPTION_MIN_PRICE" ] = ' &#9992; Цена билетов от %MIN_PRICE%';
+$MESS[ "TS_FRONTOFFICE_OPTIMAL_DESCRIPTION_AK" ] = ' &#9992; %AK_NUM% авиакомпаний в %ARRIVAL%';
+$MESS[ "TS_FRONTOFFICE_OPTIMAL_OFFER_INSTRUCTION" ] = 'Пожалуйста, выберите цену билета %DEPARTURE% - %ARRIVAL%  и рейс(ы).';
+$MESS[ "TS_FRONTOFFICE_OPTIMAL_OFFER_TITLE" ] = 'Купить дешевые авиабилеты %DEPARTURE% - %ARRIVAL% &#9992; Цена билетов от %MIN_PRICE%.'; 
+
+$MESS[ "TS_FRONTOFFICE_CHARTER_H1" ] = 'Чартерные рейсы %DEPARTURE% - %ARRIVAL%';
+$MESS[ "TS_FRONTOFFICE_CHARTER_DESCRIPTION" ] = 'TOPTOO.COM &#9992; Чартерные авиабилеты из %DEPARTURE% в %ARRIVAL% %MIN_PRICE%%AK%'; 
+$MESS[ "TS_FRONTOFFICE_CHARTER_DESCRIPTION_MIN_PRICE" ] = ' &#9992; Цены на рейсы от %MIN_PRICE%';
+$MESS[ "TS_FRONTOFFICE_CHARTER_DESCRIPTION_AK" ] = ' &#9992; Чартеры от %AK_NAMES%'; 
+$MESS[ "TS_FRONTOFFICE_CHARTER_TH" ] = 'Чартерный рейс';
+$MESS[ "TS_FRONTOFFICE_CHARTER_OFFER_TITLE" ] = 'Чартерные рейсы %DEPARTURE% - %ARRIVAL%';//&#9992; Купить чартер по цене от %MIN_PRICE%.'; 
+
+$MESS[ "IBE_PREVIEW_ACCEPT_CUSTOM" ] = 'Я принимаю условия выбранного тарифа и ознакомлен с <a href="http://www.toptoo.com/terms/" target="_blank">условиями публичной оферты</a>.';
+$MESS[ "IBE_PREVIEW_ACCEPT_VISA_CUSTOM" ] = 'Я принимаю условия выбранного тарифа и ознакомлен с правилами визового режима и <a href="http://www.toptoo.com/terms/" target="_blank">условиями публичной оферты</a>.';
+
 /* personal_data.php */
 /* Подсказки к полям */
 $MESS["TS_FRONTOFFICE_STEP3_CYR"] = "Кириллицей";
