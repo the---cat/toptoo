@@ -9,7 +9,7 @@
 <? $APPLICATION->ShowMeta("keywords") ?>
 <? $APPLICATION->ShowMeta("description") ?>
 
-<title><?=$arLang["SITE_NAME"] ? $arLang["SITE_NAME"]." &#151; " : "" ?><? $APPLICATION->ShowTitle(); ?></title>
+<title><? $APPLICATION->ShowTitle(); ?><?=$arLang["SITE_NAME"] ? " | ".$arLang["SITE_NAME"] : "" ?></title>
 <? define("__JQUERY_JS", true); ?>
 <? define("__BROWSER_JS", true); ?>
 <? define("__TOOLTIP_JS", true); ?>
