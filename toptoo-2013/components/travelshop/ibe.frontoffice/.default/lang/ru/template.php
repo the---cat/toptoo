@@ -128,6 +128,31 @@ $MESS['IBE_FRONTOFFICE_BUTTON_BOOK'] = 'Забронировать';
 $MESS[ "IBE_CREATE_PNR_PRICE_CHANGED" ] = 'Внимание! Изменилась стоимость билетов (по сравнению с первоначально предложенной). Если вы согласны с новой ценой, нажмите "Купить" снова.';
 $MESS[ "IBE_CREATE_PNR_DATE_CHANGED" ] = 'Внимание! Изменилось время вылета или прилета (по сравнению с первоначально предложенным). Если вы согласны с измененным временем, нажмите "Купить" снова.';
 
+/* finish.php */
+$MESS['IBE_FRONTOFFICE_FINISH_ORDER_NO'] = 'Заказ №';
+$MESS['IBE_FRONTOFFICE_FINISH_ORDER_PAYED'] = 'успешно оплачен';
+$MESS['IBE_FRONTOFFICE_FINISH_ORDER_BOOKED'] = 'успешно создан';
+$MESS['IBE_FRONTOFFICE_FINISH_ITINERARY_SENT'] = 'На Вашу электронную почту отправлена маршрут-квитанция.';
+$MESS['IBE_FRONTOFFICE_FINISH_ORDER_INFO_SENT'] = 'На Вашу электронную почту отправлена информация о заказе.';
+
+$MESS['IBE_FRONTOFFICE_FINISH_ITINERARY_LINK'] = 'Скачать маршрут-квитанции в PDF';
+$MESS['IBE_FRONTOFFICE_FINISH_INSURANE_LINK'] = 'Скачать страховой полис';
+
+$MESS['IBE_FRONTOFFICE_FINISH_OLDER_LINK'] = 'Информация о заказе';
+$MESS['IBE_FRONTOFFICE_FINISH_PAYMETHOD_ONLINE'] = '<p>Благодарим Вас за заказ!</p>';
+$MESS['IBE_FRONTOFFICE_FINISH_PAYMETHOD_COUR'] = '<p>Благодарим Вас за заказ!</p>';
+$MESS['IBE_FRONTOFFICE_FINISH_PAYMETHOD_SELF'] = '<p>Благодарим Вас за заказ!</p><p>Вы можете оплатить заказ в любой день до %TIMELIMIT%.</p>';
+$MESS['IBE_FRONTOFFICE_FINISH_PAYMETHOD_PCS'] = '<p>Благодарим Вас за заказ!</p><p>Вы можете оплатить заказ наличными в терминалах ОСМП / QIWI, Элекснет, ЕСГП, УниКасса, PINPAY, а также наличными через оператора в сети салонов «Евросеть». Пожалуйста, сохраняйте чек на произведенную оплату. После оплаты заказа маршрут-квитанция сформируется автоматически и будет отправлена на Ваш электронный адрес, указанный при бронировании.</p>';
+$MESS['IBE_FRONTOFFICE_FINISH_ADS'] = 'На нашем сайте можно приобрести авиабилеты более 500 авиакомпаний с вылетом практически из любых точек мира. Мы продаем авиабилеты как на регулярные, так и на чартерные рейсы. Мы стараемся предложить пользователю максимальное количество вариантов рейсов на запрашиваемые даты и направления. Эти варианты отличаются по времени в пути, количеству пересадок, ценам и условиям возврата.';
+
+$MESS['IBE_FRONTOFFICE_FINISH_THANKS_FOR_BUY'] = '<p>Спасибо, что выбрали TopToo!</p>';
+$MESS['IBE_FRONTOFFICE_FINISH_THANKS_FOR_ORDER'] = '<p>Рекомендуем не откладывать оплату Вашего заказа.<br />Спасибо, что выбрали TopToo!</p>';
+
+$MESS['IBE_FRONTOFFICE_FINISH_ITINERARY_LINK'] = 'Маршрут-квитанция';
+$MESS['IBE_FRONTOFFICE_FINISH_INSURANE_LINK'] = 'Страховой полис';
+
+$MESS['IBE_FRONTOFFICE_FINISH_OLDER_LINK'] = 'Информация о заказе';
+
 /* Common */
 $MESS['IBE_FRONTOFFICE_BUTTON_NEXT'] = 'Далее';
 

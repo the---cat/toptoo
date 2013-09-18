@@ -43,7 +43,7 @@ echo GetIbeJsStrings();
        */ ?>
       </div>
       <? global $IBE_WEB_LOG_OUTPUT; ?>
-      <input id="<?= $arResult['COMMIT']['FIELDS'][0]['~ID'] ?>" name="<?= $arResult['COMMIT']['FIELDS'][0]['NAME'] ?>" class="<?=$arResult['COMMIT']['FIELDS'][0]['CLASS']  ?>" type="<?= $arResult['COMMIT']['FIELDS'][0]['~TYPE'] ?>" onclick="_gaq.push(['_trackPageview', '/<?= $IBE_WEB_LOG_OUTPUT["site_id"] ?>/avia/commit/<?= $IBE_WEB_LOG_OUTPUT["meta"] == 1 ? "meta" : "site" ?>/<?= $_SERVER["REMOTE_ADDR"] ?>/<?= $_SERVER["SERVER_NAME"] ?>/<?= $IBE_WEB_LOG_OUTPUT["bought"] >= 2 ? "regular customer" : "new customer" ?>/']); <?= $arResult['COMMIT']['FIELDS'][0]['ONCLICK'] ?>" value="<?= GetMessage('IBE_FRONTOFFICE_BUTTON_COMMIT_ONLINE') ?>" />
+      <input id="<?= $arResult['COMMIT']['FIELDS'][0]['~ID'] ?>" name="<?= $arResult['COMMIT']['FIELDS'][0]['NAME'] ?>" class="<?=$arResult['COMMIT']['FIELDS'][0]['CLASS']  ?>" type="<?= $arResult['COMMIT']['FIELDS'][0]['~TYPE'] ?>" onclick="<?= $arResult['COMMIT']['FIELDS'][0]['ONCLICK'] ?>" value="<?= GetMessage('IBE_FRONTOFFICE_BUTTON_COMMIT_ONLINE') ?>" />
     </div>
     <?//= CTemplateToolsUtil::RenderField($arResult['COMMIT']) ?>
     <? } ?>

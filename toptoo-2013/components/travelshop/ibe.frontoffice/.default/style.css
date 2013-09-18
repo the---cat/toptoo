@@ -1227,11 +1227,7 @@ html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date sele
   margin: 0 0 0 2em;
 }
 
-/*
-
-нокюрю. бшанп яонянаю нокюрш
-
-*/
+/* нокюрю. бшанп яонянаю нокюрш */
 #ts_ag_reservation .pay_method{ 
   border:solid #D2D2D2;
   border-width:1px 1px 0;
@@ -1322,11 +1318,6 @@ html.msie7 #ts_ag_reservation .pay_method .paysystem_icon{margin-right:5px;}
   font-weight:normal;
   text-decoration:underline;
   width:66%;
-}
-
-html.msie7 #ts_ag_reservation .pay_method .summ,
-html.msie7 #ts_ag_reservation .pay_method .paysystem_name{
-  line-height:28px;
 }
 
 #ts_ag_reservation .pay_method .paymethods_group .paysystem_name{}
@@ -1582,15 +1573,8 @@ html.msie7 #ts_ag_reservation .pay_method .paysystem_name{
 
 
 
-/* 
-
-ондрбепфдемхе
-
- */
-#ts_ag_reservation .precommit {
-  margin:0 auto;
-  width:1000px;
-}
+/*  ондрбепфдемхе */
+#ts_ag_reservation .precommit { }
 
 #ts_ag_reservation .precommit .wrap{
   border:solid #d2d2d2;
@@ -1634,6 +1618,31 @@ html.msie7 #ts_ag_reservation .pay_method .paysystem_name{
   margin:0;
   padding:0;
   display:none;
+}
+
+/* пегскэрюр */
+#ts_ag_reservation .finish{
+  border:1px solid #d2d2d2;
+  padding:20px;
+}
+#ts_ag_reservation .finish .order_sent,
+#ts_ag_reservation .finish .order_description,
+#ts_ag_reservation .finish .ads,
+#ts_ag_reservation .finish .thanks{
+  color:#333333;
+  font-size:13px;
+  font-weight:normal;
+  line-height: 1.3;
+  margin-bottom:20px;
+}
+#ts_ag_reservation .finish .order_description{ margin-bottom:0; }
+
+#ts_ag_reservation .finish .links{}
+#ts_ag_reservation .finish .links a,
+#ts_ag_reservation .finish .links .link{
+  border-bottom:1px dashed;
+  color: #003399;
+  text-decoration: none;
 }
 
 /* мюгмювемхе рюилкхлхрю хг тпнмрнтхяю */
