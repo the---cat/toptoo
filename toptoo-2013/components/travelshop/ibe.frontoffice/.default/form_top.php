@@ -48,7 +48,7 @@ function fnPassengersNotice(){
   );
 }
 </script>
-<div class="top_form_wrap">
+<div class="form_wrap">
 <form action="<?= $arResult['form']['action'] ?>" class="form-order clearfix <?= ( $arResult['rt_checked'] ? 'form_rt' : 'form_ow' ) ?>" method="post" name="reg_form" onsubmit="<?= $arResult['form']['onsubmit'] ?>" style="<?= $arResult['form']['style'] ?>" id="<?= $arResult['form']['~id'] ?>">
   <input name="next_page" type="hidden" value="<?= $arResult['next_page']; ?>" />
   <input name="date_format" type="hidden" value="site" />
@@ -59,14 +59,14 @@ function fnPassengersNotice(){
     <div class="type type_ow<? if($arResult['ow_checked']){ ?> selected<? } ?>"><?=GetMessage("TS_STEP1_SEARCHFORM_ROUTE_TYPE_OW") ?></div>
   </fieldset>
 
-  <fieldset class="top_form_points clearfix">
+  <fieldset class="route clearfix">
     <div class="point departure">
       <div class="location">
         <input class="text" id="depart_top" name="depart" type="text" value="<?=$arResult['depart'] ?>" />
         <div class="link-container"><?=CTemplateToolsPoint::Link("depart", GetMessage("TS_STEP1_SEARCHFORM_TOOLS_POINT_DEPARTURE_SHORT_TITLE"), GetMessage("TS_STEP1_SEARCHFORM_TOOLS_POINT_DEPARTURE_TITLE")); ?></div>
       </div>
     </div>
-    <div id="route_switch" class="point"></div>
+    <div id="route_switch_top" class="route_switch point"></div>
     <div class="point arrival">
       <div class="location">
         <input class="text" id="arrival_top" name="arrival" type="text" value="<?=$arResult['arrival'] ?>" />
@@ -75,14 +75,14 @@ function fnPassengersNotice(){
     </div>
   </fieldset>
 
-  <fieldset class="top_form_dates">
+  <fieldset class="dates">
     <div class="date date_to">
       <div class="date-container">
         <input type="text" id="dateto_top" name="dateto" maxlength="10" size="10" value="<?=$arResult['d_to'] ?>" />
       </div>
     </div>
     <div class="date date_back">
-      <div id="add_dateback"><?= GetMessage('TS_STEP1_SEARCHFORM_ADD_ARRIVAL_DATE') ?></div>
+      <div id="add_dateback_top" class="add_dateback"><?= GetMessage('TS_STEP1_SEARCHFORM_ADD_ARRIVAL_DATE') ?></div>
       <div class="date-container" id="form_dateback_top">
         <input type="text" id="dateback_top" name="dateback" maxlength="10" size="10" value="<?=$arResult['d_back'] ?>" />
       </div>
@@ -93,7 +93,7 @@ function fnPassengersNotice(){
   <input type="hidden" name="child" id="form_top_child" value="<?= $arResult['select_pcl_child_selected'] ?>" />
   <input type="hidden" name="infant" id="form_top_infant" value="<?= $arResult['select_pcl_infant_selected'] ?>" />
   
-  <fieldset class="top_form_submit"><input class="button" type="submit" value="<?= GetMessage('TS_STEP1_SEARCHFORM_SEARCH') ?>" id="<?= $arResult[ 'SUBMIT' ][ '~ID' ] ?>" style=" <?= $arResult[ 'SUBMIT' ][ 'STYLE' ] ?>" /></fieldset>
+  <fieldset class="submit top_form_submit"><input class="button" type="submit" value="<?= GetMessage('TS_STEP1_SEARCHFORM_SEARCH') ?>" id="<?= $arResult[ 'SUBMIT' ][ '~ID' ] ?>" style=" <?= $arResult[ 'SUBMIT' ][ 'STYLE' ] ?>" /></fieldset>
   <div class="form_top_notice" id="form_top_passengers_notice"></div>
   <script type="text/javascript">
   // <![CDATA[
@@ -131,25 +131,25 @@ function fnPassengersNotice(){
 <? endif; ?>
 <script type="text/javascript">
 // <![CDATA[
-function switchRouteType(type_val){
+function switchRouteTypeTop(type_val){
   var type = type_val.toLowerCase();
   form = $('#<?= $arResult['form']['~id'] ?>');
-  if ( $('.route-types .type_'+type).hasClass('selected') || form.hasClass('form_'+type) ) return;
+  if ( form.find('.route-types .type_'+type).hasClass('selected') || form.hasClass('form_'+type) ) return;
   var prev_type_val = $('#rt-ow-val_top').val(),
   prev_type = prev_type_val.toLowerCase();
-  $('.route-types .selected').removeClass('selected');
-  $('.route-types .type_'+type).addClass('selected');
+  form.find('.route-types .selected').removeClass('selected');
+  form.find('.route-types .type_'+type).addClass('selected');
   form.removeClass('form_'+prev_type).addClass('form_'+type);
   $('#rt-ow-val_top').val(type_val);
 }
-$('.route-types .type').click(function() {
+$('#<?= $arResult['form']['~id'] ?> .route-types .type').click(function() {
   var type = $(this),
   type_val = type.hasClass('type_rt') ? 'RT' : 'OW';
-  switchRouteType(type_val);
+  switchRouteTypeTop(type_val);
 });
-$('#add_dateback').click(function(){ switchRouteType('RT'); });
+$('#add_dateback_top').click(function(){ switchRouteTypeTop('RT'); });
 
-$('#route_switch').click(function(){
+$('#route_switch_top').click(function(){
   var point = $('#depart_top').val();
   $('#depart_top').val($('#arrival_top').val());
   $('#arrival_top').val(point);

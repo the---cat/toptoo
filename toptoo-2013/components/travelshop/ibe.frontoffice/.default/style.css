@@ -1,4 +1,5 @@
-#ts_ag_reservation_container__form_top .top_form_wrap{
+#ts_ag_reservation_container__form_order .form_wrap,
+#ts_ag_reservation_container__form_top .form_wrap{
   background: #ffb433;
   background: -moz-linear-gradient(top, #ffb433 0%, #ffb93d 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffb433), color-stop(100%,#ffb93d));
@@ -12,9 +13,9 @@
   width: 100%;
 }
 .search_history_container,
-#ts_ag_reservation_container__form_top .top_form_wrap .form-order,
+#ts_ag_reservation_container__form_top .form_wrap .form-order,
+#ts_ag_reservation_container__form_order .form_wrap .form-order,
 #ts_ag_reservation_container__form_top .form_tools,
-#ts_ag_reservation_container__form_order,
 #ts_ag_reservation_container__offer,
 #ts_ag_reservation_container__order,
 #ts_ag_reservation_container__personal_data,
@@ -180,195 +181,17 @@
 
 
 /* ФОРМА ЗАПРОСА */
-#ts_ag_reservation .form-order { padding: 1em; } /*Блок формы*/
-#ts_ag_reservation .form-order fieldset { border: none; }
-#ts_ag_reservation .form-order legend { display: none; } /*Заголовок общий для всех блоков*/
-#ts_ag_reservation .form-order .title{ cursor: pointer; }
-
-#ts_ag_reservation .form-order .route-types { padding-bottom: .6em; } /*Блок "Тип перевозки"*/
-#ts_ag_reservation .form-order .route-types .types { margin-left: 5em; } /*Блок типа перевозки*/
-#ts_ag_reservation .form-order .route-types .type {
-  float: left;
-  margin-right: 1em;
-  white-space: nowrap;
-} /*Блок каждого типа перевозки*/
-#ts_ag_reservation .form-order .route-types .type * { vertical-align: middle; }
-
-#ts_ag_reservation .form-order .route,
-#ts_ag_reservation .form-order .passengers {
-  float: left;
-  padding-right: 2em;
-  width: 21em;
+#ts_ag_reservation .form-order{ padding:10px 5px; } /*Блок формы*/
+#ts_ag_reservation .form-order .main_fields{ 
+  float:left; 
+  max-width:820px;
 }
-
-#ts_ag_reservation .form-order .route .point,
-#ts_ag_reservation .form-order .dates .date {
-  height: 2.4em;
-  padding-bottom: .6em;
-}
-
-#ts_ag_reservation .form-order .route .point { } /*Блок каждого пункта маршрута*/
-
-#ts_ag_reservation .form-order .route .point .title,
-#ts_ag_reservation .form-order .dates .date .title{
-  float: left;
-  font-weight: bold;
-  padding: 2px 0 .3em 0;
-  width: 5em;
-}
-
-#ts_ag_reservation .form-order .route .point .location {
-  float: left;
-  position:relative;
-}
-
-#ts_ag_reservation .form-order .route .point input,
-#ts_ag_reservation .form-order .route .point select { width: 15em; }
-
-#ts_ag_reservation .form-order .route .point input {
-  background: #ffffff url(images/clear.png) 100% 50% no-repeat;
-  display: block;
-  position: relative;
-  z-index: 1;
-} /*Поле ввода пункта маршрута*/
-
-#ts_ag_reservation .form-order .route .point input.ac_loading{
-  background-image:url(images/loader.white.gif);
-}
-
-#ts_ag_reservation .form-order .route .point .clear_field {
-    color:#ffffff;
-    cursor: pointer;
-    font-weight: bold;
-    height: 18px;
-    padding: 2px;
-    position: absolute;
-    right: 1px;
-    text-align: center;
-    top: 1px;
-    width: 17px;
-    z-index: 3;
-}
-
-html.msie #ts_ag_reservation .form-order .route .point .clear_field{
-  background: #ffffff;
-  filter:Alpha(opacity=5);
-  opacity:.1;
-}
-
-#ts_ag_reservation .form-order .route .point .link-container{ padding:.1em 0 .2em; }
-#ts_ag_reservation .form-order .route .point .link-container a {
-  border-bottom: 1px dashed;
-  font-size: 75%;
-  padding: 0;
-  text-decoration: none;
-} /*Ссылка вызова справочника пунктов*/
-
-#ts_ag_reservation .form-order .route .point .link-container .cities_list{
-	float:right;
-	margin-left:.5em;
-}
-#ts_ag_reservation .form-order .route .point .link-container .cities_links a{
-	margin-right:3px;
-	vertical-align:top;
-}
-
-#ts_ag_reservation .form-order .dates,
-#ts_ag_reservation .form-order .preferences {
-  float: left;
-  width: 27em;
-}
-
-#ts_ag_reservation .form-order .dates .date input {
-  vertical-align: middle;
-  width: 5.3em;
-} /*Поле ввода даты*/
-
-#ts_ag_reservation .form-order .dates .date .date-container {
-  float: left;
-  width: 21em;
-}
-#ts_ag_reservation .form-order .dates .date .date-input { float: left; }
-#ts_ag_reservation .form-order .dates .date .date-sampler {
-  color: #999999;
-  font-size: 75%;
-}
-
-#ts_ag_reservation .form-order .dates .date select {
-  vertical-align: middle;
-  width: 12em;
-} /*Выпадающий список с диапазоном времени*/
-
-#ts_ag_reservation .form-order .dates .date .calendar-container {
-  float:left;
-  margin-right:5px;
-}
-
-#ts_ag_reservation .form-order .dates .date .calendar-container img {
-  border:3px solid #fff;
-  margin-left:5px;
-  vertical-align:middle;
-}
-
-#ts_ag_reservation .form-order .dates .date .calendar-container img:hover {
-  border-color:#f63;
-}
-
-.ui-datepicker { font-size:12px !important; }
-
-#ts_ag_reservation .form-order .passengers,
-#ts_ag_reservation .form-order .preferences{
-  padding-bottom: .6em;
-}
-
-#ts_ag_reservation .form-order .passengers .passenger {
-  margin: 0;
-  padding: 0 0 .3em 0;
-} /*Общий блок категорий пассажиров всех типов*/
-
-#ts_ag_reservation .form-order .passengers .passenger .title {
-  display: -moz-inline-box;
-  display: inline-block;
-  vertical-align: middle;
-  width: 7.8em;
-}
-
-#ts_ag_reservation .form-order .passengers .passenger select {
-  vertical-align: middle;
-  max-width: 13em;
-  width: 3em; /*FF2, Safari*/
-}/* Общие свойства выпадающих списков с количеством пассажиров*/
-
-#ts_ag_reservation .form-order .passengers .category select { width: auto; } /*Выпадающий список с перечнем категорий пассажиров*/
-
-#ts_ag_reservation .form-order .preferences .preference { padding-bottom: .3em; }
-
-#ts_ag_reservation .form-order .preferences .preference .title {
-  display: -moz-inline-box;
-  display: inline-block;
-  vertical-align: middle;
-  width: 9em;
-}
-
-#ts_ag_reservation .form-order .preferences .preference input,
-#ts_ag_reservation .form-order .preferences .preference select {
-  max-width: 18em;
-  vertical-align: middle;
-}
-
-#ts_ag_reservation .form-order .preferences .company select { width: 17em; } /*Выпадающий список авиакомпаний*/
-#ts_ag_reservation .form-order .preferences .direct .title {
-  margin-right: .5em;
-  width: auto;
-} /*Подпись к типам рейсов*/
-
-/* Режим all_in_one */
-#ts_ag_reservation_container__form_top .form-order{ padding:10px 5px; }
-#ts_ag_reservation_container__form_top .form-order .route-types{
+#ts_ag_reservation .form-order .add_fields{ clear:both; }
+#ts_ag_reservation .form-order .route-types{
   clear:both;
   padding-bottom:7px;
 }
-#ts_ag_reservation_container__form_top .form-order .route-types .type{
+#ts_ag_reservation .form-order .route-types .type{
   border-bottom:1px dashed;
   color:#303030;
   cursor: pointer;
@@ -378,19 +201,19 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   text-transform: uppercase;
   vertical-align: top;
 }
-#ts_ag_reservation_container__form_top .form-order .route-types .selected{
+#ts_ag_reservation .form-order .route-types .selected{
   border-bottom:none;
   cursor: default;
   font-weight:bold;
 }
 
-#ts_ag_reservation_container__form_top .form-order .top_form_points,
-#ts_ag_reservation_container__form_top .form-order .top_form_dates,
-#ts_ag_reservation_container__form_top .form-order .point,
-#ts_ag_reservation_container__form_top .form-order .date { float:left; }
-#ts_ag_reservation_container__form_top .form-order .top_form_points { padding-right:1em; }
+#ts_ag_reservation .form-order .route,
+#ts_ag_reservation .form-order .dates,
+#ts_ag_reservation .form-order .point,
+#ts_ag_reservation .form-order .date { float:left; }
+#ts_ag_reservation .form-order .route { padding-right:1em; }
 
-#ts_ag_reservation_container__form_top .form-order input[type="text"]{
+#ts_ag_reservation .form-order input[type="text"]{
   border:1px solid #c89010;
   color:#000000;
   display: block;
@@ -400,14 +223,25 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   padding:6px 20px 6px 5px;
   position: relative;
 }
-#ts_ag_reservation_container__form_top .form-order #route_switch{
+#ts_ag_reservation .form-order select{
+  border:1px solid #c89010;
+  color:#000000;
+  display: block;
+  font-size:15px;
+  font-weight:bold;
+  height: 35px;
+  padding:6px 2px;
+  position: relative;
+}
+
+#ts_ag_reservation .form-order .route_switch{
   cursor: pointer;
   height:35px;
   position: relative;
   width:32px;
 }
-#ts_ag_reservation_container__form_top .form-order #route_switch:before,
-#ts_ag_reservation_container__form_top .form_rt #route_switch:after{ 
+#ts_ag_reservation .form-order .route_switch:before,
+#ts_ag_reservation .form_rt .route_switch:after{ 
   color:#000000;
   content:'\2192';
   display:block;
@@ -418,22 +252,22 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   top:0;
   width:32px;
 }
-#ts_ag_reservation_container__form_top .form_rt #route_switch:before{ line-height: 29px; }
-#ts_ag_reservation_container__form_top .form_rt #route_switch:after{
+#ts_ag_reservation .form_rt .route_switch:before{ line-height: 29px; }
+#ts_ag_reservation .form_rt .route_switch:after{
   bottom:0;
   content:'\2190';
   line-height: 29px;
   top:auto;
 }
 
-#ts_ag_reservation_container__form_top .form-order .location,
-#ts_ag_reservation_container__form_top .form-order .date-container{ position:relative; }
+#ts_ag_reservation .form-order .location,
+#ts_ag_reservation .form-order .date-container{ position:relative; }
 
-#ts_ag_reservation_container__form_top .form-order .point input { font-size:18px; width:220px; }
-#ts_ag_reservation_container__form_top .form-order .point input.ac_loading{
+#ts_ag_reservation .form-order .point input { font-size:18px; width:220px; }
+#ts_ag_reservation .form-order .point input.ac_loading{
   background:#ffffff url(images/loader.white.gif) 90% 50% no-repeat;
 }
-#ts_ag_reservation_container__form_top .form-order .location .link-container{
+#ts_ag_reservation .form-order .location .link-container{
   background:url(images/point.png) 50% 50% no-repeat;
   cursor: pointer; 
   display: block;
@@ -446,11 +280,11 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   width:20px;
 }
 
-#ts_ag_reservation_container__form_top .form-order .date_to{
+#ts_ag_reservation .form-order .date_to{
   padding-right:23px;
   position:relative;
 }
-#ts_ag_reservation_container__form_top .form-order .date_to:after{
+#ts_ag_reservation .form-order .date_to:after{
   color:#000000;
   content: '\2013';
   display: block;
@@ -462,7 +296,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   width:23px;
 }
 
-#ts_ag_reservation_container__form_top .form-order #add_dateback{
+#ts_ag_reservation .form-order .add_dateback{
   border:1px dashed #a76c00;
   color:#a86d00;
   cursor: pointer;
@@ -472,19 +306,108 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   line-height: 21px;
   padding:6px 10px;
 }
+#ts_ag_reservation .form_ow #form_dateback,
+#ts_ag_reservation .form_ow #form_dateback_top,
+#ts_ag_reservation .form_rt .add_dateback{ display: none; }
 
-#ts_ag_reservation_container__form_top .form_ow #form_dateback_top,
-#ts_ag_reservation_container__form_top .form_rt #add_dateback{ display: none; }
-
-#ts_ag_reservation_container__form_top .form-order .date input { width:90px; }
-#ts_ag_reservation_container__form_top .form-order .date-container img{
+#ts_ag_reservation .form-order .date input { width:90px; }
+#ts_ag_reservation .form-order .date-container img{
   cursor: pointer;
   position: absolute;
   right:6px;
   top:11px;
 }
+#ts_ag_reservation .form-order .title{
+  color:#666666;
+  display: block;
+  font-size:11px;
+  font-weight:normal;
+  padding-bottom:2px;
+}
 
-#ts_ag_reservation_container__form_top .form-order .top_form_submit {
+#ts_ag_reservation .form-order .passengers,
+#ts_ag_reservation .form-order .preferences{ 
+  float:left;
+  padding-top:10px;
+}
+#ts_ag_reservation .form-order .passengers{ margin-right:25px; }
+#ts_ag_reservation .form-order .passenger{
+  float:left;
+  position:relative;
+  width:85px;
+}
+#ts_ag_reservation .form-order .passenger:before{
+  background: url(images/passengers.png) 0 100% no-repeat;
+  bottom:0;
+  content: '';
+  display: block;
+  height:35px;
+  left:0;
+  position: absolute;
+  width:25px;
+}
+#ts_ag_reservation .form-order .adult:before{ background-position: 0 100%; }
+#ts_ag_reservation .form-order .child:before{ background-position: -25px 100%; }
+#ts_ag_reservation .form-order .infant:before{ background-position: -50px 100%; }
+#ts_ag_reservation .form-order .passenger .select_wrap{
+  background:#ffffff;
+  border:1px solid #c89010;
+  display:block;
+  height:33px;
+  margin-left:25px;
+  overflow: hidden;
+  position: relative;
+  width:43px;
+}
+#ts_ag_reservation .form-order .passenger .select_wrap:after{
+  border-top:5px solid #000000;
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+  content:'';
+  display: block;
+  height:0;
+  position: absolute;
+  right:5px;
+  top:14px;
+  width:0;
+}
+#ts_ag_reservation .form-order .passenger select{
+  border:none;
+  height:33px;
+  width:65px;
+}
+
+#ts_ag_reservation .form-order .preference{ 
+  float:left;
+  margin-right:20px;
+}
+#ts_ag_reservation .form-order .class .service_class_title{
+  background:transparent url(images/radios.png) 0 50% no-repeat;
+  color:#333333;
+  cursor: pointer;
+  display: inline-block;
+  font-size:12px;
+  font-weight:normal;
+  height:14px;
+  line-height: 14px;
+  margin:14px 20px 0 0;
+  padding-left:20px;
+  vertical-align: middle;
+}
+#ts_ag_reservation .form-order .class .selected{ background-image: url(images/radios_sel.png); }
+html.msie7 #ts_ag_reservation .form-order .class .service_class_title{ display:block; float:left; }
+#ts_ag_reservation .form-order .company select{ max-width: 193px; }
+#ts_ag_reservation .form-order .direct{ padding-top:26px; }
+#ts_ag_reservation .form-order .direct .title{ 
+  color:#333333;
+  cursor: pointer;
+  display: inline-block;
+  font-size:12px;
+  font-weight:normal;
+  padding-left: 5px;
+  vertical-align: middle;
+}
+#ts_ag_reservation .form-order .submit {
   background: #bababa;
   background: -moz-linear-gradient(top,  #e7e7e7 0%, #bababa 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e7e7e7), color-stop(100%,#bababa));
@@ -495,7 +418,7 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   float:right;
   padding:1px;
 }
-#ts_ag_reservation_container__form_top .form-order .top_form_submit .button{
+#ts_ag_reservation .form-order .submit .button{
   background: #f0efef;
   background: -moz-linear-gradient(top, #f0efef 0%, #dcdcdd 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f0efef), color-stop(100%,#dcdcdd));
@@ -509,9 +432,9 @@ html.msie #ts_ag_reservation .form-order .route .point .clear_field{
   padding: 5px;
 }
 
-#ts_ag_reservation_container__form_top .form_tools{ padding:11px 0; }
-html.msie9 #ts_ag_reservation_container__form_top .form-order .top_form_submit,
-html.msie9 #ts_ag_reservation_container__form_top .form-order .top_form_submit .button{ width:125px; }
+#ts_ag_reservation .form_tools{ padding:11px 0; }
+html.msie9 #ts_ag_reservation .form-order .top_form_submit,
+html.msie9 #ts_ag_reservation .form-order .top_form_submit .button{ width:125px; }
 
 /* ВЫБОР РЕЙСОВ. РЕКОМЕНДАЦИЯ ОПТИМАЛЬНЫХ ТАРИФОВ */
 /* Список рекомендаций */
@@ -911,7 +834,7 @@ html.msie9 #ts_ag_reservation_container__form_top .form-order .top_form_submit .
 
 #ts_ag_reservation .personal_data .profiles .profile_form .name,
 #ts_ag_reservation .personal_data .profiles .profile_form .phone{ width: 190px; }
-#ts_ag_reservation .personal_data .profiles .profile_form .mail { width:240px; }
+#ts_ag_reservation .personal_data .profiles .profile_form .mail { margin-right:0; width:240px; }
 
 #ts_ag_reservation .personal_data .profiles .profile_form div.docnumber,
 #ts_ag_reservation .personal_data .profiles .profile_form div.ffcardnmbr { padding-right: 47px }
