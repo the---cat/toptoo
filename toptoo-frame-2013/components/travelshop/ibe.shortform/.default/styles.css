@@ -1,0 +1,286 @@
+/*  –¿“ ¿ﬂ ‘Œ–Ã¿ */
+#ts_ag_quick_reservation_form .form_wrap{
+  background: #ffb433;
+  background: -moz-linear-gradient(top, #ffb433 0%, #ffb93d 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffb433), color-stop(100%,#ffb93d));
+  background: -webkit-linear-gradient(top, #ffb433 0%,#ffb93d 100%);
+  background: -o-linear-gradient(top, #ffb433 0%,#ffb93d 100%);
+  background: -ms-linear-gradient(top, #ffb433 0%,#ffb93d 100%);
+  background: linear-gradient(to bottom, #ffb433 0%,#ffb93d 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb433', endColorstr='#ffb93d',GradientType=0 );
+  margin: 0;
+  min-width:960px;
+  width: 100%;
+}
+#ts_ag_quick_reservation_form .form_wrap .form-order{
+  margin: 0 auto;
+  min-width:960px;
+  max-width: 1000px;
+}
+#ts_ag_quick_reservation_form .form-order{ padding:10px 5px; } /*¡ÎÓÍ ÙÓÏ˚*/
+#ts_ag_quick_reservation_form .form-order .main_fields{ 
+  float:left; 
+  max-width:820px;
+}
+#ts_ag_quick_reservation_form .form-order .add_fields{ clear:both; }
+#ts_ag_quick_reservation_form .form-order .route-types{
+  clear:both;
+  padding-bottom:7px;
+}
+#ts_ag_quick_reservation_form .form-order .route-types .type{
+  border-bottom:1px dashed;
+  color:#303030;
+  cursor: pointer;
+  display: inline-block;
+  font-size:11px;
+  margin-right:25px;
+  text-transform: uppercase;
+  vertical-align: top;
+}
+#ts_ag_quick_reservation_form .form-order .route-types .selected{
+  border-bottom:none;
+  cursor: default;
+  font-weight:bold;
+}
+
+#ts_ag_quick_reservation_form .form-order .route,
+#ts_ag_quick_reservation_form .form-order .dates,
+#ts_ag_quick_reservation_form .form-order .point,
+#ts_ag_quick_reservation_form .form-order .date { float:left; }
+#ts_ag_quick_reservation_form .form-order .route { padding-right:1em; }
+
+#ts_ag_quick_reservation_form .form-order input[type="text"]{
+  border:1px solid #c89010;
+  color:#000000;
+  display: block;
+  font-size:15px;
+  font-weight:bold;
+  height: 21px;
+  padding:6px 20px 6px 5px;
+  position: relative;
+}
+#ts_ag_quick_reservation_form .form-order select{
+  border:1px solid #c89010;
+  color:#000000;
+  display: block;
+  font-size:15px;
+  font-weight:bold;
+  height: 35px;
+  padding:6px 2px;
+  position: relative;
+}
+
+#ts_ag_quick_reservation_form .form-order .route_switch{
+  cursor: pointer;
+  height:35px;
+  position: relative;
+  width:32px;
+}
+#ts_ag_quick_reservation_form .form-order .route_switch:before,
+#ts_ag_quick_reservation_form .form_rt .route_switch:after{ 
+  color:#000000;
+  content:'\2192';
+  display:block;
+  left:0;
+  line-height:35px;
+  position: absolute;
+  text-align: center;
+  top:0;
+  width:32px;
+}
+#ts_ag_quick_reservation_form .form_rt .route_switch:before{ line-height: 29px; }
+#ts_ag_quick_reservation_form .form_rt .route_switch:after{
+  bottom:0;
+  content:'\2190';
+  line-height: 29px;
+  top:auto;
+}
+
+#ts_ag_quick_reservation_form .form-order .location,
+#ts_ag_quick_reservation_form .form-order .date-container{ position:relative; }
+
+#ts_ag_quick_reservation_form .form-order .point input { font-size:18px; width:220px; }
+#ts_ag_quick_reservation_form .form-order .point input.ac_loading{
+  background:#ffffff url(images/loader.white.gif) 90% 50% no-repeat;
+}
+#ts_ag_quick_reservation_form .form-order .location .link-container{
+  background:url(images/point.png) 50% 50% no-repeat;
+  cursor: pointer; 
+  display: block;
+  height:35px;
+  overflow: hidden;
+  position: absolute;
+  right:1px;
+  text-indent: 100px;
+  top:1px;
+  width:20px;
+}
+
+#ts_ag_quick_reservation_form .form-order .date_to{
+  padding-right:23px;
+  position:relative;
+}
+#ts_ag_quick_reservation_form .form-order .date_to:after{
+  color:#000000;
+  content: '\2013';
+  display: block;
+  line-height:35px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top:0;
+  width:23px;
+}
+
+#ts_ag_quick_reservation_form .form-order .add_dateback{
+  border:1px dashed #a76c00;
+  color:#a86d00;
+  cursor: pointer;
+  display: inline-block;
+  font-size:12px;
+  height: 21px;
+  line-height: 21px;
+  padding:6px 10px;
+}
+#ts_ag_quick_reservation_form .form_ow #form_dateback,
+#ts_ag_quick_reservation_form .form_ow #form_dateback_top,
+#ts_ag_quick_reservation_form .form_rt .add_dateback{ display: none; }
+
+#ts_ag_quick_reservation_form .form-order .date input { width:90px; }
+#ts_ag_quick_reservation_form .form-order .date-container img{
+  cursor: pointer;
+  position: absolute;
+  right:6px;
+  top:11px;
+}
+#ts_ag_quick_reservation_form .form-order .title{
+  color:#666666;
+  display: block;
+  font-size:11px;
+  font-weight:normal;
+  padding-bottom:2px;
+}
+
+#ts_ag_quick_reservation_form .form-order .passengers,
+#ts_ag_quick_reservation_form .form-order .preferences{ 
+  float:left;
+  padding-top:10px;
+}
+#ts_ag_quick_reservation_form .form-order .passengers{ margin-right:25px; }
+#ts_ag_quick_reservation_form .form-order .passenger{
+  float:left;
+  position:relative;
+  width:85px;
+}
+#ts_ag_quick_reservation_form .form-order .passenger:before{
+  background: url(images/passengers.png) 0 100% no-repeat;
+  bottom:0;
+  content: '';
+  display: block;
+  height:35px;
+  left:0;
+  position: absolute;
+  width:25px;
+}
+#ts_ag_quick_reservation_form .form-order .adult:before{ background-position: 0 100%; }
+#ts_ag_quick_reservation_form .form-order .child:before{ background-position: -25px 100%; }
+#ts_ag_quick_reservation_form .form-order .infant:before{ background-position: -50px 100%; }
+#ts_ag_quick_reservation_form .form-order .passenger .select_wrap{
+  background:#ffffff;
+  border:1px solid #c89010;
+  display:block;
+  height:33px;
+  margin-left:25px;
+  overflow: hidden;
+  position: relative;
+  width:43px;
+}
+#ts_ag_quick_reservation_form .form-order .passenger .select_wrap:after{
+  border-top:5px solid #000000;
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+  content:'';
+  display: block;
+  height:0;
+  position: absolute;
+  right:5px;
+  top:14px;
+  width:0;
+}
+#ts_ag_quick_reservation_form .form-order .passenger select{
+  border:none;
+  height:33px;
+  width:65px;
+}
+
+#ts_ag_quick_reservation_form .form-order .preference{ 
+  float:left;
+  margin-right:20px;
+}
+#ts_ag_quick_reservation_form .form-order .class .service_class_title{
+  background:transparent url(images/radios.png) 0 50% no-repeat;
+  color:#333333;
+  cursor: pointer;
+  display: inline-block;
+  font-size:12px;
+  font-weight:normal;
+  height:14px;
+  line-height: 14px;
+  margin:14px 20px 0 0;
+  padding-left:20px;
+  vertical-align: middle;
+}
+#ts_ag_quick_reservation_form .form-order .class .selected{ background-image: url(images/radios_sel.png); }
+html.msie7 #ts_ag_quick_reservation_form .form-order .class .service_class_title{ display:block; float:left; }
+#ts_ag_quick_reservation_form .form-order .company select{ max-width: 193px; }
+#ts_ag_quick_reservation_form .form-order .direct{ padding-top:26px; }
+#ts_ag_quick_reservation_form .form-order .direct .title{ 
+  color:#333333;
+  cursor: pointer;
+  display: inline-block;
+  font-size:12px;
+  font-weight:normal;
+  padding-left: 5px;
+  vertical-align: middle;
+}
+#ts_ag_quick_reservation_form .form-order .submit {
+  background: #bababa;
+  background: -moz-linear-gradient(top,  #e7e7e7 0%, #bababa 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e7e7e7), color-stop(100%,#bababa));
+  background: -webkit-linear-gradient(top,  #e7e7e7 0%,#bababa 100%);
+  background: -o-linear-gradient(top,  #e7e7e7 0%,#bababa 100%);
+  background: linear-gradient(to bottom,  #e7e7e7 0%,#bababa 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e7e7e7', endColorstr='#bababa',GradientType=0 );
+  float:right;
+  padding:1px;
+}
+#ts_ag_quick_reservation_form .form-order .submit .button{
+  background: #f0efef;
+  background: -moz-linear-gradient(top, #f0efef 0%, #dcdcdd 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f0efef), color-stop(100%,#dcdcdd));
+  background: -webkit-linear-gradient(top, #f0efef 0%,#dcdcdd 100%);
+  background: -o-linear-gradient(top, #f0efef 0%,#dcdcdd 100%);
+  background: -ms-linear-gradient(top, #f0efef 0%,#dcdcdd 100%);
+  background: linear-gradient(to bottom, #f0efef 0%,#dcdcdd 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0efef', endColorstr='#dcdcdd',GradientType=0 );
+
+  border:none;
+  color:#000000;
+  cursor: pointer;
+  display: inline-block;
+  font-size:12px;
+  font-weight:bold;
+  height:33px;
+  min-width:125px;
+  overflow: visible;
+  padding: 5px;
+
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  text-transform: uppercase;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
