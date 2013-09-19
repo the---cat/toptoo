@@ -37,6 +37,17 @@ echo $arResult['SCRIPT']; ?>
   <? $APPLICATION->IncludeComponent( 'travelshop:ibe.offer_filter', '' ); ?>
   </div></div></div>
   <div class="sect_main">
+  <? if (isset($arParams['BEST_OFFERS']) && 'Y' == $arParams['BEST_OFFERS']) {
+      $APPLICATION->IncludeComponent
+      ( 'travelshop:ibe.best_offers'
+      , $this->GetName()
+      , array
+        ( 'AR_RESULT' => $GLOBALS['IBE_FRONTOFFICE_OFFERS_RESULT']
+        )
+      , false
+      );
+    }
+  ?>
 <div class="offers">
   <? foreach($arResult['OFFER'] as $offerKey => $offer): ?>
   <div class="offer" id="offer-<?= $offerKey ?>">
