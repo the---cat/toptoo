@@ -20,6 +20,12 @@ foreach($arMonths as &$month) {
   $month = str_replace('\'', '', $month);
 }
 ?>
+<? // ¬ывод канонической ссылки
+$matches = preg_split( "([\d]{2})", $APPLICATION->GetCurDir() );print_r($matches);
+if ( strlen($matches[0]) && strlen($matches[1]) ) { // ≈сли пришли по диплинку вида http://avia.toptoo.com/!/MOW/PAR/23.08.2013+25.08.2013
+  $APPLICATION->AddHeadString('<link rel="canonical" href="http://' . $_SERVER["HTTP_HOST"] . $matches[0] . '" />', true); // добавл€ем каноническую ссылку вида http://avia.toptoo.com/!/MOW/PAR/ 
+}
+?>
 
 <div class="form_wrap"<?= $arResult['form']['~id'] ? ' id="'.$arResult['form']['~id'].'"' : '' ?>>
 <? if ( $arResult[ "~SHOW_FORM" ] ) : ?>
