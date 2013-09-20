@@ -44,7 +44,7 @@ if(!defined("__TOOLS_JS")) {
 
 if(!defined("__TOOLS_CSS")) {
 	define("__TOOLS_CSS", true);
-	$GLOBALS["APPLICATION"]->SetAdditionalCSS($templateFolder."/style.php?file=/bitrix/components/travelshop/ibe.tools/templates/.default/toolsstyles.css");
+	$GLOBALS["APPLICATION"]->SetAdditionalCSS($templateFolder."/style.php?file=".$templateFolder."/css/point.css");
 }
 
 if( $USE_AUTOCOMPLETE ) { // Если используется автозаполнение
