@@ -211,6 +211,9 @@
   border:none;
   height:33px;
   width:65px;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
 }
 
 #ts_ag_quick_reservation_form .form-order .preference{ 
