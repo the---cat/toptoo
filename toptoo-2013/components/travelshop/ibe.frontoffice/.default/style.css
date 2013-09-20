@@ -359,6 +359,7 @@
   position: relative;
   width:43px;
 }
+html.webkit #ts_ag_reservation .form-order .passenger .select_wrap{ padding-left: 5px; width:38px;}
 #ts_ag_reservation .form-order .passenger .select_wrap:after{
   border-top:5px solid #000000;
   border-left:5px solid transparent;
@@ -375,6 +376,9 @@
   border:none;
   height:33px;
   width:65px;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
 }
 
 #ts_ag_reservation .form-order .preference{ 
@@ -1004,151 +1008,68 @@ html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date sele
 
 
 /* ”—À”√» */
-#ts_ag_reservation .services { }
-
-#ts_ag_reservation .services table {
-  font-size: 80%;
-  width: 100%;
+#ts_ag_reservation .services {
+  border:1px solid #d2d2d2;
+  margin-bottom:20px;
+  padding:20px;
 }
+
+#ts_ag_reservation .services table {}
 
 #ts_ag_reservation .services table th,
 #ts_ag_reservation .services table td {
-  padding: .5em .2em;
+  padding:7px 20px;
+  vertical-align: middle;
 }
 
-#ts_ag_reservation .services table thead tr {
-  background-color: #58ACE4;
+#ts_ag_reservation .services thead th{
+  color:#000000;
+  font-size:15px;
+  font-weight:bold;
+  text-align: center;
+  white-space: nowrap;
 }
-
-#ts_ag_reservation .services table thead th {
-  color: #FFFFFF;
-  padding: .5em 0;
-  width: 10em;
-}
-
-#ts_ag_reservation .services table thead th.name {
-  width: auto;
-}
-
-#ts_ag_reservation .services table thead th .code,
-#ts_ag_reservation .services table thead th .number {
-  display: block;
-}
-
-#ts_ag_reservation .services table tbody tr.service {
-  background-color: #CDE7F8;
-}
-
-#ts_ag_reservation .services table tbody tr.service th,
-#ts_ag_reservation .services table tbody tr.service td {
-  border-top: 1px solid #999999;
-}
-
-#ts_ag_reservation .services table tbody th {
-  font-weight: normal;
+#ts_ag_reservation .services tbody th{
+  color:#737373;
+  font-size: 15px;
+  font-weight:normal;
+  padding-left:0;
   text-align: left;
 }
 
-#ts_ag_reservation .services table tbody th.img {
-  width: 1%;
+#ts_ag_reservation .services .img,
+#ts_ag_reservation .services img{
+  vertical-align: middle;
 }
-
-#ts_ag_reservation .services table tbody th.name,
-#ts_ag_reservation .services table tbody th.name a {
-  color: #4179AB;
+#ts_ag_reservation .services .service-name{
+  color:#000000;
+  font-size:24px;
+  font-weight:normal;
+  padding-left:15px;
+  vertical-align: middle;
 }
-
-#ts_ag_reservation .services table tbody td {
-  text-align: center;
-}
-
-/*
-#ts_ag_reservation .services table tbody td.hide-group * {
-  display: none;
-}
-*/
-
-#ts_ag_reservation .services table tbody tr.passenger td {
-  border-bottom: 1px solid #999999;
-}
-
-#ts_ag_reservation .services table tbody tr.passenger td.img {
-  text-align: center;
-}
-
-#ts_ag_reservation .services table tbody tr.passenger td.img {
-  border: none;
-}
-
-#ts_ag_reservation .services table tbody tr.passenger td.name {
-  text-align: left;
-}
-
-#ts_ag_reservation .services table tbody th.name span {
+#ts_ag_reservation .services .description{
+  color:#737373;
   display: block;
+  font-size: 15px;
+  font-weight:normal;
+  padding-top:7px;
 }
-
-#ts_ag_reservation .services table .passenger-list-link {
-  font-size: 89%;
-  margin-top: 1em;
-}
-
-#ts_ag_reservation .services table .seat-num,
-#ts_ag_reservation .services table .seat-link,
-#ts_ag_reservation .services table .price {
-  display: block;
-}
-
-#ts_ag_reservation .services .passenger td,
-#ts_ag_reservation .services .service td {
-  text-align: center;
-}
-
-#ts_ag_reservation .services .passenger .service-group,
-#ts_ag_reservation .services .service .service-group {
-  margin: 1em 0 0 .5em;
-  display: -moz-inline-box;
-  display: inline-block;
-  vertical-align: top;
+#ts_ag_reservation .services .description a,
+#ts_ag_reservation .services .description link{
+  border-bottom:1px dashed;
   text-decoration: none;
 }
 
-#ts_ag_reservation .services .passenger .service-group .r,
-#ts_ag_reservation .services .service .service-group .r {
+#ts_ag_reservation .services .price{
+  color:#666666;
+  font-size:18px;
+  font-weight:bold;
+  text-align: center;
+  white-space: nowrap;
 }
+#ts_ag_reservation .services .price label{ padding-left:20px; }
 
-#ts_ag_reservation .services .passenger .service-group .caption,
-#ts_ag_reservation .services .service .service-group .caption {
-  display: block;
-  margin-bottom: .2em;
-}
-
-#ts_ag_reservation .services table .seat-num {
-  font-weight: bold;
-}
-
-#ts_ag_reservation .services table .seat-link {
-  margin: 0 0 .2em 0;
-}
-
-#ts_ag_reservation .services table .price {
-  font-weight: bold;
-  margin: .2em 0 0 0;
-}
-
-#ts_ag_reservation .services .agreement-check {
-  margin: 1em 0 0 0;
-}
-
-#ts_ag_reservation .services .agreement-check input {
-  float: left;
-}
-
-#ts_ag_reservation .services .agreement-check .label {
-  font-size: 80%;
-  font-weight: bold;
-  margin: 0 0 0 2em;
-}
 
 /* ŒœÀ¿“¿. ¬€¡Œ– —œŒ—Œ¡¿ ŒœÀ¿“€ */
 #ts_ag_reservation .pay_method{ 
