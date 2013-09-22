@@ -447,7 +447,7 @@ html.msie7 #ts_ag_reservation .form-order .class .service_class_title{ display:b
 #ts_ag_reservation .form_tools{ padding:11px 0; }
 html.msie9 #ts_ag_reservation .form-order .top_form_submit,
 html.msie9 #ts_ag_reservation .form-order .top_form_submit .button{ width:125px; }
-
+#form_top_passengers_notice{display:none;}
 /* Календарь */
 .ui-datepicker{
   background: #ffffff;
@@ -1742,93 +1742,74 @@ html.msie7 #ts_ag_reservation .pay_method .paysystem_icon{margin-right:5px;}
 
 /* Шторка */
 .ww_background {
+  background: #000000;
+  cursor: default;
   display: block;
+  opacity: .50;
+  filter: alpha(opacity=50);
   position: absolute;
   top: 0;
   left: 0;
-  background: #FFF;
-  cursor: default;
-  z-Index: 2001;
-  opacity: 0.8;
+  z-index: 2001;
 }
 
-/* Окно с сообщением
-.ww_message {
-  background: #cde7f8;
-  border: 5px solid #58ace4;
-}
-*/
+/* Окно с сообщением */
 .ww_message {
   cursor: default;
-  font: 100% sans-serif;
-  margin: 5px;
-  padding: 2px;
   position: absolute;
   top: 0;
-  width: 400px;
-  z-Index: 2002;
+  width: 700px;
+  z-index: 2002;
 }
 
 /* Тест сообщения */
 .ww_text {
-  padding: 16px 12px;
-  color: #000;
-  z-Index: 2003;
-  border: 1px solid #CCC;
+  background: #ffffff;
+  color:#3e3e3e;
+  font-size:16px;
+  font-weight:bold;
+  padding: 30px;
   text-align: center;
+  z-index: 2003;
 }
 
 /* Кнопка "Закрыть" */
-.ww_button_close a {
-  text-decoration: none;
-  color: #FFF;
-}
+.ww_button_close a { text-decoration: none; }
 .ww_button_close {
   background: #ff6634;
-  border: solid 1px #555;
+  border: solid 1px #555555;
   display: block;
   float: right;
   font-size: 90%;
   margin: 2px;
   padding: 1px 3px;
-  z-Index: 2004;
+  z-index: 2004;
 }
 
-.ww_state_wait, .ww_state_error, .ww_state_ok {
+.ww_state_wait, 
+.ww_state_error,
+.ww_state_ok {
   bottom:0;
-  color: #fff;
-  margin: 20px auto;
-  padding: 20px 20px 20px 70px;
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  width: 250px;
+  margin: 0 auto;
+  padding: 30px;
   z-index: 100;
 }
 .ww_state_wait {
-  background: #999 url("images/wait.gif") no-repeat 20px 50%;
+  background: #ffffff url(images/wait.png) center bottom 30px no-repeat;
+  padding-bottom:215px;
 }
 .ww_state_error {
-  text-alight: left;
+  text-align: left;
   background: #59abe3;
 }
 
 .basket_wait {
-  opacity: 0.8;
+  background: #999;
   display: none;
+  opacity: .8;
   position: absolute;
   top: 0;
   width: 100%;
-  background: #999;
 }
 
-.form_top_notice {
-  font: 80% sans-serif;
-  color: #888;
-}
-
-#form_top_passengers_notice{display:none;}
-
-#progress_ajax {
-  display: none;
-}
+#progress_ajax { display: none; }
