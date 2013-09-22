@@ -65,12 +65,14 @@ if ( strlen($matches[0]) && strlen($matches[1]) ) { // Если пришли по диплинку в
       <fieldset class="dates clearfix">
         <div class="date date_to">
           <div class="date-container">
+            <input type="text" id="dateto_formated" value="<?=$arResult['d_to'] ?>" onclick="$('#dateto').focus();" />
             <input type="text" id="dateto" name="dateto" maxlength="10" size="10" value="<?=$arResult['d_to'] ?>" />
           </div>
         </div>
         <div class="date date_back">
           <div id="add_dateback" class="add_dateback"><?= GetMessage('TS_STEP1_SEARCHFORM_ADD_ARRIVAL_DATE') ?></div>
           <div class="date-container" id="form_dateback">
+            <input type="text" id="dateback_formated" value="<?=$arResult['d_back'] ?>" onclick="$('#dateback').focus();" />
             <input type="text" id="dateback" name="dateback" maxlength="10" size="10" value="<?=$arResult['d_back'] ?>" />
           </div>
         </div>
@@ -246,7 +248,9 @@ function calendarsSetup() {
     numberOfMonths: <?= $JQ_CALENDAR_NUMBER_OF_MONTHS ?>,
     onSelect: function(dateText) {
       selectForwardDate(dateText)
-    }
+    },
+    altField: "#dateto_formated",
+    altFormat: "d M, D"
   });
   calendarTo.datepicker('setDate', defaultDateTo);
   tooltip(calendarTo.parent());
@@ -266,7 +270,9 @@ function calendarsSetup() {
     numberOfMonths: <?= $JQ_CALENDAR_NUMBER_OF_MONTHS ?>,
     onSelect: function(dateText) { 
       selectBackDate(dateText)
-    }
+    },
+    altField: "#dateback_formated",
+    altFormat: "d M, D"
   });
   calendarBack.datepicker('setDate', defaultDateBack);
   tooltip(calendarBack.parent());

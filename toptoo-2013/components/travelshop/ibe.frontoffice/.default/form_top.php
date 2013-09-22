@@ -78,12 +78,14 @@ function fnPassengersNotice(){
   <fieldset class="dates">
     <div class="date date_to">
       <div class="date-container">
+        <input type="text" id="dateto_top_formated" value="<?=$arResult['d_to'] ?>" onclick="$('#dateto_top').focus();" />
         <input type="text" id="dateto_top" name="dateto" maxlength="10" size="10" value="<?=$arResult['d_to'] ?>" />
       </div>
     </div>
     <div class="date date_back">
       <div id="add_dateback_top" class="add_dateback"><?= GetMessage('TS_STEP1_SEARCHFORM_ADD_ARRIVAL_DATE') ?></div>
       <div class="date-container" id="form_dateback_top">
+        <input type="text" id="dateback_top_formated" value="<?=$arResult['d_back'] ?>" onclick="$('#dateback_top').focus();" />
         <input type="text" id="dateback_top" name="dateback" maxlength="10" size="10" value="<?=$arResult['d_back'] ?>" />
       </div>
     </div>
@@ -226,41 +228,49 @@ var defaultDateBack;
 
 function calendarsTopSetup() {
   calendarToTop.datepicker({ 
-  showOn: 'both',
-  buttonImage: '<?= $templateFolder ?>/images/date.png',
-  buttonText: '<?=GetMessage('TS_SHORTFORM_CALENDAR_BUTTON') ?>',
-  buttonImageOnly: true,
-  
-  showOtherMonths: true,
-  selectOtherMonths: true,
-  
-    changeMonth: true,
-    changeYear: true,
+    showOn: 'both',
+    buttonImage: '<?= $templateFolder ?>/images/date.png',
+    buttonText: '<?=GetMessage('TS_SHORTFORM_CALENDAR_BUTTON') ?>',
+    buttonImageOnly: true,
+    
+    showOtherMonths: <?= $JQ_CALENDAR_SHOW_OTHER_MONTHS ?>,
+    selectOtherMonths: <?= $JQ_CALENDAR_SELECT_OTHER_MONTHS ?>,
+    changeMonth: <?= $JQ_CALENDAR_CHANGE_MONTGH_AND_YEAR ?>,
+    changeYear: <?= $JQ_CALENDAR_CHANGE_MONTGH_AND_YEAR ?>,
+    stepMonths: <?= $JQ_CALENDAR_STEP_MONTHS ?>,
+    numberOfMonths: <?= $JQ_CALENDAR_NUMBER_OF_MONTHS ?>,
+
     minDate: 0,
     maxDate: '+1y',
     onSelect: function(dateText) {
       selectForwardDateTop(dateText)
-    }
+    },
+    altField: "#dateto_top_formated",
+    altFormat: "d M, D"
   });
   calendarToTop.datepicker('setDate', defaultDateTo);
   tooltip(calendarToTop.parent());
   
   calendarBackTop.datepicker({ 
-  showOn: 'both',
-  buttonImage: '<?= $templateFolder ?>/images/date.png',
-  buttonText: '<?=GetMessage('TS_SHORTFORM_CALENDAR_BUTTON') ?>',
-  buttonImageOnly: true,
-  
-  showOtherMonths: true,
-  selectOtherMonths: true,
-  
-    changeMonth: true,
-    changeYear: true,
+    showOn: 'both',
+    buttonImage: '<?= $templateFolder ?>/images/date.png',
+    buttonText: '<?=GetMessage('TS_SHORTFORM_CALENDAR_BUTTON') ?>',
+    buttonImageOnly: true,
+    
+    showOtherMonths: <?= $JQ_CALENDAR_SHOW_OTHER_MONTHS ?>,
+    selectOtherMonths: <?= $JQ_CALENDAR_SELECT_OTHER_MONTHS ?>,
+    changeMonth: <?= $JQ_CALENDAR_CHANGE_MONTGH_AND_YEAR ?>,
+    changeYear: <?= $JQ_CALENDAR_CHANGE_MONTGH_AND_YEAR ?>,
+    stepMonths: <?= $JQ_CALENDAR_STEP_MONTHS ?>,
+    numberOfMonths: <?= $JQ_CALENDAR_NUMBER_OF_MONTHS ?>,
+
     minDate: 0,
     maxDate: '+1y',
     onSelect: function(dateText) { 
       selectBackDateTop(dateText)
-    }
+    },
+    altField: "#dateback_top_formated",
+    altFormat: "d M, D"
   });
   calendarBackTop.datepicker('setDate', defaultDateBack);
   tooltip(calendarBackTop.parent());
