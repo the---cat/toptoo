@@ -12,6 +12,9 @@ $MESS['TS_STEP1_SEARCHFORM_PASSENGERS_INFANTS_TITLE'] = 'без места';
 $MESS['TS_STEP1_SEARCHFORM_SERVICE_CLASS_ECONOMY'] = 'Ёконом';
 $MESS['TS_STEP1_SEARCHFORM_SEARCH'] = '»скать';
 
+/* progress_ajax.php */
+$MESS['IBE_WWINDOW_PLEASE_WAIT'] = 'TopToo Travel: мы ищем дл€ ¬ас билеты у более чем 500 авиакомпаний...';
+
 /* offer.php */
 $MESS['TS_FRONTOFFICE_BUTTON_BACK_SEARCH'] = '»зменить параметры перелета';
 $MESS['TS_FRONTOFFICE_STEP2_OFFER_LOCAL_TIME'] = '”казано местное врем€';
