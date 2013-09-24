@@ -39,73 +39,73 @@
           <tr>
             <th class="caption" colspan="2">
             <span class="title"><?= GetMessage('BEST_OFFERS_DIRECTION_' . $outbound['DIRECTION'] ) ?></span>
-            <span calss="date"><?= $departure['DEPARTURE']['DAY'] . ' ' . GetMessage('IBE_FRONTOFFICE_MONTH_GEN_' . $departure['DEPARTURE']['MONTH']) . ', ' ?></span>
+            <span calss="date"><?= $departure['DEPARTURE']['DAY'] . ' ' . GetMessage('IBE_BEST_OFFERS_MONTH_GEN_' . $departure['DEPARTURE']['MONTH']) . ', ' ?></span>
             <span class="dow"><?= GetMessage('IBE_FRONTOFFICE_DOW_' . $departure['DEPARTURE']['WEEKDAY']) ?></span>
             </th>
           </tr>
           <tr>
-            <td class="time">
-              <span class="dep_time"><?= $departure['DEPARTURE']['TIME'] . '&nbsp;&ndash;' ?></span>
-              <span class="arr_time"><?= $arrival['ARRIVAL']['TIME'] ?></span>
+            <td>
+              <div class="time">
+                <span class="dep_time"><?= $departure['DEPARTURE']['TIME'] . '&nbsp;&ndash;' ?></span>
+                <span class="arr_time"><?= $arrival['ARRIVAL']['TIME'] ?></span>
+              </div>
+              <div class="stops_class">
+                <span class="stops">
+                <? if ( count($outbound['SEGMENTS']) > 1 ): ?>
+                  <?= GetMessage("BEST_OFFERS_CONNECTION") ?>
+                  <? foreach ( $outbound['SEGMENTS'] as $k => $segment ): ?>
+                    <? if ( $segment != end($outbound['SEGMENTS']) ): ?>
+                    <span class="stop"><?= $segment['ARRIVAL']['LOC_NAME'] . ', ' ?></span>
+                    <? endif; // foreach ( $outbound['SEGMENTS'] as $k => $segment ) ?>
+                  <? endforeach; ?>
+                <? else: ?>
+                <?= GetMessage("BEST_OFFERS_NO_CONNECTION") ?>
+                <? endif; // if ( count($outbound['SEGMENTS']) > 1 ) ?>
+                </span>
+                <span class="class">
+                  <? $service_class= array(); 
+                  if ( count($outbound['SEGMENTS']) > 1 ){
+                    foreach( $outbound['SEGMENTS'] as $segment ) {
+                      if ( !in_array($segment['SERVICE_CLASS'], $service_class) ) $service_class[] = $segment['SERVICE_CLASS'];
+                    }
+                    $service_class= implode(', ', $service_class);
+                  } else {
+                    $service_class= $departure['SERVICE_CLASS']; 
+                  }
+                  ?>
+                  <?= $service_class ?>
+                </span>
+              </div>
+              <div class="airport">
+              <?= GetMessage('BEST_OFFERS_FROM') ?> <?= $departure['DEPARTURE']['APT_NAME'] ? $departure['DEPARTURE']['APT_NAME'] : $departure['DEPARTURE']['LOC_NAME'] ?>
+              </div>
             </td>
-            <td class="companies">
-            <? foreach ( $offerOrig["COMPANY"] as $company ): ?>
-              <? if ($arResult["LOGOS"]): ?>
-              <span class="company"><?= $arResult["LOGOS"][$company["~CODE"]]["TITLE"] . ($company !== end($offerOrig["COMPANY"]) ? ', ' : '' ) ?></span>
-              <? endif; ?>
-            <? endforeach; ?>
-            </td>
-          </tr>
-          <tr>
-            <td class="stops_class">
-              <span class="stops">
+            <td>
+              <div class="companies">
+              <? foreach ( $offerOrig["COMPANY"] as $company ): ?>
+                <? if ($arResult["LOGOS"]): ?>
+                <span class="company"><?= $arResult["LOGOS"][$company["~CODE"]]["TITLE"] . ($company !== end($offerOrig["COMPANY"]) ? ', ' : '' ) ?></span>
+                <? endif; ?>
+              <? endforeach; ?>
+              </div>
+              <div class="duration_seats">
+                <span class="duration">
+                <? list ($hh, $mm) = explode( ':', $outbound['~TIME']) ?>
+                <?= ( floor($hh) ? floor($hh) . '&nbsp;' . GetMessage('BEST_OFFERS_HOUR') : '' ) . ( floor($hh) && floor($mm) ? '&nbsp;' : '' ) . ( floor($mm) ? floor($mm) . '&nbsp;' . GetMessage('BEST_OFFERS_MINUTE') : '' )?>
+                </span>
+                <span class="seats">
+                  <?= $outbound['ALL_SEATS']['~COUNT'] > 4 ? GetMessage('BEST_OFFERS_SEATS_A_LOT') : GetMessage('BEST_OFFERS_SEATS') . $outbound['ALL_SEATS']['~COUNT'] ?>
+                </span>
+              </div>
+              <div class="plane">
               <? if ( count($outbound['SEGMENTS']) > 1 ): ?>
-                <?= GetMessage("BEST_OFFERS_CONNECTION") ?>
                 <? foreach ( $outbound['SEGMENTS'] as $k => $segment ): ?>
-                  <? if ( $segment != end($outbound['SEGMENTS']) ): ?>
-                  <span class="stop"><?= $segment['ARRIVAL']['LOC_NAME'] . ', ' ?></span>
-                  <? endif; // foreach ( $outbound['SEGMENTS'] as $k => $segment ) ?>
+                <?= $segment['PLANE_NAME'] ?><?= $k < count($outbound['SEGMENTS']) - 1 ? ', ' : '' ?>
                 <? endforeach; ?>
               <? else: ?>
-              <?= GetMessage("BEST_OFFERS_NO_CONNECTION") ?>
-              <? endif; // if ( count($outbound['SEGMENTS']) > 1 ) ?>
-              </span>
-              <span class="class">
-                <? $service_class= array(); 
-                if ( count($outbound['SEGMENTS']) > 1 ){
-                  foreach( $outbound['SEGMENTS'] as $segment ) {
-                    if ( !in_array($segment['SERVICE_CLASS'], $service_class) ) $service_class[] = $segment['SERVICE_CLASS'];
-                  }
-                  $service_class= implode(', ', $service_class);
-                } else {
-                  $service_class= $departure['SERVICE_CLASS']; 
-                }
-                ?>
-                <?= $service_class ?>
-              </span>
-            </td>
-            <td class="duration_seats">
-              <span class="duration">
-              <? list ($hh, $mm) = explode( ':', $outbound['~TIME']) ?>
-              <?= ( floor($hh) ? floor($hh) . '&nbsp;' . GetMessage('BEST_OFFERS_HOUR') : '' ) . ( floor($hh) && floor($mm) ? '&nbsp;' : '' ) . ( floor($mm) ? floor($mm) . '&nbsp;' . GetMessage('BEST_OFFERS_MINUTE') : '' )?>,
-              </span>
-              <span class="seats">
-                <?= $outbound['ALL_SEATS']['~COUNT'] > 4 ? GetMessage('BEST_OFFERS_SEATS_A_LOT') : GetMessage('BEST_OFFERS_SEATS') . $outbound['ALL_SEATS']['~COUNT'] ?>
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td class="airport">
-              <?= GetMessage('BEST_OFFERS_FROM') ?> <?= $departure['DEPARTURE']['APT_NAME'] ? $departure['DEPARTURE']['APT_NAME'] : $departure['DEPARTURE']['LOC_NAME'] ?>
-            </td>
-            <td class="plane">
-            <? if ( count($outbound['SEGMENTS']) > 1 ): ?>
-              <? foreach ( $outbound['SEGMENTS'] as $k => $segment ): ?>
-              <?= $segment['PLANE_NAME'] ?><?= $k < count($outbound['SEGMENTS']) - 1 ? ', ' : '' ?>
-              <? endforeach; ?>
-            <? else: ?>
-               <?= $departure['PLANE_NAME'] ?>
-            <? endif; ?>
+                 <?= $departure['PLANE_NAME'] ?>
+              <? endif; ?>
+              </div>
             </td>
           </tr>
         </table>
@@ -117,73 +117,73 @@
           <tr>
             <th class="caption" colspan="2">
             <span class="title"><?= GetMessage('BEST_OFFERS_DIRECTION_' . $inbound['DIRECTION'] ) ?></span>
-            <span calss="date"><?= $departure['DEPARTURE']['DAY'] . ' ' . GetMessage('IBE_FRONTOFFICE_MONTH_GEN_' . $departure['DEPARTURE']['MONTH']) . ', ' ?></span>
+            <span calss="date"><?= $departure['DEPARTURE']['DAY'] . ' ' . GetMessage('IBE_BEST_OFFERS_MONTH_GEN_' . $departure['DEPARTURE']['MONTH']) . ', ' ?></span>
             <span class="dow"><?= GetMessage('IBE_FRONTOFFICE_DOW_' . $departure['DEPARTURE']['WEEKDAY']) ?></span>
             </th>
           </tr>
           <tr>
-            <td class="time">
-              <span class="dep_time"><?= $departure['DEPARTURE']['TIME'] . '&nbsp;&ndash;' ?></span>
-              <span class="arr_time"><?= $arrival['ARRIVAL']['TIME'] ?></span>
+            <td>
+              <div class="time">
+                <span class="dep_time"><?= $departure['DEPARTURE']['TIME'] . '&nbsp;&ndash;' ?></span>
+                <span class="arr_time"><?= $arrival['ARRIVAL']['TIME'] ?></span>
+              </div>
+              <div class="stops_class">
+                <span class="stops">
+                <? if ( count($inbound['SEGMENTS']) > 1 ): ?>
+                  <?= GetMessage("BEST_OFFERS_CONNECTION") ?>
+                  <? foreach ( $inbound['SEGMENTS'] as $k => $segment ): ?>
+                    <? if ( $segment != end($inbound['SEGMENTS']) ): ?>
+                    <span class="stop"><?= $segment['ARRIVAL']['LOC_NAME'] . ', ' ?></span>
+                    <? endif; // foreach ( $outbound['SEGMENTS'] as $k => $segment ) ?>
+                  <? endforeach; ?>
+                <? else: ?>
+                <?= GetMessage("BEST_OFFERS_NO_CONNECTION") ?>
+                <? endif; // if ( count($outbound['SEGMENTS']) > 1 ) ?>
+                </span>
+                <span class="class">
+                  <? $service_class= array(); 
+                  if ( count($inbound['SEGMENTS']) > 1 ){
+                    foreach( $inbound['SEGMENTS'] as $segment ) {
+                      if ( !in_array($segment['SERVICE_CLASS'], $service_class) ) $service_class[] = $segment['SERVICE_CLASS'];
+                    }
+                    $service_class= implode(', ', $service_class);
+                  } else {
+                    $service_class= $departure['SERVICE_CLASS']; 
+                  }
+                  ?>
+                  <?= $service_class ?>
+                </span>
+              </div>
+              <div class="airport">
+                <?= GetMessage('BEST_OFFERS_FROM') ?> <?= $departure['DEPARTURE']['APT_NAME'] ? $departure['DEPARTURE']['APT_NAME'] : $departure['DEPARTURE']['LOC_NAME'] ?>
+              </div>
             </td>
-            <td class="companies">
-            <? foreach ( $offerOrig["COMPANY"] as $company ): ?>
-              <? if ($arResult["LOGOS"]): ?>
-              <span class="company"><?= $arResult["LOGOS"][$company["~CODE"]]["TITLE"] . ($company !== end($offerOrig["COMPANY"]) ? ', ' : '' ) ?></span>
-              <? endif; ?>
-            <? endforeach; ?>
-            </td>
-          </tr>
-          <tr>
-            <td class="stops_class">
-              <span class="stops">
+            <td>
+              <div class="companies">
+              <? foreach ( $offerOrig["COMPANY"] as $company ): ?>
+                <? if ($arResult["LOGOS"]): ?>
+                <span class="company"><?= $arResult["LOGOS"][$company["~CODE"]]["TITLE"] . ($company !== end($offerOrig["COMPANY"]) ? ', ' : '' ) ?></span>
+                <? endif; ?>
+              <? endforeach; ?>
+              </div>
+              <div class="duration_seats">
+                <span class="duration">
+                <? list ($hh, $mm) = explode( ':', $inbound['~TIME']) ?>
+                <?= ( floor($hh) ? floor($hh) . '&nbsp;' . GetMessage('BEST_OFFERS_HOUR') : '' ) . ( floor($hh) && floor($mm) ? '&nbsp;' : '' ) . ( floor($mm) ? floor($mm) . '&nbsp;' . GetMessage('BEST_OFFERS_MINUTE') : '' ) ?>
+                </span>
+                <span class="seats">
+                  <?= $inbound['ALL_SEATS']['~COUNT'] > 4 ? GetMessage('BEST_OFFERS_SEATS_A_LOT') : GetMessage('BEST_OFFERS_SEATS') . $inbound['ALL_SEATS']['~COUNT'] ?>
+                </span>
+              </div>
+              <div class="plane">
               <? if ( count($inbound['SEGMENTS']) > 1 ): ?>
-                <?= GetMessage("BEST_OFFERS_CONNECTION") ?>
                 <? foreach ( $inbound['SEGMENTS'] as $k => $segment ): ?>
-                  <? if ( $segment != end($inbound['SEGMENTS']) ): ?>
-                  <span class="stop"><?= $segment['ARRIVAL']['LOC_NAME'] . ', ' ?></span>
-                  <? endif; // foreach ( $outbound['SEGMENTS'] as $k => $segment ) ?>
+                <?= $segment['PLANE_NAME'] ?><?= $k < count($inbound['SEGMENTS']) - 1 ? ', ' : '' ?>
                 <? endforeach; ?>
               <? else: ?>
-              <?= GetMessage("BEST_OFFERS_NO_CONNECTION") ?>
-              <? endif; // if ( count($outbound['SEGMENTS']) > 1 ) ?>
-              </span>
-              <span class="class">
-                <? $service_class= array(); 
-                if ( count($inbound['SEGMENTS']) > 1 ){
-                  foreach( $inbound['SEGMENTS'] as $segment ) {
-                    if ( !in_array($segment['SERVICE_CLASS'], $service_class) ) $service_class[] = $segment['SERVICE_CLASS'];
-                  }
-                  $service_class= implode(', ', $service_class);
-                } else {
-                  $service_class= $departure['SERVICE_CLASS']; 
-                }
-                ?>
-                <?= $service_class ?>
-              </span>
-            </td>
-            <td class="duration_seats">
-              <span class="duration">
-              <? list ($hh, $mm) = explode( ':', $inbound['~TIME']) ?>
-              <?= ( floor($hh) ? floor($hh) . '&nbsp;' . GetMessage('BEST_OFFERS_HOUR') : '' ) . ( floor($hh) && floor($mm) ? '&nbsp;' : '' ) . ( floor($mm) ? floor($mm) . '&nbsp;' . GetMessage('BEST_OFFERS_MINUTE') : '' )?>
-              </span>
-              <span class="seats">
-                <?= $inbound['ALL_SEATS']['~COUNT'] > 4 ? GetMessage('BEST_OFFERS_SEATS_A_LOT') : GetMessage('BEST_OFFERS_SEATS') . $inbound['ALL_SEATS']['~COUNT'] ?>
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td class="airport">
-              <?= GetMessage('BEST_OFFERS_FROM') ?> <?= $departure['DEPARTURE']['APT_NAME'] ? $departure['DEPARTURE']['APT_NAME'] : $departure['DEPARTURE']['LOC_NAME'] ?>
-            </td>
-            <td class="plane">
-            <? if ( count($inbound['SEGMENTS']) > 1 ): ?>
-              <? foreach ( $inbound['SEGMENTS'] as $k => $segment ): ?>
-              <?= $segment['PLANE_NAME'] ?><?= $k < count($inbound['SEGMENTS']) - 1 ? ', ' : '' ?>
-              <? endforeach; ?>
-            <? else: ?>
-               <?= $departure['PLANE_NAME'] ?>
-            <? endif; ?>
+                 <?= $departure['PLANE_NAME'] ?>
+              <? endif; ?>
+              </div>
             </td>
           </tr>
         </table>
@@ -191,6 +191,9 @@
       </div>
 
       <div class="price">
+        <? if( count($offerOrig["FLIGHTS"][0]["FLIGHT"]) > 1 || count($offerOrig["FLIGHTS"][1]["FLIGHT"]) > 1 ): // Если есть другие рейсы по этой цене (в рамках одной рекомендации) ?>
+        <div class="goto-offer"><a class="link" href="#offer-<?= $offer["OFFER_INDEX"] ?>"><?= GetMessage("BEST_OFFERS_SELECT_FLIGHTS") ?></a></div>
+        <? endif; // if( count($offerOrig["FLIGHTS"][0]["FLIGHT"]) > 1 || count($offerOrig["FLIGHTS"][1]["FLIGHT"]) > 1 ):  ?>
         <form <?= $strTagForm; ?>>
           <?= $offerOrig["HIDDEN"] ?>
           <input type="hidden" name="<?= $outbound["INPUT"]["NAME"]  ?>" value="<?= $outbound["INPUT"]["VALUE"]?>" />

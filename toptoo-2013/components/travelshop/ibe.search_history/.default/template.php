@@ -14,7 +14,7 @@ if (!defined('B_PROLOG_INCLUDED') || true !== B_PROLOG_INCLUDED) {
     <% var item = this.items[i]; %>
     <li>
       <span class="retry" id="<%= item.RETRY_ID %>" title="<?= GetMessage('IBE_SEARCH_HISTORY_RETRY') ?>">
-        <span class="point point_to"><%= item.POINTS[0].NAME_<?= $arResult['LANGUAGE_ID'] ?> %><% if ('OW' == item.PARAMS.RT_OW) { %>&nbsp;&rarr;&nbsp;<%= item.POINTS[1].NAME_<?= $arResult['LANGUAGE_ID'] ?> %><% } %></span>
+        <span class="point point_to"><%= item.POINTS[0].NAME_<?= $arResult['LANGUAGE_ID'] ?> %><% if ('OW' == item.PARAMS.RT_OW) { %>&nbsp;&ndash;&nbsp;<%= item.POINTS[1].NAME_<?= $arResult['LANGUAGE_ID'] ?> %><% } %></span>
         <span class="date date_to"><%= item.PARAMS.dateto.DAY %> <%= this.month_names_short[ item.PARAMS.dateto.MONTH ] %></span>
         <% if ('RT' == item.PARAMS.RT_OW) { %>
         <span class="point point_back"><%= item.POINTS[1].NAME_<?= $arResult['LANGUAGE_ID'] ?> %></span>
