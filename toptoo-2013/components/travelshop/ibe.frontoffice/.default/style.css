@@ -367,7 +367,7 @@
   position: relative;
   width:43px;
 }
-html.webkit #ts_ag_reservation .form-order .passenger .select_wrap{ padding-left: 5px; width:38px;}
+/*html.webkit #ts_ag_reservation .form-order .passenger .select_wrap{ padding-left: 5px; width:38px;}*/
 #ts_ag_reservation .form-order .passenger .select_wrap:after{
   border-top:5px solid #000000;
   border-left:5px solid transparent;
@@ -385,8 +385,10 @@ html.webkit #ts_ag_reservation .form-order .passenger .select_wrap{ padding-left
   height:33px;
   width:65px;
   -webkit-appearance:none;
-  -moz-appearance:none;
-  appearance:none;
+}
+html.webkit #ts_ag_reservation .form-order .passenger select{
+  padding-left:3px;
+  width:43px;
 }
 
 #ts_ag_reservation .form-order .preference{ 
@@ -1049,7 +1051,7 @@ html.msie9 #ts_ag_reservation .form-order .top_form_submit .button{ width:125px;
 }
 
 #ts_ag_reservation .personal_data .profiles .profile_form .date .day_wrap,
-#ts_ag_reservation .personal_data .profiles .profile_form .date .month_wrap { width: 20px; }
+#ts_ag_reservation .personal_data .profiles .profile_form .date .month_wrap { width: 25px; }
 #ts_ag_reservation .personal_data .profiles .profile_form .date .year_wrap{ width: 45px;}
 #ts_ag_reservation .personal_data .profiles .profile_form .date .dot{
   display: block;
@@ -1057,7 +1059,7 @@ html.msie9 #ts_ag_reservation .form-order .top_form_submit .button{ width:125px;
   height:33px;
   line-height: 35px;
   text-align: center;
-  width:20px;
+  width:15px;
 }
 #ts_ag_reservation .personal_data .profiles .profile_form .date select{
   border:none;
@@ -1076,7 +1078,7 @@ html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date .yea
 }
 html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date select{ -webkit-appearance:none; }
 html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date select.day, 
-html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date select.month { width: 20px; }
+html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date select.month { width: 25px; }
 html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date select.year { width: 45px; }
 
 #ts_ag_reservation .personal_data .profiles .profile_form .fprefer{ display: none; }
