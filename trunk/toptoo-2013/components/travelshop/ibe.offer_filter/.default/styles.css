@@ -47,7 +47,7 @@
   display: none;
   font-size: 12px;
   position: relative;
-  padding:15px;
+  padding:10px 15px;
 }
 #ts_ag_offer_filter_container div.ts_ag_offer_filter .enabled { display: block; }
 
@@ -67,7 +67,8 @@
 
 /* Time filters */
 #ts_ag_offer_filter_container div.ts_ag_offer_filter .filter-departure-time,
-#ts_ag_offer_filter_container div.ts_ag_offer_filter .filter-arrival-time {}
+#ts_ag_offer_filter_container div.ts_ag_offer_filter .filter-arrival-time,
+#ts_ag_offer_filter_container div.ts_ag_offer_filter .filter-duration { padding-top:0; }
 
 #ts_ag_offer_filter_container div.ts_ag_offer_filter .filter-time .clear-all,
 #ts_ag_offer_filter_container div.ts_ag_offer_filter .filter-time .select-all { }

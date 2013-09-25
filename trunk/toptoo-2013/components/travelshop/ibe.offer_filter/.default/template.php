@@ -1,5 +1,6 @@
 <? if (!defined('B_PROLOG_INCLUDED') || true !== B_PROLOG_INCLUDED) { die(); } 
 $arParams['PENALTY_TYPE_FILTER_ENABLED'] = 'N';
+$arParams['SERVICE_CLASS_FILTER_ENABLED'] = 'N';
 ?>
 
 <? if ( CIBEAjax::StartArea( "#ts_ag_all_in_one_offer_filter_container" ) ) { ?>
@@ -16,29 +17,157 @@ $arParams['PENALTY_TYPE_FILTER_ENABLED'] = 'N';
 <? if ( CIBEAjax::StartArea( "#ts_ag_offer_filter_container" ) ) { ?>
   <? $iEnabledFiltersCount = 0; ?>
   <? if ($arResult['FILTER']): ?>
+  <? //trace ($arResult['FILTER']) ?>
   <div class="ts_ag_offer_filter">
     <div id="ts_ag_offer_filter<?= $arResult[ "~UID" ] ?>">
-    <? foreach ($arResult['FILTER'] as $arFilter): ?>
-      <? if ($arFilter['~VISIBLE']): ?>
-        <? $enabler_name = $arFilter['NAME']."_FILTER_ENABLED"; ?>
-        <? if ( !isset( $arParams[ $enabler_name ] ) || $arParams[ $enabler_name ] !== "N" ): ?>
-          <? if ($arFilter['~ENABLED']) { $iEnabledFiltersCount++; } ?>
+    <? $arFilter = $arResult['FILTER']['TRANSFERS'] ?>
+    <? if ( is_array($arFilter) &&  $arFilter['~VISIBLE'] &&  ( !isset( $arParams[ $arFilter['NAME']."_FILTER_ENABLED" ] ) || $arParams[ $arFilter['NAME']."_FILTER_ENABLED" ] !== "N" ) ): ?>
+    <? if ($arFilter['~ENABLED']) { $iEnabledFiltersCount++; } ?>
       <h3 class="title<?= ($arFilter['~ENABLED'] ? ' enabled' : '') ?>">
         <input type="hidden" class="body-id" value="<?= $arFilter['CLASSNAME'] ?><?= $arResult[ "~UID" ] ?>-block" />
         <?= GetMessage($arFilter['TITLE']) ?>
         <span class="arr"></span>
       </h3>
-    
-      <? require dirname( __FILE__ ) . '/filter_body.php' ?>
+      <div class="filter filter-time <?= $arFilter['CLASSNAME'] ?><?= ($arFilter['~ENABLED'] ? ' enabled' : '') ?>" id="<?= $arFilter['CLASSNAME'] ?><?= $arResult[ "~UID" ] ?>-block">
+        <? $itemIndex = 0; ?>
+        <ul>
+        <? foreach ($arFilter['ITEMS'] as $arTransfers) { ?>
+          <li<?= ($arTransfers['~DISABLED'] ? ' class="disabled"' : '') ?>>
+            <input type="checkbox" checked="checked"<?= ($arTransfers['~DISABLED'] ? ' disabled="disabled"' : '') ?> id="<?= $arFilter['ITEM_PREFIX'] ?><?= $itemIndex ?><?= $arResult[ "~UID" ] ?>" />
+            <label for="<?= $arFilter['ITEM_PREFIX'] ?><?= $itemIndex ?><?= $arResult[ "~UID" ] ?>"><?= GetMessage('TS_IBE_OFFER_FILTER_TRANSFERS_FILTER_' . $arTransfers['TRANSFERS']); ?></label>
+          </li>
+            <? $itemIndex++;
+          } ?>
+        </ul>
+      </div>
+    <? endif; ?>
 
-        <? endif; // !isset( $arParams[ $enabler_name ] ) || $arParams[ $enabler_name ] !== "N" ?>
-      <? endif; // $arFilter['~VISIBLE'] ?>
-    <? endforeach; ?>
-    <? /*
-    <div id="disable-all-filters">
-      <a href="javascript:void(0)" class="disable-all-filters"><?= GetMessage('TS_IBE_OFFER_FILTER_DISABLE_ALL_FILTERS') ?></a>
-    </div>
-    */ ?>
+    <? $arFilter = $arResult['FILTER']['DEPTIME'] ?>
+    <? if ( is_array($arFilter) &&  $arFilter['~VISIBLE'] &&  ( !isset( $arParams[ $arFilter['NAME']."_FILTER_ENABLED" ] ) || $arParams[ $arFilter['NAME']."_FILTER_ENABLED" ] !== "N" ) ): ?>
+    <? if ($arFilter['~ENABLED']) { $iEnabledFiltersCount++; } ?>
+      <h3 class="title<?= ($arFilter['~ENABLED'] ? ' enabled' : '') ?>">
+        <input type="hidden" class="body-id" value="<?= $arFilter['CLASSNAME'] ?><?= $arResult[ "~UID" ] ?>-block" />
+        <?= GetMessage($arFilter['TITLE']) ?>
+        <span class="arr"></span>
+      </h3>
+      <div class="filter filter-time <?= $arFilter['CLASSNAME'] ?><?= ($arFilter['~ENABLED'] ? ' enabled' : '') ?>" id="<?= $arFilter['CLASSNAME'] ?><?= $arResult[ "~UID" ] ?>-block">
+        <? foreach ($arFilter['MULTIPLE_ITEMS'] as $arSubfilter): ?>
+        <div class="slider-box">
+          <div class="direction_title <?= ToLower($arSubfilter['DIRECTION']) ?>"><?= GetMessage('TS_IBE_OFFER_FILTER_' . $arSubfilter['DIRECTION']) ?></div>
+          <div class="time-range clearfix">
+            <span id="<?= $arSubfilter['ITEM_PREFIX'] ?>filter-from" class="time_from"><?= $arSubfilter['MIN_VALUE_TEXT'] ?></span>
+            <span id="<?= $arSubfilter['ITEM_PREFIX'] ?>filter-till" class="time_till"><?= $arSubfilter['MAX_VALUE_TEXT'] ?></span>
+          </div>
+          <div class="time-slider" id="<?= $arSubfilter['ITEM_PREFIX'] ?>filter">
+            <input type="hidden" class="min-value" value="<?= $arSubfilter['MIN_VALUE'] ?>" />
+            <input type="hidden" class="max-value" value="<?= $arSubfilter['MAX_VALUE'] ?>" />
+          </div>
+        </div>
+        <? endforeach; ?>
+      </div>
+    <? endif; ?>
+
+    <? $arFilter = $arResult['FILTER']['AIRPORT'] ?>
+    <? if ( is_array($arFilter) &&  $arFilter['~VISIBLE'] &&  ( !isset( $arParams[ $arFilter['NAME']."_FILTER_ENABLED" ] ) || $arParams[ $arFilter['NAME']."_FILTER_ENABLED" ] !== "N" ) ): ?>
+    <? if ($arFilter['~ENABLED']) { $iEnabledFiltersCount++; } ?>
+      <? /*h3 class="title<?= ($arFilter['~ENABLED'] ? ' enabled' : '') ?>">
+        <input type="hidden" class="body-id" value="<?= $arFilter['CLASSNAME'] ?><?= $arResult[ "~UID" ] ?>-block" />
+        <?= GetMessage($arFilter['TITLE']) ?>
+        <span class="arr"></span>
+      </h3 */?>
+      
+        <? $itemIndex = 0;
+          $maxItemIndex = count($arApt) - 1;
+          $dir = 'from';
+          $prevLoc = false;
+          $prevPoint = true;
+          foreach ($arFilter['ITEMS'] as $arApt) {
+            if ((($bNewPoint = $arApt['~POINT'] && $prevLoc != $arApt['LOC_NAME']) || ($bTransfer = $prevPoint && !$arApt['~POINT'])) && $prevLoc) { 
+              $dir = $dir == 'from' ? 'to' : ( $dir == 'to' ? 'stop' : '' );
+              ?>
+          </ul>
+        </div>
+            <? }
+            if ($bNewPoint || $bTransfer) { ?>
+        <h3 class="title<?= ($arFilter['~ENABLED'] ? ' enabled' : '') ?>">
+          <input type="hidden" class="body-id" value="<?= $arFilter['CLASSNAME'] ?><?= $arResult[ "~UID" ] ?>-<?=$dir ?>-block" />
+          <?= ($bNewPoint || $bTransfer) && strlen(GetMessage('TS_IBE_OFFER_FILTER_AIRPORT_FILTER_'.ToUpper($dir))) ? 
+          GetMessage('TS_IBE_OFFER_FILTER_AIRPORT_FILTER_'.ToUpper($dir)) : 
+          ( $bNewPoint ? $arApt['LOC_NAME'] : GetMessage('TS_IBE_OFFER_FILTER_TRANSFERS') ) ?>
+          <span class="arr"></span>
+        </h3>
+        <div class="filter filter-time <?= $arFilter['CLASSNAME'] ?><?= ($arFilter['~ENABLED'] ? ' enabled' : '') ?>" id="<?= $arFilter['CLASSNAME'] ?><?= $arResult[ "~UID" ] ?>-<?= $dir?>-block">
+        <ul>
+            <? } ?>
+          <li<?= ($arApt['~DISABLED'] ? ' class="disabled"' : '') ?>>
+            <input type="checkbox" checked="checked"<?= ($arApt['~DISABLED'] ? ' disabled="disabled"' : '') ?> id="<?= $arFilter['ITEM_PREFIX'] ?><?= $itemIndex ?><?= $arResult[ "~UID" ] ?>" />
+            <label for="<?= $arFilter['ITEM_PREFIX'] ?><?= $itemIndex ?><?= $arResult[ "~UID" ] ?>">
+              <span class="code"><?= $arApt['~APT_CODE'] ?></span>
+              <? if ( $arApt['~POINT'] ) { ?>
+              <span class="name"><?= $arApt['APT_NAME'] ? $arApt['APT_NAME'] : $arApt['LOC_NAME'] ?></span>
+              <? } else { ?>
+              <span class="name"><?= $arApt['LOC_NAME'] ?><?= $arApt['APT_NAME'] ? ', ' . $arApt['APT_NAME'] : '' ?></span>
+              <? } ?>
+            </label>
+          </li>
+            <? 
+            $prevLoc = $arApt['LOC_NAME'];
+            $prevPoint = $arApt['~POINT'];
+            $itemIndex++;
+          } ?>
+        </ul>
+      </div>
+    <? endif; ?>
+
+    <? $arFilter = $arResult['FILTER']['CARRIER'] ?>
+    <? if ( is_array($arFilter) &&  $arFilter['~VISIBLE'] &&  ( !isset( $arParams[ $arFilter['NAME']."_FILTER_ENABLED" ] ) || $arParams[ $arFilter['NAME']."_FILTER_ENABLED" ] !== "N" ) ): ?>
+    <? if ($arFilter['~ENABLED']) { $iEnabledFiltersCount++; } ?>
+      <h3 class="title<?= ($arFilter['~ENABLED'] ? ' enabled' : '') ?>">
+        <input type="hidden" class="body-id" value="<?= $arFilter['CLASSNAME'] ?><?= $arResult[ "~UID" ] ?>-block" />
+        <?= GetMessage($arFilter['TITLE']) ?>
+        <span class="arr"></span>
+      </h3>
+      <div class="filter filter-time <?= $arFilter['CLASSNAME'] ?><?= ($arFilter['~ENABLED'] ? ' enabled' : '') ?>" id="<?= $arFilter['CLASSNAME'] ?><?= $arResult[ "~UID" ] ?>-block">
+        <?  $itemIndex = 0; ?>
+        <ul>
+          <? foreach ($arFilter['ITEMS'] as $arCarrier) { ?>
+          <li<?= ($arCarrier['~DISABLED'] ? ' class="disabled"' : '') ?>>
+            <input type="checkbox" checked="checked"<?= ($arCarrier['~DISABLED'] ? ' disabled="disabled"' : '') ?> id="<?= $arFilter['ITEM_PREFIX'] ?><?= $itemIndex ?><?= $arResult[ "~UID" ] ?>" />
+            <label class="logo-small-<?= $arCarrier['IATACODE'] ?>" for="<?= $arFilter['ITEM_PREFIX'] ?><?= $itemIndex ?><?= $arResult[ "~UID" ] ?>">
+              <?= $arCarrier['TITLE'] ?> (<?= $arCarrier['CRTCODE'] ?>)
+            </label>
+          </li>
+            <? $itemIndex++;
+          } ?>
+        </ul>
+      </div>
+    <? endif; ?>
+
+    <? $arFilter = $arResult['FILTER']['DURATION'] ?>
+    <? if ( is_array($arFilter) &&  $arFilter['~VISIBLE'] &&  ( !isset( $arParams[ $arFilter['NAME']."_FILTER_ENABLED" ] ) || $arParams[ $arFilter['NAME']."_FILTER_ENABLED" ] !== "N" ) ): ?>
+    <? if ($arFilter['~ENABLED']) { $iEnabledFiltersCount++; } ?>
+      <h3 class="title<?= ($arFilter['~ENABLED'] ? ' enabled' : '') ?>">
+        <input type="hidden" class="body-id" value="<?= $arFilter['CLASSNAME'] ?><?= $arResult[ "~UID" ] ?>-block" />
+        <?= GetMessage($arFilter['TITLE']) ?>
+        <span class="arr"></span>
+      </h3>
+      <div class="filter filter-time <?= $arFilter['CLASSNAME'] ?><?= ($arFilter['~ENABLED'] ? ' enabled' : '') ?>" id="<?= $arFilter['CLASSNAME'] ?><?= $arResult[ "~UID" ] ?>-block">
+        <? foreach ($arFilter['MULTIPLE_ITEMS'] as $arSubfilter): ?>
+        <div class="slider-box">
+          <div class="direction_title <?= ToLower($arSubfilter['DIRECTION']) ?>"><?= GetMessage('TS_IBE_OFFER_FILTER_' . $arSubfilter['DIRECTION']) ?></div>
+          <div class="time-range clearfix">
+            <span id="<?= $arSubfilter['ITEM_PREFIX'] ?>filter-from" class="time_from"><?= $arSubfilter['MIN_VALUE_TEXT'] ?></span>
+            <span id="<?= $arSubfilter['ITEM_PREFIX'] ?>filter-till" class="time_till"><?= $arSubfilter['MAX_VALUE_TEXT'] ?></span>
+          </div>
+          <div class="time-slider" id="<?= $arSubfilter['ITEM_PREFIX'] ?>filter">
+            <input type="hidden" class="min-value" value="<?= $arSubfilter['MIN_VALUE'] ?>" />
+            <input type="hidden" class="max-value" value="<?= $arSubfilter['MAX_VALUE'] ?>" />
+          </div>
+        </div>
+        <? endforeach; ?>
+      </div>
+    <? endif; ?>
+    
   </div>
 </div>
 <script type="text/javascript">
@@ -67,6 +196,9 @@ new CIBEOfferFilterScript( '#ts_ag_offer_filter<?= $arResult[ "~UID" ] ?>', <?= 
 
 if ('function' == typeof autoSelect) { autoSelect(); }
 
+$(document).ready(function(){
+  $('#ts_ag_offer_filter_container h3.title').trigger('click');
+});
 // ]]>
 </script>
 <? endif; // if ($arResult['FILTER']) ?>
