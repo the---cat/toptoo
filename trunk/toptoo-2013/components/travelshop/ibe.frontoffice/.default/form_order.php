@@ -36,7 +36,7 @@ if ( strlen($matches[0]) && strlen($matches[1]) ) { // ≈сли пришли по диплинку в
 
     <!-- выбор типа рейса -->
     <fieldset class="route-types clearfix">
-      <input type="hidden" name="RT_OW" id="rt-ow-val" value="<?= ( $arResult['rt_checked'] ? 'RT' : 'OW' ) ?>" />
+      <input type="hidden" name="RT_OW" id="RT_OW" value="<?= ( $arResult['rt_checked'] ? 'RT' : 'OW' ) ?>" />
       <div class="type type_rt<? if($arResult['rt_checked']){ ?> selected<? } ?>"><?=GetMessage("TS_STEP1_SEARCHFORM_ROUTE_TYPE_RT") ?></div>
       <div class="type type_ow<? if($arResult['ow_checked']){ ?> selected<? } ?>"><?=GetMessage("TS_STEP1_SEARCHFORM_ROUTE_TYPE_OW") ?></div>
     </fieldset>
@@ -202,12 +202,12 @@ function switchRouteType(type_val){
   var type = type_val.toLowerCase();
   form = $('#form_order');
   if ( form.find('.route-types .type_'+type).hasClass('selected') || form.hasClass('form_'+type) ) return;
-  var prev_type_val = $('#rt-ow-val').val(),
+  var prev_type_val = $('#RT_OW').val(),
   prev_type = prev_type_val.toLowerCase();
   form.find('.route-types .selected').removeClass('selected');
   form.find('.route-types .type_'+type).addClass('selected');
   form.removeClass('form_'+prev_type).addClass('form_'+type);
-  $('#rt-ow-val').val(type_val);
+  $('#RT_OW').val(type_val);
 }
 $('#form_order .route-types .type').click(function() {
   var type = $(this),
