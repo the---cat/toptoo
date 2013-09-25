@@ -1,5 +1,8 @@
 <?
 $MESS[ "TS_IBE_OFFER_FILTER_TRANSFERS_FILTER" ] = "Пересадки";
+$MESS[ "TS_IBE_OFFER_FILTER_TRANSFERS_0" ] = "Только прямые";
+$MESS[ "TS_IBE_OFFER_FILTER_TRANSFERS_1" ] = "Не более 1";
+$MESS[ "TS_IBE_OFFER_FILTER_TRANSFERS_2" ] = "Любое количество";
 $MESS[ "TS_IBE_OFFER_FILTER_DEPARTURE_TIME_FILTER" ] = "Время вылета";
 $MESS[ "TS_IBE_OFFER_FILTER_AIRPORT_FILTER_FROM" ] = "Аэропорт вылета";
 $MESS[ "TS_IBE_OFFER_FILTER_AIRPORT_FILTER_TO" ] = "Аэропорт прилета";
