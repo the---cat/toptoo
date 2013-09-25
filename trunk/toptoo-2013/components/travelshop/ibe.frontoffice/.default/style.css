@@ -447,6 +447,8 @@ html.msie7 #ts_ag_reservation .form-order .class .service_class_title{ display:b
 }
 
 #ts_ag_reservation .form_tools{ padding:11px 0; }
+html.msie9 #ts_ag_reservation .form-order .submit,
+html.msie9 #ts_ag_reservation .form-order .submit .button,
 html.msie9 #ts_ag_reservation .form-order .top_form_submit,
 html.msie9 #ts_ag_reservation .form-order .top_form_submit .button{ width:125px; }
 #form_top_passengers_notice{display:none;}
@@ -555,7 +557,7 @@ html.msie9 #ts_ag_reservation .form-order .top_form_submit .button{ width:125px;
   text-align: center;
   text-transform: uppercase;
 }
-.ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ padding-left:6px; }
+html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ border-left:2px solid #333333; }
 .ui-datepicker th.ui-datepicker-week-end{ color:#eb4675; }
 
 .ui-datepicker td{
@@ -1051,7 +1053,7 @@ html.msie9 #ts_ag_reservation .form-order .top_form_submit .button{ width:125px;
 }
 
 #ts_ag_reservation .personal_data .profiles .profile_form .date .day_wrap,
-#ts_ag_reservation .personal_data .profiles .profile_form .date .month_wrap { width: 25px; }
+#ts_ag_reservation .personal_data .profiles .profile_form .date .month_wrap { width: 20px; }
 #ts_ag_reservation .personal_data .profiles .profile_form .date .year_wrap{ width: 45px;}
 #ts_ag_reservation .personal_data .profiles .profile_form .date .dot{
   display: block;
@@ -1059,7 +1061,7 @@ html.msie9 #ts_ag_reservation .form-order .top_form_submit .button{ width:125px;
   height:33px;
   line-height: 35px;
   text-align: center;
-  width:15px;
+  width:20px;
 }
 #ts_ag_reservation .personal_data .profiles .profile_form .date select{
   border:none;
@@ -1076,6 +1078,7 @@ html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date .yea
   overflow: visible;
   width:auto;
 }
+html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date .dot{ width:15px; }
 html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date select{ -webkit-appearance:none; }
 html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date select.day, 
 html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date select.month { width: 25px; }
@@ -1221,7 +1224,7 @@ html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date sele
   text-decoration: none;
 }
 
-#ts_ag_reservation .services .price{
+#ts_ag_reservation .services td.price{
   color:#666666;
   font-size:18px;
   font-weight:bold;
@@ -1270,6 +1273,7 @@ html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date sele
 }
 
 #ts_ag_reservation .pay_method .item{
+  cursor:pointer;
   display:block;
   padding:0;
 }
@@ -1797,9 +1801,10 @@ html.msie7 #ts_ag_reservation .pay_method .paysystem_icon{margin-right:5px;}
   z-index: 100;
 }
 .ww_state_wait {
-  background: #ffffff url(images/wait.png) center bottom 30px no-repeat;
+  background: #ffffff; /* url(images/wait.png) center bottom 30px no-repeat;*/
   padding-bottom:215px;
 }
+.ww_state_wait .progress-img{ margin:30px 0 -185px; }
 .ww_state_error {
   text-align: left;
   background: #59abe3;

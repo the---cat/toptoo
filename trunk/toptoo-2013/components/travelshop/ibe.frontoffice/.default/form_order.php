@@ -26,7 +26,6 @@ if ( strlen($matches[0]) && strlen($matches[1]) ) { // Если пришли по диплинку в
   $APPLICATION->AddHeadString('<link rel="canonical" href="http://' . $_SERVER["HTTP_HOST"] . $matches[0] . '" />', true); // добавляем каноническую ссылку вида http://avia.toptoo.com/!/MOW/PAR/ 
 }
 ?>
-
 <div class="form_wrap"<?= $arResult['form']['~id'] ? ' id="'.$arResult['form']['~id'].'"' : '' ?>>
 <? if ( $arResult[ "~SHOW_FORM" ] ) : ?>
   <? if ('CHARTER' != $arParams['FARES_MODE']): ?>
