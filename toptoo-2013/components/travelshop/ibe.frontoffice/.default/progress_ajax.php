@@ -4,4 +4,5 @@
   <div class="progress-text" id="progress-text">
     <?= GetMessage( 'IBE_WWINDOW_PLEASE_WAIT' ) ?>
   </div>
+  <img class="progress-img" src="<?= $templateFolder."/images/wait.png" ?>" alt="" />
 </div>
