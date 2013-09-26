@@ -1,4 +1,18 @@
 <? if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die(); ?>
+<div class="form_tools clearfix">
+  <div class="c-next">
+  <? $APPLICATION->IncludeComponent
+  ( 'travelshop:ibe.currency'
+  , ''
+  , array
+    ( 'CURRENCY_DEFAULT' => $arResult['CURRENCY']
+    , 'USE_MERGED_STEPS' => defined('IBE_USE_MERGED_STEPS') && IBE_USE_MERGED_STEPS ? IBE_USE_MERGED_STEPS : 'N'
+    , 'IBE_AJAX_MODE' => defined('IBE_AJAX_MODE') && IBE_AJAX_MODE ? IBE_AJAX_MODE : 'N'
+    )
+  ); ?>
+  </div>
+</div>
+
 <form action="<?= $arResult[ "ACTION" ] ?>" id="preview" method="post" name="preview" onsubmit="<?= $arResult[ "ONSUBMIT" ] ?>">
   <?=$arResult['SCRIPT'] ?>
   <? $arResult[ "ORDER" ] = array();
