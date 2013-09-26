@@ -665,13 +665,48 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
 #ts_ag_reservation .offers .offer .inbound .selected { background:#ffd889; }
 
 #ts_ag_reservation .offers .offer .direction .variant td{
-  border-bottom:1px solid;
   padding:20px 15px 20px 0;
   text-align: left;
   vertical-align: middle;
 }
-#ts_ag_reservation .offers .offer .outbound .variant td{ border-bottom-color:#00c5cb;}
-#ts_ag_reservation .offers .offer .inbound .variant td{ border-bottom-color:#ffb433;}
+#ts_ag_reservation .offers .offer .direction .with_stops td{ 
+  padding-top:0; 
+  padding-bottom:0;
+}
+#ts_ag_reservation .offers .offer .direction .with_stops .first td{ padding-top:20px; }
+#ts_ag_reservation .offers .offer .direction .with_stops .last td{ padding-bottom:20px; }
+
+#ts_ag_reservation .offers .offer .direction .variant .last td,
+#ts_ag_reservation .offers .offer .direction .variant .stop_wrap td,
+#ts_ag_reservation .offers .offer .direction .variant td.select{ border-bottom:1px solid; }
+#ts_ag_reservation .offers .offer .outbound .variant .last td,
+#ts_ag_reservation .offers .offer .outbound .variant .stop_wrap td,
+#ts_ag_reservation .offers .offer .outbound .variant td.select { border-bottom-color:#00c5cb;}
+#ts_ag_reservation .offers .offer .inbound .variant .last td,
+#ts_ag_reservation .offers .offer .inbound .variant .stop_wrap td,
+#ts_ag_reservation .offers .offer .inbound .variant td.select{ border-bottom-color:#ffb433; }
+
+#ts_ag_reservation .offers .offer .direction .variant .stop_wrap td, 
+#ts_ag_reservation .offers .offer .direction .variant .stop_wrap_add td{
+  height:20px;
+  line-height: 20px;
+  padding:0;
+  vertical-align: bottom;
+}
+#ts_ag_reservation .offers .offer .direction .variant .stop_wrap td > div{ position: relative; }
+#ts_ag_reservation .offers .offer .direction .variant .stop_wrap .stop {
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+  bottom:-12px;
+  color:#ffffff;
+  font-size:13px;
+  line-height: 14px;
+  padding:5px 10px;
+  position: absolute;
+}
+#ts_ag_reservation .offers .offer .outbound .variant .stop_wrap .stop { background: #00c5cb; }
+#ts_ag_reservation .offers .offer .inbound .variant .stop_wrap .stop { background: #ffb433; }
 
 #ts_ag_reservation .offers .offer .direction .variant td.select{
   background:url(images/radio.png) 50% 50% no-repeat;
@@ -682,26 +717,25 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
 #ts_ag_reservation .offers .offer .direction .selected td.select{ background-image:url(images/radio_ch.png); }
 
 #ts_ag_reservation .offers .offer .direction .variant td.select input[type="radio"]{ display:none; }
+#ts_ag_reservation .offers .offer .direction .variant td.flight_number{
+  font-size:15px;
+  width:190px;
+  white-space: nowrap;
+}
 #ts_ag_reservation .offers .offer .direction .variant .logo{
   background-position: 0 50%;
   background-repeat: no-repeat;
-  font-size:15px;
-  padding-left:90px;
-  width:100px;
-}
-#ts_ag_reservation .offers .offer .direction .variant .logo .number{ position:relative; }
-#ts_ag_reservation .offers .offer .direction .variant .logo .number .ak-name {
-  cursor: help;
-  display: block;
+  display: inline-block;
   height: 2.5em;
-  left: -90px;
-  overflow: hidden;
-  position: absolute;
-  text-indent: 999px;
-  white-space:nowrap;
+  padding: 0;
+  vertical-align: middle;
   width: 90px;
 }
-#ts_ag_reservation .offers .offer .direction .variant .logo .number .oak{
+#ts_ag_reservation .offers .offer .direction .variant .number_plane{
+  display: inline-block;
+  vertical-align: middle;
+}
+#ts_ag_reservation .offers .offer .direction .variant .lflight_number .oak{
   color:#FF0066;
   cursor: help;
 }
@@ -714,20 +748,8 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
   position: relative;
   vertical-align: top;
 }
-#ts_ag_reservation .offers .offer .direction .variant .flight_info .stop_wrap{
-  display: block;
-  position: relative;
-}
-#ts_ag_reservation .offers .offer .direction .variant .flight_info .stop_wrap .stop{
-  -webkit-border-radius:4px;
-  -moz-border-radius:4px;
-  border-radius:4px;
-  color:#ffffff;
-  font-size:13px;
-  padding:5px 10px;
-  position: absolute;
-  top:-33px;
-}
+
+
 #ts_ag_reservation .offers .offer .direction .variant .flight_info .departure{ padding-right:45px; }
 #ts_ag_reservation .offers .offer .direction .variant .flight_info .departure:after{
   content:'\2192';
@@ -759,9 +781,6 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
   font-size:11px;
   line-height: 1.2;
 }
-
-#ts_ag_reservation .offers .offer .outbound .variant .flight_info .stop{ background: #00c5cb; }
-#ts_ag_reservation .offers .offer .inbound .variant .flight_info .stop{ background: #ffb433; }
 #ts_ag_reservation .offers .offer .direction .variant .add_info{ 
   font-size:13px;
   line-height: 1.5;
