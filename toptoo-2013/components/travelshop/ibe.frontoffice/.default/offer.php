@@ -1,13 +1,6 @@
 <? if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 echo $arResult['SCRIPT']; ?>
-
-<div class="offers_tools clearfix">
-  <? /*
-  <div class="c-back">
-    <div class="button_link back" id="<?= $arResult['BUTTONS']['BACK']['~ID'] ?>" onclick="<?= $arResult['BUTTONS']['BACK']['ONCLICK'] ?>">
-      <?= GetMessage('TS_FRONTOFFICE_BUTTON_BACK_SEARCH') ?>
-    </div>
-  </div>
+<div class="form_tools clearfix">
   <div class="c-next">
   <? $APPLICATION->IncludeComponent
   ( 'travelshop:ibe.currency'
@@ -19,7 +12,8 @@ echo $arResult['SCRIPT']; ?>
     )
   ); ?>
   </div>
-  */ ?>
+</div>
+<div class="offers_tools clearfix">
   <div id="carrier_matrix" style="display:none;">
   <? // Подключение компонента матрицы авиакомпаний
   if ($arResult['~CARRIER_MATRIX']) {

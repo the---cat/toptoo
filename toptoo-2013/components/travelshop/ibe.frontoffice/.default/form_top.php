@@ -111,20 +111,6 @@ function fnPassengersNotice(){
   </script>
 </form>
 </div>
-<div class="form_tools clearfix">
-  <div class="c-next">
-  <? $APPLICATION->IncludeComponent
-  ( 'travelshop:ibe.currency'
-  , ''
-  , array
-    ( 'CURRENCY_DEFAULT' => $arResult['CURRENCY']
-    , 'USE_MERGED_STEPS' => defined('IBE_USE_MERGED_STEPS') && IBE_USE_MERGED_STEPS ? IBE_USE_MERGED_STEPS : 'N'
-    , 'IBE_AJAX_MODE' => defined('IBE_AJAX_MODE') && IBE_AJAX_MODE ? IBE_AJAX_MODE : 'N'
-    )
-  ); ?>
-  </div>
-</div>
-
 
 <? if ( isset( $arResult[ "PROGRESS" ] ) ) : ?>
 <div class="progress_below_form" id="<?= $arResult[ "PROGRESS" ][ "~ID" ] ?>" style="<?= $arResult[ "PROGRESS" ][ "STYLE" ] ?>">
