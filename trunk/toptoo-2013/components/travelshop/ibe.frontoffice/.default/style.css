@@ -367,7 +367,6 @@
   position: relative;
   width:43px;
 }
-/*html.webkit #ts_ag_reservation .form-order .passenger .select_wrap{ padding-left: 5px; width:38px;}*/
 #ts_ag_reservation .form-order .passenger .select_wrap:after{
   border-top:5px solid #000000;
   border-left:5px solid transparent;
@@ -385,6 +384,8 @@
   height:33px;
   width:65px;
   -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
 }
 html.webkit #ts_ag_reservation .form-order .passenger select{
   padding-left:3px;

@@ -49,14 +49,18 @@ if ( strlen($matches[0]) && strlen($matches[1]) ) { // Если пришли по диплинку в
         <div class="point departure">
           <div class="location">
             <input class="text" id="depart" name="depart" type="text" value="<?=$arResult['depart'] ?>" />
+            <? /*
             <div class="link-container"><?=CTemplateToolsPoint::Link("depart", GetMessage("TS_STEP1_SEARCHFORM_TOOLS_POINT_DEPARTURE_SHORT_TITLE"), GetMessage("TS_STEP1_SEARCHFORM_TOOLS_POINT_DEPARTURE_TITLE")); ?></div>
+            */ ?>
           </div>
         </div>
         <div id="route_switch" class="route_switch point"></div>
         <div class="point arrival">
           <div class="location">
             <input class="text" id="arrival" name="arrival" type="text" value="<?=$arResult['arrival'] ?>" />
+            <? /*
             <div class="link-container"><?=CTemplateToolsPoint::Link("arrival", GetMessage("TS_STEP1_SEARCHFORM_TOOLS_POINT_ARRIVAL_SHORT_TITLE"), GetMessage("TS_STEP1_SEARCHFORM_TOOLS_POINT_ARRIVAL_TITLE")); ?></div>
+            */ ?>
           </div>
         </div>
       </fieldset>
