@@ -41,14 +41,18 @@ foreach($arMonths as &$month) {
         <div class="point departure">
           <div class="location">
             <input type="text" class="text" name="depart" value="<?= $arResult['depart'] ?>" id="depart" />
+            <? /*
             <div class="link-container"><?=CTemplateToolsPoint::Link("depart", GetMessage("TS_SHORTFORM_TOOLS_POINT_DEPARTURE_SHORT_TITLE"), GetMessage("TS_SHORTFORM_TOOLS_POINT_DEPARTURE_TITLE")); ?></div>
+            */ ?>
           </div>
         </div>
         <div id="route_switch" class="route_switch point"></div>
         <div class="point arrival">
           <div class="location">
             <input type="text" class="text" name="arrival" value="<?= $arResult['arrival'] ?>" id="arrival" />
+            <? /*
             <div class="link-container"><?=CTemplateToolsPoint::Link("arrival", GetMessage("TS_SHORTFORM_TOOLS_POINT_ARRIVAL_SHORT_TITLE"), GetMessage("TS_SHORTFORM_TOOLS_POINT_ARRIVAL_TITLE")); ?></div>
+            */ ?>
           </div>
         </div>
       </fieldset>
