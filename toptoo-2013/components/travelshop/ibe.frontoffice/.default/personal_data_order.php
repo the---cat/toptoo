@@ -28,7 +28,8 @@
     $deparure = $arResult['FLIGHT'][reset($direction['FLIGHTS'])];
     $arrival = $arResult['FLIGHT'][end($direction['FLIGHTS'])];
     ?>
-    <table class="direction <?= $diretion_name ?><?= count($direction['FLIGHTS']>1) ? ' with_stops' : '' ?>">
+    <? $stops = count($direction['FLIGHTS']>1) && is_array($arrival['STOP_DURATION']) ? ' with_stops' : ''  ?>
+    <table class="direction <?= $diretion_name ?><?= $stops ?>">
         <tbody class="direction_caption"><tr>
           <th class="dir_name" colspan="4">
             <span class="title"><?= GetMessage('TS_FRONTOFFICE_STEP3_ORDER_' . ToUpper($diretion_name) ) ?></span>
