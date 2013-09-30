@@ -14,7 +14,7 @@ echo $arResult['SCRIPT']; ?>
   </div>
 </div>
 <div class="offers_tools clearfix">
-  <div id="carrier_matrix" style="display:none;">
+  <div id="carrier_matrix_container" style="display:none;">
   <? // Подключение компонента матрицы авиакомпаний
   if ($arResult['~CARRIER_MATRIX']) {
     $APPLICATION->IncludeComponent
@@ -205,11 +205,11 @@ echo $arResult['SCRIPT']; ?>
         </td>
         <td class="submit">
           <? if ( $bValidOffer ) : ?>
-          <div class="button_buy" onclick="$(this).closest('.submit').find('input').trigger('click');">
+          <button class="button_buy" type="submit">
             <?= GetMessage('TS_FRONTOFFICE_STEP2_OFFER_BUY') ?>
             <span class="price"><?=$offer['PRICE']['CAPTION_AMOUNT'] ?></span>
-          </div>
-          <input class="button_hidden" type="submit" value="<?=GetMessage("TS_FRONTOFFICE_STEP2_OFFER_SELECT") ?>" />
+          </button>
+          <? /* <input class="button_hidden" type="submit" value="<?=GetMessage("TS_FRONTOFFICE_STEP2_OFFER_SELECT") ?>" /> */ ?>
           <? else : ?>
           <div class="common-error">
             <div class="content">
