@@ -133,9 +133,10 @@ echo $arResult['SCRIPT']; ?>
             <td class="flight_number">
               <? if ($arResult['LOGOS']): ?>
               <? $akLogo = $arResult['LOGOS'][$flight['SEGMENTS'][$seg_ct]['~CODE']] ?>
-              <div class="logo<?= ($arResult['LOGOS'] ? ' logo-normal-' . $akLogo['IATACODE'] . '"' : '') ?>" title="<?= $akLogo['TITLE']; ?>"></div><? 
-              endif; 
-              ?><div class="number_plane">
+              <div class="logo<?= ($arResult['LOGOS'] ? ' logo-normal-' . $akLogo['IATACODE'] . '"' : '') ?>" title="<?= $akLogo['TITLE']; ?>">
+              <? else: ?> 
+              <div class="number_plane">
+              <? endif; ?>
                 <div class="number">
               <?=$flight['SEGMENTS'][$seg_ct]['~AK'] ?>&nbsp;<?=$flight['SEGMENTS'][$seg_ct]['NUMBER'] ?><? 
               if( !empty( $flight['SEGMENTS'][$seg_ct]['~OAK'] ) && $flight['SEGMENTS'][$seg_ct]['~OAK'] != $flight['SEGMENTS'][$seg_ct]['~AK'] ): 
