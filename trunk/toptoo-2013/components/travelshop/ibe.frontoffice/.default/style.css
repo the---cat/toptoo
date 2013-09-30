@@ -828,7 +828,7 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
 
 #ts_ag_reservation .order .flights .direction .direction_caption .dir_name,
 #ts_ag_reservation .order .flights .direction .direction_caption .companies { text-align: left;  }
-#ts_ag_reservation .order .flights .direction .direction_caption .time_info { text-align: right; }
+#ts_ag_reservation .order .flights .direction .direction_caption .time_info { text-align: right; white-space: nowrap; }
 #ts_ag_reservation .order .flights .direction .direction_caption .route,
 #ts_ag_reservation .order .flights .direction .direction_caption .time_info .time { font-weight: bold; }
 
@@ -845,15 +845,58 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
 }
 #ts_ag_reservation .order .flights .flight .bottom td { padding-bottom: 15px; }
 
-#ts_ag_reservation .order .flights .flight td.logo {
-  background-position: 15px center;
-  background-repeat: no-repeat;
+#ts_ag_reservation .order .flights .with_stops .flight td { padding-top:0; padding-bottom:0; }
+#ts_ag_reservation .order .flights .with_stops .first .top td { padding-top:15px; }
+#ts_ag_reservation .order .flights .with_stops .last .bottom td { padding-bottom:15px; }
+
+#ts_ag_reservation .order .flights .with_stops .stop_wrap td{ border-bottom:1px solid; }
+#ts_ag_reservation .order .flights .outbound .stop_wrap td{ border-bottom-color:#00c5cb;}
+#ts_ag_reservation .order .flights .inbound .stop_wrap td{ border-bottom-color:#ffb433;}
+
+#ts_ag_reservation .order .flights .with_stops .stop_wrap td, 
+#ts_ag_reservation .order .flights .with_stops .stop_wrap_add td{
+  height:20px;
+  line-height: 20px;
+  padding:0;
+  vertical-align: bottom;
+}
+#ts_ag_reservation .order .flights .with_stops .stop_wrap td > div{ position: relative; }
+#ts_ag_reservation .order .flights .with_stops .stop_wrap .stop {
+  background:#ffffff;
+  border:1px solid;
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+  bottom:-12px;
+  font-size:13px;
+  line-height: 14px;
+  padding:4px 10px;
+  position: absolute;
+}
+#ts_ag_reservation .order .flights .outbound .stop_wrap .stop { 
+  border-color: #00c5cb;
+  color:#00c5cb;
+}
+#ts_ag_reservation .order .flights .inbound .stop_wrap .stop { 
+  border-color: #ffb433;
+  color: #ffb433;
+}
+
+#ts_ag_reservation .order .flights .flight td.logo{
   color: #FF0066;
   font-size: 12px;
-  padding-left: 0;
+  padding:0 0 0 15px;
   text-align: right;
-  vertical-align: top;
-  width: 120px;
+  vertical-align: middle;
+  width: 145px;
+}
+#ts_ag_reservation .order .flights .first td.logo{ padding-top:15px; }
+#ts_ag_reservation .order .flights .last td.logo{ padding-bottom:15px; }
+#ts_ag_reservation .order .flights .flight div.logo {
+  background-position: 0 50%;
+  background-repeat: no-repeat;
+  height:2.5em;
+  width: 90px;
 } /*Логотип авиакомпании*/
 
 #ts_ag_reservation .order .flights .flight td.time {
@@ -888,7 +931,11 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
 #ts_ag_reservation .order .flights .flight td.flight { font-weight: bold; }
 
 #ts_ag_reservation .order .flights .flight td.duration,
-#ts_ag_reservation .order .flights .flight td.class { vertical-align: middle; }
+#ts_ag_reservation .order .flights .flight td.class {
+  padding-bottom:8px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
 
 #ts_ag_reservation .order .flights .flight td.flight,
 #ts_ag_reservation .order .flights .flight td.plane { 
