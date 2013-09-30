@@ -1,17 +1,23 @@
 .cl{ clear:both; }
-.best-offers{}
-.best-offers .best-offer{ 
-  margin-bottom:15px;
+.best-offers{ margin-bottom:15px;}
+.best-offers table{ width:100%; }
+.best-offers table td{ vertical-align: top; }
+.best-offers td.best-offer,
+.best-offers td.hr,
+.best-offers td.price{
+  border:solid #d4d4d4;
+  border-width: 0 1px;
   width:49%;
 }
-.best-offers .best-offer.even{ float:left; }
-.best-offers .best-offer.odd{ float:right; }
+.best-offers .best-offer.even{ }
+.best-offers .best-offer.odd{ }
 
 .best-offers .best-offer .profile-name{
   background: #00C5CB;
   color:#ffffff;
   font-size:22px;
   font-weight:normal;
+  margin: 0 -1px;
   padding:15px 15px 15px 60px;
   text-align: left;
 }
@@ -19,13 +25,8 @@
 .best-offers .low_cost .profile-name{ background: #00C5CB url(img/lowcost.png) 19px 50% no-repeat; }
 .best-offers .fastest .profile-name{ background: #FFB433 url(img/fastest.png) 19px 50% no-repeat; }
 
-.best-offers .best-offer .info{
-  border:solid #d4d4d4;
-  border-width: 0 1px 1px;
-  padding:0 20px;
-}
+.best-offers .best-offer .info{ margin:0 20px; }
 
-.best-offers .best-offer .info table{ width:100%; }
 .best-offers .best-offer .info table .caption {
   color:#666666;
   font-size:15px;
@@ -55,22 +56,31 @@
 .best-offers .best-offer .info .companies{ padding-top:5px; }
 .best-offers .best-offer .info .duration{ margin-right:7px; }
 .best-offers .best-offer .info .seats{ color:#FF0066; }
-.best-offers .best-offer .info > .price{
-  border-top:4px solid;
-  margin-top:3px;
-  padding:8px 0;
-  position: relative;
+
+.best-offers td.price{
+  border-bottom-width:1px;
+  padding:0 20px 8px;
   text-align: center;
+  vertical-align: bottom;
 }
-.best-offers .low_cost .info > .price{ border-top-color: #00C5CB; }
-.best-offers .fastest .info > .price{ border-top-color: #FFB433; }
-.best-offers .best-offer .info > .price .goto-offer {
-  margin:-8px 0 8px;
+
+.best-offers td.hr > div{
+  border-top:4px solid;
+  line-height: 1.2;
+  margin:3px 20px 0;
+  min-height: 8px;
+  padding:0;
+  position: relative;
   text-align: left;
 }
-#ts_ag_reservation .best-offers .best-offer .info > .price .goto-offer  a{
+.best-offers td.hr.low_cost > div{ border-top-color: #00C5CB; }
+.best-offers td.hr.fastest > div{ border-top-color: #FFB433; }
+.best-offers td.hr .goto-offer { padding-bottom:5px; }
+#ts_ag_reservation .best-offers td.hr .goto-offer  a{
   border-bottom:1px dashed;
   color:#00309d;
   font-size:11px;
   text-decoration: none;
 }
+
+

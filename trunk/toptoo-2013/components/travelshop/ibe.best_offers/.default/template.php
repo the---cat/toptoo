@@ -5,11 +5,14 @@
 ?>
 <? if ( isset($arResult["BEST_OFFERS"]) && count($arResult["BEST_OFFERS"]) ): ?>
 
-<div class="best-offers clearfix">
-  <? $numOffers = 0 ?>
+<div class="best-offers">
+  <table>
+  <? $numOffers = 0;
+  $offerButtons = array(); ?>
   <? foreach ( $arResult["BEST_OFFERS"] as $offers ): ?>
   <? if ( FALSE != $offers ): ?>
   <? $numOffers++; ?>
+  <? if ( $numOffers == 1 ) { ?><tr><? } ?>
   <? foreach ( $offers["OFFERS"] as $offer ): ?>
    <?  $offerOrig = $arResult["OFFER"][$offer["OFFER_INDEX"]];
           $arTagForm = array(
@@ -27,7 +30,8 @@
           $inbound = $offerOrig["FLIGHTS"][1]["FLIGHT"][$offer["FLIGHT_INDICES"][1]];
   ?>
 <? //trace($offer) ?>
-  <div class="best-offer <?= ToLower($offers["CODE"]) ?> <?= floor($numOffers/2) == $numOffers/2 ? 'even' : 'odd'  ?>">
+
+  <td class="best-offer <?= ToLower($offers["CODE"]) ?> <?= floor($numOffers/2) == $numOffers/2 ? 'even' : 'odd'  ?>">
     <div class="profile-name">
       <?= strlen( GetMessage( "BEST_OFFERS_PROFILE_" . $offers["CODE"] ) ) ? GetMessage( "BEST_OFFERS_PROFILE_" . $offers["CODE"] ) : $offers["CODE"] ?>
     </div>
@@ -190,31 +194,60 @@
         <? endif; ?>
       </div>
 
-      <div class="price">
-        <? if( count($offerOrig["FLIGHTS"][0]["FLIGHT"]) > 1 || count($offerOrig["FLIGHTS"][1]["FLIGHT"]) > 1 ): // Если есть другие рейсы по этой цене (в рамках одной рекомендации) ?>
-        <div class="goto-offer"><a class="link" href="#offer-<?= $offer["OFFER_INDEX"] ?>"><?= GetMessage("BEST_OFFERS_SELECT_FLIGHTS") ?></a></div>
-        <? endif; // if( count($offerOrig["FLIGHTS"][0]["FLIGHT"]) > 1 || count($offerOrig["FLIGHTS"][1]["FLIGHT"]) > 1 ):  ?>
-        <form <?= $strTagForm; ?>>
-          <?= $offerOrig["HIDDEN"] ?>
-          <input type="hidden" name="<?= $outbound["INPUT"]["NAME"]  ?>" value="<?= $outbound["INPUT"]["VALUE"]?>" />
-          <input type="hidden" name="<?= $inbound["INPUT"]["NAME"]  ?>" value="<?= $inbound["INPUT"]["VALUE"]?>" />
-          <div class="button_buy" onclick="$(this).closest('form').find('.button_hidden').trigger('click');">
-            <?= GetMessage('BEST_OFFERS_SELECT') ?>
-            <span class="price"><?= $offerOrig["PRICE"]["CAPTION_AMOUNT"] ?></span>
-          </div>
-          <input class="button_hidden" type="submit" value="<?= GetMessage("BEST_OFFERS_SELECT") ?>" />
-        </form>
-      </div>
+      <?
+      $offerButtons[$numOffers]['CODE'] = ToLower($offers["CODE"]);
+      $offerButtons[$numOffers]['FORM'] = $strTagForm;
+      $offerButtons[$numOffers]['HIDDEN'] =  $offerOrig["HIDDEN"];
+      $offerButtons[$numOffers]['OUTBOUND']['NAME'] = $outbound["INPUT"]["NAME"];
+      $offerButtons[$numOffers]['OUTBOUND']['VALUE'] = $outbound["INPUT"]["VALUE"];
+      $offerButtons[$numOffers]['INBOUND']['NAME'] = $inbound["INPUT"]["NAME"];
+      $offerButtons[$numOffers]['INBOUND']['VALUE'] = $inbound["INPUT"]["VALUE"];
+      $offerButtons[$numOffers]['PRICE'] = $offerOrig["PRICE"]["CAPTION_AMOUNT"];
+      $offerButtons[$numOffers]['ONCLICK'] = '$(\'#bestoffer_form_' . $offer["OFFER_INDEX"] .'\').submit();'; 
+      $offerButtons[$numOffers]['SHOW_MORE_LINK'] = ( count($offerOrig["FLIGHTS"][0]["FLIGHT"]) > 1 || count($offerOrig["FLIGHTS"][1]["FLIGHT"]) > 1 ) ? $offer["OFFER_INDEX"] : false;
+      ?>
     </div>
-  </div>
-
+  </td>
   <? endforeach; // foreach ( $offers["OFFERS"] ) ?>
+  <? if ( $numOffers == 1 ) { ?><td class="separator">&nbsp;</td><? } ?>
   <? if ( $numOffers == 2 ) { ?>
-  <div class="cl"></div>
+  </tr>
+  <tr>
+  <? for ( $i = 1; $i < 3; $i++ ) { ?>
+  <td class="hr <?=$offerButtons[$i]['CODE'] ?>">
+    <div>
+      <? if ( $offerButtons[$i]['SHOW_MORE_LINK'] ) { ?>
+      <div class="goto-offer"><a class="link" href="#offer-<?= $offerButtons[$i]['SHOW_MORE_LINK'] ?>"><?= GetMessage("BEST_OFFERS_SELECT_FLIGHTS") ?></a></div>
+      <? } ?>
+    </div>
+  </td>
+  <? if ( $i == 1 ) { ?><td class="separator">&nbsp;</td><? } ?>
+  <? } ?>
+  </tr>
+  <tr>
+  <? for ( $i = 1; $i < 3; $i++ ) { ?>
+    <td class="price <?=$offerButtons[$i]['CODE'] ?>">
+      <div>
+      <form <?= $offerButtons[$i]['FORM'] ?>>
+        <?= $offerButtons[$i]['HIDDEN'] ?>
+        <input type="hidden" name="<?= $offerButtons[$i]['OUTBOUND']['NAME']  ?>" value="<?= $offerButtons[$i]['OUTBOUND']['VALUE'] ?>" />
+        <input type="hidden" name="<?= $offerButtons[$i]['INBOUND']['NAME']  ?>" value="<?= $offerButtons[$i]['INBOUND']['VALUE'] ?>" />
+        <button class="button_buy" type="submit">
+          <?= GetMessage('BEST_OFFERS_SELECT') ?>
+          <span class="price"><?= $offerButtons[$i]['PRICE'] ?></span>
+        </button>
+        <? /* <input class="button_hidden" type="submit" value="<?= GetMessage("BEST_OFFERS_SELECT") ?>" /> */ ?>
+      </form>
+    </div>
+    </td>
+    <? if ( $i == 1 ) { ?><td class="separator">&nbsp;</td><? } ?>
+  <? } ?>
+  </tr>
   <? $numOffers = 0;
       } ?>
   <? endif; // if ( FALSE != $offer ) ?>
   <? endforeach; // foreach ( $arResult["BEST_OFFERS"] as $offer ) ?>
+  </table>
 </div>
 <script type="text/javascript">
   // <![CDATA[
