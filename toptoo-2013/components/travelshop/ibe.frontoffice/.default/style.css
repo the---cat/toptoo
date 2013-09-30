@@ -727,11 +727,8 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
   padding:0 0 0 90px;
   vertical-align: middle;
 }
-#ts_ag_reservation .offers .offer .direction .variant .number_plane{
-  display: inline-block;
-  vertical-align: middle;
-}
-#ts_ag_reservation .offers .offer .direction .variant .lflight_number .oak{
+
+#ts_ag_reservation .offers .offer .direction .variant td.flight_number .oak{
   color:#FF0066;
   cursor: help;
 }
@@ -744,7 +741,6 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
   position: relative;
   vertical-align: top;
 }
-
 
 #ts_ag_reservation .offers .offer .direction .variant .flight_info .departure{ padding-right:45px; }
 #ts_ag_reservation .offers .offer .direction .variant .flight_info .departure:after{

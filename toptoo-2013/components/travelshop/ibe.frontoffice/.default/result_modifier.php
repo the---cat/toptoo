@@ -15,7 +15,19 @@ if ( $arResult["processor"] == "form_order" && strlen($arParams["REDIRECT_HOST"]
   exit();
 }
 
-if ( $arResult['~FORM_TYPE'] == 'personal_data' ){
+//echo $arResult['processor'];
+if ( $arResult['processor'] == 'offer' ){
+  foreach($arResult['OFFER'] as &$offer){
+    echo $MESS['TS_FRONTOFFICE_' . ToUpper($offer['~PENALTY'])];
+    $offer['PENALTY'] = strlen($MESS['TS_FRONTOFFICE_' . ToUpper($offer['~PENALTY'])]) ? $MESS['TS_FRONTOFFICE_' . ToUpper($offer['~PENALTY'])] : $offer['PENALTY'];
+  }
+}
+
+if ( $arResult['processor'] == 'order' || $arResult['processor'] == 'precommit' ){
+  $arResult['PENALTY'] = strlen($MESS['TS_FRONTOFFICE_' . ToUpper($arResult['~PENALTY'])]) ? $MESS['TS_FRONTOFFICE_' . ToUpper($arResult['~PENALTY'])] : $arResult['PENALTY'];
+}
+
+if ( $arResult['processor'] == 'personal_data' ){
 	// В списке ранее введенных профилей пассажиров строку "Новый пассажир" поставить вверху списка
 	foreach ( $arResult['FORM']['PASSENGERS'] as $k => $v ) {
 		$fields_number = count($arResult['FORM']['PASSENGERS'][$k]['PROFILES']['FIELDS']); 
