@@ -278,15 +278,6 @@ $strTagForm = implode( ' ', $arTagForm );
                 </ul>
               </div>
               <div class="warning" onclick="scrollToOrder()"><?= GetMessage('IBE_FRONTOFFICE_PAY_METHOD_WARNING') ?></div>
-              <script type="text/javascript">
-            // <![CDATA[
-            function scrollToOrder() {
-              $('html,body').animate({ 
-                scrollTop: ( $('#ts_ag_reservation_container__personal_data').offset().top - $('#header .nav_fixed_top').height() )
-      }, 500);
-            }
-            // ]]>
-            </script>
           </td>
         </tr>
       </tbody>
@@ -297,6 +288,17 @@ $strTagForm = implode( ' ', $arTagForm );
 
 <script type="text/javascript">
 // <![CDATA[
+function scrollToOrder() {
+  $('html,body').animate({ scrollTop: ( $('#ts_ag_reservation_container__personal_data').offset().top ) }, 500);
+}
+
+function scrollToButton(){
+  var button = $('#commit_forward_button');
+  if ( $(window).scrollTop() + $(window).height() < button.offset().top + button.outerHeight() ) {
+    setTimeout(function(){ $('html,body').animate({ scrollTop: ( button.offset().top ) }, 1000); },500 );    
+  }
+}
+
 <? if ( $ar_paymethod_by_groups ){ ?>
 function toggleGroup(group_id){
   var group_name = $('#' + group_id),
@@ -312,7 +314,8 @@ function toggleGroup(group_id){
 
 $('.group_name').click(function(){ 
   var id = $(this).attr('id');
-  toggleGroup(id); 
+  toggleGroup(id);
+  scrollToButton();
 });
 <? } ?>
 
@@ -331,6 +334,7 @@ $('.paymethods .item input:radio').click(function(){
 
   pm.addClass('selected');
   $('#pay_method_selected_description').html( $('#paysystem_profile_'+ ps_id + ' .paysystem_descr_js').html() );
+  scrollToButton();
 });
 
 $(document).ready(function(){
