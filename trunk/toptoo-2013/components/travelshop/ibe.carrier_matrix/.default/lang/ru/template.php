@@ -1,0 +1,3 @@
+<?
+$MESS['TS_IBE_CARRIER_MATRIX_PRICE_FROM'] = 'от';
+?>
