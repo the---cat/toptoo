@@ -16,6 +16,7 @@ $MESS['TS_STEP1_SEARCHFORM_SEARCH'] = 'Искать';
 $MESS['IBE_WWINDOW_PLEASE_WAIT'] = 'TopToo Travel: мы ищем для Вас билеты у более чем 500 авиакомпаний...';
 
 /* offer.php */
+$MESS['TS_FRONTOFFICE_PENALTY_NORETURNABLE'] = 'Возврат и обмен возможен';
 $MESS['TS_FRONTOFFICE_BUTTON_BACK_SEARCH'] = 'Изменить параметры перелета';
 $MESS['TS_FRONTOFFICE_STEP2_OFFER_LOCAL_TIME'] = 'Указано местное время';
 $MESS['TS_FRONTOFFICE_STEP2_OFFER_OAK_TITLE'] = 'Выполняется авиакомпанией';
