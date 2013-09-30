@@ -12,7 +12,6 @@
   ); ?>
   </div>
 </div>
-
 <form action="<?= $arResult[ "ACTION" ] ?>" id="preview" method="post" name="preview" onsubmit="<?= $arResult[ "ONSUBMIT" ] ?>">
   <?=$arResult['SCRIPT'] ?>
   <? $arResult[ "ORDER" ] = array();
@@ -25,8 +24,11 @@
   <? // Перелеты ?>
   <div class="flights">
   <? foreach( $arResult['DIRECTIONS'] as $directionKey => $direction ): ?>
-    <? $diretion_name =  $directionKey == 0 ? 'outbound' : 'inbound'; ?>
-    <table class="direction <?= $diretion_name ?>">
+    <? $diretion_name =  $directionKey == 0 ? 'outbound' : 'inbound'; 
+    $deparure = $arResult['FLIGHT'][reset($direction['FLIGHTS'])];
+    $arrival = $arResult['FLIGHT'][end($direction['FLIGHTS'])];
+    ?>
+    <table class="direction <?= $diretion_name ?><?= count($direction['FLIGHTS']>1) ? ' with_stops' : '' ?>">
         <tbody class="direction_caption"><tr>
           <th class="dir_name" colspan="4">
             <span class="title"><?= GetMessage('TS_FRONTOFFICE_STEP3_ORDER_' . ToUpper($diretion_name) ) ?></span>
@@ -48,12 +50,44 @@
       <? foreach ( $direction['FLIGHTS'] as $fk ): ?>
         <? $flight = $arResult['FLIGHT'][$fk] ?>
         <? if( !empty( $flight['~OAK'] ) && $flight['~OAK'] != $flight['~AK'] ) { $oak = true; } else { $oak = false; } ?>
-      <tbody class="flight">
+      <tbody class="flight<?= $flight == $deparure ? ' first' : '' ?><?= $flight == $arrival ? ' last' : '' ?>">
+        <? if ( is_array($flight['STOP_DURATION']) ) { ?>
+          <? //trace ($flight['SEGMENTS'][$seg_ct]);
+            list($ah, $am) = explode ( ':', $arrival['ARRIVAL']['TIME'] );
+            list($dh, $dm) = explode ( ':', $deparure['DEPARTURE']['TIME'] );
+            $arrTime = intval($ah)*60 + intval($am);
+            $depTime = intval($dh)*60 + intval($dh);
+            $night = ( 
+              ( $arrTime > 23*60 ) ||
+              ( $arrTime < 5*60 ) ||
+              ( $depTime < 7*60 ) ||
+              ( $deparure['DEPARTURE']['DATE'] != $arrival['ARRIVAL']['DATE'] )
+            ) ? true : false;
+            $long = intval($flight['STOP_DURATION']['~HOURS']) > 3 ? true : false; ?>
+          <tr class="stop_wrap">
+            <td>&nbsp;</td>
+            <td colspan="8"> 
+              <div>
+                <div class="stop<?= ( $night ? ' night' : '' ) . ( $long ? ' long' : '' ) ?>">
+                  <?= $long ? GetMessage('TS_FRONTOFFICE_STEP2_OFFER_STOPOVER_LONG') : '' ?>
+                  <?= $night ? GetMessage('TS_FRONTOFFICE_STEP2_OFFER_STOPOVER_NIGHT') : '' ?>
+                  <?= GetMessage('TS_FRONTOFFICE_STEP2_OFFER_STOPOVER') ?>
+                  <?= 
+                  ( $flight['STOP_DURATION']['~HOURS'] ? $flight['STOP_DURATION']['~HOURS'] . '&nbsp;' . GetMessage('TS_FRONTOFFICE_STEP2_OFFER_STOPOVER_H') : '' ) .
+                  ( $flight['STOP_DURATION']['~HOURS'] && $flight['STOP_DURATION']['~MINUTES'] ? '&nbsp;' : '' ) .
+                  ( $flight['STOP_DURATION']['~MINUTES'] ? $flight['STOP_DURATION']['~MINUTES'] . '&nbsp;' . GetMessage('TS_FRONTOFFICE_STEP2_OFFER_STOPOVER_MIN') : '')
+                  ?>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr class="stop_wrap_add"><td>&nbsp;</td><td colspan="8">&nbsp;</td></tr>
+          <? } ?>
         <tr class="top">
         <?  $oak = ( !empty( $flight['~OAK'] ) && $flight['~OAK'] != $flight['~AK'] ); $oakClass = ''; $oakCode = '';
         if( $arResult['LOGOS'] ){
               $akTitle = $flight['TITLE'] ? $flight['TITLE'] : $flight['~AK']; ?>
-        <td class="logo logo-normal-<?= $arResult['LOGOS'][$flight['~AK']]['IATACODE'] ?>" rowspan="2"<?= $akTitle ? ' title="' . $akTitle . '"' : '' ?>>&nbsp;</td>
+        <td class="logo" rowspan="2"><div class="logo logo-normal-<?= $arResult['LOGOS'][$flight['~AK']]['IATACODE'] ?>" <?= $akTitle ? ' title="' . $akTitle . '"' : '' ?>>&nbsp;</div></td>
         <? } ?>
         <td class="time"><?= $flight['DEPARTURE']['TIME'] ?></td>
         <td class="point"><?= $flight['DEPARTURE']['LOC_NAME'] ?></td>
