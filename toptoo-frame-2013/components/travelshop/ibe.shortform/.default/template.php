@@ -222,7 +222,10 @@ $('#ts_ag_quick_reservation_form form .route-types .type').click(function() {
   type_val = type.hasClass('type_rt') ? 'RT' : 'OW';
   switchRouteType(type_val);
 });
-$('#add_dateback').click(function(){ switchRouteType('RT'); });
+$('#add_dateback').click(function(){ 
+  switchRouteType('RT');
+  $("#ts_ag_quick_reservation_form #dateback").focus();
+});
 
 $('#route_switch').click(function(){
   var point = $('#depart').val();
@@ -282,7 +285,7 @@ function calendarsSetup() {
     onSelect: function(dateText) {
       selectForwardDate(dateText);
       if ( "RT" == $("#ts_ag_quick_reservation_form #rt-ow-val").val() ) {
-        $("#ts_ag_quick_reservation_form #dateback_formated").click();
+        setTimeout( function() {$("#ts_ag_quick_reservation_form #dateback_formated").click(); }, 100 );
       } else {
         $("#ts_ag_quick_reservation_form #form_order_submit").focus();
       };
