@@ -254,7 +254,15 @@ function calendarsSetup() {
     stepMonths: <?= $JQ_CALENDAR_STEP_MONTHS ?>,
     numberOfMonths: <?= $JQ_CALENDAR_NUMBER_OF_MONTHS ?>,
     onSelect: function(dateText) {
-      selectForwardDate(dateText)
+      selectForwardDate(dateText);
+      if ( "RT" == $("#ts_ag_quick_reservation_form #rt-ow-val").val() ) {
+        $("#ts_ag_quick_reservation_form #dateback_formated").click();
+        if ( e.stopPropagation ) {
+          e.stopPropagation();
+        }
+      } else {
+        $("#ts_ag_quick_reservation_form #form_order_submit").focus();
+      };
     },
     altField: "#dateto_formated",
     altFormat: "d M, D"
@@ -276,7 +284,8 @@ function calendarsSetup() {
     stepMonths: <?= $JQ_CALENDAR_STEP_MONTHS ?>,
     numberOfMonths: <?= $JQ_CALENDAR_NUMBER_OF_MONTHS ?>,
     onSelect: function(dateText) { 
-      selectBackDate(dateText)
+      selectBackDate(dateText);
+      $("#ts_ag_quick_reservation_form #form_order_submit").focus();
     },
     altField: "#dateback_formated",
     altFormat: "d M, D"
@@ -284,6 +293,14 @@ function calendarsSetup() {
   calendarBack.datepicker('setDate', defaultDateBack);
   tooltip(calendarBack.parent());
 }
+
+$("#ts_ag_quick_reservation_form #dateto_formated").focus(function() {
+   $("#ts_ag_quick_reservation_form #dateto").focus();
+});
+
+$("#ts_ag_quick_reservation_form #dateback_formated").focus(function() {
+   $("#ts_ag_quick_reservation_form #dateback").focus();
+});
 
 if($.browser.msie && $.browser.version.number < 7) {
   $(document).ready(function() { calendarsSetup(); });
