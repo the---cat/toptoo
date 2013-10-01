@@ -283,9 +283,6 @@ function calendarsSetup() {
       selectForwardDate(dateText);
       if ( "RT" == $("#ts_ag_quick_reservation_form #rt-ow-val").val() ) {
         $("#ts_ag_quick_reservation_form #dateback_formated").click();
-        if ( e.stopPropagation ) {
-          e.stopPropagation();
-        }
       } else {
         $("#ts_ag_quick_reservation_form #form_order_submit").focus();
       };
