@@ -233,7 +233,15 @@ function calendarsTopSetup() {
     minDate: 0,
     maxDate: '+1y',
     onSelect: function(dateText) {
-      selectForwardDateTop(dateText)
+      selectForwardDateTop(dateText);
+      if ( "RT" == $("#form_top #rt-ow-val_top").val() ) {
+        $("#form_top #dateback_top_formated").click();
+        if ( e.stopPropagation ) {
+          e.stopPropagation();
+        }
+      } else {
+        $("#form_top #<?= $arResult[ 'SUBMIT' ][ '~ID' ] ?>").focus();
+      };
     },
     altField: "#dateto_top_formated",
     altFormat: "d M, D"
@@ -257,7 +265,8 @@ function calendarsTopSetup() {
     minDate: 0,
     maxDate: '+1y',
     onSelect: function(dateText) { 
-      selectBackDateTop(dateText)
+      selectBackDateTop(dateText);
+      $("#form_top #<?= $arResult[ 'SUBMIT' ][ '~ID' ] ?>").focus();
     },
     altField: "#dateback_top_formated",
     altFormat: "d M, D"
@@ -269,6 +278,14 @@ function calendarsTopSetup() {
   $('#dateto_top-day').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNames[defaultDateTo.getDay()] );
   $('#dateback_top-day').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNames[defaultDateBack.getDay()] );
 }
+
+$("#form_top #dateto_top_formated").focus(function() {
+   $("#form_top #dateto_top").focus();
+});
+
+$("#form_top #dateback_top_formated").focus(function() {
+   $("#form_top #dateback_top").focus();
+});
 
 safeCall(calendarsTopSetup);
 
