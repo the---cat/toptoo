@@ -65,7 +65,7 @@ foreach($arMonths as &$month) {
           </div>
         </div>
         <div class="date date_back">
-          <div id="add_dateback" class="add_dateback"><?= GetMessage('TS_STEP1_SEARCHFORM_ADD_ARRIVAL_DATE') ?></div>
+          <div id="add_dateback" class="add_dateback"><?= GetMessage('TS_SHORTFORM_ADD_ARRIVAL_DATE') ?></div>
           <div class="date-container" id="form_dateback">
             <input type="text" id="dateback_formated" value="<?=$arResult['d_back'] ?>" onclick="$('#dateback').focus();" />
             <input type="text" class="text" id="dateback" name="dateback" maxlength="10" size="10" value="<?=$arResult['d_back'] ?>" />
@@ -207,7 +207,7 @@ if (defined('FORMAT_DATE')) {
 // <![CDATA[
 function switchRouteType(type_val){
   var type = type_val.toLowerCase();
-  form = $('#form_order');
+  form = $('#ts_ag_quick_reservation_form form');
   if ( form.find('.route-types .type_'+type).hasClass('selected') || form.hasClass('form_'+type) ) return;
   var prev_type_val = $('#rt-ow-val').val(),
   prev_type = prev_type_val.toLowerCase();
@@ -216,7 +216,7 @@ function switchRouteType(type_val){
   form.removeClass('form_'+prev_type).addClass('form_'+type);
   $('#rt-ow-val').val(type_val);
 }
-$('#form_order .route-types .type').click(function() {
+$('#ts_ag_quick_reservation_form form .route-types .type').click(function() {
   var type = $(this),
   type_val = type.hasClass('type_rt') ? 'RT' : 'OW';
   switchRouteType(type_val);
@@ -351,11 +351,11 @@ clear_fields.click(function(){ clearField ($(this)); });
  var currentArrival = '';
  function buildArrivalList() {
    
-   currentArrival = $("#ts_ag_reservation form #arrival option:selected").val();
+   currentArrival = $("#ts_ag_quick_reservation_form form #arrival option:selected").val();
    $("#ts_ag_reservation form #arrival option").each( function (i) { // Удаляем все пункты прибытия
      $(this).remove();
    });
-   var depart = $("#ts_ag_reservation form #depart").val();
+   var depart = $("#ts_ag_quick_reservation_form form #depart").val();
    if ( routes[depart]["ROUTES"] ) { // Если для выбранного пункта вылета заданы пункты прибытия
      for ( var code in routes[depart]["ROUTES"] ) {
        if ( routes[code] ) { // добавляем их в список
@@ -367,7 +367,7 @@ clear_fields.click(function(){ clearField ($(this)); });
  }
  
  buildArrivalList();
- $("#ts_ag_reservation form #depart").change( function () { buildArrivalList() } );
+ $("#ts_ag_quick_reservation_form form #depart").change( function () { buildArrivalList() } );
 
 <? endif; // if ( is_array($arResult["ROUTES"]) && count($arResult["ROUTES"]) ): ?>
 
