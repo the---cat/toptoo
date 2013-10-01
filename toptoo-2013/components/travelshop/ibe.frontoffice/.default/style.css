@@ -213,7 +213,9 @@
 #ts_ag_reservation .form-order .date { float:left; }
 #ts_ag_reservation .form-order .route { padding-right:1em; }
 
-#ts_ag_reservation .form-order input[type="text"]{
+#ts_ag_reservation .form-order input[type="text"],
+#ts_ag_reservation .form-order .date_formated{
+  background: #ffffff;
   border:1px solid #c89010;
   color:#000000;
   display: block;
@@ -265,7 +267,7 @@
 
 #ts_ag_reservation .form-order .point input { font-size:18px; width:220px; }
 #ts_ag_reservation .form-order .point input.ac_loading{
-  background:#ffffff url(images/loader.white.gif) 90% 50% no-repeat;
+  background:#ffffff url(images/loader.white.gif) right 5px center no-repeat;
 }
 #ts_ag_reservation .form-order .location .link-container{
   background:url(images/point.png) 50% 50% no-repeat;
@@ -315,10 +317,16 @@
 #ts_ag_reservation .form_ow #form_dateback_top,
 #ts_ag_reservation .form_rt .add_dateback{ display: none; }
 
-#ts_ag_reservation .form-order .date input {
+#ts_ag_reservation .form-order .date input,
+#ts_ag_reservation .form-order .date_formated {
   text-transform: lowercase;
   width:90px;
 }
+#ts_ag_reservation .form-order .date_formated {
+  padding-top:8px;
+  padding-bottom:4px;
+}
+#ts_ag_reservation .form-order .date_formated .dow{ font-weight:normal; }
 #ts_ag_reservation .form-order .date-container img{
   cursor: pointer;
   position: absolute;

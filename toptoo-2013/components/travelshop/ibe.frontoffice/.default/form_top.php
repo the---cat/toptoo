@@ -82,14 +82,26 @@ function fnPassengersNotice(){
   <fieldset class="dates">
     <div class="date date_to">
       <div class="date-container">
+        <div id="dateto_top_formated" class="date_formated">
+          <span class="day_month"></span>,
+          <span class="dow"></span>
+        </div>
+        <? /*
         <input type="text" id="dateto_top_formated" value="<?=$arResult['d_to'] ?>" onclick="$('#dateto_top').focus();" />
+        */ ?>
         <input type="text" id="dateto_top" name="dateto" maxlength="10" size="10" value="<?=$arResult['d_to'] ?>" />
       </div>
     </div>
     <div class="date date_back">
       <div id="add_dateback_top" class="add_dateback"><?= GetMessage('TS_STEP1_SEARCHFORM_ADD_ARRIVAL_DATE') ?></div>
       <div class="date-container" id="form_dateback_top">
+        <div id="dateback_top_formated" class="date_formated">
+          <span class="day_month"></span>,
+          <span class="dow"></span>
+        </div>
+        <? /*
         <input type="text" id="dateback_top_formated" value="<?=$arResult['d_back'] ?>" onclick="$('#dateback_top').focus();" />
+        */ ?>
         <input type="text" id="dateback_top" name="dateback" maxlength="10" size="10" value="<?=$arResult['d_back'] ?>" />
       </div>
     </div>
@@ -147,8 +159,6 @@ $('#route_switch_top').click(function(){
   $('#arrival_top').val(point);
 });
 
-formInit();
-
 // Выделяем содержимое поля ввода пунктов при фокусе
 var points_fields = $('input#depart_top, input#arrival_top');
 
@@ -162,18 +172,20 @@ points_fields.mousedown(function(e) {
   e.preventDefault();
 });
 
-<? $arDateFormat = array();
-if (defined('FORMAT_DATE')) {
-  $arDateFormat = array( 
-  'day' => array ('begin' => ($pos = strpos(FORMAT_DATE, 'D')), 'end' => $pos + 2),
-  'month' => array ('begin' => ($pos = strpos(FORMAT_DATE, 'M')), 'end' => $pos + 2),
-  'year' => array ('begin' => ($pos = strpos(FORMAT_DATE, 'Y')), 'end' => $pos + 4)
-  );
-  $arDateFormatJS = '"day":{"begin":'.strpos(FORMAT_DATE, 'D').',"end":'.(strpos(FORMAT_DATE, 'D') + 2).'},';
-  $arDateFormatJS .= '"month":{"begin":'.strpos(FORMAT_DATE, 'M').',"end":'.(strpos(FORMAT_DATE, 'M') + 2).'},';
-  $arDateFormatJS .= '"year":{"begin":'.strpos(FORMAT_DATE, 'Y').',"end":'.(strpos(FORMAT_DATE, 'Y') + 4).'}';
+var clear_fields = $('#clear_depart_top, #clear_arrival_top');
+if ( typeof(clearField) == undefined ) {
+  function clearField( clear ) {
+    $('input#'+clear.attr('id').substr(6)).val('').focus();
+  }
 }
-?>
+clear_fields.click(function(){ clearField ($(this)); });
+
+formInit();
+
+<? if (file_exists(dirname(__FILE__)."/calendar_scripts.php")){
+  $form = 'Top';
+  require(dirname(__FILE__)."/calendar_scripts.php");
+} ?>
 
 <? 
   $JQ_CALENDAR_NUMBER_OF_MONTHS = intval( $arParams['JQ_CALENDAR_NUMBER_OF_MONTHS'] ) ? intval( $arParams['JQ_CALENDAR_NUMBER_OF_MONTHS'] ) : 1; // Количество отображаемых за раз месяцев во всплывающем календаре. По умолчанию 1.
@@ -182,39 +194,6 @@ if (defined('FORMAT_DATE')) {
   $JQ_CALENDAR_SELECT_OTHER_MONTHS = ( "Y" ==  $arParams['JQ_CALENDAR_SELECT_OTHER_MONTHS'] ) ? "true" : "false"; // Разрешать выбор дня из соседних с выбранным месяцем. По умолчанию нет.
   $JQ_CALENDAR_CHANGE_MONTGH_AND_YEAR = ( isset($arParams['JQ_CALENDAR_CHANGE_MONTGH_AND_YEAR']) && "Y" ==  $arParams['JQ_CALENDAR_CHANGE_MONTGH_AND_YEAR'] || !isset($arParams['JQ_CALENDAR_CHANGE_MONTGH_AND_YEAR']) ) ? "true" : "false"; // Разрешать выбор месяца и года. По умолчанию нет.
 ?>
-
-// Календарь 
-var dateFormat = {<?=$arDateFormatJS?>};
-var date_format = '<?= ($date_format = strtolower(str_replace('YYYY', 'YY', FORMAT_DATE))); ?>';
-var defaultDeltaDays = 1;
-var oneDay= 0/*1000*60*60*24*/;
-var calendarToTop;
-var calendarBackTop;
-var defaultDateTo;
-var defaultDateBack;
-
-  // локализация календаря
-  $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'] = {
-    closeText: '<?=GetMessage('closeText') ?>',
-    prevText: '<?=GetMessage('prevText') ?>',
-    nextText: '<?=GetMessage('nextText') ?>',
-    currentText: '<?=GetMessage('currentText') ?>',
-    monthNames: [<?=GetMessage('monthNames') ?>],
-    monthNamesShort: [<?=GetMessage('monthNamesShort') ?>],
-    dayNames: [<?=GetMessage('dayNames') ?>],
-    dayNamesShort: [<?=GetMessage('dayNamesShort') ?>],
-    dayNamesMin: [<?=GetMessage('dayNamesMin') ?>],
-    dateFormat: '<?= $date_format; ?>', 
-  firstDay: <?=GetMessage('firstDay') ?>,
-    isRTL: <?=GetMessage('isRTL') ?>};
-  $.datepicker.setDefaults($.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>']);
-  
-  var minDate = new Date(<?=(time()+$arResult['DATE_OFFSET'])*1000 ?>);
-  defaultDateTo = dateSiteToJS($('#dateto_top').val());
-  defaultDateBack = dateSiteToJS($('#dateback_top').val());
- 
-  calendarToTop = $("#dateto_top");  
-  calendarBackTop = $("#dateback_top");
 
 function calendarsTopSetup() {
   calendarToTop.datepicker({ 
@@ -269,103 +248,23 @@ function calendarsTopSetup() {
   });
   calendarBackTop.datepicker('setDate', defaultDateBack);
   tooltip(calendarBackTop.parent());
-
-  /* Дни недели */
-  $('#dateto_top-day').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNames[defaultDateTo.getDay()] );
-  $('#dateback_top-day').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNames[defaultDateBack.getDay()] );
 }
 
-$("#form_top #dateto_top_formated").focus(function() {
+$("#form_top #dateto_top_formated").click(function() {
    $("#form_top #dateto_top").focus();
 });
 
-$("#form_top #dateback_top_formated").focus(function() {
+$("#form_top #dateback_top_formated").click(function() {
    $("#form_top #dateback_top").focus();
 });
 
-$("#form_top #dateback_top_formated").bind("click", function(){
+$("#form_top #dateback_top_formated").bind("click", function(e){
   if ( e.stopPropagation ) {
     e.stopPropagation();
   }
 });
 
 safeCall(calendarsTopSetup);
-
-// Выбор даты рейса "туда"
-function selectForwardDateTop(dateText) {
-  $('#dateto_top').val(dateText);
-  $('#dateto_top-day').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNames[calendarToTop.datepicker('getDate').getDay()] );
-
-  // если дата вылета становится больше даты возврата, то добавляем к дате возврата разницу дней между между датой возврата по умолчанию и датой вылета по умолчанию
-  if (calendarToTop.datepicker('getDate') > calendarBackTop.datepicker('getDate')) {
-    var newDate = calendarToTop.datepicker('getDate').getTime()+defaultDeltaDays*oneDay;
-    newDate = new Date(newDate);
-    calendarBackTop.datepicker('setDate', newDate);
-
-    $('#dateback_top-day').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNames[newDate.getDay()] );
-  }
-}
-
-// Выбор даты рейса "обратно"
-function selectBackDateTop(dateText) {
-  // если дата вылета становится больше даты возврата, устанавливаем дату вылета на день раньше
-  if (calendarToTop.datepicker('getDate') > calendarBackTop.datepicker('getDate')) {
-    var newDate = calendarBackTop.datepicker('getDate').getTime() - oneDay;
-    newDate = new Date(newDate);
-    calendarToTop.datepicker('setDate', newDate);
-
-    $('#dateto_top-day').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNames[newDate.getDay()] );
-  }
-  $('#dateback_top').val(dateText);
-  $('#dateback_top-day').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNames[calendarBackTop.datepicker('getDate').getDay()] );
-}
-
-// Преобразование строки с датой в формате сайте в объект javascript-даты
-function dateSiteToJS(dateSite) {
-  var dateObj = {'day':'', 'month':'', 'year':''};
-  for (key in dateObj) {
-    dateObj[key] = dateSite.substring(dateFormat[key]['begin'], dateFormat[key]['end']);
-  }
-  return (new Date(dateObj.year, dateObj.month - 1, dateObj.day));
-}
-
-/* Замена исходной функции Datepicker'a */
-if ( typeof (tooltipChanged) == 'undefined' || !tooltipChanged ) {
-  if(typeof tooltip == 'function') {
-    /* Замена исходной функции Datepicker'a */
-    var _updateDatepicker_o = $.datepicker._updateDatepicker;
-    $.datepicker._updateDatepicker = function(inst){
-    _updateDatepicker_o.apply(this, [inst]);
-    if ( $(".ui-datepicker .ui-datepicker-prev").css('display') == 'none'
-      || $(".ui-datepicker .ui-datepicker-next").css('display') == 'none') {
-      $("#tooltip").hide();
-    }
-    tooltip($('#ui-datepicker-div'));
-    }
-  }
-  var tooltipChanged = true;
-}
-
-// Выделяем содержимое поля ввода пунктов при фокусе
-var points_fields = $('input#depart_top, input#arrival_top');
-
-points_fields.mouseup(function(e) {
-  $(e.target).select().focus();
-  e.preventDefault();
-});
-
-points_fields.mousedown(function(e) {
-  $(e.target).select().focus();
-  e.preventDefault();
-});
-
-var clear_fields = $('#clear_depart_top, #clear_arrival_top');
-if ( typeof(clearField) == undefined ) {
-  function clearField( clear ) {
-    $('input#'+clear.attr('id').substr(6)).val('').focus();
-  }
-}
-clear_fields.click(function(){ clearField ($(this)); });
 
  <? if( $USE_AUTOCOMPLETE ): // Если используется автозаполнение ?>
   // подключаем к полям ввода пунктов Autocomplete
