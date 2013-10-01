@@ -235,10 +235,11 @@ function calendarsTopSetup() {
     onSelect: function(dateText) {
       selectForwardDateTop(dateText);
       if ( "RT" == $("#form_top #rt-ow-val_top").val() ) {
-        $("#form_top #dateback_top_formated").click();
-        if ( e.stopPropagation ) {
-          e.stopPropagation();
-        }
+        $("#form_top #dateback_top_formated").click(function(e){
+          if ( e.stopPropagation ) {
+            e.stopPropagation();
+          }
+        });
       } else {
         $("#form_top .top_form_submit input").focus();
       };
