@@ -50,12 +50,12 @@ if(!defined("__TOOLS_CSS")) {
 if( $USE_AUTOCOMPLETE ) { // Если используется автозаполнение
   if(!defined("__AUTOCOMPLETE_JS")) {
   	define("__AUTOCOMPLETE_JS", true);
-  	$GLOBALS["APPLICATION"]->AddHeadString(CIBECacheControl::RenderJSLink($templateFolder."/js/jquery.autocomplete.min.js"));
+  	$GLOBALS["APPLICATION"]->AddHeadScript($templateFolder."/js/jquery.autocomplete.min.js");
   }
   
   if(!defined("__AUTOCOMPLETE_CSS")) {
   	define("__AUTOCOMPLETE_CSS", true);
-  	$GLOBALS["APPLICATION"]->AddHeadString(CIBECacheControl::RenderCSSLink($templateFolder."/style.php?file=".$templateFolder."/css/jquery.autocomplete.css"));
+  	$GLOBALS["APPLICATION"]->SetAdditionalCSS($templateFolder."/style.php?file=".$templateFolder."/css/jquery.autocomplete.css");
   }
 }
 ?>
