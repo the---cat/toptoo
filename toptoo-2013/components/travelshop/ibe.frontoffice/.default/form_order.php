@@ -252,10 +252,11 @@ function calendarsSetup() {
     onSelect: function(dateText) {
       selectForwardDate(dateText);
       if ( "RT" == $("#ts_ag_reservation #RT_OW").val() ) {
-        $("#ts_ag_reservation #dateback_formated").click();
-        if ( e.stopPropagation ) {
-          e.stopPropagation();
-        }
+        $("#ts_ag_reservation #dateback_formated").click(function(e){
+          if ( e.stopPropagation ) {
+            e.stopPropagation();
+          }
+        });
       } else {
         $("#ts_ag_reservation #form_order_submit").focus();
       };
