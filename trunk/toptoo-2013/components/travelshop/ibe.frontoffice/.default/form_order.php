@@ -290,9 +290,6 @@ function calendarsSetup() {
       selectForwardDate(dateText);
       if ( "RT" == $("#ts_ag_reservation #RT_OW").val() ) {
         $("#ts_ag_reservation #dateback_formated").click();
-        if ( e.stopPropagation ) {
-          e.stopPropagation();
-        }
       } else {
         $("#ts_ag_reservation #form_order_submit").focus();
       };
