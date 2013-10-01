@@ -240,7 +240,7 @@ function calendarsTopSetup() {
           e.stopPropagation();
         }
       } else {
-        $("#form_top #<?= $arResult[ 'SUBMIT' ][ '~ID' ] ?>").focus();
+        $("#form_top .top_form_submit input").focus();
       };
     },
     altField: "#dateto_top_formated",
@@ -266,7 +266,7 @@ function calendarsTopSetup() {
     maxDate: '+1y',
     onSelect: function(dateText) { 
       selectBackDateTop(dateText);
-      $("#form_top #<?= $arResult[ 'SUBMIT' ][ '~ID' ] ?>").focus();
+      $("#form_top .top_form_submit input").focus();
     },
     altField: "#dateback_top_formated",
     altFormat: "d M, D"
