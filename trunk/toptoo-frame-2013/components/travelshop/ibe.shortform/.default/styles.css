@@ -101,7 +101,7 @@
 
 #ts_ag_quick_reservation_form .form-order .point input { font-size:18px; width:220px; }
 #ts_ag_quick_reservation_form .form-order .point input.ac_loading{
-  background:#ffffff url(images/loader.white.gif) 90% 50% no-repeat;
+  background:#ffffff url(images/loader.white.gif) right 5px center no-repeat;
 }
 #ts_ag_quick_reservation_form .form-order .location .link-container{
   background:url(images/point.png) 50% 50% no-repeat;
