@@ -258,12 +258,6 @@ $("#form_top #dateback_top_formated").click(function() {
    $("#form_top #dateback_top").focus();
 });
 
-$("#form_top #dateback_top_formated").bind("click", function(e){
-  if ( e.stopPropagation ) {
-    e.stopPropagation();
-  }
-});
-
 safeCall(calendarsTopSetup);
 
  <? if( $USE_AUTOCOMPLETE ): // Если используется автозаполнение ?>
