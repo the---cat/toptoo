@@ -348,6 +348,18 @@ clear_fields.click(function(){ clearField ($(this)); });
         }
     });
 
+    miniPoolAC = new ibeMiniPool;
+    miniPoolAC.Init( function(){
+      $('#depart').result(function(event, data, formatted) {
+        $('#arrival').select();
+      });
+      $('#arrival').result(function(event, data, formatted) {
+        $('#arrival').blur();
+      });
+    }, function(){
+      return $('#depart').length && $('#arrival').length;
+    });
+
  <? endif; ?>
 
 <? if ( is_array($arResult["ROUTES"]) && count($arResult["ROUTES"]) ): // Если задана маршрутная сеть ?>

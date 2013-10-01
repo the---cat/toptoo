@@ -47,6 +47,11 @@ if(!defined("__TOOLS_CSS")) {
 	$GLOBALS["APPLICATION"]->SetAdditionalCSS($templateFolder."/style.php?file=".$templateFolder."/css/point.css");
 }
 
+if(!defined("__IBE_JS")) {
+	define("__IBE_JS", true);
+	$GLOBALS["APPLICATION"]->AddHeadScript("/bitrix/js/ibe/ibe_js.js");
+}
+
 if( $USE_AUTOCOMPLETE ) { // Если используется автозаполнение
   if(!defined("__AUTOCOMPLETE_JS")) {
   	define("__AUTOCOMPLETE_JS", true);
