@@ -229,7 +229,10 @@ $('#form_order .route-types .type').click(function() {
   type_val = type.hasClass('type_rt') ? 'RT' : 'OW';
   switchRouteType(type_val);
 });
-$('#add_dateback').click(function(){ switchRouteType('RT'); });
+$('#add_dateback').click(function(){ 
+  switchRouteType('RT');
+  $("#ts_ag_reservation #dateback").focus();
+});
 
 $('#route_switch').click(function(){
   var point = $('#depart').val();
@@ -289,7 +292,7 @@ function calendarsSetup() {
     onSelect: function(dateText) {
       selectForwardDate(dateText);
       if ( "RT" == $("#ts_ag_reservation #RT_OW").val() ) {
-        $("#ts_ag_reservation #dateback_formated").click();
+        setTimeout( function() {$("#ts_ag_reservation #dateback_formated").click(); }, 100 );
       } else {
         $("#ts_ag_reservation #form_order_submit").focus();
       };
@@ -322,6 +325,14 @@ function calendarsSetup() {
   });
   calendarBack.datepicker('setDate', defaultDateBack);
   tooltip(calendarBack.parent());
+
+  /* Дни недели */
+  $('#dateto_formated .day_month').text( defaultDateTo.getDate() + ' ' + $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].monthNamesShort[defaultDateTo.getMonth()] );
+  $('#dateto_formated .dow').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNamesShort[defaultDateTo.getDay()] );
+  if (calendarBack<?= $form ?>.length) {
+    $('#dateback_formated .day_month').text( defaultDateBack.getDate() + ' ' + $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].monthNamesShort[defaultDateBack.getMonth()] );
+    $('#dateback_formated .dow').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNamesShort[defaultDateBack.getDay()] );
+  }
 }
 
 $("#ts_ag_reservation #dateto_formated").click(function() {

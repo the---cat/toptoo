@@ -151,7 +151,10 @@ $('#<?= $arResult['form']['~id'] ?> .route-types .type').click(function() {
   type_val = type.hasClass('type_rt') ? 'RT' : 'OW';
   switchRouteTypeTop(type_val);
 });
-$('#add_dateback_top').click(function(){ switchRouteTypeTop('RT'); });
+$('#add_dateback_top').click(function(){ 
+  switchRouteTypeTop('RT');
+  $("#<?= $arResult['form']['~id'] ?> #dateback_top").focus();
+});
 
 $('#route_switch_top').click(function(){
   var point = $('#depart_top').val();
@@ -214,12 +217,13 @@ function calendarsTopSetup() {
     onSelect: function(dateText) {
       selectForwardDateTop(dateText);
       if ( "RT" == $("#form_top #rt-ow-val_top").val() ) {
+        setTimeout( function() {$("#form_top #dateback_top_formated").click(); }, 100 );
       } else {
         $("#form_top .top_form_submit input").focus();
       };
-    },
-    altField: "#dateto_top_formated",
-    altFormat: "d M, D"
+    }
+    //, altField: "#dateto_top_formated"
+    //, altFormat: "d M, D"
   });
   calendarToTop.datepicker('setDate', defaultDateTo);
   tooltip(calendarToTop.parent());
@@ -242,9 +246,9 @@ function calendarsTopSetup() {
     onSelect: function(dateText) { 
       selectBackDateTop(dateText);
       $("#form_top .top_form_submit input").focus();
-    },
-    altField: "#dateback_top_formated",
-    altFormat: "d M, D"
+    }
+    //, altField: "#dateback_top_formated"
+    //, altFormat: "d M, D"
   });
   calendarBackTop.datepicker('setDate', defaultDateBack);
   tooltip(calendarBackTop.parent());

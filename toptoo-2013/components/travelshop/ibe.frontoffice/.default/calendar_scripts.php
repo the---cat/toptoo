@@ -28,7 +28,7 @@ if (defined('FORMAT_DATE')) {
 }
 
 ?>
-
+//<script>
 // Календарь 
 var dateFormat = {<?=$arDateFormatJS?>};
 var date_format = '<?= ($date_format = strtolower(str_replace('YYYY', 'YY', FORMAT_DATE))); ?>';
@@ -69,22 +69,6 @@ function calendarsInit() {
     defaultDateBack = dateSiteToJS(calendarBack.val());
   }
 
-  DatepickerCalledId = false;
-
-  // Выбор даты рейса "туда"
-  $('#dateto<?= $form_id ?>').click( function(){
-    DatepickerToggle( true, 'to' );
-    $( document ).click( DatepickerToggleHover );
-  });
-
-  if (calendarBack.length) {
-    // Выбор даты рейса "обратно"
-    $('#dateback<?= $form_id ?>').click( function(){
-      DatepickerToggle( true, 'back' );
-      $( document ).click( DatepickerToggleHover );
-    });
-  }
-
   /* Дни недели */
   $('#dateto<?= $form_id ?>_formated .day_month').text( defaultDateTo.getDate() + ' ' + $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].monthNamesShort[defaultDateTo.getMonth()] );
   $('#dateto<?= $form_id ?>_formated .dow').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNamesShort[defaultDateTo.getDay()] );
@@ -105,42 +89,6 @@ function calendarsInit() {
       tooltip($('#ui-datepicker-div'));
     }
   }
-}
-
-function DatepickerToggleHover( e ){
-  if ( !$(e.target).closest( '#date' + DatepickerCalledId ).length
-        /*&& !$(e.target).closest( '#date' + DatepickerCalledId + '-label' ).length */
-        && !$(e.target).closest( '#date-' + DatepickerCalledId + '-calendar' ).length
-        && !$(e.target).closest( '.ui-datepicker-header' ).length
-    )
-  {
-    DatepickerToggle( false, DatepickerCalledId );
-  }
-}
-
-function DatepickerToggle( bDisplay, type ) {
-  if ( bDisplay ) {
-    /* Закрыть уже открытый */
-    if ( DatepickerCalledId )
-    {
-      if ( DatepickerCalledId == type )
-      {
-        $('#date-' + type + '-calendar-wrap').fadeOut('fast');
-        DatepickerCalledId = false;
-        $( document ).unbind( 'click', DatepickerToggleHover );
-        return;
-      } else {
-        $('#date-' + DatepickerCalledId + '-calendar-wrap').hide();
-      }
-    }
-    $('#date-' + type + '-calendar-wrap').fadeIn('fast');
-    DatepickerCalledId = type;
-  } else {
-    $('#date-' + type + '-calendar-wrap').fadeOut('fast');
-    DatepickerCalledId = false;
-    $( document ).unbind( 'click', DatepickerToggleHover );
-  }
-  return false;
 }
 
 // Выбор даты рейса "туда"
@@ -176,6 +124,7 @@ function selectBackDate<?= $form ?>(dateText) {
   $('#dateback<?= $form_id ?>_formated .dow').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNamesShort[h.getDay()] );
 }
 
+/*
 // При ручном изменении даты
 $('#dateto<?= $form_id ?>').change(function(){
   // если дата вылета становится больше даты возврата, то добавляем к дате возврата разницу дней между между датой возврата по умолчанию и датой вылета по умолчанию
@@ -204,6 +153,7 @@ $('#dateback<?= $form_id ?>').change(function(){
   $('#dateback<?= $form_id ?>_formated .day_month').text( h.getDate() + ' ' + $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].monthNamesShort[h.getMonth()] );
     $('#dateback<?= $form_id ?>_formated .dow').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNamesShort[h.getDay()] );
 });
+*/
 
 // Преобразование строки с датой в формате сайте в объект javascript-даты
 if ( typeof(dateSiteToJS) !== 'function' ) {
