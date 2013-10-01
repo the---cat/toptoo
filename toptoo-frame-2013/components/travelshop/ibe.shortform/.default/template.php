@@ -21,7 +21,7 @@ foreach($arMonths as &$month) {
 
 <div id="ts_ag_quick_reservation_form">
   <div class="form_wrap clearfix">
-    <form method="post" action="<?= str_replace("?switch_site=1", "", $arResult['form_action']) ?>&switch_site=1" onsubmit="return checkForm(this);" name="reg_form" target="_top" class="form-order clearfix <?= ( $arResult['rt_checked'] ? 'form_rt' : 'form_ow' ) ?>">
+    <form method="post" action="<?= str_replace("?switch_site=1", "", $arResult['form_action']) ?>&amp;switch_site=1" onsubmit="return checkForm(this);" name="reg_form" target="_top" class="form-order clearfix <?= ( $arResult['rt_checked'] ? 'form_rt' : 'form_ow' ) ?>">
       <input name="next_page" type="hidden" value="<?= $arResult['next_page']; ?>" />
       <input name="date_format" type="hidden" value="site" />
 
