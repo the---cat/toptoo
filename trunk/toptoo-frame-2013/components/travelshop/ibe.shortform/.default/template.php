@@ -161,7 +161,7 @@ foreach($arMonths as &$month) {
 
         <? if ($arResult['ak_onlysearch'] == '' && (!isset($arParams['DISPLAY_COMPANY']) || $arParams['DISPLAY_COMPANY'] == 'Y')): ?>
         <div class="preference company clearfix">
-          <label class="title" for="company"><?=GetMessage("TS_STEP1_SEARCHFORM_COMPANY") ?></label>
+          <label class="title" for="company"><?=GetMessage("TS_SHORTFORM_COMPANY") ?></label>
           <? if(count($arResult['select_faretype']['REFERENCE_ID'])): ?>
           <select id="company" name="company">
             <? for($i=0; $i<count($arResult['select_ak']['REFERENCE_ID']); $i++): ?>
@@ -179,7 +179,7 @@ foreach($arMonths as &$month) {
         <? if (!isset($arParams['DISPLAY_DIRECT']) || $arParams['DISPLAY_DIRECT'] == 'Y'): ?>
         <div class="preference direct clearfix">
           <input<? if($arResult['directonly']): ?> checked="checked"<? endif; ?> id="DirectOnly" name="DirectOnly" type="checkbox" value="1" />
-          <label class="title" for="DirectOnly"><?=GetMessage("TS_STEP1_SEARCHFORM_FLIGHT_TYPE") ?></label>
+          <label class="title" for="DirectOnly"><?=GetMessage("TS_SHORTFORM_FLIGHT_TYPE") ?></label>
         </div>
         <? endif; ?>
 
