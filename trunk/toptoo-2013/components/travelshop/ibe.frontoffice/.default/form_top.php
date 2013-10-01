@@ -248,6 +248,14 @@ function calendarsTopSetup() {
   });
   calendarBackTop.datepicker('setDate', defaultDateBack);
   tooltip(calendarBackTop.parent());
+
+  /* Дни недели */
+  $('#dateto_top_formated .day_month').text( defaultDateTo.getDate() + ' ' + $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].monthNamesShort[defaultDateTo.getMonth()] );
+  $('#dateto_top_formated .dow').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNamesShort[defaultDateTo.getDay()] );
+  if (calendarBack<?= $form ?>.length) {
+    $('#dateback_top_formated .day_month').text( defaultDateBack.getDate() + ' ' + $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].monthNamesShort[defaultDateBack.getMonth()] );
+    $('#dateback_top_formated .dow').text( $.datepicker.regional['<?=GetMessage('lang') ? GetMessage('lang') : LANGUAGE_ID ?>'].dayNamesShort[defaultDateBack.getDay()] );
+  }
 }
 
 $("#form_top #dateto_top_formated").click(function() {
