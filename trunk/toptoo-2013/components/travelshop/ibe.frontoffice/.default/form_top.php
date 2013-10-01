@@ -235,10 +235,6 @@ function calendarsTopSetup() {
     onSelect: function(dateText) {
       selectForwardDateTop(dateText);
       if ( "RT" == $("#form_top #rt-ow-val_top").val() ) {
-        $("#form_top #dateback_top_formated").click();
-        if ( e.stopPropagation ) {
-          e.stopPropagation();
-        }
       } else {
         $("#form_top .top_form_submit input").focus();
       };
@@ -285,6 +281,12 @@ $("#form_top #dateto_top_formated").focus(function() {
 
 $("#form_top #dateback_top_formated").focus(function() {
    $("#form_top #dateback_top").focus();
+});
+
+$("#form_top #dateback_top_formated").bind("click", function(){
+  if ( e.stopPropagation ) {
+    e.stopPropagation();
+  }
 });
 
 safeCall(calendarsTopSetup);
