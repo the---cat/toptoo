@@ -60,14 +60,26 @@ foreach($arMonths as &$month) {
       <fieldset class="dates clearfix">
         <div class="date date_to">
           <div class="date-container">
+            <div id="dateto_formated" class="date_formated">
+              <span class="day_month"></span>,
+              <span class="dow"></span>
+            </div>
+            <? /*
             <input type="text" id="dateto_formated" value="<?=$arResult['d_to'] ?>" onclick="$('#dateto').focus();" />
+            */ ?>
             <input type="text" class="text" id="dateto" name="dateto" maxlength="10" size="10" value="<?=$arResult['d_to'] ?>" />
           </div>
         </div>
         <div class="date date_back">
           <div id="add_dateback" class="add_dateback"><?= GetMessage('TS_SHORTFORM_ADD_ARRIVAL_DATE') ?></div>
           <div class="date-container" id="form_dateback">
+            <div id="dateback_formated" class="date_formated">
+              <span class="day_month"></span>,
+              <span class="dow"></span>
+            </div>
+            <? /*
             <input type="text" id="dateback_formated" value="<?=$arResult['d_back'] ?>" onclick="$('#dateback').focus();" />
+            */ ?>
             <input type="text" class="text" id="dateback" name="dateback" maxlength="10" size="10" value="<?=$arResult['d_back'] ?>" />
           </div>
         </div>
@@ -191,18 +203,7 @@ foreach($arMonths as &$month) {
     </form>
   </div>
 </div>
-<? $arDateFormat = array();
-if (defined('FORMAT_DATE')) {
-  $arDateFormat = array(
-  'day' => array ('begin' => ($pos = strpos(FORMAT_DATE, 'D')), 'end' => $pos + 2),
-  'month' => array ('begin' => ($pos = strpos(FORMAT_DATE, 'M')), 'end' => $pos + 2),
-  'year' => array ('begin' => ($pos = strpos(FORMAT_DATE, 'Y')), 'end' => $pos + 4)
-  );
-  $arDateFormatJS = '"day":{"begin":'.strpos(FORMAT_DATE, 'D').',"end":'.(strpos(FORMAT_DATE, 'D') + 2).'},';
-  $arDateFormatJS .= '"month":{"begin":'.strpos(FORMAT_DATE, 'M').',"end":'.(strpos(FORMAT_DATE, 'M') + 2).'},';
-  $arDateFormatJS .= '"year":{"begin":'.strpos(FORMAT_DATE, 'Y').',"end":'.(strpos(FORMAT_DATE, 'Y') + 4).'}';
-}
-?>
+
 <script type="text/javascript">
 // <![CDATA[
 function switchRouteType(type_val){
@@ -229,9 +230,34 @@ $('#route_switch').click(function(){
   $('#arrival').val(point);
 });
 
+// Выделяем содержимое поля ввода пунктов при фокусе
+var points_fields = $('input#depart, input#arrival');
+
+points_fields.mouseup(function(e) {
+  $(e.target).select().focus();
+  e.preventDefault();
+});
+
+points_fields.mousedown(function(e) {
+  $(e.target).select().focus();
+  e.preventDefault();
+});
+
+var clear_fields = $('#clear_depart, #clear_arrival');
+function clearField( clear ) {
+  $('input#'+clear.attr('id').substr(6)).val('').focus();
+}
+clear_fields.click(function(){ clearField ($(this)); });
+
 formInit();
 
-<? require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/components/travelshop/ibe.frontoffice/templates/.default/calendar_scripts.php'); ?>
+<? if (file_exists(dirname(__FILE__)."/calendar_scripts.php")){
+  $form = '';
+  require(dirname(__FILE__)."/calendar_scripts.php");
+} else {
+  require($_SERVER['DOCUMENT_ROOT'] . '/bitrix/components/travelshop/ibe.frontoffice/templates/.default/calendar_scripts.php'); 
+} ?>
+
 <? 
   $JQ_CALENDAR_NUMBER_OF_MONTHS = intval( $arParams['JQ_CALENDAR_NUMBER_OF_MONTHS'] ) ? intval( $arParams['JQ_CALENDAR_NUMBER_OF_MONTHS'] ) : 1; // Количество отображаемых за раз месяцев во всплывающем календаре. По умолчанию 1.
   $JQ_CALENDAR_STEP_MONTHS = intval( $arParams['JQ_CALENDAR_STEP_MONTHS'] ) ? intval( $arParams['JQ_CALENDAR_STEP_MONTHS'] ) : $JQ_CALENDAR_NUMBER_OF_MONTHS; // На сколько месяцев сдвигаться за раз во всплывающем календаре. По умолчанию равно количеству отображаемых месяцев.
@@ -263,9 +289,9 @@ function calendarsSetup() {
       } else {
         $("#ts_ag_quick_reservation_form #form_order_submit").focus();
       };
-    },
-    altField: "#dateto_formated",
-    altFormat: "d M, D"
+    }
+    //, altField: "#dateto_formated"
+    //, altFormat: "d M, D"
   });
   calendarTo.datepicker('setDate', defaultDateTo);
   tooltip(calendarTo.parent());
@@ -286,44 +312,23 @@ function calendarsSetup() {
     onSelect: function(dateText) { 
       selectBackDate(dateText);
       $("#ts_ag_quick_reservation_form #form_order_submit").focus();
-    },
-    altField: "#dateback_formated",
-    altFormat: "d M, D"
+    }
+    //, altField: "#dateback_formated"
+    //, altFormat: "d M, D"
   });
   calendarBack.datepicker('setDate', defaultDateBack);
   tooltip(calendarBack.parent());
 }
 
-$("#ts_ag_quick_reservation_form #dateto_formated").focus(function() {
+$("#ts_ag_quick_reservation_form #dateto_formated").click(function() {
    $("#ts_ag_quick_reservation_form #dateto").focus();
 });
 
-$("#ts_ag_quick_reservation_form #dateback_formated").focus(function() {
+$("#ts_ag_quick_reservation_form #dateback_formated").click(function() {
    $("#ts_ag_quick_reservation_form #dateback").focus();
 });
 
-if($.browser.msie && $.browser.version.number < 7) {
-  $(document).ready(function() { calendarsSetup(); });
-} else { calendarsSetup(); }
-
-// Выделяем содержимое поля ввода пунктов при фокусе
-var points_fields = $('input#depart, input#arrival');
-
-points_fields.mouseup(function(e) {
-  $(e.target).select().focus();
-  e.preventDefault();
-});
-
-points_fields.mousedown(function(e) {
-  $(e.target).select().focus();
-  e.preventDefault();
-});
-
-var clear_fields = $('#clear_depart, #clear_arrival');
-function clearField( clear ) {
-  $('input#'+clear.attr('id').substr(6)).val('').focus();
-}
-clear_fields.click(function(){ clearField ($(this)); });
+safeCall(calendarsSetup);
 
  <? if( $USE_AUTOCOMPLETE ): // Если используется автозаполнение ?>
   // подключаем к полям ввода пунктов Autocomplete

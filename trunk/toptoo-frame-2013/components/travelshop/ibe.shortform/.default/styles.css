@@ -49,7 +49,9 @@
 #ts_ag_quick_reservation_form .form-order .date { float:left; }
 #ts_ag_quick_reservation_form .form-order .route { padding-right:1em; }
 
-#ts_ag_quick_reservation_form .form-order input[type="text"]{
+#ts_ag_quick_reservation_form .form-order input[type="text"],
+#ts_ag_quick_reservation_form .form-order .date_formated{
+  background: #ffffff;
   border:1px solid #c89010;
   color:#000000;
   display: block;
@@ -148,10 +150,16 @@
 #ts_ag_quick_reservation_form .form_ow #form_dateback_top,
 #ts_ag_quick_reservation_form .form_rt .add_dateback{ display: none; }
 
-#ts_ag_quick_reservation_form .form-order .date input { 
+#ts_ag_quick_reservation_form .form-order .date input,
+#ts_ag_quick_reservation_form .form-order .date_formated { 
   text-transform: lowercase;
   width:90px;
 }
+#ts_ag_quick_reservation_form .form-order .date_formated {
+  padding-top:8px;
+  padding-bottom:4px;
+}
+#ts_ag_quick_reservation_form .form-order .date_formated .dow{ font-weight:normal; }
 #ts_ag_quick_reservation_form .form-order .date-container img{
   cursor: pointer;
   position: absolute;
