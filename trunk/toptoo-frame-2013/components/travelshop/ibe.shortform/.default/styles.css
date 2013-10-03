@@ -145,9 +145,15 @@
   padding:6px 10px;
 }
 #ts_ag_quick_reservation_form .form-order #dateto,
-#ts_ag_quick_reservation_form .form-order #dateback{ display: none; }
+#ts_ag_quick_reservation_form .form-order #dateback{
+  border:0;
+  font-size: 0;
+  height:0;
+  line-height: 0;
+  padding: 0;
+  position: absolute;
+}
 #ts_ag_quick_reservation_form .form_ow #form_dateback,
-#ts_ag_quick_reservation_form .form_ow #form_dateback_top,
 #ts_ag_quick_reservation_form .form_rt .add_dateback{ display: none; }
 
 #ts_ag_quick_reservation_form .form-order .date input,
@@ -165,7 +171,27 @@
   position: absolute;
   right:6px;
   top:11px;
+  z-index: 2;
 }
+#ts_ag_quick_reservation_form .form-order .date_formated:after{
+  border-right:10px solid transparent;
+  border-left:10px solid transparent;
+  border-bottom:10px solid #333333;
+  content: '';
+  display: none;
+  height:0;
+  position: absolute;
+  right:2px;
+  top:26px;
+  width:0;
+  z-index: 2;
+
+  -webkit-transition: all ease-in-out .2s;
+  -moz-transition: all ease-in-out .2s;
+  -o-transition: all ease-in-out .2s;
+  transition: all ease-in-out .2s;
+}
+#ts_ag_quick_reservation_form .form-order .active .date_formated:after{ display:block; }
 #ts_ag_quick_reservation_form .form-order .title{
   color:#666666;
   display: block;
