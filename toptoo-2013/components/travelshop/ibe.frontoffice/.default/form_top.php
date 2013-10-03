@@ -86,9 +86,6 @@ function fnPassengersNotice(){
           <span class="day_month"></span>,
           <span class="dow"></span>
         </div>
-        <? /*
-        <input type="text" id="dateto_top_formated" value="<?=$arResult['d_to'] ?>" onclick="$('#dateto_top').focus();" />
-        */ ?>
         <input type="text" id="dateto_top" name="dateto" maxlength="10" size="10" value="<?=$arResult['d_to'] ?>" />
       </div>
     </div>
@@ -99,9 +96,6 @@ function fnPassengersNotice(){
           <span class="day_month"></span>,
           <span class="dow"></span>
         </div>
-        <? /*
-        <input type="text" id="dateback_top_formated" value="<?=$arResult['d_back'] ?>" onclick="$('#dateback_top').focus();" />
-        */ ?>
         <input type="text" id="dateback_top" name="dateback" maxlength="10" size="10" value="<?=$arResult['d_back'] ?>" />
       </div>
     </div>
@@ -215,19 +209,22 @@ function calendarsTopSetup() {
     minDate: 0,
     maxDate: '+1y',
     beforeShow: function() {
-      $("#ui-datepicker-div").removeClass('dateback');
-      $("#ui-datepicker-div").addClass('dateto');
+      calendarBackTop.closest('.date-container').removeClass('active');
+      $('#ui-datepicker-div').removeClass('dateback');
+      $('#ui-datepicker-div').addClass('dateto');
+      calendarToTop.closest('.date-container').addClass('active');
     },
     onSelect: function(dateText) {
       selectForwardDateTop(dateText);
-      if ( "RT" == $("#form_top #rt-ow-val_top").val() ) {
-        setTimeout( function() {$("#form_top #dateback_top_formated").click(); }, 100 );
+      if ( 'RT' == $('#form_top #rt-ow-val_top').val() ) {
+        setTimeout( function() {$('#form_top #dateback_top_formated').click(); }, 100 );
       } else {
-        $("#form_top .top_form_submit input").focus();
+        $('#form_top .top_form_submit input').focus();
       };
+    },
+    onClose: function(){
+      calendarToTop.closest('.date-container').removeClass('active');
     }
-    //, altField: "#dateto_top_formated"
-    //, altFormat: "d M, D"
   });
   calendarToTop.datepicker('setDate', defaultDateTo);
   tooltip(calendarToTop.parent());
@@ -248,15 +245,18 @@ function calendarsTopSetup() {
     minDate: 0,
     maxDate: '+1y',
     beforeShow: function() {
-      $("#ui-datepicker-div").removeClass('dateto');
-      $("#ui-datepicker-div").addClass('dateback');
+      calendarToTop.closest('.date-container').removeClass('active');
+      $('#ui-datepicker-div').removeClass('dateto');
+      $('#ui-datepicker-div').addClass('dateback');
+      calendarBackTop.closest('.date-container').addClass('active');
     },
     onSelect: function(dateText) { 
       selectBackDateTop(dateText);
-      $("#form_top .top_form_submit input").focus();
+      $('#form_top .top_form_submit input').focus();
+    },
+    onClose: function(){
+      calendarBackTop.closest('.date-container').removeClass('active');
     }
-    //, altField: "#dateback_top_formated"
-    //, altFormat: "d M, D"
   });
   calendarBackTop.datepicker('setDate', defaultDateBack);
   tooltip(calendarBackTop.parent());
