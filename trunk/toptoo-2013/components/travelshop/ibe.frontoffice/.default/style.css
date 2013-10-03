@@ -297,7 +297,6 @@
   top:0;
   width:23px;
 }
-
 #ts_ag_reservation .form-order .add_dateback{
   border:1px dashed #a76c00;
   color:#a86d00;
@@ -308,10 +307,6 @@
   line-height: 21px;
   padding:6px 10px;
 }
-#ts_ag_reservation .form-order #dateto,
-#ts_ag_reservation .form-order #dateback,
-#ts_ag_reservation .form-order #dateto_top,
-#ts_ag_reservation .form-order #dateback_top{ display: none; }
 
 #ts_ag_reservation .form_ow #form_dateback,
 #ts_ag_reservation .form_ow #form_dateback_top,
@@ -327,12 +322,46 @@
   padding-bottom:4px;
 }
 #ts_ag_reservation .form-order .date_formated .dow{ font-weight:normal; }
+
+#ts_ag_reservation .form-order #dateto,
+#ts_ag_reservation .form-order #dateback,
+#ts_ag_reservation .form-order #dateto_top,
+#ts_ag_reservation .form-order #dateback_top{
+  border:0;
+  font-size: 0;
+  height:0;
+  line-height: 0;
+  padding: 0;
+  position: absolute;
+}
+
 #ts_ag_reservation .form-order .date-container img{
   cursor: pointer;
   position: absolute;
   right:6px;
   top:11px;
+  z-index: 2;
 }
+#ts_ag_reservation .form-order .date_formated:after{
+  border-right:10px solid transparent;
+  border-left:10px solid transparent;
+  border-bottom:10px solid #333333;
+  content: '';
+  display: none;
+  height:0;
+  position: absolute;
+  right:2px;
+  top:26px;
+  width:0;
+  z-index: 2;
+
+  -webkit-transition: all ease-in-out .2s;
+  -moz-transition: all ease-in-out .2s;
+  -o-transition: all ease-in-out .2s;
+  transition: all ease-in-out .2s;
+}
+#ts_ag_reservation .form-order .active .date_formated:after{ display:block; }
+
 #ts_ag_reservation .form-order .title{
   color:#666666;
   display: block;
@@ -461,6 +490,8 @@ html.msie9 #ts_ag_reservation .form-order .submit .button,
 html.msie9 #ts_ag_reservation .form-order .top_form_submit,
 html.msie9 #ts_ag_reservation .form-order .top_form_submit .button{ width:125px; }
 #form_top_passengers_notice{display:none;}
+
+
 /* Календарь */
 .ui-datepicker{
   background: #ffffff;
@@ -604,7 +635,7 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
 }
 .ui-datepicker td.ui-datepicker-week-end span, 
 .ui-datepicker td.ui-datepicker-week-end a{ color:#333333; }
-ui-datepicker td .ui-state-active,
+.ui-datepicker td .ui-state-active,
 .ui-datepicker td.ui-datepicker-week-end .ui-state-active{
   background: #00C5CB;
   color:#ffffff;

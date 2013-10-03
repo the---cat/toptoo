@@ -72,9 +72,6 @@ if ( strlen($matches[0]) && strlen($matches[1]) ) { // Если пришли по диплинку в
               <span class="day_month"></span>,
               <span class="dow"></span>
             </div>
-            <? /*
-            <input type="text" id="dateto_formated" value="<?=$arResult['d_to'] ?>" onclick="$('#dateto').focus();" />
-            */ ?>
             <input type="text" id="dateto" name="dateto" maxlength="10" size="10" value="<?=$arResult['d_to'] ?>" />
           </div>
         </div>
@@ -85,9 +82,6 @@ if ( strlen($matches[0]) && strlen($matches[1]) ) { // Если пришли по диплинку в
               <span class="day_month"></span>,
               <span class="dow"></span>
             </div>
-            <? /*
-            <input type="text" id="dateback_formated" value="<?=$arResult['d_back'] ?>" onclick="$('#dateback').focus();" />
-            */ ?>
             <input type="text" id="dateback" name="dateback" maxlength="10" size="10" value="<?=$arResult['d_back'] ?>" />
           </div>
         </div>
@@ -290,19 +284,22 @@ function calendarsSetup() {
     stepMonths: <?= $JQ_CALENDAR_STEP_MONTHS ?>,
     numberOfMonths: <?= $JQ_CALENDAR_NUMBER_OF_MONTHS ?>,
     beforeShow: function() {
-      $("#ui-datepicker-div").removeClass('dateback');
-      $("#ui-datepicker-div").addClass('dateto');
+      calendarBack.closest('.date-container').removeClass('active');
+      $('#ui-datepicker-div').removeClass('dateback');
+      $('#ui-datepicker-div').addClass('dateto');
+      calendarTo.closest('.date-container').addClass('active');
     },
     onSelect: function(dateText) {
       selectForwardDate(dateText);
-      if ( "RT" == $("#ts_ag_reservation #RT_OW").val() ) {
-        setTimeout( function() {$("#ts_ag_reservation #dateback_formated").click(); }, 100 );
+      if ( 'RT' == $('#ts_ag_reservation #RT_OW').val() ) {
+        setTimeout( function() {$('#ts_ag_reservation #dateback_formated').click(); }, 100 );
       } else {
-        $("#ts_ag_reservation #form_order_submit").focus();
+        $('#ts_ag_reservation #form_order_submit').focus();
       };
+    },
+    onClose: function(){
+      calendarTo.closest('.date-container').removeClass('active');
     }
-    //, altField: "#dateto_formated"
-    //, altFormat: "d M, D"
   });
   calendarTo.datepicker('setDate', defaultDateTo);
   tooltip(calendarTo.parent());
@@ -321,15 +318,18 @@ function calendarsSetup() {
     stepMonths: <?= $JQ_CALENDAR_STEP_MONTHS ?>,
     numberOfMonths: <?= $JQ_CALENDAR_NUMBER_OF_MONTHS ?>,
     beforeShow: function() {
-      $("#ui-datepicker-div").removeClass('dateto');
-      $("#ui-datepicker-div").addClass('dateback');
+      calendarTo.closest('.date-container').removeClass('active');
+      $('#ui-datepicker-div').removeClass('dateto');
+      $('#ui-datepicker-div').addClass('dateback');
+      calendarBack.closest('.date-container').addClass('active');
     },
     onSelect: function(dateText) { 
       selectBackDate(dateText);
-      $("#ts_ag_reservation #form_order_submit").focus();
+      $('#ts_ag_reservation #form_order_submit').focus();
+    },
+    onClose: function(){
+      calendarBack.closest('.date-container').removeClass('active');
     }
-    //, altField: "#dateback_formated"
-    //, altFormat: "d M, D"
   });
   calendarBack.datepicker('setDate', defaultDateBack);
   tooltip(calendarBack.parent());
@@ -343,19 +343,19 @@ function calendarsSetup() {
   }
 }
 
-$("#ts_ag_reservation #dateto_formated").click(function() {
-   $("#ts_ag_reservation #dateto").focus();
+$('#ts_ag_reservation #dateto_formated').click(function() {
+   $('#ts_ag_reservation #dateto').focus();
 });
 
-$("#ts_ag_reservation #dateback_formated").click(function() {
-   $("#ts_ag_reservation #dateback").focus();
+$('#ts_ag_reservation #dateback_formated').click(function() {
+   $('#ts_ag_reservation #dateback').focus();
 });
 
 safeCall(calendarsSetup);
 
  <? if( $USE_AUTOCOMPLETE ): // Если используется автозаполнение ?>
   // подключаем к полям ввода пунктов Autocomplete
-  $("#depart, #arrival").autocomplete("<?= $componentPath ?>/get_cities.php", {
+  $('#depart, #arrival').autocomplete("<?= $componentPath ?>/get_cities.php", {
       extraParams: {
         lang: "<?= LANGUAGE_ID ?>" // Язык поиска
       },
