@@ -40,16 +40,12 @@
 }
 #ts_ag_reservation a:hover{ text-decoration: none;}
 
-#ts_ag_reservation input.text,
-#ts_ag_reservation input.password,
+#ts_ag_reservation input[type="text"],
+#ts_ag_reservation input[type="password"],
 #ts_ag_reservation select,
 #ts_ag_reservation textarea {
   border: 1px solid #000000;
-} /*Поля и ввода и выпадающие списки*/
-
-#ts_ag_reservation input[type="text"],
-#ts_ag_reservation input[type="password"] {
-  border: 1px solid #000000;
+  outline:none;
 } /*Поля и ввода и выпадающие списки*/
 
 #ts_ag_reservation select:hover,
@@ -1093,7 +1089,7 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
   width: auto;
 }
 
-#ts_ag_reservation .personal_data .profiles .profile_form .gender { width: 85px; }
+#ts_ag_reservation .personal_data .profiles .profile_form .gender { margin-right:25px; width: 90px; }
 #ts_ag_reservation .personal_data .profiles .profile_form .psgr_name { width: 275px; }
 #ts_ag_reservation .personal_data .profiles .profile_form .psgr_fname { width: 250px; }
 #ts_ag_reservation .personal_data .profiles .profile_form .date { width: auto; }
@@ -1117,7 +1113,7 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
 
 #ts_ag_reservation .personal_data .profiles .profile_form .gender .gender_switcher {
   height: 35px;
-  width: 85px;
+  width: 90px;
 }
 
 #ts_ag_reservation .personal_data .profiles .profile_form .gender .gender_type {
@@ -1147,7 +1143,8 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
 
 #ts_ag_reservation .personal_data .profiles .profile_form .date_wrap{
   border:1px solid #cccccc;
-  padding:0 12px;
+  padding:0 0 0 15px;
+  width:135px;
   *zoom:1;
 }
 #ts_ag_reservation .personal_data .profiles .profile_form .date_wrap:after{ content: "."; display: block; height: 0; clear: both; visibility: hidden; }
@@ -1185,11 +1182,17 @@ html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date .yea
   overflow: visible;
   width:auto;
 }
-html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date .dot{ width:15px; }
 html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date select{ -webkit-appearance:none; }
+html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date .dot{ text-align:left; width:15px; }
 html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date select.day, 
-html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date select.month { width: 25px; }
+html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date select.month { width: 28px; }
 html.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date select.year { width: 45px; }
+
+html.win.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date_wrap{ padding-right:7px; }
+html.win.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date .dot{ width:5px; }
+html.win.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date select.day, 
+html.win.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date select.month { width: 35px; }
+html.win.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date select.year { width: 50px; }
 
 #ts_ag_reservation .personal_data .profiles .profile_form .fprefer{ display: none; }
 #ts_ag_reservation .personal_data .profiles .profile_form .fprefer title{ display: inline-block; }
