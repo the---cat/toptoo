@@ -64,9 +64,9 @@ function calendarsInit() {
   calendarTo<?= $form ?> = $('#dateto<?= $form_id ?>');
   calendarBack<?= $form ?> = $('#dateback<?= $form_id ?>');
 
-  defaultDateTo = dateSiteToJS(calendarTo.val());
-  if (calendarBack.length) {
-    defaultDateBack = dateSiteToJS(calendarBack.val());
+  defaultDateTo = dateSiteToJS(calendarTo<?= $form ?>.val());
+  if (calendarBack<?= $form ?>.length) {
+    defaultDateBack = dateSiteToJS(calendarBack<?= $form ?>.val());
   }
 
   /* Дни недели */
