@@ -27,7 +27,7 @@ foreach($arMonths as &$month) {
 
       <!-- выбор типа рейса -->
     <fieldset class="route-types clearfix">
-      <input type="hidden" name="RT_OW" id="rt-ow-val" value="<?= ( $arResult['rt_checked'] ? 'RT' : 'OW' ) ?>" />
+      <input type="hidden" name="RT_OW" id="RT_OW" value="<?= ( $arResult['rt_checked'] ? 'RT' : 'OW' ) ?>" />
       <div class="type type_rt<? if($arResult['rt_checked']){ ?> selected<? } ?>"><?=GetMessage("TS_SHORTFORM_ROUTE_TYPE_RT") ?></div>
       <div class="type type_ow<? if($arResult['ow_checked']){ ?> selected<? } ?>"><?=GetMessage("TS_SHORTFORM_ROUTE_TYPE_OW") ?></div>
     </fieldset>
@@ -210,12 +210,12 @@ function switchRouteType(type_val){
   var type = type_val.toLowerCase();
   form = $('#ts_ag_quick_reservation_form form');
   if ( form.find('.route-types .type_'+type).hasClass('selected') || form.hasClass('form_'+type) ) return;
-  var prev_type_val = $('#rt-ow-val').val(),
+  var prev_type_val = $('#RT_OW').val(),
   prev_type = prev_type_val.toLowerCase();
   form.find('.route-types .selected').removeClass('selected');
   form.find('.route-types .type_'+type).addClass('selected');
   form.removeClass('form_'+prev_type).addClass('form_'+type);
-  $('#rt-ow-val').val(type_val);
+  $('#RT_OW').val(type_val);
 }
 $('#ts_ag_quick_reservation_form form .route-types .type').click(function() {
   var type = $(this),
@@ -283,19 +283,22 @@ function calendarsSetup() {
     stepMonths: <?= $JQ_CALENDAR_STEP_MONTHS ?>,
     numberOfMonths: <?= $JQ_CALENDAR_NUMBER_OF_MONTHS ?>,
     beforeShow: function() {
-      $("#ui-datepicker-div").removeClass('dateback');
-      $("#ui-datepicker-div").addClass('dateto');
+      calendarBack.closest('.date-container').removeClass('active');
+      $('#ui-datepicker-div').removeClass('dateback');
+      $('#ui-datepicker-div').addClass('dateto');
+      calendarTo.closest('.date-container').addClass('active');
     },
     onSelect: function(dateText) {
       selectForwardDate(dateText);
-      if ( "RT" == $("#ts_ag_quick_reservation_form #rt-ow-val").val() ) {
-        setTimeout( function() {$("#ts_ag_quick_reservation_form #dateback_formated").click(); }, 100 );
+      if ( 'RT' == $('#ts_ag_quick_reservation_form #RT_OW').val() ) {
+        setTimeout( function() {$('#ts_ag_quick_reservation_form #dateback_formated').click(); }, 100 );
       } else {
-        $("#ts_ag_quick_reservation_form #form_order_submit").focus();
+        $('#ts_ag_quick_reservation_form #form_order_submit').focus();
       };
+    },
+    onClose: function(){
+      calendarTo.closest('.date-container').removeClass('active');
     }
-    //, altField: "#dateto_formated"
-    //, altFormat: "d M, D"
   });
   calendarTo.datepicker('setDate', defaultDateTo);
   tooltip(calendarTo.parent());
@@ -314,15 +317,18 @@ function calendarsSetup() {
     stepMonths: <?= $JQ_CALENDAR_STEP_MONTHS ?>,
     numberOfMonths: <?= $JQ_CALENDAR_NUMBER_OF_MONTHS ?>,
     beforeShow: function() {
-      $("#ui-datepicker-div").removeClass('dateto');
-      $("#ui-datepicker-div").addClass('dateback');
+      calendarTo.closest('.date-container').removeClass('active');
+      $('#ui-datepicker-div').removeClass('dateto');
+      $('#ui-datepicker-div').addClass('dateback');
+      calendarBack.closest('.date-container').addClass('active');
     },
     onSelect: function(dateText) { 
       selectBackDate(dateText);
-      $("#ts_ag_quick_reservation_form #form_order_submit").focus();
+      $('#ts_ag_reservation #form_order_submit').focus();
+    },
+    onClose: function(){
+      calendarBack.closest('.date-container').removeClass('active');
     }
-    //, altField: "#dateback_formated"
-    //, altFormat: "d M, D"
   });
   calendarBack.datepicker('setDate', defaultDateBack);
   tooltip(calendarBack.parent());
