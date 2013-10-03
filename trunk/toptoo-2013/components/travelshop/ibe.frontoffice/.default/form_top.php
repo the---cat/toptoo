@@ -214,6 +214,10 @@ function calendarsTopSetup() {
 
     minDate: 0,
     maxDate: '+1y',
+    beforeShow: function() {
+      $("#ui-datepicker-div").removeClass('dateback');
+      $("#ui-datepicker-div").addClass('dateto');
+    },
     onSelect: function(dateText) {
       selectForwardDateTop(dateText);
       if ( "RT" == $("#form_top #rt-ow-val_top").val() ) {
@@ -243,6 +247,10 @@ function calendarsTopSetup() {
 
     minDate: 0,
     maxDate: '+1y',
+    beforeShow: function() {
+      $("#ui-datepicker-div").removeClass('dateto');
+      $("#ui-datepicker-div").addClass('dateback');
+    },
     onSelect: function(dateText) { 
       selectBackDateTop(dateText);
       $("#form_top .top_form_submit input").focus();
