@@ -146,6 +146,7 @@
 }
 #ts_ag_quick_reservation_form .form-order #dateto,
 #ts_ag_quick_reservation_form .form-order #dateback{
+  background:transparent;
   border:0;
   font-size: 0;
   height:0;
