@@ -454,4 +454,14 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
 .ui-datepicker td.ui-datepicker-week-end .ui-state-active{
   background: #00C5CB;
   color:#ffffff;
+  font-size:12px;
+  font-weight:normal;
+  height: 45px;
+  line-height:normal;
+  padding:3px 0 0 3px;
+  text-align: left;
+  vertical-align: top;
+  width:45px;
 }
+#ui-datepicker-div.dateto .ui-state-active{ background: #00C5CB url(images/dateto.png) 50% 50% no-repeat; }
+#ui-datepicker-div.dateback .ui-state-active{ background: #FFB433 url(images/dateback.png) 50% 50% no-repeat; }

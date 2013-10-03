@@ -282,6 +282,10 @@ function calendarsSetup() {
     maxDate: '+1y',
     stepMonths: <?= $JQ_CALENDAR_STEP_MONTHS ?>,
     numberOfMonths: <?= $JQ_CALENDAR_NUMBER_OF_MONTHS ?>,
+    beforeShow: function() {
+      $("#ui-datepicker-div").removeClass('dateback');
+      $("#ui-datepicker-div").addClass('dateto');
+    },
     onSelect: function(dateText) {
       selectForwardDate(dateText);
       if ( "RT" == $("#ts_ag_quick_reservation_form #rt-ow-val").val() ) {
@@ -309,6 +313,10 @@ function calendarsSetup() {
     maxDate: '+1y',
     stepMonths: <?= $JQ_CALENDAR_STEP_MONTHS ?>,
     numberOfMonths: <?= $JQ_CALENDAR_NUMBER_OF_MONTHS ?>,
+    beforeShow: function() {
+      $("#ui-datepicker-div").removeClass('dateto');
+      $("#ui-datepicker-div").addClass('dateback');
+    },
     onSelect: function(dateText) { 
       selectBackDate(dateText);
       $("#ts_ag_quick_reservation_form #form_order_submit").focus();
