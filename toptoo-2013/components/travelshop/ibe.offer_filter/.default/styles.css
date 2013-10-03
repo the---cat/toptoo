@@ -23,23 +23,18 @@
 
 #ts_ag_offer_filter_container div.ts_ag_offer_filter h3.enabled {}
 #ts_ag_offer_filter_container div.ts_ag_offer_filter h3.title .arr {
-  border-right: 4px solid transparent;
-  border-bottom: 4px solid #000000;
-  border-left: 4px solid transparent;
-  display: block;
-  height: 0;
-  margin-top: -2px;
-  overflow: hidden;
-  position: absolute;
+  background:transparent url(img/arr.png) no-repeat;
+  display:block;
+  height:7px;
+  margin-top:-3px;
+  overflow:hidden;
+  position:absolute;
   right: 10px;
-  top: 50%;
-  width: 0;
+  top:50%;
+  width:7px;
 }
 
-#ts_ag_offer_filter_container div.ts_ag_offer_filter h3.enabled .arr {
-  border-top: 4px solid #000000;
-  border-bottom: none;
-}
+#ts_ag_offer_filter_container div.ts_ag_offer_filter h3.enabled .arr { background-position:0 -7px; }
 
 #ts_ag_offer_filter_container div.ts_ag_offer_filter .filter {
   border-bottom:1px solid #b8b8b8;
