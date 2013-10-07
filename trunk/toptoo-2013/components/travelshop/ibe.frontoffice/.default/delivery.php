@@ -59,20 +59,6 @@ function ViewAddresFormB2B( block_id ) {
   }
 }
 
-function showDeliveryDesc( method ) {
-  console.log(method.attr('id'));
-  if ( method.find('input').hasClass('input_self') ){
-    var deliveryTitle = '<div class="self_title">' + method.find('.self_title').html() + '</div>',
-    deliveryAddr = '<div class="comment">' + $('#adr_' + method.find('input').val() + ' .description').html() + '</div>';
-    setTimeout( function(){
-      if ( $('#pay_method_selected_description .description_left').length ) {
-        $('#pay_method_selected_description .description_left').html(deliveryTitle + deliveryAddr);
-        method.hide();
-        $('#adr_' + method.find('input').val()).hide();
-      }
-    } , 10);
-  }
-}
 // ]]>
 </script>
 <?= $arResult['SCRIPT']; ?>
@@ -159,7 +145,7 @@ function showDeliveryDesc( method ) {
 
           <? if ( count($field['FIELDS']) ): ?>
             <? foreach ($field['FIELDS'] as $f2): ?>
-          <div class="<?= $f2['CLASS']; ?>"<?=$f2['~id'] ? ' id="' . $f2['~id'] . '" ' : '' ?> onclick="<?= $f2['ONCLICK']; ?>;ViewAddresFormB2B('<?=$BlockID?>');showDeliveryDesc($(this));">
+          <div class="<?= $f2['CLASS']; ?>"<?=$f2['~id'] ? ' id="' . $f2['~id'] . '" ' : '' ?> onclick="<?= $f2['ONCLICK']; ?>;ViewAddresFormB2B('<?=$BlockID?>');">
               <? if ( $bShowCustomSelf && FALSE !== strpos($f2['CLASS'], 'self') ) { ?>
             <div class="hidden_checker">
               <? foreach ($f2['FIELDS'] as $f3): ?>
