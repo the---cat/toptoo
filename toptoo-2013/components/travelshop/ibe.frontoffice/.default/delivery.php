@@ -58,6 +58,21 @@ function ViewAddresFormB2B( block_id ) {
     $(profiles_list_id).show();
   }
 }
+
+function showDeliveryDesc( method ) {
+  console.log(method.attr('id'));
+  if ( method.find('input').hasClass('input_self') ){
+    var deliveryTitle = '<div class="self_title">' + method.find('.self_title').html() + '</div>',
+    deliveryAddr = '<div class="comment">' + $('#adr_' + method.find('input').val() + ' .description').html() + '</div>';
+    setTimeout( function(){
+      if ( $('#pay_method_selected_description .description_left').length ) {
+        $('#pay_method_selected_description .description_left').html(deliveryTitle + deliveryAddr);
+        method.hide();
+        $('#adr_' + method.find('input').val()).hide();
+      }
+    } , 10);
+  }
+}
 // ]]>
 </script>
 <?= $arResult['SCRIPT']; ?>
@@ -127,7 +142,7 @@ function ViewAddresFormB2B( block_id ) {
             <h3 class="info_caption"><?=GetMessage('IBE_DELIVERY_CAPTION')?></h3>
             <div class="hidden_checker">
               <? foreach ($f2['FIELDS'] as $f3): ?>
-              <input<?= ($f3['CHECKED'] ? ' checked="checked"' : '') ?> type="<?= $f3['~TYPE']; ?>" class="<?= $f3['CLASS']; ?>" id="<?= $f3['~ID']; ?>" value="<?= $f3['VALUE']; ?>" name="<?= $f3['NAME']; ?>" />
+              <input<?= ($f3['CHECKED'] ? ' checked="checked"' : '') ?> type="<?= $f3['~TYPE']; ?>" class="<?= $f3['CLASS']; ?> input_cour" id="<?= $f3['~ID']; ?>" value="<?= $f3['VALUE']; ?>" name="<?= $f3['NAME']; ?>" />
               <? endforeach; ?>
             </div>
 
@@ -144,11 +159,11 @@ function ViewAddresFormB2B( block_id ) {
 
           <? if ( count($field['FIELDS']) ): ?>
             <? foreach ($field['FIELDS'] as $f2): ?>
-          <div class="<?= $f2['CLASS']; ?>"<?=$f2['~id'] ? ' id="' . $f2['~id'] . '" ' : '' ?> onclick="<?= $f2['ONCLICK']; ?>;ViewAddresFormB2B('<?=$BlockID?>');">
+          <div class="<?= $f2['CLASS']; ?>"<?=$f2['~id'] ? ' id="' . $f2['~id'] . '" ' : '' ?> onclick="<?= $f2['ONCLICK']; ?>;ViewAddresFormB2B('<?=$BlockID?>');showDeliveryDesc($(this));">
               <? if ( $bShowCustomSelf && FALSE !== strpos($f2['CLASS'], 'self') ) { ?>
             <div class="hidden_checker">
               <? foreach ($f2['FIELDS'] as $f3): ?>
-              <input<?= ($f3['CHECKED'] ? ' checked="checked"' : '') ?> type="<?= $f3['~TYPE']; ?>" class="<?= $f3['CLASS']; ?>" id="<?= $f3['~ID']; ?>" value="<?= $f3['VALUE']; ?>" name="<?= $f3['NAME']; ?>" />
+              <input<?= ($f3['CHECKED'] ? ' checked="checked"' : '') ?> type="<?= $f3['~TYPE']; ?>" class="<?= $f3['CLASS']; ?> input_self" id="<?= $f3['~ID']; ?>" value="<?= $f3['VALUE']; ?>" name="<?= $f3['NAME']; ?>" />
               <? endforeach; ?>
             </div>
             <div class="self_title"><?= GetMessage('IBE_FRONTOFFICE_DELIVERY_SELF_S') ?></div>
