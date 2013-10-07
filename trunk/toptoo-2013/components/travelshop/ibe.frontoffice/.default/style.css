@@ -1605,11 +1605,11 @@ html.msie7 #ts_ag_reservation .pay_method .paysystem_icon{margin-right:5px;}
   padding:0;
   width:50%;
 }
-#ts_ag_reservation .delivery .description_left{ float:left;}
-#ts_ag_reservation .delivery .description_right{ float:right; }
+#ts_ag_reservation .delivery .description_left{ }
+#ts_ag_reservation .delivery .description_right{ }
 
-#ts_ag_reservation .delivery .description_left .methods .method{ margin:10px 20px 0 20px; }
-#ts_ag_reservation .delivery .description_left .methods .method_cour{ margin:0 20px 0 0; }
+#ts_ag_reservation .delivery .description_left .methods .method{ padding:10px 20px 0 20px; }
+#ts_ag_reservation .delivery .description_left .methods .method_cour{ padding:0 20px 0 0; }
 #ts_ag_reservation .delivery .description_right > div{ margin:0 20px 0 20px; }
 
 #ts_ag_reservation .delivery .description_left .methods .cour_title{ padding:20px 0 0 20px; }
