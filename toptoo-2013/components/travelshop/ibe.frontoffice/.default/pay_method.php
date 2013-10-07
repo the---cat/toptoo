@@ -163,7 +163,6 @@ function renderPayMethod( $method, $fields ){
                 <? endforeach; ?>
               </div>
               <? } ?>
-
             </div>
             <div class="description_right">
               <div><?= GetMessage('IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_' . $ps_class ); ?></div>
@@ -321,6 +320,7 @@ $('.group_name').click(function(){
 
 $('.paymethods .item input:radio').click(function(){
   var el = $(this),
+  item = el.closest('.item'),
   pm = el.closest('.paymethod'),
   ps_id = el.attr('id');
   if ( pm.hasClass('selected') ) return;
@@ -332,8 +332,24 @@ $('.paymethods .item input:radio').click(function(){
   $( '#' + groupNameId.substr(11) ).addClass('no_close');
   <? } ?>
 
-  pm.addClass('selected');
+  pm.addClass('selected'); 
+
   $('#pay_method_selected_description').html( $('#paysystem_profile_'+ ps_id + ' .paysystem_descr_js').html() );
+
+    if ( item.hasClass('pay_method_self') || ( item.hasClass('paysystem_ts_cash') && !item.hasClass('pay_method_cour') ) ){
+    var method = $('#delivery_form #DeliveryMethod .method_self');
+    if ( method.hasClass('method_self') ){
+      var deliveryTitle = '<div class="self_title">' + method.find('.self_title').html() + '</div>',
+      deliveryAddr = '<div class="comment">' + $('#adr_' + method.find('input').val() + ' .description').html() + '</div>';
+
+      if ( $('#pay_method_selected_description .description_left').length ) {
+        $('#pay_method_selected_description .description_left').append(deliveryTitle + deliveryAddr);
+        method.hide();
+        $('#adr_' + method.find('input').val()).hide();
+      }
+    }
+  }
+  
   scrollToButton();
 });
 
