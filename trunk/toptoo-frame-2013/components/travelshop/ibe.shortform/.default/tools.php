@@ -17,6 +17,11 @@ if(!defined("__PERCIFORMES_JS")) {
 	$GLOBALS["APPLICATION"]->AddHeadScript($templateFolder."/js/jquery.perciformes.js");
 }
 
+if(!defined("__PLACEHOLDER_JS")) {
+	define("__PLACEHOLDER_JS", true);
+	$GLOBALS["APPLICATION"]->AddHeadScript($templateFolder."/js/jquery.placeholder.js");
+}
+
 if(!defined("__TOOLTIP_JS")) {
 	define("__TOOLTIP_JS", true);
 	$GLOBALS["APPLICATION"]->AddHeadScript($templateFolder."/js/jquery.tooltip-1.3.js");

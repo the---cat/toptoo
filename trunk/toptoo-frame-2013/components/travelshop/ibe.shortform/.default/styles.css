@@ -102,6 +102,10 @@
 #ts_ag_quick_reservation_form .form-order .date-container{ position:relative; }
 
 #ts_ag_quick_reservation_form .form-order .point input { font-size:18px; width:220px; }
+#ts_ag_quick_reservation_form .form-order .point input.placeholder_input{
+  color:#b1b1b1;
+  font-size:15px;
+}
 #ts_ag_quick_reservation_form .form-order .point input.ac_loading{
   background:#ffffff url(images/loader.white.gif) right 5px center no-repeat;
 }
