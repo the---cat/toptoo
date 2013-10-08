@@ -1,8 +1,9 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die(); //trace($arResult);?>
 <? include( GetLangFileName( $_SERVER["DOCUMENT_ROOT"]."/bitrix/templates/".SITE_TEMPLATE_ID."/components/travelshop/ibe.frontoffice/.default"."/lang/", "/template.php" ) ); ?>
 <?
-if ( $arResult["processor"] == "form_order" && strlen($arParams["REDIRECT_HOST"]) ) { // Если текущий шаг - форма поиска
-
+if ( $arResult["processor"] == "form_order" // Если текущий шаг - форма поиска
+    && ( "http://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"] == $_SERVER["HTTP_REFERER"] || $_SERVER["HTTP_REFERER"] == "" ) // и на нее перешли из фронтофиса или зашли напрямую
+    && strlen($arParams["REDIRECT_HOST"]) ) { // и включен редирект
   $host = $arParams["REDIRECT_HOST"];
   $path = $arParams["REDIRECT_PATH"] ? $arParams["REDIRECT_PATH"] : "/";
   if ( strlen($arResult["display_error"]) ) {
