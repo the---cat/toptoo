@@ -8,7 +8,7 @@ if (!defined('B_PROLOG_INCLUDED') || true !== B_PROLOG_INCLUDED) {
   this.month_names_short = [""<? for ( $i = 1; $i <= 12; $i++ ) : ?>, "<?= GetMessage('IBE_SEARCH_HISTORY_MONTH_SHORT_' . $i) ?>"<? endfor; ?>];
 %>
 <% if (this.items.length > 0) { %>
-<ul>
+<ul class="clearfix">
 <% for (var i in this.items) { %>
   <% if (this.items.hasOwnProperty(i)) {
     <% var item = this.items[i]; %>
