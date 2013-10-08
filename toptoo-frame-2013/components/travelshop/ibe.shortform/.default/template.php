@@ -40,7 +40,7 @@ foreach($arMonths as &$month) {
       <fieldset class="route clearfix">
         <div class="point departure">
           <div class="location">
-            <input type="text" class="text" name="depart" value="<?= $arResult['depart'] ?>" id="depart" />
+            <input type="text" class="text" name="depart" value="<?= $arResult['depart'] ?>" id="depart" placeholder="<?= GetMessage('TS_SHORTFORM_DEPARTURE') ?>" />
             <? /*
             <div class="link-container"><?=CTemplateToolsPoint::Link("depart", GetMessage("TS_SHORTFORM_TOOLS_POINT_DEPARTURE_SHORT_TITLE"), GetMessage("TS_SHORTFORM_TOOLS_POINT_DEPARTURE_TITLE")); ?></div>
             */ ?>
@@ -49,7 +49,7 @@ foreach($arMonths as &$month) {
         <div id="route_switch" class="route_switch point"></div>
         <div class="point arrival">
           <div class="location">
-            <input type="text" class="text" name="arrival" value="<?= $arResult['arrival'] ?>" id="arrival" />
+            <input type="text" class="text" name="arrival" value="<?= $arResult['arrival'] ?>" id="arrival" placeholder="<?= GetMessage('TS_SHORTFORM_ARRIVAL') ?>" />
             <? /*
             <div class="link-container"><?=CTemplateToolsPoint::Link("arrival", GetMessage("TS_SHORTFORM_TOOLS_POINT_ARRIVAL_SHORT_TITLE"), GetMessage("TS_SHORTFORM_TOOLS_POINT_ARRIVAL_TITLE")); ?></div>
             */ ?>
@@ -206,6 +206,8 @@ foreach($arMonths as &$month) {
 
 <script type="text/javascript">
 // <![CDATA[
+$('#ts_ag_quick_reservation_form input[type="text"]:visible').placeholder();
+
 function switchRouteType(type_val){
   var type = type_val.toLowerCase();
   form = $('#ts_ag_quick_reservation_form form');

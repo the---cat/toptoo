@@ -1,18 +1,18 @@
 <?
+$MESS ['TS_SHORTFORM_ROUTE_TYPE_RT'] = "туда-обратно";
+$MESS ['TS_SHORTFORM_ROUTE_TYPE_OW'] = "только туда";
 $MESS ['TS_SHORTFORM_DEPARTURE'] = "Откуда";
 $MESS ['TS_SHORTFORM_ARRIVAL'] = "Куда";
+$MESS ['TS_SHORTFORM_DEPARTURE_DATE'] = "Туда";
+$MESS ['TS_SHORTFORM_ARRIVAL_DATE'] = "Обратно";
+$MESS ['TS_SHORTFORM_ADD_ARRIVAL_DATE'] = '+&nbsp;дата возвращения';
+
 $MESS ['TS_SHORTFORM_TOOLS_POINT_DEPARTURE_SHORT_TITLE'] = "Выбрать";
 $MESS ['TS_SHORTFORM_TOOLS_POINT_DEPARTURE_TITLE'] = "Выбрать пункт вылета";
 $MESS ['TS_SHORTFORM_TOOLS_POINT_ARRIVAL_SHORT_TITLE'] = "Выбрать";
 $MESS ['TS_SHORTFORM_TOOLS_POINT_ARRIVAL_TITLE'] = "Выбрать пункт прилета";
 
-$MESS ['TS_SHORTFORM_ROUTE_TYPE_RT'] = "туда-обратно";
-$MESS ['TS_SHORTFORM_ROUTE_TYPE_OW'] = "только туда";
-$MESS ['TS_SHORTFORM_DEPARTURE_DATE'] = "Туда";
-$MESS ['TS_SHORTFORM_ARRIVAL_DATE'] = "Обратно";
-$MESS ['TS_SHORTFORM_ADD_ARRIVAL_DATE'] = '+&nbsp;дата возвращения';
-
-$MESS ['TS_SHORTFORM_SERVICE_CLASS'] = "Класс";
+$MESS ['TS_SHORTFORM_SERVICE_CLASS'] = "Класс обслуживания";
 $MESS ['TS_SHORTFORM_SERVICE_CLASS_ECONOMY'] = 'Эконом';
 $MESS ['TS_SHORTFORM_FLIGHT_TYPE'] = "Только прямые рейсы";
 $MESS ['TS_SHORTFORM_COMPANY'] = "Авиакомпания";
