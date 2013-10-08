@@ -25,7 +25,6 @@ $bShowDateRange = ( isset( $GLOBALS['arParams']['DISPLAY_MATRIX'])
 if(typeof tooltip != 'function'){
 	//function tooltip(){};
 }
-// ]]>
 
 function fnPassengersNotice(){
   var arStr = [];
@@ -47,6 +46,7 @@ function fnPassengersNotice(){
     cfgPassengersNotice.passengers + ': ' + arStr.join(" | ")
   );
 }
+// ]]>
 </script>
 <div class="form_wrap">
 <form action="<?= $arResult['form']['action'] ?>" class="form-order clearfix <?= ( $arResult['rt_checked'] ? 'form_rt' : 'form_ow' ) ?>" method="post" name="reg_form" onsubmit="<?= $arResult['form']['onsubmit'] ?>" style="<?= $arResult['form']['style'] ?>" id="<?= $arResult['form']['~id'] ?>">
@@ -62,7 +62,7 @@ function fnPassengersNotice(){
   <fieldset class="route clearfix">
     <div class="point departure">
       <div class="location">
-        <input class="text" id="depart_top" name="depart" type="text" value="<?=$arResult['depart'] ?>" />
+        <input class="text" id="depart_top" name="depart" type="text" value="<?=$arResult['depart'] ?>" placeholder="<?= GetMessage('TS_STEP1_SEARCHFORM_DEPARTURE') ?>" />
         <? /*
         <div class="link-container"><?=CTemplateToolsPoint::Link("depart", GetMessage("TS_STEP1_SEARCHFORM_TOOLS_POINT_DEPARTURE_SHORT_TITLE"), GetMessage("TS_STEP1_SEARCHFORM_TOOLS_POINT_DEPARTURE_TITLE")); ?></div>
         */ ?>
@@ -71,7 +71,7 @@ function fnPassengersNotice(){
     <div id="route_switch_top" class="route_switch point"></div>
     <div class="point arrival">
       <div class="location">
-        <input class="text" id="arrival_top" name="arrival" type="text" value="<?=$arResult['arrival'] ?>" />
+        <input class="text" id="arrival_top" name="arrival" type="text" value="<?=$arResult['arrival'] ?>" placeholder="<?= GetMessage('TS_STEP1_SEARCHFORM_ARRIVAL') ?>" />
         <? /*
         <div class="link-container"><?=CTemplateToolsPoint::Link("arrival", GetMessage("TS_STEP1_SEARCHFORM_TOOLS_POINT_ARRIVAL_SHORT_TITLE"), GetMessage("TS_STEP1_SEARCHFORM_TOOLS_POINT_ARRIVAL_TITLE")); ?></div>
         */ ?>
@@ -129,6 +129,8 @@ function fnPassengersNotice(){
 <? endif; ?>
 <script type="text/javascript">
 // <![CDATA[
+$('#<?= $arResult['form']['~id'] ?> input[type="text"]:visible').placeholder();
+
 function switchRouteTypeTop(type_val){
   var type = type_val.toLowerCase();
   form = $('#<?= $arResult['form']['~id'] ?>');
