@@ -1,21 +1,41 @@
-<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die(); //trace($arResult);?>
+<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die(); //trace($arResult);
+//trace($arResult['ERROR']);
+//trace($_SESSION['deeplink_level'] );
+//trace($arParams['IBE_SECONDARY_CALL'])?>
 <? include( GetLangFileName( $_SERVER["DOCUMENT_ROOT"]."/bitrix/templates/".SITE_TEMPLATE_ID."/components/travelshop/ibe.frontoffice/.default"."/lang/", "/template.php" ) ); ?>
 <?
+/* //Не удалось заставить работать редирект для диплинков и при возникновении ошибок
 if ( $arResult["processor"] == "form_order" // Если текущий шаг - форма поиска
-    && !preg_match( "/^\/([^\/]+\/)+$/i", $APPLICATION->GetCurDir() ) // и перешли НЕ по ЧПУ-диплинку
-    && ( "http://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"] == $_SERVER["HTTP_REFERER"] || $_SERVER["HTTP_REFERER"] == "" ) // и перешли из фронтофиса или зашли напрямую
+    && true != $arParams["IBE_SECONDARY_CALL"]
+    //&& !preg_match( "/^\/([^\/]+\/)+$/i", $APPLICATION->GetCurDir() ) // и перешли НЕ по ЧПУ-диплинку
+    && ( "http://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"] == $_SERVER["HTTP_REFERER"] // и перешли из фронтофиса
+          || $_SERVER["HTTP_REFERER"] == "" // или зашли напрямую
+          || strlen($arResult["display_error"]) // или возникла ошибка
+      )
     && strlen($arParams["REDIRECT_HOST"]) ) { // и включен редирект
   $host = $arParams["REDIRECT_HOST"];
   $path = $arParams["REDIRECT_PATH"] ? $arParams["REDIRECT_PATH"] : "/";
+  $data = "";
+  if ( is_set($arResult["depart"])
+        && is_set($arResult["arrival"])
+        && is_set($arResult["d_to"])
+        && is_set($arResult["d_back"])
+    ) {
+    $data = "depart=" . $arResult["depart"]
+            . "&arrival=" . $arResult["arrival"]
+            . "&to=" . $arResult["d_to"]
+            . "&back=" . $arResult["d_back"];
+  }
   if ( strlen($arResult["display_error"]) ) {
-    $data = "error_text=" . urlencode( $APPLICATION->ConvertCharset($arResult["display_error"], SITE_CHARSET, "UTF-8") );
+    $data .= ( strlen($data) ? "&" : "" ) . "error_text=" . $arResult["display_error"];
   }
 
-  header("HTTP/1.1 301 Moved Permanently");
-  header("Location: http://" . $host . $path . ( strlen( $data ) ? "?" . $data : "" ) );
+  header("HTTP/1.1 301 Moved Permanently"); // Делаем 301-редирект
+  header("Location: http://" . $host . $path . ( strlen( $data ) ? "?" . urlencode( $APPLICATION->ConvertCharset($data, SITE_CHARSET, "UTF-8") ) : "" ) );
 
   exit();
 }
+*/
 
 //echo $arResult['processor'];
 if ( $arResult['processor'] == 'offer' ){
