@@ -9,6 +9,11 @@ html, body { height: 100%; }
   font-weight: bold;
 } /*предупреждение запрета бронирования в реальной системе*/
 
+.sect_bottom{}
+.sect_bottom img{
+  max-width: 100%;
+  min-width: 980px;
+}
 /* ПОДСКАЗКА */
 #tooltip{
   font-size:11px;
