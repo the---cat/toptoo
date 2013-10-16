@@ -134,7 +134,7 @@ $arParams['SERVICE_CLASS_FILTER_ENABLED'] = 'N';
           <li<?= ($arCarrier['~DISABLED'] ? ' class="disabled"' : '') ?>>
             <input type="checkbox" checked="checked"<?= ($arCarrier['~DISABLED'] ? ' disabled="disabled"' : '') ?> id="<?= $arFilter['ITEM_PREFIX'] ?><?= $itemIndex ?><?= $arResult[ "~UID" ] ?>" />
             <label class="logo-small-<?= $arCarrier['IATACODE'] ?>" for="<?= $arFilter['ITEM_PREFIX'] ?><?= $itemIndex ?><?= $arResult[ "~UID" ] ?>">
-              <?= $arCarrier['TITLE'] ?> (<?= $arCarrier['CRTCODE'] ?>)
+              <span class="name"><?= ToLower($arCarrier['TITLE']) ?></span> (<span class="code"><?= $arCarrier['CRTCODE'] ?></span>)
             </label>
           </li>
             <? $itemIndex++;
