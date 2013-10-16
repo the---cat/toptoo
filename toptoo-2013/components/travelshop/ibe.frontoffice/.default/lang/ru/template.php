@@ -74,6 +74,8 @@ $MESS ['TS_FRONTOFFICE_STEP3_PASS_DOCEXPIRATION_MONTH_TITLE'] = 'Документ должен
 $MESS ['TS_FRONTOFFICE_STEP3_PASS_DOCEXPIRATION_YEAR_TITLE'] = 'Документ должен быть действительным на момент вылета последнего рейса';
 $MESS ['TS_FRONTOFFICE_STEP3_PASS_CTC_PHONE_TITLE'] = 'Введите номер в международном формате. Скобки, дефисы и пробелы не вводятся.';
 
+
+$MESS['IBE_FRONTOFFICE_PERSONAL_GENDER'] = 'Пол';
 $MESS['IBE_FRONTOFFICE_PERSONAL_GENDER_F'] = 'Ж';
 $MESS['IBE_FRONTOFFICE_PERSONAL_GENDER_M'] = 'М';
 $MESS['IBE_FRONTOFFICE_PERSONAL_SUBTITLE_NUMBER'] = '№';

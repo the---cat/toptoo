@@ -199,7 +199,7 @@ function ControlFieldLength( id_field, chars_max ){
                       case 'GENDER': ?>
                     <div class="field <?= strtolower( $fieldId ) ?>">
                       <label class="title<? if ( $field['~REQUIRED'] ): ?> required required_title<? endif; ?>" for="<?= $field['~ID'] ?>" id="<?= $field['~ID'] . '_LABEL' ?>">
-                        <?= GetMessage('IBE_FRONTOFFICE_PERSONAL_DATA_PLOFILES_TH_GENDER') ?>
+                        <?= GetMessage('IBE_FRONTOFFICE_PERSONAL_GENDER') ?>
                       </label>
                       <div class="gender_switcher clearfix" id="<?= $field['~ID'] ?>_SWITCHER">
                         <div class="gender_type gender_M" title="<?= GetMessage('IBE_FRONTOFFICE_PERSONAL_GENDER_M') ?>" onclick="SetGender( '<?= $field['~ID'] ?>', 'M');"></div>
