@@ -181,3 +181,4 @@
   */
   white-space: normal;
 }
+#ts_ag_offer_filter_container div.ts_ag_offer_filter .filter-carrier label .name{ text-transform: capitalize; }
