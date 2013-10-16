@@ -1,20 +1,4 @@
-#ts_ag_reservation_container__form_order .form_wrap,
-#ts_ag_reservation_container__form_top .form_wrap{
-  background: #ffb433;
-  background: -moz-linear-gradient(top, #ffb433 0%, #ffb93d 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffb433), color-stop(100%,#ffb93d));
-  background: -webkit-linear-gradient(top, #ffb433 0%,#ffb93d 100%);
-  background: -o-linear-gradient(top, #ffb433 0%,#ffb93d 100%);
-  background: -ms-linear-gradient(top, #ffb433 0%,#ffb93d 100%);
-  background: linear-gradient(to bottom, #ffb433 0%,#ffb93d 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb433', endColorstr='#ffb93d',GradientType=0 );
-  margin: 0;
-  min-width:960px;
-  width: 100%;
-}
-
 #ts_ag_reservation_container__form_top .form_wrap .form-order,
-#ts_ag_reservation_container__form_order .form_wrap .form-order,
 #ts_ag_reservation_container__form_top .form_tools,
 #ts_ag_reservation_container__offer,
 #ts_ag_reservation_container__order,
@@ -177,12 +161,32 @@
 
 
 /* ‘Œ–Ã¿ «¿œ–Œ—¿ */
-#ts_ag_reservation .form-order{ padding:10px 5px; } /*¡ÎÓÍ ÙÓÏ˚*/
-#ts_ag_reservation .form-order .main_fields{ 
-  float:left; 
-  max-width:820px;
+#ts_ag_reservation_container__form_order .form_wrap,
+#ts_ag_reservation_container__form_top .form_wrap{
+ background: #fab414;
+ /*
+  background: -moz-linear-gradient(top, #ffb433 0%, #ffb93d 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffb433), color-stop(100%,#ffb93d));
+  background: -webkit-linear-gradient(top, #ffb433 0%,#ffb93d 100%);
+  background: -o-linear-gradient(top, #ffb433 0%,#ffb93d 100%);
+  background: -ms-linear-gradient(top, #ffb433 0%,#ffb93d 100%);
+  background: linear-gradient(to bottom, #ffb433 0%,#ffb93d 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb433', endColorstr='#ffb93d',GradientType=0 );
+  */
+  margin: 0;
+  min-width:768px;
+  width: 100%;
 }
-#ts_ag_reservation .form-order .add_fields{ clear:both; }
+
+#ts_ag_reservation_container__form_order .form_wrap .form-order{
+  margin: 0 auto;
+  max-width: 1330px;
+}
+#ts_ag_reservation_container__form_top .form_wrap .form-order{ min-width:758px; }
+#ts_ag_reservation .form-order{ padding:10px 5px;  } /*¡ÎÓÍ ÙÓÏ˚*/
+#ts_ag_reservation .form-order .main_fields{ float:left; }
+#ts_ag_reservation .form-order .add_fields{ clear:left; }
+
 #ts_ag_reservation .form-order .route-types{
   clear:both;
   padding-bottom:7px;
@@ -207,7 +211,8 @@
 #ts_ag_reservation .form-order .dates,
 #ts_ag_reservation .form-order .point,
 #ts_ag_reservation .form-order .date { float:left; }
-#ts_ag_reservation .form-order .route { padding-right:1em; }
+#ts_ag_reservation .form-order .route { padding:0 1em 10px 0; }
+#ts_ag_reservation .form-order .dates{ padding-bottom:10px; }
 
 #ts_ag_reservation .form-order input[type="text"],
 #ts_ag_reservation .form-order .date_formated{
@@ -269,6 +274,11 @@
 #ts_ag_reservation .form-order .point input.ac_loading{
   background:#ffffff url(images/loader.white.gif) right 5px center no-repeat;
 }
+
+html.safari #ts_ag_reservation .form-order .point input.ac_loading{
+  background:#ffffff url(images/loader.white.gif) 98% 50% no-repeat;
+}
+
 #ts_ag_reservation .form-order .location .link-container{
   background:url(images/point.png) 50% 50% no-repeat;
   cursor: pointer; 
@@ -374,9 +384,12 @@
 #ts_ag_reservation .form-order .passengers,
 #ts_ag_reservation .form-order .preferences{ 
   float:left;
-  padding-top:10px;
 }
-#ts_ag_reservation .form-order .passengers{ margin-right:25px; }
+#ts_ag_reservation .form-order .passengers{
+  margin-right:25px;
+  clear:left;
+  width:255px;
+}
 #ts_ag_reservation .form-order .passenger{
   float:left;
   position:relative;
@@ -471,6 +484,7 @@ html.msie7 #ts_ag_reservation .form-order .class .service_class_title{ display:b
   float:right;
   padding:1px;
 }
+#ts_ag_reservation .form-order .submit.clone{ display:none; }
 #ts_ag_reservation .form-order .submit .button{
   background: #f0efef;
   background: -moz-linear-gradient(top, #f0efef 0%, #dcdcdd 100%);
@@ -654,6 +668,55 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
 #ui-datepicker-div.dateto .ui-state-active{ background: #00C5CB url(images/dateto.png) 50% 50% no-repeat; }
 #ui-datepicker-div.dateback .ui-state-active{ background: #FFB433 url(images/dateback.png) 50% 50% no-repeat; }
 
+@media (min-width: 1025px) {
+  #ts_ag_reservation .form-order .add_fields,
+  #ts_ag_reservation .form-order .add_fields .passengers,
+  #ts_ag_reservation .form-order .route,
+  #ts_ag_reservation .form-order .route .point,
+  #ts_ag_reservation .form-order .route .point input{
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+  }
+  #ts_ag_reservation .form-order .route{ width:55%; }
+  #ts_ag_reservation .form-order .route .point{ width:46%; }
+  #ts_ag_reservation .form-order .route .route_switch { width: 7%; }
+  #ts_ag_reservation .form-order .route .route_switch:before,
+  #ts_ag_reservation .form-order .route .route_switch:after{ width:100%; }
+  #ts_ag_reservation .form-order .route .point input{
+    height:35px;
+    width:100%;
+  }
+  #ts_ag_reservation .form-order .add_fields{
+    padding-right:1em;
+    width:55%;
+  }
+  #ts_ag_reservation .form-order .add_fields .passengers{
+    margin-right: 3%;
+    width:50%;
+  }
+}
+@media (max-width: 950px) {
+  #ts_ag_reservation .form-order .add_fields,
+  #ts_ag_reservation .form-order .route,
+  #ts_ag_reservation .form-order .route .point,
+  #ts_ag_reservation .form-order .route .point input{
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+  }
+  #ts_ag_reservation_container__form_order .form-order .route{ width:62%; }
+  #ts_ag_reservation_container__form_top .form-order .route{ width:46%; }
+  #ts_ag_reservation .form-order .route .point{ width:46%; }
+  #ts_ag_reservation .form-order .route .route_switch { width: 7%; }
+  #ts_ag_reservation .form-order .route .route_switch:before,
+  #ts_ag_reservation .form-order .route .route_switch:after{ width:100%; }
+  #ts_ag_reservation .form-order .route .point input{ height:35px; width:100%; }
+  #ts_ag_reservation_container__form_order .form-order .add_fields{ float:left; padding-right:1em; width:62%; }
+  #ts_ag_reservation_container__form_order .form-order .class{ margin-right: 0; }
+  #ts_ag_reservation_container__form_order .form-order .submit { display:none; }
+  #ts_ag_reservation_container__form_order .form-order .submit.clone { display:block; float:left; margin-left:140px; }
+}
 
 /* ¬€¡Œ– –≈…—Œ¬. –≈ ŒÃ≈Õƒ¿÷»ﬂ Œœ“»Ã¿À‹Õ€’ “¿–»‘Œ¬ */
 /* —ÔËÒÓÍ ÂÍÓÏÂÌ‰‡ˆËÈ */
