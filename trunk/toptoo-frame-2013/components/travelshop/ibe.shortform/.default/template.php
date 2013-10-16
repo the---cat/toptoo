@@ -31,12 +31,8 @@ foreach($arMonths as &$month) {
       <div class="type type_rt<? if($arResult['rt_checked']){ ?> selected<? } ?>"><?=GetMessage("TS_SHORTFORM_ROUTE_TYPE_RT") ?></div>
       <div class="type type_ow<? if($arResult['ow_checked']){ ?> selected<? } ?>"><?=GetMessage("TS_SHORTFORM_ROUTE_TYPE_OW") ?></div>
     </fieldset>
-    
-    <div class="submit">
-      <input id="form_order_submit" class="button" type="submit" value="<?=GetMessage("TS_SHORTFORM_SEARCH") ?>" />
-    </div>
 
-    <div class="main_fields clearfix">
+    <!--div class="main_fields clearfix"-->
       <fieldset class="route clearfix">
         <div class="point departure">
           <div class="location">
@@ -84,6 +80,10 @@ foreach($arMonths as &$month) {
           </div>
         </div>
       </fieldset>
+    <!--/div-->
+
+    <div class="submit">
+      <input id="form_order_submit" class="button" type="submit" value="<?=GetMessage("TS_SHORTFORM_SEARCH") ?>" />
     </div>
 
     <div class="add_fields clearfix">
@@ -171,7 +171,7 @@ foreach($arMonths as &$month) {
         </div>
         <? endif; ?>
 
-        <? if ($arResult['ak_onlysearch'] == '' && (!isset($arParams['DISPLAY_COMPANY']) || $arParams['DISPLAY_COMPANY'] == 'Y')): ?>
+        <? if (0)://$arResult['ak_onlysearch'] == '' && (!isset($arParams['DISPLAY_COMPANY']) || $arParams['DISPLAY_COMPANY'] == 'Y')): ?>
         <div class="preference company clearfix">
           <label class="title" for="company"><?=GetMessage("TS_SHORTFORM_COMPANY") ?></label>
           <? if(count($arResult['select_faretype']['REFERENCE_ID'])): ?>
@@ -188,18 +188,23 @@ foreach($arMonths as &$month) {
         <input name="company" type="hidden" value="<?=$arResult['ak_onlysearch']?>">
         <? endif; ?>
 
-        <? if (!isset($arParams['DISPLAY_DIRECT']) || $arParams['DISPLAY_DIRECT'] == 'Y'): ?>
+        <? if (0)://!isset($arParams['DISPLAY_DIRECT']) || $arParams['DISPLAY_DIRECT'] == 'Y'): ?>
         <div class="preference direct clearfix">
           <input<? if($arResult['directonly']): ?> checked="checked"<? endif; ?> id="DirectOnly" name="DirectOnly" type="checkbox" value="1" />
           <label class="title" for="DirectOnly"><?=GetMessage("TS_SHORTFORM_FLIGHT_TYPE") ?></label>
         </div>
         <? endif; ?>
 
-        <? if(isset($arParams['DISPLAY_CURRENCY']) && $arParams['DISPLAY_CURRENCY'] == 'Y'): ?>
+        <? if(0)://isset($arParams['DISPLAY_CURRENCY']) && $arParams['DISPLAY_CURRENCY'] == 'Y'): ?>
         <? $APPLICATION->IncludeComponent("travelshop:ibe.currency", "in_form", array("CURRENCY_DEFAULT" => "RUR")); ?>
         <? endif; ?>
       </fieldset>
     </div>
+
+    <div class="submit clone">
+      <input id="form_order_submit_clone" class="button" type="submit" value="<?=GetMessage("TS_SHORTFORM_SEARCH") ?>" />
+    </div>
+
     </form>
   </div>
 </div>
