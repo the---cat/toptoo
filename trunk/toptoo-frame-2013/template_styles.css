@@ -12,7 +12,7 @@ html, body { height: 100%; }
 .sect_bottom{}
 .sect_bottom img{
   max-width: 100%;
-  min-width: 980px;
+  width:100%;
 }
 /* ÏÎÄÑÊÀÇÊÀ */
 #tooltip{
