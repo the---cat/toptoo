@@ -731,7 +731,7 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
 
 #ts_ag_reservation .offers .offer {
   border:1px solid #a6a6a6;
-  margin-bottom:20px;
+  margin-bottom:30px;
   position:relative;
 } /*Блок одной рекомендации*/
 
@@ -745,7 +745,7 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
 #ts_ag_reservation .offers .offer .outbound{ border-color: #00c5cb; }
 #ts_ag_reservation .offers .offer .inbound{
   border-color: #fab414;
-  margin-top:8px;
+  margin-top:5px;
 }
 
 #ts_ag_reservation .offers .offer .direction th{
