@@ -456,10 +456,12 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
 .ui-datepicker tr:last-child td{ border-borrom-width:0; }
 .ui-datepicker-multi-2 .ui-datepicker-group-last td:first-child{
   border-left:2px solid #999999 !important;
-  height:48px;
+  /*height:48px;*/
 }
-
-.ui-datepicker td.ui-state-disabled.ui-datepicker-other-month{ border:none; }
+.ui-datepicker td.ui-state-disabled.ui-datepicker-other-month{
+  border:none;
+  font-size:0;
+}
 .ui-datepicker tr:first-child td.ui-state-disabled.ui-datepicker-other-month{ 
   border:solid #e6e6e6;
   border-width:1px 1px 1px 0;
