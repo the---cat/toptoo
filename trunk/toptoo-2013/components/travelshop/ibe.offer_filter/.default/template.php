@@ -196,9 +196,20 @@ new CIBEOfferFilterScript( '#ts_ag_offer_filter<?= $arResult[ "~UID" ] ?>', <?= 
 
 if ('function' == typeof autoSelect) { autoSelect(); }
 
-$(document).ready(function(){
-  $('#ts_ag_offer_filter_container h3.title').trigger('click');
-});
+if ( typeof( $.oAjaxSteps ) != 'undefined' ) {
+  $.oAjaxSteps.add_user_func_after( "offer", function(){
+    setTimeout( function() {
+      $('#ts_ag_offer_filter_container h3.title').each( function(){
+        var el = $(this);
+        if( !el.hasClass('enabled') ) { 
+          el.click();
+          $('#' + el.find('input').val()).show();
+        }
+      });
+    }, 300 );
+  } );
+}
+
 // ]]>
 </script>
 <? endif; // if ($arResult['FILTER']) ?>
