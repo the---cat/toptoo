@@ -146,10 +146,10 @@
 
 /* Œÿ»¡Œ◊Õ¿ﬂ —»“”¿÷»ﬂ*/
 #ts_ag_reservation .error {
-  background: #ffffce;
-  font-size: 90%;
-  margin-bottom: 1em;
-  padding: 1em;
+  color:#fab414;
+  font-size: 24px;
+  font-weight:normal;
+  padding: 10px 0;
   overflow: hidden;
   width: 100%;
   width: auto;
@@ -1989,6 +1989,7 @@ html.msie7 #ts_ag_reservation .pay_method .paysystem_icon{margin-right:5px;}
 }
 .ww_state_wait {
   background: #ffffff; /* url(images/wait.png) center bottom 30px no-repeat;*/
+  padding: 0;
 }
 .ww_state_wait .progress-img{ margin:30px 0 -185px; }
 .ww_state_error {
