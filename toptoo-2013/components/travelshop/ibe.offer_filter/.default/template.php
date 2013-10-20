@@ -203,10 +203,10 @@ if ( typeof( $.oAjaxSteps ) != 'undefined' ) {
         var el = $(this);
         if( !el.hasClass('enabled') ) { 
           el.click();
-          $('#' + el.find('input').val()).show();
+          //$('#' + el.find('input').val()).show();
         }
       });
-    }, 300 );
+    }, 500 );
   } );
 }
 
