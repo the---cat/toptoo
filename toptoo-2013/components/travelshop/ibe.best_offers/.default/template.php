@@ -88,7 +88,7 @@
               <div class="companies">
               <? foreach ( $offerOrig["COMPANY"] as $company ): ?>
                 <? if ($arResult["LOGOS"]): ?>
-                <span class="company"><?= $arResult["LOGOS"][$company["~CODE"]]["TITLE"] . ($company !== end($offerOrig["COMPANY"]) ? ', ' : '' ) ?></span>
+                <span class="company"><?= ToLower($arResult["LOGOS"][$company["~CODE"]]["TITLE"]) . ($company !== end($offerOrig["COMPANY"]) ? ', ' : '' ) ?></span>
                 <? endif; ?>
               <? endforeach; ?>
               </div>
@@ -104,10 +104,10 @@
               <div class="plane">
               <? if ( count($outbound['SEGMENTS']) > 1 ): ?>
                 <? foreach ( $outbound['SEGMENTS'] as $k => $segment ): ?>
-                <?= $segment['PLANE_NAME'] ?><?= $k < count($outbound['SEGMENTS']) - 1 ? ', ' : '' ?>
+                <?= ToLower($segment['PLANE_NAME']) ?><?= $k < count($outbound['SEGMENTS']) - 1 ? ', ' : '' ?>
                 <? endforeach; ?>
               <? else: ?>
-                 <?= $departure['PLANE_NAME'] ?>
+                 <?= ToLower($departure['PLANE_NAME']) ?>
               <? endif; ?>
               </div>
             </td>
@@ -166,7 +166,7 @@
               <div class="companies">
               <? foreach ( $offerOrig["COMPANY"] as $company ): ?>
                 <? if ($arResult["LOGOS"]): ?>
-                <span class="company"><?= $arResult["LOGOS"][$company["~CODE"]]["TITLE"] . ($company !== end($offerOrig["COMPANY"]) ? ', ' : '' ) ?></span>
+                <span class="company"><?= ToLower($arResult["LOGOS"][$company["~CODE"]]["TITLE"]) . ($company !== end($offerOrig["COMPANY"]) ? ', ' : '' ) ?></span>
                 <? endif; ?>
               <? endforeach; ?>
               </div>
@@ -182,10 +182,10 @@
               <div class="plane">
               <? if ( count($inbound['SEGMENTS']) > 1 ): ?>
                 <? foreach ( $inbound['SEGMENTS'] as $k => $segment ): ?>
-                <?= $segment['PLANE_NAME'] ?><?= $k < count($inbound['SEGMENTS']) - 1 ? ', ' : '' ?>
+                <?= ToLower($segment['PLANE_NAME']) ?><?= $k < count($inbound['SEGMENTS']) - 1 ? ', ' : '' ?>
                 <? endforeach; ?>
               <? else: ?>
-                 <?= $departure['PLANE_NAME'] ?>
+                 <?= ToLower($departure['PLANE_NAME']) ?>
               <? endif; ?>
               </div>
             </td>

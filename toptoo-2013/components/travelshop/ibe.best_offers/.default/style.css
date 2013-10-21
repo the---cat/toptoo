@@ -53,9 +53,16 @@
   font-weight:bold;
 }
 .best-offers .best-offer .info .time{ padding-bottom:2px; }
-.best-offers .best-offer .info .companies{ padding-top:5px; }
+.best-offers .best-offer .info .companies{
+  color:#666666;
+  font-size:13px;
+  font-weight:bold;
+  padding-top:5px;
+}
 .best-offers .best-offer .info .duration{ margin-right:7px; }
 .best-offers .best-offer .info .seats{ color:#FF0066; }
+.best-offers .best-offer .info .companies .company,
+.best-offers .best-offer .info .plane{ text-transform: capitalize; }
 
 .best-offers td.price{
   border-bottom-width:1px;
