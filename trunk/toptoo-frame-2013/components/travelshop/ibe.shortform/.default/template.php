@@ -100,13 +100,14 @@ foreach($arMonths as &$month) {
           </label>
           <? if(count($arResult['select_pcl_adult']['REFERENCE_ID'])): ?>
           <div class="select_wrap">
-          <select id="adult" name="adult">
-            <? for($i=0; $i<count($arResult['select_pcl_adult']['REFERENCE_ID']); $i++): ?>
-            <option<? if($arResult['select_pcl_adult']['REFERENCE_ID'][$i] == $arResult['select_pcl_adult_selected']): ?> selected="selected"<? endif; ?> value="<?=$arResult['select_pcl_adult']['REFERENCE_ID'][$i] ?>">
-            <?=$arResult['select_pcl_adult']['REFERENCE'][$i] ?>
-            </option>
-            <? endfor; ?>
-          </select>
+            <span class="count" id="adult_alt"><?=$arResult['select_pcl_adult_selected']?></span>
+            <select id="adult" name="adult" onchange="$('#'+$(this).attr('id')+'_alt').text($(this).val());">
+              <? for($i=0; $i<count($arResult['select_pcl_adult']['REFERENCE_ID']); $i++): ?>
+              <option<? if($arResult['select_pcl_adult']['REFERENCE_ID'][$i] == $arResult['select_pcl_adult_selected']): ?> selected="selected"<? endif; ?> value="<?=$arResult['select_pcl_adult']['REFERENCE_ID'][$i] ?>">
+              <?=$arResult['select_pcl_adult']['REFERENCE'][$i] ?>
+              </option>
+              <? endfor; ?>
+            </select>
           </div>
           <? endif; ?>
         </div>
@@ -116,13 +117,14 @@ foreach($arMonths as &$month) {
           </label>
           <? if(count($arResult['select_pcl_child']['REFERENCE_ID'])): ?>
           <div class="select_wrap">
-          <select id="child" name="child">
-            <? for($i=0; $i<count($arResult['select_pcl_child']['REFERENCE_ID']); $i++): ?>
-            <option<? if($arResult['select_pcl_child']['REFERENCE_ID'][$i] == $arResult['select_pcl_child_selected']): ?> selected="selected"<? endif; ?> value="<?=$arResult['select_pcl_child']['REFERENCE_ID'][$i] ?>">
-            <?=$arResult['select_pcl_child']['REFERENCE'][$i] ?>
-            </option>
-            <? endfor; ?>
-          </select>
+            <span class="count" id="child_alt"><?=$arResult['select_pcl_child_selected']?></span>
+            <select id="child" name="child" onchange="$('#'+$(this).attr('id')+'_alt').text($(this).val());">
+              <? for($i=0; $i<count($arResult['select_pcl_child']['REFERENCE_ID']); $i++): ?>
+              <option<? if($arResult['select_pcl_child']['REFERENCE_ID'][$i] == $arResult['select_pcl_child_selected']): ?> selected="selected"<? endif; ?> value="<?=$arResult['select_pcl_child']['REFERENCE_ID'][$i] ?>">
+              <?=$arResult['select_pcl_child']['REFERENCE'][$i] ?>
+              </option>
+              <? endfor; ?>
+            </select>
           </div>
           <? endif; ?>
         </div>
@@ -133,13 +135,14 @@ foreach($arMonths as &$month) {
           </label>
           <? if(count($arResult['select_pcl_child']['REFERENCE_ID'])): ?>
           <div class="select_wrap">
-          <select id="infant" name="infant">
-            <? for($i=0; $i<count($arResult['select_pcl_infant']['REFERENCE_ID']); $i++): ?>
-            <option<? if($arResult['select_pcl_infant']['REFERENCE_ID'][$i] == $arResult['select_pcl_infant_selected']): ?> selected="selected"<? endif; ?> value="<?=$arResult['select_pcl_infant']['REFERENCE_ID'][$i] ?>">
-            <?=$arResult['select_pcl_infant']['REFERENCE'][$i] ?>
-            </option>
-            <? endfor; ?>
-          </select>
+            <span class="count" id="infant_alt"><?=$arResult['select_pcl_infant_selected']?></span>
+            <select id="infant" name="infant" onchange="$('#'+$(this).attr('id')+'_alt').text($(this).val());">
+              <? for($i=0; $i<count($arResult['select_pcl_infant']['REFERENCE_ID']); $i++): ?>
+              <option<? if($arResult['select_pcl_infant']['REFERENCE_ID'][$i] == $arResult['select_pcl_infant_selected']): ?> selected="selected"<? endif; ?> value="<?=$arResult['select_pcl_infant']['REFERENCE_ID'][$i] ?>">
+              <?=$arResult['select_pcl_infant']['REFERENCE'][$i] ?>
+              </option>
+              <? endfor; ?>
+            </select>
           </div>
           <? endif; ?>
         </div>
