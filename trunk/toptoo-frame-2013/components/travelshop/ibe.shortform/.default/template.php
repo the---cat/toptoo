@@ -388,6 +388,9 @@ safeCall(calendarsSetup);
       return $('#depart').length && $('#arrival').length;
     });
 
+    $('#arrival').result(function(event, data, formatted) {
+      TryFocusObj( $('#dateto') );
+    });
  <? endif; ?>
 
 <? if ( is_array($arResult["ROUTES"]) && count($arResult["ROUTES"]) ): // Если задана маршрутная сеть ?>
