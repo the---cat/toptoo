@@ -156,7 +156,7 @@ foreach($arMonths as &$month) {
           <? if(count($arResult['select_cos']['REFERENCE_ID'])): ?>
           <input type="hidden" name="class" id="service_class" value="<?= $arResult['select_cos_selected'] ?>" />
           <label class="title"><?=GetMessage("TS_SHORTFORM_SERVICE_CLASS") ?></label>
-          <div class="service_class_title<? if( $arResult['select_cos']['REFERENCE_ID'][0] == $arResult['select_cos_selected'] || '' == $arResult['select_cos_selected'] || $arResult['select_cos']['REFERENCE_ID'][1] == $arResult['select_cos_selected'] ){ ?> selected<? } ?>" onclick="$('#service_class').val('<?= $arResult['select_cos']['REFERENCE_ID'][0] ?>');">
+          <div class="service_class_title economy<? if( $arResult['select_cos']['REFERENCE_ID'][0] == $arResult['select_cos_selected'] || '' == $arResult['select_cos_selected'] || $arResult['select_cos']['REFERENCE_ID'][1] == $arResult['select_cos_selected'] ){ ?> selected<? } ?>" onclick="$('#service_class').val('<?= $arResult['select_cos']['REFERENCE_ID'][0] ?>');">
             <?= GetMessage('TS_SHORTFORM_SERVICE_CLASS_ECONOMY') ?>
           </div>
           <div class="service_class_title<? if( $arResult['select_cos']['REFERENCE_ID'][2] == $arResult['select_cos_selected'] ){ ?> selected<? } ?>" onclick="$('#service_class').val('<?=$arResult['select_cos']['REFERENCE_ID'][2] ?>');">
