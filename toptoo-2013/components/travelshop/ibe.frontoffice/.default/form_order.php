@@ -158,10 +158,10 @@ if ( strlen($matches[0]) && strlen($matches[1]) ) { // Если пришли по диплинку в
           <? if(count($arResult['select_cos']['REFERENCE_ID'])): ?>
           <input type="hidden" name="class" id="service_class" value="<?= $arResult['select_cos_selected'] ?>" />
           <label class="title"><?=GetMessage("TS_STEP1_SEARCHFORM_SERVICE_CLASS") ?></label>
-          <div class="service_class_title<? if( $arResult['select_cos']['REFERENCE_ID'][0] == $arResult['select_cos_selected'] || '' == $arResult['select_cos_selected'] || $arResult['select_cos']['REFERENCE_ID'][1] == $arResult['select_cos_selected'] ){ ?> selected<? } ?>" onclick="$('#service_class').val('<?= $arResult['select_cos']['REFERENCE_ID'][0] ?>');">
+          <div class="service_class_title economy<? if( $arResult['select_cos']['REFERENCE_ID'][0] == $arResult['select_cos_selected'] || '' == $arResult['select_cos_selected'] || $arResult['select_cos']['REFERENCE_ID'][1] == $arResult['select_cos_selected'] ){ ?> selected<? } ?>" onclick="$('#service_class').val('<?= $arResult['select_cos']['REFERENCE_ID'][0] ?>');">
             <?= GetMessage('TS_STEP1_SEARCHFORM_SERVICE_CLASS_ECONOMY') ?>
           </div>
-          <div class="service_class_title<? if( $arResult['select_cos']['REFERENCE_ID'][2] == $arResult['select_cos_selected'] ){ ?> selected<? } ?>" onclick="$('#service_class').val('<?=$arResult['select_cos']['REFERENCE_ID'][2] ?>');">
+          <div class="service_class_title last<? if( $arResult['select_cos']['REFERENCE_ID'][2] == $arResult['select_cos_selected'] ){ ?> selected<? } ?>" onclick="$('#service_class').val('<?=$arResult['select_cos']['REFERENCE_ID'][2] ?>');">
             <?=$arResult['select_cos']['REFERENCE'][2] ?>
           </div>
           <script type="text/javascript">
@@ -384,12 +384,6 @@ safeCall(calendarsSetup);
           return row[0] + '<b class="point_info"><em class="code">' + row[1] + '</em> <em class="country">(' + row[2] + ')</em></b>';
         }
     });
-
-/*
-    $('#depart').result(function(event, data, formatted) {
-      TryFocusObj( $('#arrival') );
-    });
-*/
     $('#arrival').result(function(event, data, formatted) {
       TryFocusObj( $('#dateto') );
     });
