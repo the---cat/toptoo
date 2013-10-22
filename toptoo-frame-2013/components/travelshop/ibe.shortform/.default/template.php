@@ -379,17 +379,14 @@ safeCall(calendarsSetup);
     miniPoolAC = new ibeMiniPool;
     miniPoolAC.Init( function(){
       $('#depart').result(function(event, data, formatted) {
-        $('#arrival').select();
+        $('#arrival').select().focus();
       });
       $('#arrival').result(function(event, data, formatted) {
-        $('#arrival').blur();
+        //$('#arrival').blur();
+        TryFocusObj( $('#dateto') );
       });
     }, function(){
       return $('#depart').length && $('#arrival').length;
-    });
-
-    $('#arrival').result(function(event, data, formatted) {
-      TryFocusObj( $('#dateto') );
     });
  <? endif; ?>
 
