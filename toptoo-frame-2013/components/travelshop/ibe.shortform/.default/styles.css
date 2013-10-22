@@ -262,6 +262,7 @@ html.safari #ts_ag_quick_reservation_form .form-order .point input.ac_loading{
   height:35px;
   left:0;
   opacity: 0;
+  padding: 0;
   position: absolute;
   top:0;
   width:45px;
