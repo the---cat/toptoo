@@ -322,11 +322,13 @@ if ( isset($arResult["processor"]) ) {
       /*]]>*/</script>
       
     <!-- Сообщение об ошибке -->
+    <? if ( 1 ) { //$arResult['processor'] !== 'form_order' ) { ?>
     <div id="container_error" style="display:none" class="common-error">
       <div class="content">
           <?= htmlspecialcharsBack($arParams["MESSAGE"]) ?>
       </div>
     </div>
+    <? } ?>
 
     <? endif; /* !IBE_SECONDARY_CALL */ ?>
   </div><? /* div#ts_ag_reservation_curtain */ ?>
@@ -362,6 +364,16 @@ if ( $bOutputStarted ) {
 }
 ?>
 <? if ( $arParams['USE_MERGED_STEPS'] === 'Y' ): ?>
+
+    <!-- Сообщение об ошибке -->
+    <? if ( 0 ) {//$arResult['processor'] == 'form_order' ) { ?>
+    <div id="container_error" style="display:none" class="common-error">
+      <div class="content">
+          <?= htmlspecialcharsBack($arParams["MESSAGE"]) ?>
+      </div>
+    </div>
+    <? } ?>
+
 </div><? /* .ts_ag_reservation_container__form_order */ ?>
 <? else: ?>
 </div><? /* .ts_ag_reservation_container */ ?>
