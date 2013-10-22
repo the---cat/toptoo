@@ -385,6 +385,13 @@ safeCall(calendarsSetup);
         }
     });
 
+$('#depart').result(function(event, data, formatted) {
+  TryFocusObj( $('#arrival') );
+});
+
+$('#arrival').result(function(event, data, formatted) {
+  TryFocusObj( $('#dateto') );
+});
  <? endif; ?>
 
 <? if ( is_array($arResult["ROUTES"]) && count($arResult["ROUTES"]) ): // Если задана маршрутная сеть ?>
