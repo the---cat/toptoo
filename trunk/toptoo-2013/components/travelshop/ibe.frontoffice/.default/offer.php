@@ -26,6 +26,7 @@ echo $arResult['SCRIPT']; ?>
   } ?>
   </div>
 </div>
+
 <div class="clearfix">
   <div class="side_col"><div class="break_float"><div class="wrapper" id="ts_ag_all_in_one_offer_filter_container">
   <? $APPLICATION->IncludeComponent( 'travelshop:ibe.offer_filter', '' ); ?>
@@ -133,18 +134,27 @@ echo $arResult['SCRIPT']; ?>
             <td class="flight_number">
               <? if ($arResult['LOGOS']): ?>
               <? $akLogo = $arResult['LOGOS'][$flight['SEGMENTS'][$seg_ct]['~CODE']] ?>
-              <div class="logo<?= ($arResult['LOGOS'] ? ' logo-normal-' . $akLogo['IATACODE'] . '"' : '') ?>" title="<?= $akLogo['TITLE']; ?>">
-              <? else: ?> 
-              <div class="number_plane">
-              <? endif; ?>
+              <div class="logo<?= $arResult['LOGOS'] ? ' logo-normal-' . $akLogo['IATACODE'] : '' ?>">
+                <div class="ak_title" title="<?= $akLogo['TITLE']; ?>"></div>
                 <div class="number">
-              <?=$flight['SEGMENTS'][$seg_ct]['~AK'] ?>&nbsp;<?=$flight['SEGMENTS'][$seg_ct]['NUMBER'] ?><? 
-              if( !empty( $flight['SEGMENTS'][$seg_ct]['~OAK'] ) && $flight['SEGMENTS'][$seg_ct]['~OAK'] != $flight['SEGMENTS'][$seg_ct]['~AK'] ): 
-                ?><sup class="oak" title="<?=GetMessage("TS_FRONTOFFICE_STEP2_OFFER_OAK_TITLE") ?> <?=$flight['SEGMENTS'][$seg_ct]['OAK'] ?>">*</sup>
-              <? endif; ?>
+                <?=$flight['SEGMENTS'][$seg_ct]['~AK'] ?>&nbsp;<?=$flight['SEGMENTS'][$seg_ct]['NUMBER'] ?><? 
+                if( !empty( $flight['SEGMENTS'][$seg_ct]['~OAK'] ) && $flight['SEGMENTS'][$seg_ct]['~OAK'] != $flight['SEGMENTS'][$seg_ct]['~AK'] ): 
+                  ?><sup class="oak" title="<?=GetMessage("TS_FRONTOFFICE_STEP2_OFFER_OAK_TITLE") ?> <?=$flight['SEGMENTS'][$seg_ct]['OAK'] ?>">*</sup>
+                <? endif; ?>
                 </div>
                 <div class="plane"><?=$flight['SEGMENTS'][$seg_ct]['PLANE_NAME'] ?></div>
               </div>
+              <? else: ?> 
+              <div class="number_plane">
+                <div class="number">
+                <?=$flight['SEGMENTS'][$seg_ct]['~AK'] ?>&nbsp;<?=$flight['SEGMENTS'][$seg_ct]['NUMBER'] ?><? 
+                if( !empty( $flight['SEGMENTS'][$seg_ct]['~OAK'] ) && $flight['SEGMENTS'][$seg_ct]['~OAK'] != $flight['SEGMENTS'][$seg_ct]['~AK'] ): 
+                  ?><sup class="oak" title="<?=GetMessage("TS_FRONTOFFICE_STEP2_OFFER_OAK_TITLE") ?> <?=$flight['SEGMENTS'][$seg_ct]['OAK'] ?>">*</sup>
+                <? endif; ?>
+                </div>
+                <div class="plane"><?=$flight['SEGMENTS'][$seg_ct]['PLANE_NAME'] ?></div>
+              </div>
+              <? endif; ?>
             </td>
             <td class="flight_info">
               <div class="departure">
