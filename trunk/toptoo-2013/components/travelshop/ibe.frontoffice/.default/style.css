@@ -164,17 +164,12 @@
 #ts_ag_reservation_container__form_order .form_wrap,
 #ts_ag_reservation_container__form_top .form_wrap{
  background: #fab414;
- /*
-  background: -moz-linear-gradient(top, #ffb433 0%, #ffb93d 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffb433), color-stop(100%,#ffb93d));
-  background: -webkit-linear-gradient(top, #ffb433 0%,#ffb93d 100%);
-  background: -o-linear-gradient(top, #ffb433 0%,#ffb93d 100%);
-  background: -ms-linear-gradient(top, #ffb433 0%,#ffb93d 100%);
-  background: linear-gradient(to bottom, #ffb433 0%,#ffb93d 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb433', endColorstr='#ffb93d',GradientType=0 );
-  */
+ -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
   margin: 0;
   min-width:768px;
+  padding: 0 15px;
   width: 100%;
 }
 
@@ -464,10 +459,11 @@ html.safari #ts_ag_reservation .form-order .point input.ac_loading{
   font-weight:normal;
   height:14px;
   line-height: 14px;
-  margin:14px 20px 0 0;
+  margin:14px 0 0 20px;
   padding-left:20px;
   vertical-align: middle;
 }
+#ts_ag_reservation .form-order .class .economy{ margin-left: 0; }
 #ts_ag_reservation .form-order .class .selected{ background-image: url(images/radios_sel.png); }
 html.msie7 #ts_ag_reservation .form-order .class .service_class_title{ display:block; float:left; }
 #ts_ag_reservation .form-order .company select{ max-width: 193px; }
@@ -533,7 +529,6 @@ html.msie9 #ts_ag_reservation .form-order .top_form_submit .button{ width:125px;
   padding:0;
   width:342px;
 }
-
 .ui-datepicker-multi-2{ width:686px !important; }
 .ui-datepicker-multi-2 .ui-datepicker-group{ width: 342px; }
 .ui-datepicker-multi-2 .ui-datepicker-group-last { width: 344px; }
@@ -725,7 +720,12 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
   #ts_ag_reservation_container__form_order .form-order .submit { display:none; }
   #ts_ag_reservation_container__form_order .form-order .submit.clone { display:block; float:left; margin-left:140px; }
 }
-
+@media (min-width: 768px) {
+  .ui-datepicker-multi-2{
+    left:50% !important;
+    margin-left:-300px !important;
+  }
+}
 /* ÂÛÁÎĞ ĞÅÉÑÎÂ. ĞÅÊÎÌÅÍÄÀÖÈß ÎÏÒÈÌÀËÜÍÛÕ ÒÀĞÈÔÎÂ */
 /* Ñïèñîê ğåêîìåíäàöèé */
 #ts_ag_reservation .offers_tools{ display: none; }
