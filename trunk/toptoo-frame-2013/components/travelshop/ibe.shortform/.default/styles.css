@@ -1,8 +1,12 @@
 /*  –¿“ ¿ﬂ ‘Œ–Ã¿ */
 #ts_ag_quick_reservation_form .form_wrap{
   background: #fab414;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
   margin: 0;
   min-width:768px;
+  padding:0 15px;
   width: 100%;
 }
 #ts_ag_quick_reservation_form .form_wrap .form-order{
@@ -285,10 +289,11 @@ html.safari #ts_ag_quick_reservation_form .form-order .point input.ac_loading{
   font-weight:normal;
   height:14px;
   line-height: 14px;
-  margin:14px 20px 0 0;
+  margin:14px 0 0 20px;
   padding-left:20px;
   vertical-align: middle;
 }
+#ts_ag_quick_reservation_form .form-order .class .economy{ margin-left: 0; }
 #ts_ag_quick_reservation_form .form-order .class .selected{ background-image: url(images/radios_sel.png); }
 html.msie7 #ts_ag_quick_reservation_form .form-order .class .service_class_title{ display:block; float:left; }
 #ts_ag_quick_reservation_form .form-order .company select{ max-width: 193px; }
@@ -556,4 +561,10 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
   #ts_ag_quick_reservation_form .form-order .class{ margin-right: 0; }
   #ts_ag_quick_reservation_form .form-order .submit { display:none; }
   #ts_ag_quick_reservation_form .form-order .submit.clone { display:block; float:left; margin-left:140px; }
+}
+@media (min-width: 768px) {
+  .ui-datepicker-multi-2{
+    left:50% !important;
+    margin-left:-300px !important;
+  }
 }
