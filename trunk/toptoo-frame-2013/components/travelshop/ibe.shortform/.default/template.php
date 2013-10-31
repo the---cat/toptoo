@@ -246,12 +246,7 @@ $('#route_switch').click(function(){
 // Выделяем содержимое поля ввода пунктов при фокусе
 var points_fields = $('input#depart, input#arrival');
 
-points_fields.mouseup(function(e) {
-  $(e.target).select().focus();
-  e.preventDefault();
-});
-
-points_fields.mousedown(function(e) {
+points_fields.click(function(e) {
   $(e.target).select().focus();
   e.preventDefault();
 });
