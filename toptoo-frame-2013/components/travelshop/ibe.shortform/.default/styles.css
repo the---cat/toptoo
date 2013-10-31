@@ -514,6 +514,19 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
 #ui-datepicker-div.dateto .ui-state-active{ background: #00C5CB url(images/dateto.png) 50% 50% no-repeat; }
 #ui-datepicker-div.dateback .ui-state-active{ background: #FFB433 url(images/dateback.png) 50% 50% no-repeat; }
 
+@media (min-width: 768px) {
+  .ui-datepicker-multi-2{
+    left:50% !important;
+    margin-left:-300px !important;
+  }
+}
+@media (min-width: 1000px) {
+}
+@media (min-width: 1070px) {
+  .ui-datepicker-multi-2.dateback{
+    margin-left:-160px !important;
+  }
+}
 @media (min-width: 1025px) {
   #ts_ag_quick_reservation_form .form-order .add_fields,
   #ts_ag_quick_reservation_form .form-order .add_fields .passengers,
@@ -538,17 +551,16 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
     width:55%;
   }
   #ts_ag_quick_reservation_form .form-order .add_fields .passengers{
-    margin-right: 3%;
-    width:50%;
+    margin-right:2%;
+    width:auto;
   }
-}
-@media (min-width: 1000px) {
   #ts_ag_quick_reservation_form .form-order .submit{
     float:left;
     margin-left: 30px;
   }
 }
-@media (max-width: 979px) {
+
+@media (max-width: 1024px) {
   #ts_ag_quick_reservation_form .form-order .add_fields,
   #ts_ag_quick_reservation_form .form-order .route,
   #ts_ag_quick_reservation_form .form-order .route .point,
@@ -567,13 +579,4 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
   #ts_ag_quick_reservation_form .form-order .class{ margin-right: 0; }
   #ts_ag_quick_reservation_form .form-order .submit { display:none; }
   #ts_ag_quick_reservation_form .form-order .submit.clone { display:block; float:left; margin-left:140px; }
-}
-@media (min-width: 768px) {
-  .ui-datepicker-multi-2{
-    left:50% !important;
-    margin-left:-300px !important;
-  }
-   .ui-datepicker-multi-2.dateback{
-    margin-left:-160px !important;
-  }
 }
