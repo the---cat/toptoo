@@ -424,11 +424,5 @@ safeCall(calendarsSetup);
 
 <? endif; // if ( is_array($arResult["ROUTES"]) && count($arResult["ROUTES"]) ): ?>
 
-$( document ).ready( function() {
-  $('#ts_ag_quick_reservation_form .location input.text').bind('click', function(){
-    $(this).focus();
-  });
-});
-
 // ]]>
 </script>
