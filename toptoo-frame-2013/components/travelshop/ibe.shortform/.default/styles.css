@@ -567,4 +567,7 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
     left:50% !important;
     margin-left:-300px !important;
   }
+   .ui-datepicker-multi-2.dateback{
+    margin-left:-160px !important;
+  }
 }
