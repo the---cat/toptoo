@@ -429,5 +429,11 @@ safeCall(calendarsSetup);
 
 <? endif; // if ( is_array($arResult["ROUTES"]) && count($arResult["ROUTES"]) ): ?>
 
+$( document ).ready( function() {
+  $('.input').bind('click', function(){
+    $(this).focus();
+  });
+});
+
 // ]]>
 </script>
