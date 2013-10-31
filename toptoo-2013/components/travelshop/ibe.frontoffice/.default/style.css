@@ -699,6 +699,12 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
     width:50%;
   }
 }
+@media (min-width: 1000px) {
+  #ts_ag_reservation .form-order .submit{
+    float:left;
+    margin-left: 30px;
+  }
+}
 @media (max-width: 979px) {
   #ts_ag_reservation .form-order .add_fields,
   #ts_ag_reservation .form-order .route,
