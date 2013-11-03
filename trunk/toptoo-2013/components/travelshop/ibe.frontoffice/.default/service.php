@@ -51,7 +51,6 @@ $strTagForm = implode( ' ', $arTagForm );
 ?>
   <h3 class="info_caption"><?=GetMessage('IBE_TITLE_SERVICES')?></h3>
   <form <?= $strTagForm; ?>>
-
     <table>
       <? /*
       <thead>
@@ -117,10 +116,10 @@ $strTagForm = implode( ' ', $arTagForm );
 
           <? if($service['PASSENGERS'][0]['FLIGHTS'][0]['FIELD']['TYPE'] == 'checkbox'): ?>
           <? foreach($service['PASSENGERS'][0]['FLIGHTS'] as $flightNum => $flight): ?>
-
           <td class="price group-<?= $service['ID'] ?>">
-            <? if($flight): ?>
+            <? if(!empty($flight)): ?>
           <?
+          //trace($service);
           $uiq = strtolower($service['CODE']).'-'.$flightNum.'-'.$service['ID'];
           $sum = 0;
           $selectedCount = 0;
@@ -138,7 +137,7 @@ $strTagForm = implode( ' ', $arTagForm );
             $sum = CIBECurrency::GetStringFull($sum);
           }
           
-          $bGroupSelected = $flightNum==0;//($selectedCount == count($service['PASSENGERS'])) ? true : false; ?>
+          $bGroupSelected = ($selectedCount == count($service['PASSENGERS'])) ? true : false; ?>
             <? if ( !isset( $service['PASSENGERS'][0]['FLIGHTS']['0']['FIELDS'] ) ): ?>
             <input<? if($bGroupSelected): ?> checked="checked"<? endif; ?> name="all-<?=$service['PASSENGERS'][0]['FLIGHTS'][0]['FIELD']['NAME']?>" id="all-<?=$uiq ?>" onclick="checkAll(this, '<?=$uiq ?>');<?=$arResult[ 'ONCHANGE' ] ?>" type="checkbox" />
             <span class="price" id="sum-<?=$uiq ?>">
