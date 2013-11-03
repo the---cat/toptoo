@@ -51,6 +51,7 @@ $strTagForm = implode( ' ', $arTagForm );
 ?>
   <h3 class="info_caption"><?=GetMessage('IBE_TITLE_SERVICES')?></h3>
   <form <?= $strTagForm; ?>>
+
     <table>
       <? /*
       <thead>
@@ -89,7 +90,8 @@ $strTagForm = implode( ' ', $arTagForm );
           </th>
         </tr>
         <? } ?>
-        <tr class="service service-<?= $service['ID'] ?><? if($service == $lastService): ?> service-last<? endif; ?>">
+        <tr class="service service-<?= $service['ID'] ?>
+          <? if($service == $lastService): ?> service-last<? endif; ?>">
           <th class="name">
             <? if(strlen($service['PREVIEW_TEXT'])) { ?>
               <span class="description"><?= $service['PREVIEW_TEXT'] ?></span>
@@ -112,9 +114,12 @@ $strTagForm = implode( ' ', $arTagForm );
             <? endif; ?>
           </th>
           <? if($service['PASSENGERS'] && count($service['PASSENGERS']) > 1 ): // случай для более чем одного пассажира ?>
+
           <? if($service['PASSENGERS'][0]['FLIGHTS'][0]['FIELD']['TYPE'] == 'checkbox'): ?>
           <? foreach($service['PASSENGERS'][0]['FLIGHTS'] as $flightNum => $flight): ?>
-          <td class="price group-<?= $service['ID'] ?>"><? if(!empty($flight)): ?>
+
+          <td class="price group-<?= $service['ID'] ?>">
+            <? if($flight): ?>
           <?
           $uiq = strtolower($service['CODE']).'-'.$flightNum.'-'.$service['ID'];
           $sum = 0;
@@ -133,7 +138,7 @@ $strTagForm = implode( ' ', $arTagForm );
             $sum = CIBECurrency::GetStringFull($sum);
           }
           
-          $bGroupSelected = ($selectedCount == count($service['PASSENGERS'])) ? true : false; ?>
+          $bGroupSelected = $flightNum==0;//($selectedCount == count($service['PASSENGERS'])) ? true : false; ?>
             <? if ( !isset( $service['PASSENGERS'][0]['FLIGHTS']['0']['FIELDS'] ) ): ?>
             <input<? if($bGroupSelected): ?> checked="checked"<? endif; ?> name="all-<?=$service['PASSENGERS'][0]['FLIGHTS'][0]['FIELD']['NAME']?>" id="all-<?=$uiq ?>" onclick="checkAll(this, '<?=$uiq ?>');<?=$arResult[ 'ONCHANGE' ] ?>" type="checkbox" />
             <span class="price" id="sum-<?=$uiq ?>">
@@ -151,9 +156,9 @@ $strTagForm = implode( ' ', $arTagForm );
         </tr>
         <? endif; //if($service['PASSENGERS'] && count($service['PASSENGERS']) > 1): // случай для более чем одного пассажира ?>
         <?
-    $slots = $service['PASSENGERS'] ? $service['PASSENGERS'] : $service['GROUP_FLIGHTS'];
-    $last = end($slots);
-    ?>
+        $slots = $service['PASSENGERS'] ? $service['PASSENGERS'] : $service['GROUP_FLIGHTS'];
+        $last = end($slots);
+        ?>
         <? foreach($slots as $passengerNum => $passenger): ?>
         <? if($service['PASSENGERS'] && count($service['PASSENGERS']) > 1 ): // случай для более чем одного пассажира? ?>
         <tr class="passenger passenger-<?= $service['ID'] ?><? if($passenger == $last): ?> passenger-last<? endif; ?>"<? if( ($service['SHOW_PASSENGER_LIST'] != 'Y' && $service['ALLOW_TOGGLE_PASSENGER_LIST'] == 'Y') || ($service['PASSENGERS'] && count($service['PASSENGERS']) >1 && $service['ALLOW_TOGGLE_PASSENGER_LIST'] != 'Y') ) : ?> style="display: none;"<? endif; ?>>
