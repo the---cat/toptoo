@@ -5,7 +5,8 @@
 var passengers = [];
 //]]>
 </script>
-<? if ( isset ($arParams['EVER_SERVICES']) && strlen($arParams['EVER_SERVICES']) ) { // Если задан параметр компонента для обязательного показа списка услуг
+<? 
+if ( isset ($arParams['EVER_SERVICES']) && strlen($arParams['EVER_SERVICES']) ) { // Если задан параметр компонента для обязательного показа списка услуг
   $everpresentCodes_ = explode(",", $arParams['EVER_SERVICES']);
   if ( is_array($everpresentCodes_) ) {
     foreach ( $everpresentCodes_ as $code ) {
@@ -32,8 +33,17 @@ var passengers = [];
 
 <div class="services_wrap">
   <? $APPLICATION->IncludeComponent("bitrix:system.show_message", "", Array("MESSAGE" => $arResult['DISPLAY_ERROR'])); ?>
-  <? if(!empty($arResult['SERVICES'])): ?>
-  <?
+  <? if(!empty($arResult['SERVICES'])):
+  foreach ( $arResult['SERVICES'] as &$srvs ) {
+    foreach ( $srvs['PASSENGERS'] as &$psgrs ) {
+      foreach ( $psgrs['FLIGHTS'] as &$flts ) {
+        if ( $flts ) {
+          $flts['FIELD']['~SELECTED'] = TRUE;
+        }
+      }
+    }
+  }
+
 $arTagForm = array(
     'action' => htmlspecialchars( $arResult['ACTION'] ),
     'id' => $arResult['~ID'],
@@ -47,9 +57,11 @@ foreach ( $arTagForm as $k => $v ) {
   unset( $arTagForm[$k] );
 }
 $strTagForm = implode( ' ', $arTagForm );
-//trace($arResult);
+//trace($arResult['SERVICES']);
 ?>
-  <h3 class="info_caption"><?=GetMessage('IBE_TITLE_SERVICES')?></h3>
+  <h3 class="info_caption">
+    <?=GetMessage('IBE_TITLE_SERVICES')?>
+  </h3>
   <form <?= $strTagForm; ?>>
     <table>
       <? /*
@@ -75,7 +87,25 @@ $strTagForm = implode( ' ', $arTagForm );
         <? $passengersCount = count($service['PASSENGERS']); ?>
         <? if( strlen($service['PREVIEW_TEXT']) ) { ?>
         <tr>
-          <th class="service_info" colspan="<?= count($arResult['FLIGHTS']) ?>">
+          <th class="service_info" colspan="<?= count($arResult['FLIGHTS']) ?>"> <? if($service['IMAGE_URL']): ?>
+            <span class="img"><img alt="<?=$service['NAME'] ?>" src="<?=$service['IMAGE_URL'] ?>" /></span>
+            <? endif; ?>
+            <span class="service-name">
+            <? if($service['DESCRIPTION_URL']): ?>
+            <a href="<?=$service['DESCRIPTION_URL'] ?>">
+            <?=$service['NAME'] ?>
+            </a>
+            <? else: ?>
+            <?=$service['NAME'] ?>
+            <? endif; ?>
+            </span> </th>
+        </tr>
+        <? } ?>
+        <tr class="service service-<?= $service['ID'] ?><? if($service == $lastService): ?> service-last<? endif; ?>">
+          <th class="name">
+            <? if(strlen($service['PREVIEW_TEXT'])) { ?>
+            <span class="description"><?= $service['PREVIEW_TEXT'] ?></span>
+            <? } else { ?>
             <? if($service['IMAGE_URL']): ?>
             <span class="img"><img alt="<?=$service['NAME'] ?>" src="<?=$service['IMAGE_URL'] ?>" /></span>
             <? endif; ?>
@@ -86,25 +116,6 @@ $strTagForm = implode( ' ', $arTagForm );
             <?=$service['NAME'] ?>
             <? endif; ?>
             </span>
-          </th>
-        </tr>
-        <? } ?>
-        <tr class="service service-<?= $service['ID'] ?>
-          <? if($service == $lastService): ?> service-last<? endif; ?>">
-          <th class="name">
-            <? if(strlen($service['PREVIEW_TEXT'])) { ?>
-              <span class="description"><?= $service['PREVIEW_TEXT'] ?></span>
-            <? } else { ?>
-              <? if($service['IMAGE_URL']): ?>
-              <span class="img"><img alt="<?=$service['NAME'] ?>" src="<?=$service['IMAGE_URL'] ?>" /></span>
-              <? endif; ?>
-              <span class="service-name">
-              <? if($service['DESCRIPTION_URL']): ?>
-              <a href="<?=$service['DESCRIPTION_URL'] ?>"><?=$service['NAME'] ?></a>
-              <? else: ?>
-              <?=$service['NAME'] ?>
-              <? endif; ?>
-              </span>
             <? } ?>
             <? if($passengersCount > 1 && $service['ALLOW_TOGGLE_PASSENGER_LIST'] == 'Y'): ?>
             <span class="passenger-list-link">
@@ -113,20 +124,18 @@ $strTagForm = implode( ' ', $arTagForm );
             <? endif; ?>
           </th>
           <? if($service['PASSENGERS'] && count($service['PASSENGERS']) > 1 ): // случай для более чем одного пассажира ?>
-
           <? if($service['PASSENGERS'][0]['FLIGHTS'][0]['FIELD']['TYPE'] == 'checkbox'): ?>
           <? foreach($service['PASSENGERS'][0]['FLIGHTS'] as $flightNum => $flight): ?>
           <td class="price group-<?= $service['ID'] ?>">
             <? if(!empty($flight)): ?>
-          <?
-          //trace($service);
+            <?
           $uiq = strtolower($service['CODE']).'-'.$flightNum.'-'.$service['ID'];
           $sum = 0;
           $selectedCount = 0;
-          
-          foreach($service['PASSENGERS'] as $passenger) {
-            $sum += $passenger['FLIGHTS'][$flightNum]['~BASE_PRICE'];
-            if($passenger['FLIGHTS'][$flightNum]['FIELD']['~SELECTED']) {
+
+          foreach($service['PASSENGERS'] as $psgr) {
+            $sum += $psgr['FLIGHTS'][$flightNum]['~BASE_PRICE'];
+            if($psgr['FLIGHTS'][$flightNum]['FIELD']['~SELECTED']) {
               $selectedCount++;
             }
           }
@@ -136,15 +145,15 @@ $strTagForm = implode( ' ', $arTagForm );
           } else {
             $sum = CIBECurrency::GetStringFull($sum);
           }
-          
+
           $bGroupSelected = ($selectedCount == count($service['PASSENGERS'])) ? true : false; ?>
             <? if ( !isset( $service['PASSENGERS'][0]['FLIGHTS']['0']['FIELDS'] ) ): ?>
             <input<? if($bGroupSelected): ?> checked="checked"<? endif; ?> name="all-<?=$service['PASSENGERS'][0]['FLIGHTS'][0]['FIELD']['NAME']?>" id="all-<?=$uiq ?>" onclick="checkAll(this, '<?=$uiq ?>');<?=$arResult[ 'ONCHANGE' ] ?>" type="checkbox" />
-            <span class="price" id="sum-<?=$uiq ?>">
-            <label for="all-<?=$uiq ?>"><?=$sum ?></label>
-            </span>
+            <span class="price" id="sum-<?=$uiq ?>"><label for="all-<?=$uiq ?>"><?=$sum ?></label></span>
             <? endif; ?>
-            <? else: //if(!empty($flight)): ?>&nbsp;<? endif; // if(!empty($flight)): ?>
+            <? else: //if(!empty($flight)): ?>
+            &nbsp;
+            <? endif; // if(!empty($flight)): ?>
           </td>
           <? endforeach; //foreach($service['PASSENGERS'][0]['FLIGHTS'] as $flightNum => $flight): ?>
           <? else: //if($service['PASSENGERS'][0]['FLIGHTS'][0]['FIELD']['TYPE'] == 'checkbox'): ?>
@@ -157,16 +166,17 @@ $strTagForm = implode( ' ', $arTagForm );
         <?
         $slots = $service['PASSENGERS'] ? $service['PASSENGERS'] : $service['GROUP_FLIGHTS'];
         $last = end($slots);
-        ?>
-        <? foreach($slots as $passengerNum => $passenger): ?>
-        <? if($service['PASSENGERS'] && count($service['PASSENGERS']) > 1 ): // случай для более чем одного пассажира? ?>
+        
+        foreach($slots as $passengerNum => $passenger): 
+          if($service['PASSENGERS'] && count($service['PASSENGERS']) > 1 ): // случай для более чем одного пассажира? ?>
         <tr class="passenger passenger-<?= $service['ID'] ?><? if($passenger == $last): ?> passenger-last<? endif; ?>"<? if( ($service['SHOW_PASSENGER_LIST'] != 'Y' && $service['ALLOW_TOGGLE_PASSENGER_LIST'] == 'Y') || ($service['PASSENGERS'] && count($service['PASSENGERS']) >1 && $service['ALLOW_TOGGLE_PASSENGER_LIST'] != 'Y') ) : ?> style="display: none;"<? endif; ?>>
           <td class="name"><?=$passenger['NAME']['FIRSTNAME'].' '.$passenger['NAME']['LASTNAME'] ?></td>
           <? endif; ?>
-          <? $flights = $passenger['FLIGHTS'] ? $passenger['FLIGHTS'] : $passenger; ?>
+          <? $flights = $passenger['FLIGHTS'] ? $passenger['FLIGHTS'] : array() ?>
           <? foreach($flights as $flightNum => $flight): ?>
           <? $uiq = strtolower($service['CODE']).'-'.$flightNum . (is_int($passengerNum) && isset($service['PASSENGERS'][0]['FLIGHTS'][0]['FIELDS']) ? '-' . $passengerNum : '').'-'.$service['ID']; ?>
-          <td class="price cell-<?=$uiq ?>"<?=$service['PREVIEW_TEXT'] ? ' title="' . htmlspecialchars($service['PREVIEW_TEXT']) . '"' : '' ?>><? if(!empty($flight)): ?>
+          <td class="price cell-<?=$uiq ?>"<?=$service['PREVIEW_TEXT'] ? ' title="' . htmlspecialchars($service['PREVIEW_TEXT']) . '"' : '' ?>>
+            <? if(!empty($flight) && $flight ): ?>
             <? if ( is_array($flight['FIELDS']) && count($flight['FIELDS']) ): // Если данная услуга является группой услуг ?>
             <? foreach ( $flight['FIELDS'] as $group => $subservice ):
 
@@ -175,23 +185,18 @@ $strTagForm = implode( ' ', $arTagForm );
 
                 case 'checkbox': ?>
             <ins class="service-group">
-            <div class="r"<?= strlen($field['ADDITIONAL_INFO']) && strlen($field['CAPTION']) ? ' title="' . htmlspecialchars($field['ADDITIONAL_INFO']) . '"' : '' ?>> <span class="caption">
-              <?= strlen($field['CAPTION']) ? $field['CAPTION'] : $field['ADDITIONAL_INFO'] ?>
-              </span>
+            <div class="r"<?= strlen($field['ADDITIONAL_INFO']) && strlen($field['CAPTION']) ? ' title="' . htmlspecialchars($field['ADDITIONAL_INFO']) . '"' : '' ?>>
+              <span class="caption"><?= strlen($field['CAPTION']) ? $field['CAPTION'] : $field['ADDITIONAL_INFO'] ?></span>
               <input<? if($field['~SELECTED']): ?> checked="checked"<? endif; ?> id="<?=$field['ID'] ?>" name="<?=$field['NAME'] ?>" onclick="checkOneFromGroup(this, '<?=$uiq ?>');<?=$arResult[ 'ONCHANGE' ] ?>;return true;" value="<?=$subservice['~PRICE'] ?>" type="checkbox" />
-              <span class="price">
-              <label for="<?=$field['ID'] ?>">
-                <?=$subservice['~PRICE'] ? $subservice['PRICE'] : GetMessage('TS_BOOKING_SERVICE_FREE') ?>
-              </label>
-              </span> </div>
+              <span class="price"><label for="<?=$field['ID'] ?>"><?=$subservice['~PRICE'] ? $subservice['PRICE'] : GetMessage('TS_BOOKING_SERVICE_FREE') ?></label></span>
+            </div>
             </ins>
             <? break;
 
                   case 'select': ?>
             <ins class="service-group">
-            <div class="r"<?= strlen($field['ADDITIONAL_INFO']) && strlen($field['CAPTION']) ? ' title="' . htmlspecialchars($field['ADDITIONAL_INFO']) . '"' : '' ?>> <span class="caption">
-              <?= strlen($field['CAPTION']) ? $field['CAPTION'] : $field['ADDITIONAL_INFO'] ?>
-              </span>
+            <div class="r"<?= strlen($field['ADDITIONAL_INFO']) && strlen($field['CAPTION']) ? ' title="' . htmlspecialchars($field['ADDITIONAL_INFO']) . '"' : '' ?>>
+              <span class="caption"><?= strlen($field['CAPTION']) ? $field['CAPTION'] : $field['ADDITIONAL_INFO'] ?></span>
               <select name="<?=$field['NAME'] ?>" id="<?=$field['ID'] ?>" onchange="resetSelectFromGroup(this, '<?=$uiq ?>');<?=$arResult[ 'ONCHANGE' ] ?>;return true;">
                 <? foreach($field['OPTIONS'] as $option): ?>
                 <option<? if($option['~SELECTED']): ?> selected="selected"<? endif; ?> value="<?=$option['VALUE'] ?>">
@@ -199,11 +204,8 @@ $strTagForm = implode( ' ', $arTagForm );
                 </option>
                 <? endforeach; // foreach($field['OPTIONS'] as $option) ?>
               </select>
-              <span class="price">
-              <label for="<?=$field['ID'] ?>">
-                <?=$subservice['~PRICE'] ? $subservice['PRICE'] : GetMessage('TS_BOOKING_SERVICE_FREE') ?>
-              </label>
-              </span> </div>
+              <span class="price"><label for="<?=$field['ID'] ?>"><?=$subservice['~PRICE'] ? $subservice['PRICE'] : GetMessage('TS_BOOKING_SERVICE_FREE') ?></label></span>
+            </div>
             </ins>
             <? break;
 
@@ -214,12 +216,13 @@ $strTagForm = implode( ' ', $arTagForm );
                 if(isset($field['NEEDCOMM']) && $field['NEEDCOMM']): ?>
             <div>
               <?= GetMessage('TS_BOOKING_SERVICE_COMMENT') ?>:
-              <input type=text name="<?= $field['NAME'] ?>_COMMENT_DATA" maxlength="200"/>
+              <input type="text" name="<?= $field['NAME'] ?>_COMMENT_DATA" maxlength="200"/>
             </div>
-            <? endif;
+                <? endif;
               endforeach; // foreach ( $flight['FIELDS'] as $group => $service )
 
             else: // Если данная услуга не является группой услуг  ///if ( is_array($flight['FIELDS']) &&  count($flight['FIELDS']) )
+
             $field = $flight['FIELD'];
             switch($field['TYPE']) {
               case 'select': ?>
@@ -236,9 +239,7 @@ $strTagForm = implode( ' ', $arTagForm );
               case 'checkbox': ?>
             <input<? if($field['~SELECTED']): ?> checked="checked"<? endif; ?> id="<?=$field['NAME'] ?>" name="<?=$field['NAME'] ?>" onclick="checkSum('<?=$uiq ?>');<?=$arResult[ 'ONCHANGE' ] ?>;return true;" value="<?=$flight['~PRICE'] ?>" type="checkbox" />
             <span class="price">
-            <label for="<?=$field['NAME'] ?>">
-              <?=$flight['~PRICE'] ? $flight['PRICE'] : GetMessage('TS_BOOKING_SERVICE_FREE') ?>
-            </label>
+            <label for="<?=$field['NAME'] ?>"><?=$flight['~PRICE'] ? $flight['PRICE'] : GetMessage('TS_BOOKING_SERVICE_FREE') ?></label>
             </span>
             <? break;
               default:
@@ -247,7 +248,7 @@ $strTagForm = implode( ' ', $arTagForm );
             <? if(isset($field['NEEDCOMM']) && $field['NEEDCOMM']): ?>
             <div>
               <?= GetMessage('TS_BOOKING_SERVICE_COMMENT') ?>:
-              <input type=text name="<?= $field['NAME'] ?>_COMMENT_DATA" maxlength="200"/>
+              <input type="text" name="<?= $field['NAME'] ?>_COMMENT_DATA" maxlength="200"/>
             </div>
             <? endif ?>
             <? endif; // if ( is_array($flight['FIELDS']) &&  count($flight['FIELDS']) ) ?>
@@ -263,19 +264,13 @@ $strTagForm = implode( ' ', $arTagForm );
     <?=$arResult['HIDDEN'] ?>
   </form>
   <? endif; //if(!empty($arResult['SERVICES']))?>
-
   <? if ( isset( $arResult['BUTTONS'] ) ): ?>
   <div class="buttons clearfix">
-    <div class="c-back">
-      <?=CTemplateToolsUtil::RenderField($arResult['BUTTONS']['BACK']) ?>
-    </div>
-    <div class="c-next">
-      <?=CTemplateToolsUtil::RenderField($arResult['BUTTONS']['FORWARD']) ?>
-    </div>
+    <div class="c-back"><?=CTemplateToolsUtil::RenderField($arResult['BUTTONS']['BACK']) ?></div>
+    <div class="c-next"><?=CTemplateToolsUtil::RenderField($arResult['BUTTONS']['FORWARD']) ?></div>
   </div>
   <? endif; ?>
 </div>
-
 <script type="text/javascript">
 //<![CDATA[
 
@@ -294,55 +289,14 @@ function togglePassengers(link, code) {
 
 var currentPassenger;
 
-/* Выбор места */
-function selectSeat(linkId, flightNum, passNum) {
-  currentPassenger = passengers[flightNum][passNum];
-
-  var cp = currentPassenger;
-
-  $('#cabin-dialog-'+flightNum+' .seat-selected span').css({
-    'background-color': '#FFFFFF',
-    'color': '#000000'
-  });
-
-  $('#cabin-'+flightNum+' .passenger-name').text(cp.passName);
-
-  $('#cabin-dialog-'+flightNum).dialog('open');
-}
-
-/* Вызывается при нажатии на чекбокс выбора места */
-function seatboxClick(name, flightNum, passNum) {
-  var checkbox = $('#check-'+name); /* Видимый чекбокс */
-  var link = $('#link-'+name); /* Ссылка "Выбрать", вызывает selectSeat() */
-  var hidden = $('#'+name); /* Невидимый чекбокс для отправки на сервер */
-
-  if(!checkbox.val()) {
-    link.click();
-  } else {
-    if(checkbox[0].checked) {
-      hidden.val('1');
-    } else {
-      // отменяем выбор места
-      checkbox.val('');
-      hidden.val('');
-      link.text('<?=GetMessage('TS_BOOKING_SERVICE_CHOOSE_SEAT') ?>');
-      $('#num-'+name).text('');
-      $('#price-'+name).text('');
-
-      var seat = $('#cabin-dialog-'+flightNum+' .seat-selected-'+passNum);
-      seat.children('span').text('');
-      seat.removeClass('seat-selected seat-selected-'+passNum);
-
-      passengers[flightNum][passNum].seatId = false;
-      <?= $arResult[ 'ONCHANGE' ] ?>;
-    }
-  }
-}
-
 // при клике по групповому чекбоксу, отметить все чекбоксы в группе
 function checkAll(el, id) {
-  $('.cell-'+id+' :checkbox').each(function() {
-    $(this).attr('checked', el.checked ? 'checked' : '');
+  $('.cell-'+id+' input:checkbox').each(function() {
+    if ( el.checked && !$(this).is(':checked') ) {
+      $(this).attr('checked', 'checked');
+    } else if ( !el.checked && $(this).is(':checked') ) {
+      $(this).removeAttr('checked');
+    }
   });
   el.blur();
 }
@@ -350,19 +304,24 @@ function checkAll(el, id) {
 // проверка группового чекбокса
 function checkSum(uiq) {
   var intCheckAll = 0;
-  $('.cell-'+uiq+' :checkbox').each(function(){
+  $('.cell-'+uiq+' input:checkbox').each(function(){
     if(this.checked) {
       intCheckAll++;
     }
   });
 
-  $('#all-'+uiq).attr('checked', ($('.cell-'+uiq+' :checkbox').length == intCheckAll) ? 'checked' : '');
+  if ( $('.cell-'+uiq+' :checkbox').length == intCheckAll ) {
+    $('#all-'+uiq).attr('checked', 'checked');
+  } else {
+    $('#all-'+uiq).removeAttr('checked')
+  }
+  //$('#all-'+uiq).attr('checked', ($('.cell-'+uiq+' :checkbox').length == intCheckAll) ? 'checked' : '');
 }
 
 // при клике на чекбоксе в группе отметить только его
 function checkOneFromGroup(el, id) {
   var thisCheck = el.checked;
-  $('.cell-'+id+' :checkbox').attr('checked', '');
+  $('.cell-'+id+' input:checkbox').removeAttr('checked');
   el.checked = thisCheck;
 }
 
