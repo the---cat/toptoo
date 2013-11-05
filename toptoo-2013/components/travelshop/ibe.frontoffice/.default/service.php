@@ -175,7 +175,7 @@ $strTagForm = implode( ' ', $arTagForm );
           <? $flights = $passenger['FLIGHTS'] ? $passenger['FLIGHTS'] : array() ?>
           <? foreach($flights as $flightNum => $flight): ?>
           <? $uiq = strtolower($service['CODE']).'-'.$flightNum . (is_int($passengerNum) && isset($service['PASSENGERS'][0]['FLIGHTS'][0]['FIELDS']) ? '-' . $passengerNum : '').'-'.$service['ID']; ?>
-          <td class="price cell-<?=$uiq ?>"<?=$service['PREVIEW_TEXT'] ? ' title="' . htmlspecialchars($service['PREVIEW_TEXT']) . '"' : '' ?>>
+          <td class="price cell-<?=$uiq ?>">
             <? if(!empty($flight) && $flight ): ?>
             <? if ( is_array($flight['FIELDS']) && count($flight['FIELDS']) ): // Если данная услуга является группой услуг ?>
             <? foreach ( $flight['FIELDS'] as $group => $subservice ):
