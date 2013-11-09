@@ -88,6 +88,29 @@ if ( ibe_check_component_params( 'USE_MERGED_STEPS', 'Y' ) ) {
 }
 
 ?>
+<div id="ts_ag_ga_container">
+<script type="text/javascript">
+  $(document).ready(function (){
+    $("#ts_ag_reservation .button_buy").each(function (){
+      $( this ).click(function() {
+        yaCounter17328109.reachGoal("1_vybor_bileta");
+        _gaq.push(["_trackEvent", "click", "1_vybor_bileta"]);
+        return true;
+      });
+    });
+    $("#ts_ag_reservation form#personal").submit(function() {
+      yaCounter17328109.reachGoal("2_vvod_dannyh");
+      _gaq.push(["_trackEvent", "click", "2_vvod_dannyh"]);
+      return true;
+    });
+    $("#ts_ag_reservation form#precommit").submit(function() {
+      yaCounter17328109.reachGoal("3_oplata");
+      _gaq.push(["_trackEvent", "click", "3_oplata"]);
+      return true;
+    });
+  });
+</script>
+</div>
 <? if (!$arResult['~PRINT']): // не выводить при печати ?>
 <script type="text/javascript">/* <![CDATA[ */
 <? if ( $arParams['USE_MERGED_STEPS'] === 'Y' && $arParams['~IBE_AJAX_MODE'] === 'Y' ): ?>
