@@ -358,9 +358,11 @@ $('.paymethods .item input:radio').click(function(){
 });
 
 $(document).ready(function(){
+  setTimeout( function() {
   var el = $('#paysystem').find('.paymethod.selected input');
    ps_id = el.attr('id');
    $('#pay_method_selected_description').html( $('#paysystem_profile_'+ ps_id + ' .paysystem_descr_js').html() );
+   }, 500 );
 });
 // ]]>
 </script>
