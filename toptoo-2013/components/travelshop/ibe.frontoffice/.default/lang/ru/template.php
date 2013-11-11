@@ -105,20 +105,24 @@ $MESS['IBE_FRONTOFFICE_PAY_METHOD_WARNING'] = 'Проверьте правильность всех введе
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_VISA'] = 'Виза';
 $MESS['IBE_PREVIEW_TRANSIT_VISA_REQUIRED'] = 'Требуется транзитная виза';
 
-$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_PCS'] = '';
-$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_CASH'] = 'Рекомендуем Вам не откладывать оплату заказа и по возможности произвести её в течение суток. Указанная первоначально цена может повыситься в случае изменения тарифа авиакомпанией, а также из-за разницы курса валют на момент оплаты билета.';
-
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_TITLE_AK'] = 'Списание средств с Вашей карты будет произведено авиакомпанией' ;
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_SUM_AK'] = 'в размере %CRS_PAYMENT%';
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_CUR_AK'] = '(эквивалент в рублях посчитан по курсу ЦБ РФ)';
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_LOC_AK'] = 'и Top Too в размере %LOCAL_PAYMENT%';
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_NOTE_AK'] = 'Если валюта карты отличается от валюты оплаты, то конвертация будет проводиться по курсу Вашего банка. Сумму конвертации можно уточнить у Вашего банка.';
-
-$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_AG'] = 'Списание средств с Вашей карты будет произведено Top Too.<br />
-Если валюта карты отличается от валюты оплаты, то конвертация будет проводиться по курсу Вашего банка. Сумму конвертации можно уточнить у Вашего банка.';
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_COMMENT_AK'] = 'В случае возврата билета выплата денежных средств занимает до 60 банковских дней.';
-$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_COMMENT_AG'] = 'В случае возврата билета выплата денежных средств занимает до 14 банковских дней.';
 
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_PCS'] = '';
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_CASH'] = 'Рекомендуем Вам не откладывать оплату заказа и по возможности произвести её в течение суток. Указанная первоначально цена может повыситься в случае изменения тарифа авиакомпанией, а также из-за разницы курса валют на момент оплаты билета.';
+
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_AG'] = 
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_ASSIST'] =
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_CHRONOPAY'] = 'Списание средств с Вашей карты будет произведено Top Too.<br />
+Если валюта карты отличается от валюты оплаты, то конвертация будет проводиться по курсу Вашего банка. Сумму конвертации можно уточнить у Вашего банка.';
+
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_UNITELLER_24'] = 'При проведении оплаты используется технология 3-D Secure, которая позволяет избежать случаев мошенничества. Для подтверждения оплаты потребуется ввести одноразовый пароль, который Вы получите на номер Вашего телефона с помощью смс-сообщения.';
+
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_COMMENT_AG'] = 'В случае возврата билета выплата денежных средств занимает до 14 банковских дней.';
 $MESS[ "IBE_FRONTOFFICE_PAY_METHOD_CRS_CURRENCY_LOCAL" ] = "";
 $MESS[ "IBE_FRONTOFFICE_PAY_METHOD_CRS_CURRENCY" ] = "в т.ч. %CRS_PAYMENT% в %AK_TITLE%<br/>%CRS_CURRENCY_CONVERSION% <b>К оплате принимаются все карты, кроме VisaElectron и Maestro</b>";
 $MESS[ "IBE_FRONTOFFICE_PAY_METHOD_CRS_CURRENCY_CONVERSION" ] = "Эквивалент в рублях рассчитан по курсу ЦБ РФ<br/>";

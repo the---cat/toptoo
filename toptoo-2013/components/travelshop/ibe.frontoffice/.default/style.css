@@ -1547,11 +1547,14 @@ html.msie7 #ts_ag_reservation .pay_method .paysystem_icon{margin-right:5px;}
 #ts_ag_reservation .pay_method .selected .paysystem_creditcard_ak .paysystem_icon{background-position:-20px -20px;}
 
 #ts_ag_reservation .pay_method .paysystem_creditcard .paysystem_icon,
-#ts_ag_reservation .pay_method .paysystem_assist .paysystem_icon{background-position:-40px 0;}
+#ts_ag_reservation .pay_method .paysystem_assist .paysystem_icon,
+#ts_ag_reservation .pay_method .paysystem_uniteller_24 .paysystem_icon{background-position:-40px 0;}
 #ts_ag_reservation .pay_method .paysystem_creditcard:hover .paysystem_icon,
 #ts_ag_reservation .pay_method .selected .paysystem_creditcard .paysystem_icon,
 #ts_ag_reservation .pay_method .paysystem_assist:hover .paysystem_icon,
-#ts_ag_reservation .pay_method .selected .paysystem_assist .paysystem_icon{background-position:-40px -20px;}
+#ts_ag_reservation .pay_method .selected .paysystem_assist .paysystem_icon,
+#ts_ag_reservation .pay_method .paysystem_uniteller_24:hover .paysystem_icon,
+#ts_ag_reservation .pay_method .selected .paysystem_uniteller_24 .paysystem_icon{background-position:-40px -20px;}
 
 #ts_ag_reservation .pay_method .paysystem_ts_cash .paysystem_icon,
 #ts_ag_reservation .pay_method .pay_method_self .paysystem_icon{background-position:-60px 0;}

@@ -100,6 +100,7 @@ function renderPayMethod( $method, $fields ){
         <span class="paysystem_name"><?=$method['CAPTION'] ?></span>
         
         <div style="display:none" id="paysystem_profile_<?=$method['~ID'] ?>">
+          <? //trace($method) ?>
           <div class="paysystem_name_js"><?=$method['CAPTION'] ?></div>
           <div class="paysystem_descr_js">
             <? $gdsMsg = $pcsMsg = $ps_class = '';
@@ -117,6 +118,9 @@ function renderPayMethod( $method, $fields ){
               $gdsMsg .= '<br />' . GetMessage('IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_NOTE_AK');
               $MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_AK'] = $gdsMsg;
               $ps_class = 'AK';
+
+            elseif ( strlen(GetMessage('IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_' . ToUpper($method['METHOD_ID']))) ):
+               $ps_class = ToUpper($method['METHOD_ID']);
 
             elseif ( $method['GROUP_NAME'] == 'CARD' || $method['GROUP_NAME'] == 'ONLINE' ):
               $ps_class = 'AG';
