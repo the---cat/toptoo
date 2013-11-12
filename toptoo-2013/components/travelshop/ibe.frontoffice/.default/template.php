@@ -128,7 +128,7 @@ if ( isset($arResult["processor"]) ) {
         ibe_ajax.on_after_post_loaded = false;
         ibe_ajax.delay_matrix_update_default = 700;
         ibe_ajax.delay_matrix_update_current = 700;
-        ibe_ajax.default_areas_to_update = "#ts_ag_reservation_container,#ts_ag_reservation_stages_container,#ts_basket_container,#ts_ag_personal_menu_container";
+        ibe_ajax.default_areas_to_update = "#ts_ag_reservation_container,#ts_ag_reservation_stages_container,#ts_basket_container,#ts_ag_personal_menu_container,#ts_counter";
 
         /**
          * ¬ыполн€етс€ перед переходом на след. шаг
