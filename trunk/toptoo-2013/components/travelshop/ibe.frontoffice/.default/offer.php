@@ -262,6 +262,10 @@ $('.variant input').click(function(e) {
   prev_variant.removeClass('selected')
   new_variant.addClass('selected');
 });
+
+$(document).ready(function () { // Issue 64: Быстрая прокрутка наверх
+	$('html, body').scrollTop(0);
+});
 //]]>
 </script>
 
