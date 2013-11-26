@@ -162,6 +162,9 @@ if ( isset($arResult["processor"]) ) {
           if ( typeof( $.oAjaxSteps ) != 'undefined' ) {
             var bDisableScroll = this.error_string !== false;
             $.oAjaxSteps.on_after_post_ajax( bDisableScroll );
+            if ( $.oAjaxSteps.cfg.cur_step == 'offer' ){ // Issue 64: Отключение прокрутки
+              bDisableScroll = true;
+            }
           }
 
           /* Обновить матрицу ак */
