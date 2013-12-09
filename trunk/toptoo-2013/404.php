@@ -10,6 +10,13 @@
 <? $APPLICATION->ShowMeta("description") ?>
 
 <title><?=$arLang["SITE_NAME"] ? $arLang["SITE_NAME"]." &#151; " : "" ?><? $APPLICATION->ShowTitle(); ?></title>
+<? if (file_exists($_SERVER["DOCUMENT_ROOT"] . '/favicon.ico') ) { ?>
+<link type="image/x-icon" href="/favicon.ico" rel="shortcut icon" />
+<link type="image/ico" href="/favicon.ico" rel="shortcut icon" />
+<? } elseif (file_exists($_SERVER["DOCUMENT_ROOT"] . '/favicon.png') ) { ?>
+<link type="image/png" href="/favicon.png" rel="shortcut icon" />
+<? } ?>
+
 <? define("__JQUERY_JS", true); ?>
 <? define("__BROWSER_JS", true); ?>
 <? define("__TOOLTIP_JS", true); ?>
@@ -18,7 +25,6 @@
 <?=CIBECacheControl::RenderJSLink('/bitrix/templates/'.SITE_TEMPLATE_ID.'/js/jquery.tooltip-1.3.js'); ?>
 <? method_exists($APPLICATION, 'ShowHeadStrings') ? $APPLICATION->ShowHeadStrings() : ''?>
 <? method_exists($APPLICATION, 'ShowHeadScripts') ? $APPLICATION->ShowHeadScripts() : ''?>
-<link rel="shortcut icon" href="/favicon.ico" />
 <? $APPLICATION->ShowCSS() ?>
 </head>
 <body>
