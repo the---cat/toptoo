@@ -363,7 +363,61 @@ $('#ts_ag_reservation #dateback_formated').click(function() {
 
 safeCall(calendarsSetup);
 
- <? if( $USE_AUTOCOMPLETE ): // Если используется автозаполнение ?>
+/*
+function updateSearchHistory( item ) {
+  var months = ['', <?=GetMessage('monthesSNames') ?> ],
+  dow = [ <?=GetMessage('daysSNames') ?> ];
+
+  //console.log(item);
+  var pass_num = 0;
+  //console.log(item);
+  for (var name in item.PARAMS) {
+    if (item.PARAMS.hasOwnProperty(name)) {
+      var value = item.PARAMS[name];
+      if ($( "#" + name ).length) {
+        $( "#" + name ).val( value );
+      }
+
+      switch( name ) {
+        case "RT_OW":
+          var title, type,
+          form = $('#form_order'),
+          prev_type = form.hasClass('form_rt') ? 'rt' : 'ow';
+          if ( value.toLowerCase() !== prev_type ) {
+            if ( value == 'RT' ) {
+              form.removeClass('form_ow').addClass('form_rt');
+            } else {
+              form.removeClass('form_rt').addClass('form_ow');
+            }
+          }
+          break;
+
+        case "dateto":
+        case "dateback":
+          $( '#' + name + '_formated .day_month').text( value.DAY + ' ' + months[value.MONTH] );
+          $( '#' + name + '_formated .dow').text( dow[value.WEEKDAY] );
+
+          $( '#' + name + '_top_formated .day_month').text( value.DAY + ' ' + months[value.MONTH] );
+          $( '#' + name + '_top_formated .dow').text( dow[value.WEEKDAY] );
+          break;
+
+        case "adult":
+        case "child":
+        case "infant":
+          pass_num = pass_num + parseInt(value);
+          break;
+      }
+    }
+  }
+  $("form#form_top #form_top_passengers .total_count").text( pass_num );
+  indexPassengers();
+  updatePassengers();
+  $("#form_order").submit();
+}
+*/
+
+
+<? if( $USE_AUTOCOMPLETE ): // Если используется автозаполнение ?>
   // подключаем к полям ввода пунктов Autocomplete
   $('#depart, #arrival').autocomplete("<?= $componentPath ?>/get_cities.php", {
       extraParams: {
@@ -387,11 +441,9 @@ safeCall(calendarsSetup);
     $('#arrival').result(function(event, data, formatted) {
       TryFocusObj( $('#dateto') );
     });
-
  <? endif; ?>
 
 <? if ( is_array($arResult["ROUTES"]) && count($arResult["ROUTES"]) ): // Если задана маршрутная сеть ?>
-
  var routes = {
  <? $count = count($arResult["ROUTES"]);
    foreach ( $arResult["ROUTES"] as $code => $info ): // строим копию массива с маршрутной сетью в JS ?>

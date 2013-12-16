@@ -1,10 +1,14 @@
 <?
 /* form_order.php */
 /* form_top.php */
+$MESS['TS_STEP1_SEARCHFORM_ROUTE_TYPE_RT'] = "Туда и обратно";
+$MESS['TS_STEP1_SEARCHFORM_ROUTE_TYPE_OW'] = "Только туда";
 $MESS['TS_STEP1_SEARCHFORM_DEPARTURE'] = "Откуда";
+$MESS['TS_STEP1_SEARCHFORM_DEPARTURE_PLACEHOLDER'] = "Город вылета";
 $MESS['TS_STEP1_SEARCHFORM_ARRIVAL'] = "Куда";
-$MESS['TS_STEP1_SEARCHFORM_DEPARTURE_DATE'] = 'Туда';
-$MESS['TS_STEP1_SEARCHFORM_ARRIVAL_DATE'] = 'Обратно';
+$MESS['TS_STEP1_SEARCHFORM_ARRIVAL_PLACEHOLDER'] = "Город прилета";
+$MESS['TS_STEP1_SEARCHFORM_DEPARTURE_DATE'] = 'Вылет';
+$MESS['TS_STEP1_SEARCHFORM_ARRIVAL_DATE'] = 'Возвращение';
 $MESS['TS_STEP1_SEARCHFORM_ADD_ARRIVAL_DATE'] = '+&nbsp;дата возвращения';
 $MESS['TS_STEP1_SEARCHFORM_PASSENGERS_ADULTS'] = 'Взрослые';
 $MESS['TS_STEP1_SEARCHFORM_PASSENGERS_CHILDREN'] = 'Дети 2-12';
@@ -14,6 +18,13 @@ $MESS['TS_STEP1_SEARCHFORM_PASSENGERS_INFANTS_TITLE'] = 'без места';
 $MESS['TS_STEP1_SEARCHFORM_SERVICE_CLASS'] = "Класс обслуживания";
 $MESS['TS_STEP1_SEARCHFORM_SERVICE_CLASS_ECONOMY'] = 'Эконом';
 $MESS['TS_STEP1_SEARCHFORM_SEARCH'] = 'Искать';
+
+$MESS['TS_STEP1_TOPFORM_PASSENGERS'] = 'Кол-во человек';
+$MESS['TS_STEP1_TOPFORM_PASSENGERS_AMMOUNT'] = 'Человек:';
+$MESS['TS_STEP1_TOPFORM_SEARCH'] = 'Найти';
+
+$MESS ['monthesSNames'] = '"янв", "фев", "мар", "апр", "май", "июн", "июл", "авг", "сен", "окт", "ноя", "дек"';
+$MESS ['daysSNames'] = '"вск", "пнд", "втр", "срд", "чтв", "птн", "сбт", "вск"';
 
 /* progress_ajax.php */
 $MESS['IBE_WWINDOW_PLEASE_WAIT'] = 'TopToo Travel: мы ищем для Вас билеты у более чем 500 авиакомпаний...';

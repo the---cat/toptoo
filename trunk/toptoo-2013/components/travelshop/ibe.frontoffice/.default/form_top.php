@@ -49,7 +49,7 @@ function fnPassengersNotice(){
 // ]]>
 </script>
 <div class="form_wrap">
-<form action="<?= $arResult['form']['action'] ?>" class="form-order clearfix <?= ( $arResult['rt_checked'] ? 'form_rt' : 'form_ow' ) ?>" method="post" name="reg_form" onsubmit="<?= $arResult['form']['onsubmit'] ?>" style="<?= $arResult['form']['style'] ?>" id="<?= $arResult['form']['~id'] ?>">
+<form action="<?= $arResult['form']['action'] ?>" class="form_top clearfix <?= ( $arResult['rt_checked'] ? 'form_rt' : 'form_ow' ) ?>" method="post" name="reg_form" onsubmit="<?= $arResult['form']['onsubmit'] ?>" style="<?= $arResult['form']['style'] ?>" id="<?= $arResult['form']['~id'] ?>">
   <input name="next_page" type="hidden" value="<?= $arResult['next_page']; ?>" />
   <input name="date_format" type="hidden" value="site" />
 
@@ -61,8 +61,10 @@ function fnPassengersNotice(){
 
   <fieldset class="route clearfix">
     <div class="point departure">
+      <label class="title" for="depart_top"><?=GetMessage("TS_STEP1_SEARCHFORM_DEPARTURE") ?></label>
       <div class="location">
-        <input class="text" id="depart_top" name="depart" type="text" value="<?=$arResult['depart'] ?>" placeholder="<?= GetMessage('TS_STEP1_SEARCHFORM_DEPARTURE') ?>" />
+        <input class="text" id="depart_top" name="depart" type="text" value="<?=$arResult['depart'] ?>" placeholder="<?= GetMessage('TS_STEP1_SEARCHFORM_DEPARTURE_PLACEHOLDER') ?>" />
+        <div class="clear_field" id="clear_depart_top"></div>
         <? /*
         <div class="link-container"><?=CTemplateToolsPoint::Link("depart", GetMessage("TS_STEP1_SEARCHFORM_TOOLS_POINT_DEPARTURE_SHORT_TITLE"), GetMessage("TS_STEP1_SEARCHFORM_TOOLS_POINT_DEPARTURE_TITLE")); ?></div>
         */ ?>
@@ -70,8 +72,10 @@ function fnPassengersNotice(){
     </div>
     <div id="route_switch_top" class="route_switch point"></div>
     <div class="point arrival">
+      <label class="title" for="arrival_top"><?=GetMessage("TS_STEP1_SEARCHFORM_ARRIVAL") ?></label>
       <div class="location">
-        <input class="text" id="arrival_top" name="arrival" type="text" value="<?=$arResult['arrival'] ?>" placeholder="<?= GetMessage('TS_STEP1_SEARCHFORM_ARRIVAL') ?>" />
+        <input class="text" id="arrival_top" name="arrival" type="text" value="<?=$arResult['arrival'] ?>" placeholder="<?= GetMessage('TS_STEP1_SEARCHFORM_ARRIVAL_PLACEHOLDER') ?>" />
+        <div class="clear_field" id="clear_arrival_top"></div>
         <? /*
         <div class="link-container"><?=CTemplateToolsPoint::Link("arrival", GetMessage("TS_STEP1_SEARCHFORM_TOOLS_POINT_ARRIVAL_SHORT_TITLE"), GetMessage("TS_STEP1_SEARCHFORM_TOOLS_POINT_ARRIVAL_TITLE")); ?></div>
         */ ?>
@@ -81,6 +85,7 @@ function fnPassengersNotice(){
 
   <fieldset class="dates">
     <div class="date date_to">
+      <label class="title" for="dateto_top"><?=GetMessage("TS_STEP1_SEARCHFORM_DEPARTURE_DATE") ?></label>
       <div class="date-container">
         <div id="dateto_top_formated" class="date_formated">
           <span class="day_month"></span>,
@@ -90,6 +95,7 @@ function fnPassengersNotice(){
       </div>
     </div>
     <div class="date date_back">
+      <label class="title" for="dateback_top"><?=GetMessage("TS_STEP1_SEARCHFORM_ARRIVAL_DATE") ?></label>
       <div id="add_dateback_top" class="add_dateback"><?= GetMessage('TS_STEP1_SEARCHFORM_ADD_ARRIVAL_DATE') ?></div>
       <div class="date-container" id="form_dateback_top">
         <div id="dateback_top_formated" class="date_formated">
@@ -100,12 +106,56 @@ function fnPassengersNotice(){
       </div>
     </div>
   </fieldset>
-    
-  <input type="hidden" name="adult" id="form_top_adult" value="<?= $arResult['select_pcl_adult_selected'] ?>" />
-  <input type="hidden" name="child" id="form_top_child" value="<?= $arResult['select_pcl_child_selected'] ?>" />
-  <input type="hidden" name="infant" id="form_top_infant" value="<?= $arResult['select_pcl_infant_selected'] ?>" />
-  
-  <fieldset class="submit top_form_submit"><input class="button" type="submit" value="<?= GetMessage('TS_STEP1_SEARCHFORM_SEARCH') ?>" id="<?= $arResult[ 'SUBMIT' ][ '~ID' ] ?>" style=" <?= $arResult[ 'SUBMIT' ][ 'STYLE' ] ?>" /></fieldset>
+  <fieldset class="passengers">
+    <div class="title"><?=GetMessage("TS_STEP1_TOPFORM_PASSENGERS") ?></div>
+    <div class="selector" id="form_top_passengers">
+      <div class="ammount">
+        <?=GetMessage("TS_STEP1_TOPFORM_PASSENGERS_AMMOUNT") ?>
+        <span class="total_count"><?= $arResult['select_pcl_adult_selected'] + $arResult['select_pcl_child_selected'] + $arResult['select_pcl_infant_selected'] ?></span>
+      </div>
+      <div class="dropdown" style="display:none;">
+        <div class="inner"><div class="tr">
+        <div class="passenger adult" id="form_top_adult_title">
+          <div class="title">
+            <?=GetMessage("TS_STEP1_SEARCHFORM_PASSENGERS_ADULTS") ?>
+          </div>
+          <? if(count($arResult['select_pcl_adult']['REFERENCE_ID'])): ?>
+          <div class="spinner_minus noselect" id="adult_spinner_minus">-</div>
+          <div class="count" id="adult_count"><?= $arResult['select_pcl_adult_selected']; ?></div>
+          <div class="spinner_plus noselect" id="adult_spinner_plus">+</div>
+          <input type="hidden" name="adult" id="form_top_adult" value="<?= $arResult['select_pcl_adult_selected'] ?>" />
+          <? endif; ?>
+        </div>
+        <div class="passenger child" id="form_top_child_title">
+          <div class="title" title="<?=GetMessage("TS_STEP1_SEARCHFORM_PASSENGERS_CHILDREN_TITLE") ?>">
+            <?=GetMessage("TS_STEP1_SEARCHFORM_PASSENGERS_CHILDREN") ?>
+          </div>
+          <? if(count($arResult['select_pcl_child']['REFERENCE_ID'])): ?>
+          <div class="spinner_minus noselect" id="child_spinner_minus">-</div>
+          <div class="count" id="child_count"><?= $arResult['select_pcl_child_selected']; ?></div>
+          <div class="spinner_plus noselect" id="child_spinner_plus">+</div>
+          <input type="hidden" name="child" id="form_top_child" value="<?= $arResult['select_pcl_child_selected'] ?>" />
+          <? endif; ?>
+        </div>
+        <div class="passenger infant" id="form_top_infant_title">
+          <div class="title" title="<?=GetMessage("TS_STEP1_SEARCHFORM_PASSENGERS_INFANTS_TITLE") ?>">
+            <?=GetMessage("TS_STEP1_SEARCHFORM_PASSENGERS_INFANTS") ?>
+          </div>
+          <? if(count($arResult['select_pcl_infant']['REFERENCE_ID'])): ?>
+          <div class="spinner_minus noselect" id="infant_spinner_minus">-</div>
+          <div class="count" id="infant_count"><?= $arResult['select_pcl_infant_selected']; ?></div>
+          <div class="spinner_plus noselect" id="infant_spinner_plus">+</div>
+          <input type="hidden" name="infant" id="form_top_infant" value="<?= $arResult['select_pcl_infant_selected'] ?>" />
+          <? endif; ?>
+        </div>
+
+      </div></div></div>
+    </div>
+  </fieldset>
+
+  <fieldset class="submit top_form_submit">
+    <button class="button" type="submit" id="<?= $arResult[ 'SUBMIT' ][ '~ID' ] ?>" style=" <?= $arResult[ 'SUBMIT' ][ 'STYLE' ] ?>"><span class="bg"><span><?= GetMessage('TS_STEP1_SEARCHFORM_SEARCH') ?></span></span></button>
+  </fieldset>
   <div class="form_top_notice" id="form_top_passengers_notice"></div>
   <script type="text/javascript">
   // <![CDATA[
@@ -129,6 +179,121 @@ function fnPassengersNotice(){
 <? endif; ?>
 <script type="text/javascript">
 // <![CDATA[
+var min_passengers = { 'adult': 1, 'child': 0, 'infant': 0 };
+var passengers = {};
+
+function indexPassengers() {
+  var types = ['adult', 'child', 'infant'];
+  var type;
+  for (var index = 0; index < types.length; index++) {
+    type = types[index];
+    passengers[type] = parseInt($('#form_top_'.concat(type)).val(), 10);
+  }
+}
+
+function initPassengers() {
+  var types = ['adult', 'child', 'infant'];
+  var type;
+
+  for (var index = 0; index < types.length; index++) {
+    type = types[index];
+    passengers[type] = parseInt($('#form_top_'.concat(type)).val(), 10);
+
+    $('#'.concat(type, '_spinner_minus')).on
+    ( 'click'
+    , { 'type': type, 'action': 'minus' }
+    , spinnerClick
+    );
+
+    $('#'.concat(type, '_spinner_plus')).on
+    ( 'click'
+    , { 'type': type, 'action': 'plus' }
+    , spinnerClick
+    );
+  }
+
+  updatePassengers();
+}
+
+function updatePassengers() {
+  var types = ['adult', 'child', 'infant'];
+  var passengers_left;
+  var other;
+  var value;
+  var type;
+
+  for (var index = 0; index < types.length; index++) {
+    type = types[index];
+    passengers_left = 9;
+    for (other = 0; other < types.length; other++) {
+      if (index != other) {
+        passengers_left -= passengers[types[other]];
+      }
+    }
+
+    value = passengers[type];
+
+    if (value <= min_passengers[type]) {
+      value = min_passengers[type];
+      $('#'.concat(type, '_spinner_minus')).removeClass('enabled');
+    }
+    else {
+      $('#'.concat(type, '_spinner_minus')).addClass('enabled');
+    }
+
+    if (value >= passengers_left) {
+      value = passengers_left;
+      $('#'.concat(type, '_spinner_plus')).removeClass('enabled');
+    }
+    else {
+      $('#'.concat(type, '_spinner_plus')).addClass('enabled');
+    }
+
+    if ('infant' == type && value >= passengers['adult']) {
+      value = passengers['adult'];
+      $('#infant_spinner_plus').removeClass('enabled');
+      $('#adult_spinner_minus').removeClass('enabled');
+    }
+
+    passengers[type] = value;
+    $('#form_top_'.concat(type)).val(value);
+    $('#'.concat(type, '_count')).html(value);
+    $('#form_top_passengers .total_count').text( passengers['adult'] + passengers['child'] + passengers['infant'] );
+  }
+}
+
+function spinnerClick(event) {
+  if ($(event.target).hasClass('enabled')) {
+    switch (event.data.action) {
+      case 'minus':
+        passengers[event.data.type]--;
+        break;
+
+      case 'plus':
+        passengers[event.data.type]++;
+        break;
+    }
+
+    updatePassengers();
+  }
+}
+
+initPassengers();
+
+var dd = $('#form_top_passengers .dropdown'),
+      ddShown = dd.is(':visible') ? true : false;
+$('#form_top_passengers').click(function(e){
+    dd.show();
+    ddShown = true;
+    e.stopPropagation();
+});
+$('body').click(function(e){
+  if ( ddShown && e.target != dd ) {
+    setTimeout(function(){ dd.hide(); ddShown = false; }, 500);
+  }
+})
+
+
 $('#<?= $arResult['form']['~id'] ?> input[type="text"]:visible').placeholder();
 
 function switchRouteTypeTop(type_val){
@@ -142,11 +307,13 @@ function switchRouteTypeTop(type_val){
   form.removeClass('form_'+prev_type).addClass('form_'+type);
   $('#rt-ow-val_top').val(type_val);
 }
+
 $('#<?= $arResult['form']['~id'] ?> .route-types .type').click(function() {
   var type = $(this),
   type_val = type.hasClass('type_rt') ? 'RT' : 'OW';
   switchRouteTypeTop(type_val);
 });
+
 $('#add_dateback_top').click(function(){ 
   switchRouteTypeTop('RT');
   $("#<?= $arResult['form']['~id'] ?> #dateback_top").focus();
@@ -197,7 +364,7 @@ formInit();
 function calendarsTopSetup() {
   calendarToTop.datepicker({ 
     showOn: 'both',
-    buttonImage: '<?= $templateFolder ?>/images/date.png',
+    buttonImage: '<?= $templateFolder ?>/images/date_tf.png',
     buttonText: '<?=GetMessage('TS_SHORTFORM_CALENDAR_BUTTON') ?>',
     buttonImageOnly: true,
     
@@ -233,7 +400,7 @@ function calendarsTopSetup() {
   
   calendarBackTop.datepicker({ 
     showOn: 'both',
-    buttonImage: '<?= $templateFolder ?>/images/date.png',
+    buttonImage: '<?= $templateFolder ?>/images/date_tf.png',
     buttonText: '<?=GetMessage('TS_SHORTFORM_CALENDAR_BUTTON') ?>',
     buttonImageOnly: true,
     
@@ -363,6 +530,8 @@ if ( typeof( $.oAjaxSteps ) != 'undefined' ) {
     $("form#form_top #form_top_child").val( $("form#form_order #child").val() );
     $("form#form_top #form_top_infant").val( $("form#form_order #infant").val() );
 
+    $("form#form_top #form_top_passengers .total_count").text( parseInt($("form#form_order #adult").val()) + parseInt($("form#form_order #child").val()) + parseInt($("form#form_order #infant").val()) );
+
     if ( $("form#form_order #rt").is(':checked') === true ) {
       $("form#form_top #rt-ow_top").attr( "checked", true );
       $("form#form_top #rt-ow-val_top").val( "RT" );
@@ -405,6 +574,10 @@ if ( typeof( $.oAjaxSteps ) != 'undefined' ) {
       $("form#form_order #ow").attr( "checked", true );
       displayDateBack();
     }
+
+    $("form#form_order #adult").val( $("form#form_top #form_top_adult").val() );
+    $("form#form_order #child").val( $("form#form_top #form_top_child").val() );
+    $("form#form_order #infant").val( $("form#form_top #form_top_infant").val() );
 
     defaultDateTo = dateSiteToJS($('#dateto').val());
     defaultDateBack = dateSiteToJS($('#dateback').val());
