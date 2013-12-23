@@ -1,0 +1,450 @@
+body{ background: #fab414 !important; }
+
+.debug{
+  background: transparent url(debug.jpg) 50% 0 no-repeat;
+  display: none;
+  position: absolute;
+  z-index: 100;
+  height: 100%;
+  opacity: .5;
+  left:0;
+  top:15px;
+  width:100%;
+}
+
+
+#ts_ag_reservation .from_order_wrap{
+  margin: 15px auto 0;
+  width:815px;
+}
+
+#ts_ag_reservation #form_order{
+  background: #ffca69;
+  background-clip: padding-box;
+  border:1px solid #ffd587;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding:25px 25px 12px;
+}
+
+#ts_ag_reservation #form_order .caption{
+  background: transparent url(images/paysys.png) 100% 12px no-repeat;
+  border-top:1px solid #ffde9f;
+  min-height: 45px;
+  position: relative;
+  text-align: center;
+}
+
+#ts_ag_reservation #form_order .caption h2{
+  background: #ffca69;
+  color:#363636;
+  display: inline-block;
+  font-size:18px;
+  font-weight: bold;
+  line-height: 1.2;
+  padding: 0 12px;
+  position: relative;
+  text-transform: uppercase;
+  top:-.6em;
+}
+
+#ts_ag_reservation #form_order .caption h3{
+  color:#ff0066;
+  font-size:12px;
+  font-style: italic;
+  font-weight:normal;
+  position: relative;
+  top:-.6em;
+}
+
+#ts_ag_reservation #form_order .title{
+  color:#666666;
+  display: block;
+  font-size:13px;
+  line-height: 16px;
+  padding-bottom:5px;
+}
+
+#ts_ag_reservation #form_order .select_wrap,
+#ts_ag_reservation #form_order .input_wrap{ position: relative; }
+
+
+#ts_ag_reservation #form_order input[type="text"],
+#ts_ag_reservation #form_order select,
+#ts_ag_reservation #form_order .select_wrap .value,
+#ts_ag_reservation #form_order .date .date_formated{
+  background:#ffffff;
+  border:1px solid #cca053;
+  color:#000000;
+  display: block;
+  font-size:19px;
+  font-weight:bold;
+  height:23px;
+  line-height: 23px;
+  padding:10px;
+  position: relative;
+}
+#ts_ag_reservation #form_order .select_wrap .value:after{
+  border-top:5px solid #000000;
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+  content:'';
+  display: block;
+  height:0;
+  position: absolute;
+  right:15px;
+  top:20px;
+  width:0;
+}
+#ts_ag_reservation #form_order .select_wrap select{
+  border:none;
+  font-weight:normal;
+  height:45px;
+  left:0;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  top:0;
+  width:100%;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+  filter: alpha(opacity=0);
+}
+
+#ts_ag_reservation #form_order .select_wrap option{ padding-left:10px; }
+
+#ts_ag_reservation #form_order .point{
+  float:left;
+  width:50%;
+}
+
+#ts_ag_reservation #form_order .point .location{ padding-bottom:10px; }
+#ts_ag_reservation #form_order .point_dep .location{ margin-right:25px; }
+#ts_ag_reservation #form_order .point_arr .location{ margin-left:25px; }
+
+#ts_ag_reservation #form_order .point #country_depart_alt,
+#ts_ag_reservation #form_order .point #country_arrival_alt{ margin-bottom:14px;}
+
+#ts_ag_reservation #form_order .dates{ 
+  float:left;
+  width:28.5%;
+}
+#ts_ag_reservation #form_order .date{ margin-right:23px; }
+#ts_ag_reservation #form_order .date .date-container{ position: relative; }
+#ts_ag_reservation #form_order .date .date_formated{ text-transform: lowercase; }
+#ts_ag_reservation #form_order .date .date_formated .dow{ font-weight:normal; }
+#ts_ag_reservation #form_order .date .date-container input[type="text"]{
+  background:transparent;
+  border:0;
+  font-size: 0;
+  height:0;
+  line-height: 0;
+  padding: 0;
+  position: absolute;
+}
+#ts_ag_reservation #form_order .date .date-container img{
+  cursor: pointer;
+  position: absolute;
+  right:14px;
+  top:15px;
+}
+
+#ts_ag_reservation #form_order .passengers{ float:left; }
+#ts_ag_reservation #form_order .passenger{ 
+  float:left;
+  margin-right:25px;
+}
+
+#ts_ag_reservation #form_order .passenger .select_wrap{ 
+  margin-left: 25px;
+  position: relative;
+  width:52px;
+}
+
+#ts_ag_reservation #form_order .passenger .select_wrap .value:after{ right:10px; }
+#ts_ag_reservation #form_order .infant .select_wrap{ margin-left:35px; }
+
+#ts_ag_reservation #form_order .passenger .select_wrap:before{
+  background: transparent url(images/passengers.png) 0 100% no-repeat;
+  content: ' ';
+  display:block;
+  height:44px;
+  left:-25px;
+  position: absolute;
+  top:0;
+  width:25px;
+}
+
+#ts_ag_reservation #form_order .child .select_wrap:before{ background-position: -25px 100%; }
+#ts_ag_reservation #form_order .infant .select_wrap:before{
+  background-position: -50px 100%;
+  left: -35px;
+  width: 35px;
+}
+
+#ts_ag_reservation #form_order .submit{ 
+  float:right;
+  padding-top:21px;
+}
+
+#ts_ag_reservation #form_order .submit .button{
+  background: #f40062;
+  background: -moz-linear-gradient(left,  #f40062 0%, #e0045c 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#f40062), color-stop(100%,#e0045c));
+  background: -webkit-linear-gradient(left,  #f40062 0%,#e0045c 100%);
+  background: -o-linear-gradient(left,  #f40062 0%,#e0045c 100%);
+  background: -ms-linear-gradient(left,  #f40062 0%,#e0045c 100%);
+  background: linear-gradient(to right,  #f40062 0%,#e0045c 100%);
+  background-clip: padding-box;
+  border:none;
+  -webkit-border-radius:3px;
+  -moz-border-radius:3px;
+  border-radius:3px;
+  display: inline-block;
+  height:45px;
+  padding:1px;
+}
+#ts_ag_reservation #form_order .submit .button .bg{
+  background: #ff4b93;
+  background: -moz-linear-gradient(top,  #ff4b93 0%, #ff0066 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff4b93), color-stop(100%,#ff0066));
+  background: -webkit-linear-gradient(top,  #ff4b93 0%,#ff0066 100%);
+  background: -o-linear-gradient(top,  #ff4b93 0%,#ff0066 100%);
+  background: -ms-linear-gradient(top,  #ff4b93 0%,#ff0066 100%);
+  background: linear-gradient(to bottom,  #ff4b93 0%,#ff0066 100%);
+  background-clip: padding-box;
+  -webkit-border-radius:3px;
+  -moz-border-radius:3px;
+  border-radius:3px;
+  display: inline-block;
+  height:43px;
+}
+#ts_ag_reservation #form_order .submit .button .bg > span{
+  background: transparent url(images/search.png) 100% 50% no-repeat;
+  border:none;
+  color:#ffffff;
+  display: inline-block;
+  font-size:18px;
+  font-weight:bold;
+  height:23px;
+  margin:0 15px;
+  padding: 10px 40px 10px 0;
+  text-transform: uppercase;
+}
+
+#ts_ag_reservation #form_order .type{ 
+  clear:both;
+  padding-top: 12px;
+}
+
+#ts_ag_reservation #form_order .type .checker{
+  color:#333333;
+  cursor: pointer;
+  font-size:13px;
+  line-height:22px;
+  padding-left:30px;
+  position: relative;
+}
+
+#ts_ag_reservation #form_order .type .checker:before{
+  background: #ffffff;
+  background-clip: padding-box;
+  border:1px solid #c8c8c8;
+  -webkit-border-radius:3px;
+  -moz-border-radius:3px;
+  border-radius:3px;
+  box-shadow:2px 2px 2px rgba(196,196,196,.6) inset;
+  content: ' ';
+  display: block;
+  height:20px;
+  left: 0;
+  position: absolute;
+  top:0;
+  width:20px;
+}
+#ts_ag_reservation #form_order .type .selected:after{
+  background: transparent url(images/check.png) 50% 50% no-repeat;
+  content:' ';
+  display: block;
+  height:22px;
+  left:0;
+  position: absolute;
+  top:0;
+  width: 22px;
+}
+
+
+/* Календарь */
+body .ui-datepicker{
+  background: #ffffff;
+  -webkit-background-clip:padding-box;
+  -moz-background-clip:padding-box;
+  background-clip:padding-box;
+  border:1px solid #cfcfcf;
+  border:1px solid rgba(0,0,0,.2);
+  -webkit-border-radius:0;
+  -moz-border-radius:0;
+  border-radius:0;
+  -webkit-box-shadow: inset 1px 1px 4px rgba(0,0,0,.15), 0 0 5px rgba(0,0,0,.5);
+  -moz-box-shadow: inset 1px 1px 4px rgba(0,0,0,.15), 0 0 5px rgba(0,0,0,.5);
+  box-shadow: inset 1px 1px 4px rgba(0,0,0,.15), 0 0 5px rgba(0,0,0,.5);
+  font-family:Arial, Helvetica, sans-serif;
+  padding:0;
+  width:342px;
+}
+
+body .ui-datepicker-multi-2{ width:686px !important; }
+body .ui-datepicker-multi-2 .ui-datepicker-group{ width: 342px; }
+body .ui-datepicker-multi-2 .ui-datepicker-group-last { width: 344px; }
+
+body .ui-datepicker .ui-datepicker-header{
+  background: #333333;
+  border:none;
+  -webkit-border-radius:0;
+  -moz-border-radius:0;
+  border-radius:0;
+  padding:15px 0;
+}
+body .ui-datepicker .ui-datepicker-title{
+  height:17px;
+  line-height: 17px;
+  margin:0 25px;
+}
+body .ui-datepicker .ui-datepicker-title select{
+  -webkit-appearance:none;
+  background: transparent; 
+  border:none;
+  margin-top:-4px;
+  width: 40%; 
+}
+body .ui-datepicker .ui-datepicker-month{
+  color:#fffefe;
+  font-size:15px;
+  font-weight:bold;
+  text-align: right;
+  width: auto;
+}
+body .ui-datepicker .ui-datepicker-year{
+  color:#999999;
+  font-size:15px;
+  font-weight:bold;
+  text-align: left;
+  width: auto;
+}
+body .ui-datepicker select.ui-datepicker-year{ padding-left:10px; } 
+body .ui-datepicker .ui-datepicker-prev, 
+body .ui-datepicker .ui-datepicker-next{
+  background: none;
+  border:none;
+  -webkit-border-radius:0;
+  -moz-border-radius:0;
+  border-radius:0;
+  height:43px;
+  top:2px;
+  width:25px;
+}
+body .ui-datepicker .ui-datepicker-prev span,
+body .ui-datepicker .ui-datepicker-next span{
+  background: transparent url(images/calendar_arrs.png) 0 50% no-repeat;
+  display: block;
+  height:13px;
+  margin:-7px 0 0 -4px;
+  width:9px;
+}
+body .ui-datepicker .ui-datepicker-next span{ background-position: 100% 50%; }
+body .ui-datepicker .ui-datepicker-prev-hover, 
+body .ui-datepicker .ui-datepicker-next-hover{ top:2px; }
+
+body .ui-datepicker table,
+body .ui-datepicker-multi .ui-datepicker-group table{
+  margin: 0;
+  width:100%;
+}
+
+body .ui-datepicker th{
+  background: #333333;
+  background: -moz-linear-gradient(top,  #333333 0%, #1e1e1e 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#333333), color-stop(100%,#1e1e1e));
+  background: -webkit-linear-gradient(top,  #333333 0%,#1e1e1e 100%);
+  background: -o-linear-gradient(top,  #333333 0%,#1e1e1e 100%);
+  background: -ms-linear-gradient(top,  #333333 0%,#1e1e1e 100%);
+  background: linear-gradient(to bottom,  #333333 0%,#1e1e1e 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#333333', endColorstr='#1e1e1e',GradientType=0 );
+  border:none;
+  color:#999999;
+  font-size:10px;
+  font-weight:normal;
+  line-height: 10px;
+  padding:4px;
+  text-align: center;
+  text-transform: uppercase;
+}
+html.opera body .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ border-left:2px solid #333333; }
+body .ui-datepicker th.ui-datepicker-week-end{ color:#eb4675; }
+
+body .ui-datepicker td{
+  border:1px solid #e6e6e6;
+  padding: 0;
+  vertical-align: middle;
+}
+body .ui-datepicker td:first-child{ border-left-width:0; }
+body .ui-datepicker td:last-child{ border-right-width:0; }
+body .ui-datepicker tr:last-child td{ border-borrom-width:0; }
+.ui-datepicker-multi-2 .ui-datepicker-group-last td:first-child{
+  border-left:2px solid #999999 !important;
+  /*height:48px;*/
+}
+body .ui-datepicker td.ui-state-disabled.ui-datepicker-other-month{
+  border:none;
+  font-size:0;
+}
+body .ui-datepicker tr:first-child td.ui-state-disabled.ui-datepicker-other-month{ 
+  border:solid #e6e6e6;
+  border-width:1px 1px 1px 0;
+}
+
+body .ui-datepicker td .ui-state-default,
+body .ui-datepicker td span,
+body .ui-datepicker td a{
+  background: none;
+  border:none;
+  color:#333333;
+  font-size:18px;
+  font-weight:bold;
+  height:48px;
+  line-height: 48px;
+  padding:0;
+  text-align: center;
+  width:48px;
+}
+body .ui-datepicker td.ui-datepicker-week-end span, 
+body .ui-datepicker td.ui-datepicker-week-end a{ color:#333333; }
+body .ui-datepicker td .ui-state-active,
+body .ui-datepicker td.ui-datepicker-week-end .ui-state-active{
+  background: #00C5CB;
+  color:#ffffff;
+  font-size:12px;
+  font-weight:normal;
+  height: 45px;
+  line-height:normal;
+  padding:3px 0 0 3px;
+  text-align: left;
+  vertical-align: top;
+  width:45px;
+}
+#ui-datepicker-div.dateto .ui-state-active{ background: #00C5CB url(images/dateto.png) 50% 50% no-repeat; }
+#ui-datepicker-div.dateback .ui-state-active{ background: #FFB433 url(images/dateback.png) 50% 50% no-repeat; }
+
+@media (min-width: 768px) {
+  body .ui-datepicker-multi-2{
+    left:50% !important;
+    margin-left:-300px !important;
+  }
+}
+@media (min-width: 1070px) {
+  body .ui-datepicker-multi-2.dateback{
+    margin-left:-160px !important;
+  }
+}
