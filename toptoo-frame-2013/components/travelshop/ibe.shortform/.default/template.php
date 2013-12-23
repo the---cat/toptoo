@@ -133,7 +133,7 @@ foreach($arMonths as &$month) {
           <label class="title" for="infant" title="<?=GetMessage("TS_SHORTFORM_PASSENGERS_INFANTS_TITLE") ?>">
             <?=GetMessage("TS_SHORTFORM_PASSENGERS_INFANTS") ?>
           </label>
-          <? if(count($arResult['select_pcl_child']['REFERENCE_ID'])): ?>
+          <? if(count($arResult['select_pcl_infant']['REFERENCE_ID'])): ?>
           <div class="select_wrap">
             <span class="count" id="infant_alt"><?=$arResult['select_pcl_infant_selected']?></span>
             <select id="infant" name="infant" onchange="$('#'+$(this).attr('id')+'_alt').text($(this).val());">
