@@ -35,7 +35,7 @@
 
 <div class="from_order_wrap clearfix">
   <div class="debug"></div>
-  <form action="<?= $arResult['form']['action']; ?>" class="form-order form-order-charter clearfix" method="post" id="form_order" name="reg_form" onSubmit="<?= $arResult['form']['onsubmit']; ?>">
+  <form action="<?= $arResult['form']['action']; ?>" class="form-order form-order-charter clearfix" method="post" id="form_order" name="reg_form" onSubmit="<?= $arResult['form']['onsubmit']; ?>" target="_top">
     <input name="next_page" type="hidden" value="<?= $arResult['next_page']; ?>" />
     <input name="date_format" type="hidden" value="site" />
     <div class="caption">
