@@ -1806,7 +1806,7 @@ html.win.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date 
 #ts_ag_reservation .pay_method td.paymethods{ border-right:1px solid #00c5cb; }
 
 #ts_ag_reservation .pay_method .group_name{
-  color:#666666;
+  color:#040404;
   cursor:pointer;
   font-size:18px;
   font-weight:bold;
@@ -1830,6 +1830,19 @@ html.win.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date 
   width:100%;
 }
 
+#ts_ag_reservation .pay_method .best_price{ position: relative; }
+#ts_ag_reservation .pay_method .best_price:after{
+  background: transparent url(images/best_price.png) 0 50% no-repeat;
+  content: ' ';
+  display: block;
+  height:26px;
+  margin-top: -13px;
+  position: absolute;
+  right: 10px;
+  top:50%;
+  width:55px;
+}
+
 #ts_ag_reservation .pay_method .item{
   cursor:pointer;
   display:block;
@@ -1840,7 +1853,7 @@ html.win.webkit #ts_ag_reservation .personal_data .profiles .profile_form .date 
 
 #ts_ag_reservation .pay_method .item label{
   background: transparent url(images/radio.png) 15px 50% no-repeat;
-  color:#666666;
+  color:#444444;
   display:block;
   font-size:13px;
   padding:7px 15px 7px 50px;
@@ -1866,11 +1879,16 @@ html.msie7 #ts_ag_reservation .pay_method .item label > span{
 }
 
 #ts_ag_reservation .pay_method .summ{
+  color:#484848;
+  font-size:15px;
   font-weight:bold;
   text-transform:lowercase;
   white-space:nowrap;
   width:85px;
 }
+
+#ts_ag_reservation .pay_method label:hover .summ{ color:#ff0068;}
+#ts_ag_reservation .pay_method .selected label .summ { color:#ffffff;}
 
 #ts_ag_reservation .pay_method .paysystem_icon{
   background:transparent url(images/paysys.png) 0 0 no-repeat;
@@ -1935,6 +1953,25 @@ html.msie7 #ts_ag_reservation .pay_method .paysystem_icon{margin-right:5px;}
   color:#666666;
   font-size:11px;
   padding:15px 20px 0;
+}
+
+#ts_ag_reservation .pay_method #best_price_announcement{
+  background: #edf3df url(images/best_price_tick.png) 12px 50% no-repeat;
+  border:1px solid #6a9296;
+  color:#5a791c;
+  display: inline-block;
+  font-size:12px;
+  margin:0 10px 15px 30px;
+  padding:10px 10px 10px 65px;
+  position: relative;
+}
+#ts_ag_reservation .pay_method #best_price_announcement b{
+  font-size:13px;
+  font-weight:bold;
+}
+#ts_ag_reservation .pay_method #best_price_announcement strong{
+  font-weight:bold;
+  text-transform:uppercase;
 }
 
 #ts_ag_reservation .pay_method table td.rules_and_coditions .timelimit,
@@ -2007,21 +2044,27 @@ html.msie7 #ts_ag_reservation .pay_method .paysystem_icon{margin-right:5px;}
 #ts_ag_reservation .pay_method .pay_method_description .comment{
   color:#ff0068;
   font-size:13px;
-  font-weight:normal;
+  font-weight:bold;
   padding-top:5px;
 }
 #ts_ag_reservation .pay_method .pay_method_description img{ max-width:100%; }
 
-#ts_ag_reservation .pay_method .description{
-  padding:18px 40px 7px;
-}
+#ts_ag_reservation .pay_method .description{ padding:18px 20px 7px; }
 #ts_ag_reservation .pay_method .description_left,
-#ts_ag_reservation .pay_method .description_right{
+#ts_ag_reservation .pay_method .description_right{ 
   padding:18px 0 7px;
-  width:50%;
+  width: 50%;
 }
-#ts_ag_reservation .pay_method .description_left {float:left;}
-#ts_ag_reservation .pay_method .description_right{float:right;}
+#ts_ag_reservation .pay_method .description_left { float:left; }
+#ts_ag_reservation .pay_method .description_right{ float:right; }
+
+#ts_ag_reservation .pay_method .description_left.ag,
+#ts_ag_reservation .pay_method .description_left.ak{ width:25%; }
+
+#ts_ag_reservation .pay_method .description_right.ag,
+#ts_ag_reservation .pay_method .description_right.ak{ width:75%; }
+
+#ts_ag_reservation .pay_method .description_left img{ max-width: 100%; }
 
 #ts_ag_reservation .pay_method .description_left > div{ margin:0 20px 0 40px; }
 #ts_ag_reservation .pay_method .description_right > div{ margin:0 40px 0 20px; }
@@ -2190,6 +2233,18 @@ html.msie7 #ts_ag_reservation .pay_method .paysystem_icon{margin-right:5px;}
   margin:0;
   padding:0;
   display:none;
+}
+
+#ts_ag_reservation .precommit .buttons .button_buy{
+  font-size:18px;
+  line-height: 1.1;
+  margin-right: 10px;
+  padding:2px 15px;
+}
+#ts_ag_reservation .precommit .buttons .button_buy .price{
+  display: block;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 /* –≈«”À‹“¿“ */

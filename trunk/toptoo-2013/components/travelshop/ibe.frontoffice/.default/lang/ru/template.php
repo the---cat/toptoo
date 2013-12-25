@@ -105,6 +105,7 @@ $MESS['IBE_FRONTOFFICE_PAY_METHOD_GROUP_CARD'] =
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_GROUP_ONLINE'] = 'Оплатить сейчас онлайн';
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_GROUP_CASH'] = 'Забронировать и оплатить позже';
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_GROUP_OTHER'] = 'Другие способы оплаты';
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_BEST_PRICE_ANNOUNCEMENT'] = '<b>Поздравляем!</b><br />Вы забронировали авиабилеты по самой выгодной цене.<br />Не упускайте возможность, <strong>оплачивайте сейчас!</strong>';
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_TIMELIMIT'] = 'Оплатить до';
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_PENALTY'] = 'Условия возврата и обмена';
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_LIMITS_CAPTION'] = 'Условия, правила и ограничения';
@@ -151,7 +152,7 @@ $MESS['IBE_FRONTOFFICE_PRECOMMIT_VISA_RULES'] = ' ознакомлен с правилами визовог
 $MESS['IBE_FRONTOFFICE_PRECOMMIT_OFFER_CONTRACT'] = ' ознакомлен и согласен с <a href="/agreement/" target="_blank" class="link">договором оферты</a>. ';
 
 $MESS['IBE_FRONTOFFICE_PRECOMMIT_AGREE_ALERT'] = 'Чтобы продолжить, необходимо согласиться с условиями выбранных тарифов и договором оферты.';
-$MESS['IBE_FRONTOFFICE_BUTTON_COMMIT_ONLINE'] =
+$MESS['IBE_FRONTOFFICE_BUTTON_COMMIT_ONLINE'] = 'Оплатить';
 $MESS['IBE_FRONTOFFICE_BUTTON_COMMIT_CASH'] = 'Купить за';
 $MESS['IBE_FRONTOFFICE_BUTTON_BOOK'] = 'Забронировать';
 
