@@ -116,7 +116,7 @@ function renderPayMethod( $method, $fields ){
           <div class="paysystem_descr_js">
             <? $msg = array();
             $gdsMsg = $pcsMsg = $ps_class = '';
-            if ( isset( $method[ "~CRS_CURRENCY_" ] ) && $method[ "ACTION" ] == "platron" ): // оплата через GDS
+            if ( isset( $method[ "~CRS_CURRENCY_" ] ) && $method[ "ACTION" ] == "uniteller" ): // оплата через GDS
               unset( $method['DESCRIPTION'][ "CRS_CURRENCY" ] );
               unset( $method['DESCRIPTION'][ "CRS_CURRENCY_CONVERSION" ] );
 
