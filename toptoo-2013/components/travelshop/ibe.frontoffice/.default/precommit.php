@@ -13,6 +13,11 @@ echo GetIbeJsStrings();
 
 <div class="precommit">
 <? if ( $arParams['USE_MERGED_STEPS'] === 'Y' ): ?>
+<script type="text/javascript">
+oPrecommit.cfg_defaults.update_ps = true;
+IbeJsLang.TRAVELSHOP_IBE_BASKET_TOTAL_TITLE_CASH = '<?= GetMessage("IBE_FRONTOFFICE_BUTTON_COMMIT_CASH") ?>';
+IbeJsLang.TRAVELSHOP_IBE_BASKET_TOTAL_TITLE_ONLINE = '<?= GetMessage("IBE_FRONTOFFICE_BUTTON_COMMIT_ONLINE") ?>';
+</script>
 <? require( $_SERVER["DOCUMENT_ROOT"]."/bitrix/components/travelshop/ibe.frontoffice/templates/.default/basket.php" ); ?>
   <div class="wrap clearfix">
   <div class="buttons clearfix">
@@ -28,7 +33,9 @@ echo GetIbeJsStrings();
   <? if ( $arResult['COMMIT'] && is_array( $arResult['COMMIT']['FIELDS'] ) ) { ?>
   <div class="c-continue <?= $arResult['COMMIT']['CLASS']  ?>" id="<?= $arResult['COMMIT']['~ID'] ?>"<?= $arResult['COMMIT']['STYLE'] ? ' style="' . $arResult['COMMIT']['STYLE'] . '"' : '' ?>>
     <div class="button_buy" onclick="$('#<?= $arResult['COMMIT']['FIELDS'][0]['~ID'] ?>').click();">
-      <?= GetMessage('IBE_FRONTOFFICE_BUTTON_COMMIT_CASH') ?>
+      <span id="price_container_title" class="title">
+          <?= GetMessage('IBE_FRONTOFFICE_BUTTON_COMMIT_' . ToUpper($type)) ?>
+      </span>
       <span id="price_container_ticket" class="price"><?= $arResult['ORDER']['BASKET']['BASE_TOTAL_PRICE'] ?></span>
       <? /*
       <div class="button_loading_overlay">
@@ -51,18 +58,13 @@ echo GetIbeJsStrings();
     <div class="c-continue <?= $arResult['BOOK']['CLASS']  ?>" id="<?= $arResult['BOOK']['~ID'] ?>">
       <div class="button_wrap">
         <div class="button" onclick="$('#<?= $arResult['BOOK']['FIELDS'][0]['~ID'] ?>').click();">
-          <div class="button_loading_overlay">
-            <div id="price_container_title" class="title">
-              <?= GetMessage('IBE_FRONTOFFICE_BUTTON_BOOK') ?>
-            </div>
-            <div id="price_container_ticket" class="price">
-              <?= $arResult['ORDER']['BASKET']['BASE_TOTAL_PRICE'] ?>
-            </div>
-            <span class="loading"></span>
-           </div>
-          </div>
+          <span id="price_container_title" class="title">
+            <?= GetMessage('IBE_FRONTOFFICE_BUTTON_COMMIT_' . ToUpper($type)) ?>
+          </span>
+          <span id="price_container_ticket" class="price"><?= $arResult['ORDER']['BASKET']['BASE_TOTAL_PRICE'] ?></span>
         </div>
-        <input id="<?= $arResult['BOOK']['FIELDS'][0]['~ID'] ?>" name="<?= $arResult['BOOK']['FIELDS'][0]['NAME'] ?>" class="<?=$arResult['BOOK']['FIELDS'][0]['CLASS']  ?>" type="<?= $arResult['BOOK']['FIELDS'][0]['~TYPE'] ?>" onclick="<?= $arResult['BOOK']['FIELDS'][0]['ONCLICK'] ?>" value="<?= GetMessage('IBE_FRONTOFFICE_BUTTON_BOOK') ?>" />
+      </div>
+      <input id="<?= $arResult['BOOK']['FIELDS'][0]['~ID'] ?>" name="<?= $arResult['BOOK']['FIELDS'][0]['NAME'] ?>" class="<?=$arResult['BOOK']['FIELDS'][0]['CLASS']  ?>" type="<?= $arResult['BOOK']['FIELDS'][0]['~TYPE'] ?>" onclick="<?= $arResult['BOOK']['FIELDS'][0]['ONCLICK'] ?>" value="<?= GetMessage('IBE_FRONTOFFICE_BUTTON_BOOK') ?>" />
       </div>
       <?//= CTemplateToolsUtil::RenderField($arResult['BOOK']) ?>
       <? } ?>
@@ -86,9 +88,9 @@ echo GetIbeJsStrings();
       : $fare . ( $link != end($fares) ? ', ' : '' );
     }
     $tairiffAgreeTitle .= '), ';
-    $tairiffAgreeTitle .= $arResult['FRONTIER_ZONE'] ? '<br />' . GetMessage('IBE_FRONTOFFICE_PRECOMMIT_FRONTIER_ZONE') : '';
-    $tairiffAgreeTitle .= $arResult['RUSSIAN_PASSPORT_NOT_ALLOWED'] ? '<br />' . GetMessage('IBE_FRONTOFFICE_PRECOMMIT_VISA_RULES') : '';
-    $tairiffAgreeTitle .= '<br />' . GetMessage('IBE_FRONTOFFICE_PRECOMMIT_OFFER_CONTRACT');
+    $tairiffAgreeTitle .= $arResult['FRONTIER_ZONE'] ? ' ' . GetMessage('IBE_FRONTOFFICE_PRECOMMIT_FRONTIER_ZONE') : '';
+    $tairiffAgreeTitle .= $arResult['RUSSIAN_PASSPORT_NOT_ALLOWED'] ? ' ' . GetMessage('IBE_FRONTOFFICE_PRECOMMIT_VISA_RULES') : '';
+    $tairiffAgreeTitle .= ' ' . GetMessage('IBE_FRONTOFFICE_PRECOMMIT_OFFER_CONTRACT');
     ?>
 		<?//=CTemplateToolsUtil::RenderField($arResult['TARIFF_AGREE']) ?>
     <div style="display:none;">

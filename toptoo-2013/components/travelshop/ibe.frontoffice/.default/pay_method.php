@@ -1,11 +1,17 @@
 <? if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
-<? 
+<?
 $form = &$arResult['FORM'];
 $pay_methods = &$form['FIELDS'];
 
 $group_names = array();
 $bNoGorup = false;
+$bestPrice = 0;
+
 foreach ( $form['FIELDS'] as $pay_method_num => $ar_paymethod ) {
+  if ( $ar_paymethod['~FULL_PRICE'] && (0 == $bestPrice || $bestPrice > $ar_paymethod['~FULL_PRICE']) ){
+    $bestPrice = $ar_paymethod['~FULL_PRICE'];
+  }
+
   if ( isset($ar_paymethod['INPUT_VALUE']) ) {
     if ( !$ar_paymethod['GROUP_NAME'] ) {
       $bNoGorup = true;
@@ -50,6 +56,10 @@ foreach ( $form['FIELDS'] as $id => &$method ) {
     $method['PS_PICTURE'] = ( strlen( $method_id ) > 0 && strlen( $paysystem_picture_path ) ) ? $paysystem_picture_path : false;
   }
 
+  if ( $method['~FULL_PRICE'] && $method['~FULL_PRICE'] == $bestPrice ) { 
+    $method['BEST_PRICE'] = TRUE;
+  }
+
   //Разбиваем на группы
   if ( count($group_names) ) {
     if ( isset( $method['INPUT_VALUE'] ) ) {
@@ -67,6 +77,7 @@ foreach ( $form['FIELDS'] as $id => &$method ) {
   }
 
 }
+
 ksort(&$ar_paymethod_by_groups);
 $ar_paymethod_by_groups = count($ar_paymethod_by_groups) ? $ar_paymethod_by_groups : false;
 
@@ -89,12 +100,12 @@ function renderPayMethod( $method, $fields ){
       } else { $method['CLASS_NAME'] .= ' paysystem_creditcard'; }
     } 
   } ?>
-  <li class="paymethod <? if($method['~SELECTED']){ ?> selected<? } ?>">
+  <li class="paymethod <? if($method['~SELECTED']){ ?> selected<? } ?><? if($method['BEST_PRICE']){ ?> best_price<? } ?>">
     <div class="item clearfix <?= $method['CLASS_NAME'] ?>">
       <input <? if($method['~SELECTED']){ ?> checked="checked"<? } ?> id="<?=$method['~ID'] ?>" name="<?=$method['NAME'] ?>" onclick="<?=$method['ONCLICK'] ?>" type="radio" value="<?=$method['VALUE'] ?>" />
       <label for="<?=$method['~ID'] ?>">
         <span id="sum_<?= $method['~ID'] ?>" class="summ">
-          <?= $method['PAYMENT_AMOUNT_DESCRIPTION']  ? $method['PAYMENT_AMOUNT_DESCRIPTION'] : $method['FULL_PRICE'] ?>
+          <?= strlen($method['PAYMENT_AMOUNT_DESCRIPTION']) ? $method['PAYMENT_AMOUNT_DESCRIPTION'] : $method['FULL_PRICE'] ?>
         </span>
         <div class="paysystem_icon"></div>
         <span class="paysystem_name"><?=$method['CAPTION'] ?></span>
@@ -103,27 +114,30 @@ function renderPayMethod( $method, $fields ){
           <? //trace($method) ?>
           <div class="paysystem_name_js"><?=$method['CAPTION'] ?></div>
           <div class="paysystem_descr_js">
-            <? $gdsMsg = $pcsMsg = $ps_class = '';
+            <? $msg = array();
+            $gdsMsg = $pcsMsg = $ps_class = '';
             if ( isset( $method[ "~CRS_CURRENCY_" ] ) && $method[ "ACTION" ] == "platron" ): // оплата через GDS
               unset( $method['DESCRIPTION'][ "CRS_CURRENCY" ] );
               unset( $method['DESCRIPTION'][ "CRS_CURRENCY_CONVERSION" ] );
 
-              $gdsMsg = GetMessageExtended( 'IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_TITLE_AK', $method );
-              if ( $method[' ~CRS_CURRENCY'] != $method[ "~LOCAL_CURRENCY" ] || $method[ "~LOCAL_PAYMENT" ] != 0 ) {
+              $gdsMsg = GetMessage( 'IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_TITLE_AK' );
+              if ( $method[ "~CRS_CURRENCY_" ] != $method[ "~LOCAL_CURRENCY" ] || $method[ "~LOCAL_PAYMENT" ] != 0 ) {
                 $gdsMsg .= ' ' . GetMessageExtended( 'IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_SUM_AK', $method );
-                $gdsMsg .= $method[ "~CRS_CURRENCY" ] && $method[ "~CRS_CURRENCY" ] != $method[ "~LOCAL_CURRENCY" ] ? ' ' . GetMessage('IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_CUR_AK') . ($method[ "~LOCAL_PAYMENT" ] == 0 ? '.' : '') : '';
+                $gdsMsg .= $method[ "~CRS_CURRENCY_" ] && $method[ "~CRS_CURRENCY_" ] != $method[ "~LOCAL_CURRENCY" ] ? ' ' . GetMessage('IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_CUR_AK') : '';
                 $gdsMsg .= $method[ "~LOCAL_PAYMENT" ] != 0 ? ' ' . GetMessageExtended( "IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_LOC_AK", $method ) : '';
               }
 
-              $gdsMsg .= '<br />' . GetMessage('IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_NOTE_AK');
-              $MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_AK'] = $gdsMsg;
+              $gdsMsg .= '.<br />' . GetMessage('IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_NOTE_AK');
               $ps_class = 'AK';
+              $msg[$ps_class] = $gdsMsg;
 
             elseif ( strlen(GetMessage('IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_' . ToUpper($method['METHOD_ID']))) ):
                $ps_class = ToUpper($method['METHOD_ID']);
+               $msg[$ps_class] = GetMessage('IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_' . $ps_class );
 
             elseif ( $method['GROUP_NAME'] == 'CARD' || $method['GROUP_NAME'] == 'ONLINE' ):
               $ps_class = 'AG';
+              $msg[$ps_class] = GetMessage('IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_' . $ps_class );
 
             elseif ( $method[ "ACTION" ] == "platron" && $method[ "SUBSYSTEM_ID" ]== 'CASH' ):
               $ps_class = 'PCS';
@@ -135,18 +149,19 @@ function renderPayMethod( $method, $fields ){
                 }
                 $pcsMsg .= '</ul>';
               }
-              $MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_PCS'] = strlen($pcsMsg) ? $pcsMsg : GetMessage('IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_PCS');
-              $MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_PCS'] .= ' <p>' . GetMessage('IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_CASH') . '</p>';
+              $msg[$ps_class] = strlen($pcsMsg) ? $pcsMsg : GetMessage('IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_PCS');
+              $msg[$ps_class] .= ' <p>' . GetMessage('IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_CASH') . '</p>';
 
             elseif ( 
               $method[ "PS_CASH_TYPE" ] !== 'COUR' &&
               ( ($method[ "ACTION" ] == "platron" && $method[ "SUBSYSTEM_ID" ]== 'POSTPONED') || substr($method['PS_TYPE'], 0,11) !== 'ONLINE_SYNC' )
               ) :
               $ps_class = 'CASH';
+              $msg[$ps_class] = GetMessage('IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_' . $ps_class );
             endif; ?>
 
-          <? if ( $ps_class || $method['DESCRIPTION'] || array_key_exists($method['~ID'].'_div', $fields)): ?>
-            <div class="description_left">
+            <? if ( $bLeft = $method['DESCRIPTION'] || array_key_exists($method['~ID'].'_div', $fields) || $ps_class == 'CASH' ): ?>
+            <div class="description_left<?= $ps_class ? ' '. ToLower($ps_class) : '' ?>">
               <? if ( $method['DESCRIPTION'] ){ ?>
               <div><?= implode( "</div> <div>", ( $method['DESCRIPTION'] ) ) ?></div>
               <? } ?>
@@ -168,12 +183,15 @@ function renderPayMethod( $method, $fields ){
               </div>
               <? } ?>
             </div>
-            <div class="description_right">
-              <div><?= GetMessage('IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_' . $ps_class ); ?></div>
+            <? endif; ?>
+            <? if ( $ps_class ): ?>
+            <div class="description<?= $bLeft ? '_right' : '' ?> <?= ToLower($ps_class) ?>">
+              <? if ( strlen($msg[$ps_class]) ) { ?>
+              <div><?= $msg[$ps_class] ?></div>
+              <? } ?>
               <? if ( strlen(GetMessage('IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_COMMENT_'.$ps_class)) ) { ?>
               <div class="comment"><?= GetMessage('IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_COMMENT_'.$ps_class) ?></div>
               <? } ?>
-
             </div>
             <? endif; ?>
           </div>
@@ -182,6 +200,7 @@ function renderPayMethod( $method, $fields ){
     </div>
   </li>
 <? } ?>
+
 <h3 class="info_caption"><?=GetMessage('IBE_PAY_METHOD_CAPTION')?></h3>
 <div class="pay_method">
 <?
@@ -235,6 +254,10 @@ $strTagForm = implode( ' ', $arTagForm );
             </div>
           </td>
           <td class="rules_and_coditions">
+            <div id="best_price_announcement" style="display:none;">
+              <?= GetMessage('IBE_FRONTOFFICE_PAY_METHOD_BEST_PRICE_ANNOUNCEMENT') ?>
+            </div>
+
             <div class="timelimit">
                 <div class="caption"><?= GetMessage('IBE_FRONTOFFICE_PAY_METHOD_TIMELIMIT') ?></div>
                 <div class="info"><?= $pay_methods['TIMELIMIT']['TEXT'] ?></div>
@@ -336,7 +359,13 @@ $('.paymethods .item input:radio').click(function(){
   $( '#' + groupNameId.substr(11) ).addClass('no_close');
   <? } ?>
 
-  pm.addClass('selected'); 
+  pm.addClass('selected');
+
+  if ( pm.hasClass('best_price') ) {
+    $('#best_price_announcement').show();
+  } else { 
+    $('#best_price_announcement').hide();
+  }
 
   $('#pay_method_selected_description').html( $('#paysystem_profile_'+ ps_id + ' .paysystem_descr_js').html() );
 
@@ -359,9 +388,11 @@ $('.paymethods .item input:radio').click(function(){
 
 $(document).ready(function(){
   setTimeout( function() {
-  var el = $('#paysystem').find('.paymethod.selected input');
+  var el = $('#paysystem').find('.paymethod.selected input'),
    ps_id = el.attr('id');
+   pm = el.closest('.paymethod');
    $('#pay_method_selected_description').html( $('#paysystem_profile_'+ ps_id + ' .paysystem_descr_js').html() );
+   if ( pm.hasClass('best_price') ) { $('#best_price_announcement').show(); }
    }, 500 );
 });
 // ]]>
