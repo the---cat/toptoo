@@ -2364,14 +2364,15 @@ html.msie7 #ts_ag_reservation .pay_method .paysystem_icon{margin-right:5px;}
 
 
 /* Окно "Пожалуйста, подождите", waitwindow.js */
-
 /* Шторка */
 .ww_background {
-  background: #000000;
+  background: #f5f5f5;
   cursor: default;
   display: block;
+  /*
   opacity: .50;
   filter: alpha(opacity=50);
+  */
   position: absolute;
   top: 0;
   left: 0;
@@ -2389,11 +2390,8 @@ html.msie7 #ts_ag_reservation .pay_method .paysystem_icon{margin-right:5px;}
 
 /* Тест сообщения */
 .ww_text {
-  background: #ffffff;
-  color:#3e3e3e;
-  font-size:16px;
-  font-weight:bold;
-  padding: 30px;
+  background: #f5f5f5;
+  padding: 25px;
   text-align: center;
   z-index: 2003;
 }
