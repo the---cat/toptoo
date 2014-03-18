@@ -19,21 +19,6 @@
 	$arResult[ "ORDER" ][ "FLIGHT" ] =& $arResult[ "FLIGHT" ];
 	$arResult[ "ORDER" ][ "bShowHeader" ] = false;
 	$arResult[ "ORDER" ][ "~IS_CHARTER" ] = $arResult[ "~IS_CHARTER" ]; ?>
-  
-  <? $CheckboxServicesCheckedSum = 0;
-  $bCheckboxServicesSum = 0;
-  $bCheckboxServices = array(); // Массив с услугами, отображаемыми в виде отдельного блока с чекбоксом
-  foreach ($arResult['ORDER']['BASKET']['PRODUCT'] as $Product) {
-    // Если продукт является услугой, которая должна отображаться чекбоксом
-    if ( $Product['~SERVICE'] && "CHECKBOX" == ToUpper($Product['SSRTYPE']) ) {
-      $bCheckboxServices[] = $Product;
-      $bCheckboxServicesSum += $Product['~SUM_PRICE'];
-      if ( $Product['CHECKED'] ) {
-        $CheckboxServicesCheckedSum += $Product['~SUM_PRICE'];
-      }
-    }
-  } ?>
-
   <div class="order">
   <? // Перелеты ?>
   <div class="flights">
@@ -168,6 +153,19 @@
   <?=GetIbeJsStrings(); ?>
   </div>
 
+  <? $CheckboxServicesCheckedSum = 0;
+  $bCheckboxServicesSum = 0;
+  $bCheckboxServices = array(); // Массив с услугами, отображаемыми в виде отдельного блока с чекбоксом
+  foreach ($arResult['ORDER']['BASKET']['PRODUCT'] as $Product) {
+    // Если продукт является услугой, которая должна отображаться чекбоксом
+    if ( $Product['~SERVICE'] && "CHECKBOX" == ToUpper($Product['SSRTYPE']) ) {
+      $bCheckboxServices[] = $Product;
+      $bCheckboxServicesSum += $Product['~SUM_PRICE'];
+      if ( $Product['CHECKED'] ) {
+        $CheckboxServicesCheckedSum += $Product['~SUM_PRICE'];
+      }
+    }
+  } ?>
   <? if ( count($bCheckboxServices) ): // Выводим в виде чекбокса соответствующие услуги ?>
   <? //trace ($bCheckboxServices) ?>
   <div class="order_services">
@@ -176,7 +174,7 @@
     <? foreach ( $bCheckboxServices as $Service ): ?>
       <div class="service">
         <div class="service_info">
-        <? if($Service['IMAGE_URL']): ?>
+        <? if( 0 ) :// $Service['IMAGE_URL']): ?>
           <span class="img"><img alt="<?=$Service['NAME'] ?>" src="<?=$Service['IMAGE_URL'] ?>" /></span>
         <? endif; ?>
           <span class="service-name">
@@ -187,12 +185,15 @@
           <? endif; ?>
           </span>
         </div>
-        <div id="product_<?= $Service['IB_PROP_ID'] ?>">
-        <? foreach( $Service['FIELDS'] as $Field ): ?>
-          <input type="hidden" name="<?= $Field['NAME'] ?>" value="<?= $Field['VALUE'] ?>" />
-        <? endforeach; ?>
-          <label class="product" for="service_<?= $Service['IB_PROP_ID'] ?>">
-            <span class="prew_text"><?= $Service['PREVIEW_TEXT'] ?></span>
+        <table>
+          <tr class="product">
+            <td class="description" id="product_<?= $Service['IB_PROP_ID'] ?>">
+            <? foreach( $Service['FIELDS'] as $Field ): ?>
+            <input type="hidden" name="<?= $Field['NAME'] ?>" value="<?= $Field['VALUE'] ?>" />
+            <? endforeach; ?>
+            <label for="service_<?= $Service['IB_PROP_ID'] ?>"><?= $Service['PREVIEW_TEXT'] ?></label>
+            </td>
+            <td>
             <input<?= $Service['CHECKED'] ? ' checked="checked"' : ''?> id="service_<?= $Service['IB_PROP_ID'] ?>" name="<?= $Service['IB_PROP_ID'] ?>" type="checkbox" onclick="if ( this.checked ) {
                   $('#product_<?= $Service['IB_PROP_ID'] ?> input').each(function(){ $(this).attr('value','1'); });
                   <? /*
@@ -214,9 +215,10 @@
                     */ ?>
                   }
                 }" />
-            <span class="price"><?= $Service['SUM_PRICE'] ?></span>
-          </label>
-        </div>
+            </td>
+            <td class="price"><label for="service_<?= $Service['IB_PROP_ID'] ?>"><?= $Service['SUM_PRICE'] ?></label></td>
+          </tr>
+        </table>
       </div>
     <? endforeach; ?>
     </div>
