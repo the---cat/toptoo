@@ -1441,6 +1441,52 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
 }
 #ts_ag_reservation .order .transit_visa_required{ color: #FF0066;}
 
+#ts_ag_reservation .order_services .service_agree{
+  border: 1px solid #A6A6A6;
+  margin-bottom: 20px;
+  padding:20px;
+}
+
+#ts_ag_reservation .order_services .service_info{ padding-bottom:10px; }
+#ts_ag_reservation .order_services .service_info .img{
+  display: inline-block;
+  padding-right:15px;
+  vertical-align: middle;
+}
+#ts_ag_reservation .order_services .service_info .service-name{
+  color:#000000;
+  display: inline-block;
+  font-size:24px;
+  font-weight:normal;
+  padding-left:15px;
+  vertical-align: middle;
+}
+
+#ts_ag_reservation .order_services .product{ white-space: nowrap; }
+#ts_ag_reservation .order_services .product .prew_text{
+  color:#737373;
+  display: inline-block;
+  font-size: 15px;
+  vertical-align: middle;
+  white-space: normal;
+}
+#ts_ag_reservation .order_services .product .prew_text a,
+#ts_ag_reservation .order_services .product .prew_text .link{
+  border-bottom:1px dashed;
+  text-decoration: none;
+}
+#ts_ag_reservation .order_services .product input{
+  margin:0 45px;
+  vertical-align: middle;
+}
+#ts_ag_reservation .order_services .product .price{
+  color:#666666;
+  display: inline-block;
+  font-size:18px;
+  font-weight:bold;
+  vertical-align: middle;
+  white-space: nowrap;
+}
 
 /* œ¿——¿∆»–€ »  ŒÕ“¿ “Õ¿ﬂ »Õ‘Œ–Ã¿÷»ﬂ */
 #ts_ag_reservation .personal_data {
