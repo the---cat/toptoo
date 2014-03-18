@@ -19,8 +19,22 @@
 	$arResult[ "ORDER" ][ "FLIGHT" ] =& $arResult[ "FLIGHT" ];
 	$arResult[ "ORDER" ][ "bShowHeader" ] = false;
 	$arResult[ "ORDER" ][ "~IS_CHARTER" ] = $arResult[ "~IS_CHARTER" ]; ?>
+  
+  <? $CheckboxServicesCheckedSum = 0;
+  $bCheckboxServicesSum = 0;
+  $bCheckboxServices = array(); // Массив с услугами, отображаемыми в виде отдельного блока с чекбоксом
+  foreach ($arResult['ORDER']['BASKET']['PRODUCT'] as $Product) {
+    // Если продукт является услугой, которая должна отображаться чекбоксом
+    if ( $Product['~SERVICE'] && "CHECKBOX" == ToUpper($Product['SSRTYPE']) ) {
+      $bCheckboxServices[] = $Product;
+      $bCheckboxServicesSum += $Product['~SUM_PRICE'];
+      if ( $Product['CHECKED'] ) {
+        $CheckboxServicesCheckedSum += $Product['~SUM_PRICE'];
+      }
+    }
+  } ?>
+
   <div class="order">
-  <? //trace($arResult) ?>
   <? // Перелеты ?>
   <div class="flights">
   <? foreach( $arResult['DIRECTIONS'] as $directionKey => $direction ): ?>
@@ -144,7 +158,8 @@
           <? endif; ?>
         </td>
         <td class="price" id="total_price">
-          <?= $arResult['ORDER']['BASKET']['TOTAL_PRICE_NO_SSR'] ? $arResult['ORDER']['BASKET']['TOTAL_PRICE_NO_SSR'] : $arResult['ORDER']['BASKET']['ALT_TOTAL_PRICE'] ?>
+          <?//= $arResult['ORDER']['BASKET']['TOTAL_PRICE_NO_SSR'] ? $arResult['ORDER']['BASKET']['TOTAL_PRICE_NO_SSR'] : $arResult['ORDER']['BASKET']['ALT_TOTAL_PRICE'] ?>
+          <?= $arResult['ORDER']['BASKET']['TOTAL_PRICE_WITH_PAYMENT_FEE'] ?>
         </td>
       </tr>
     </table>
@@ -152,4 +167,72 @@
   <? require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/ibe/classes/js_lang/ibe_js.php"); ?>
   <?=GetIbeJsStrings(); ?>
   </div>
+
+  <? if ( count($bCheckboxServices) ): // Выводим в виде чекбокса соответствующие услуги ?>
+  <? //trace ($bCheckboxServices) ?>
+  <div class="order_services">
+    <h3 class="info_caption"><?=GetMessage('IBE_TITLE_SERVICES')?></h3>
+    <div class="service_agree clearfix">
+    <? foreach ( $bCheckboxServices as $Service ): ?>
+      <div class="service">
+        <div class="service_info">
+        <? if($Service['IMAGE_URL']): ?>
+          <span class="img"><img alt="<?=$Service['NAME'] ?>" src="<?=$Service['IMAGE_URL'] ?>" /></span>
+        <? endif; ?>
+          <span class="service-name">
+          <? if($Service['DESCRIPTION_URL']): ?>
+            <a href="<?=$Service['DESCRIPTION_URL'] ?>"><?=$Service['NAME'] ?></a>
+          <? else: ?>
+            <?=$Service['NAME'] ?>
+          <? endif; ?>
+          </span>
+        </div>
+        <div id="product_<?= $Service['IB_PROP_ID'] ?>">
+        <? foreach( $Service['FIELDS'] as $Field ): ?>
+          <input type="hidden" name="<?= $Field['NAME'] ?>" value="<?= $Field['VALUE'] ?>" />
+        <? endforeach; ?>
+          <label class="product" for="service_<?= $Service['IB_PROP_ID'] ?>">
+            <span class="prew_text"><?= $Service['PREVIEW_TEXT'] ?></span>
+            <input<?= $Service['CHECKED'] ? ' checked="checked"' : ''?> id="service_<?= $Service['IB_PROP_ID'] ?>" name="<?= $Service['IB_PROP_ID'] ?>" type="checkbox" onclick="if ( this.checked ) {
+                  $('#product_<?= $Service['IB_PROP_ID'] ?> input').each(function(){ $(this).attr('value','1'); });
+                  <? /*
+                  iTotalPrice += <?=intval($Service['~BASE_SUM_PRICE'])?>;
+                  $('#total_price').text(GetFormattedCurrency(iTotalPrice));
+                  */ ?>
+                } else {
+                  if ( <?= array_key_exists('ALERT_FOR_CLOSE_TEXT', $Service) ? "confirm('{$Service['ALERT_FOR_CLOSE_TEXT']}')" : "true" ?> ) {
+                    $('#product_<?= $Service['IB_PROP_ID'] ?> input').each(function(){ $(this).attr('value','N'); });
+                    <? /*
+                     iTotalPrice -= <?=intval($Service['~BASE_SUM_PRICE'])?>;
+                    $('#total_price').text(GetFormattedCurrency(iTotalPrice));
+                    */ ?>
+                  } else {
+                    this.checked = true;
+                    <? /*
+                    iTotalPrice += <?=intval($Service['~BASE_SUM_PRICE'])?>;
+                    $('#total_price').text(GetFormattedCurrency(iTotalPrice));
+                    */ ?>
+                  }
+                }" />
+            <span class="price"><?= $Service['SUM_PRICE'] ?></span>
+          </label>
+        </div>
+      </div>
+    <? endforeach; ?>
+    </div>
+  </div>
+  <? endif; // if ( count($bCheckboxServices) ) ?>
+  <? //trace($arResult[ "ORDER" ][ "BASKET" ]) ?>
+
+  <? /* Изменение для TSH-10681 */ 
+  if ( isset( $arResult['BUTTONS'] ) && ( ( isset( $arResult['BUTTONS']['BACK'] ) && $arParams['USE_MERGED_STEPS'] !== 'Y' ) || ( isset( $arResult['BUTTONS']['FORWARD'])))): ?>
+  <div class="buttons clearfix">
+    <? if ( isset( $arResult['BUTTONS']['BACK'] ) && $arParams['USE_MERGED_STEPS'] !== 'Y' ): ?>
+    <div class="c-back"><?= CTemplateToolsUtil::RenderField( $arResult['BUTTONS']['BACK'] ) ?></div>
+    <? endif; ?>
+    <? if ( isset( $arResult['BUTTONS']['FORWARD'] ) ): ?>
+    <div class="c-next"><?= CTemplateToolsUtil::RenderField( $arResult['BUTTONS']['FORWARD'] ) ?></div>
+    <? endif; ?>
+  </div>
+  <? endif; ?>
 </form>
