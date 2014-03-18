@@ -1454,37 +1454,34 @@ html.opera .ui-datepicker-multi-2 .ui-datepicker-group-last th:first-child{ bord
   vertical-align: middle;
 }
 #ts_ag_reservation .order_services .service_info .service-name{
+  background: transparent url(images/insurance.png) 0 50% no-repeat;
   color:#000000;
   display: inline-block;
   font-size:24px;
   font-weight:normal;
-  padding-left:15px;
+  padding-left:35px;
   vertical-align: middle;
 }
 
-#ts_ag_reservation .order_services .product{ white-space: nowrap; }
-#ts_ag_reservation .order_services .product .prew_text{
+#ts_ag_reservation .order_services .product td{ vertical-align: middle; }
+#ts_ag_reservation .order_services .product label { cursor: pointer; }
+#ts_ag_reservation .order_services .product .description{
   color:#737373;
-  display: inline-block;
   font-size: 15px;
-  vertical-align: middle;
-  white-space: normal;
 }
 #ts_ag_reservation .order_services .product .prew_text a,
 #ts_ag_reservation .order_services .product .prew_text .link{
   border-bottom:1px dashed;
   text-decoration: none;
 }
-#ts_ag_reservation .order_services .product input{
+#ts_ag_reservation .order_services .product input[type="checkbox"]{
   margin:0 45px;
   vertical-align: middle;
 }
 #ts_ag_reservation .order_services .product .price{
   color:#666666;
-  display: inline-block;
   font-size:18px;
   font-weight:bold;
-  vertical-align: middle;
   white-space: nowrap;
 }
 
