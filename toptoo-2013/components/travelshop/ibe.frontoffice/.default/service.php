@@ -33,7 +33,11 @@ if ( isset ($arParams['EVER_SERVICES']) && strlen($arParams['EVER_SERVICES']) ) 
 
 <div class="services_wrap">
   <? $APPLICATION->IncludeComponent("bitrix:system.show_message", "", Array("MESSAGE" => $arResult['DISPLAY_ERROR'])); ?>
-  <? if(!empty($arResult['SERVICES'])):
+  <? //trace($arResult['SERVICES']); 
+
+  if(!empty($arResult['SERVICES'])):
+
+  /*
   foreach ( $arResult['SERVICES'] as &$srvs ) {
     foreach ( $srvs['PASSENGERS'] as &$psgrs ) {
       foreach ( $psgrs['FLIGHTS'] as &$flts ) {
@@ -43,6 +47,7 @@ if ( isset ($arParams['EVER_SERVICES']) && strlen($arParams['EVER_SERVICES']) ) 
       }
     }
   }
+  */
 
 $arTagForm = array(
     'action' => htmlspecialchars( $arResult['ACTION'] ),
