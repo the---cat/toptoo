@@ -30,7 +30,7 @@ $MESS ['daysSNames'] = '"вск", "пнд", "втр", "срд", "чтв", "птн", "сбт", "вск"';
 $MESS['IBE_WWINDOW_PLEASE_WAIT'] = 'TopToo Travel: мы ищем для Вас билеты у более чем 500 авиакомпаний...';
 
 /* offer.php */
-$MESS['TS_FRONTOFFICE_PENALTY_NORETURNABLE'] = 'Возврат и обмен возможен';
+$MESS['TS_FRONTOFFICE_PENALTY_NORETURNABLE'] = 'Тариф невозвратный';
 $MESS['TS_FRONTOFFICE_BUTTON_BACK_SEARCH'] = 'Изменить параметры перелета';
 $MESS['TS_FRONTOFFICE_STEP2_OFFER_LOCAL_TIME'] = 'Указано местное время';
 $MESS['TS_FRONTOFFICE_STEP2_OFFER_OAK_TITLE'] = 'Выполняется авиакомпанией';
@@ -50,18 +50,18 @@ $MESS[ "TS_FRONTOFFICE_STEP3_ORDER_TIMELIMIT" ] = "Необходимо оплатить до";
 /* ШАГ 2. Выбор рейсов */
 $MESS[ "TS_FRONTOFFICE_STEP2_OFFER_SELECT1" ] = 'Купить';
 $MESS[ "TS_FRONTOFFICE_OPTIMAL_H1" ] = 'Дешевые авиабилеты %DEPARTURE% - %ARRIVAL%';
-$MESS[ "TS_FRONTOFFICE_OPTIMAL_DESCRIPTION" ] = 'TOPTOO.COM &#9992; Дешевые авиабилеты из %DEPARTURE% в %ARRIVAL%%MIN_PRICE%%AK%'; 
+$MESS[ "TS_FRONTOFFICE_OPTIMAL_DESCRIPTION" ] = 'TOPTOO.COM &#9992; Дешевые авиабилеты из %DEPARTURE% в %ARRIVAL%%MIN_PRICE%%AK%';
 $MESS[ "TS_FRONTOFFICE_OPTIMAL_DESCRIPTION_MIN_PRICE" ] = ' &#9992; Цена билетов от %MIN_PRICE%';
 $MESS[ "TS_FRONTOFFICE_OPTIMAL_DESCRIPTION_AK" ] = ' &#9992; %AK_NUM% авиакомпаний в %ARRIVAL%';
 $MESS[ "TS_FRONTOFFICE_OPTIMAL_OFFER_INSTRUCTION" ] = 'Пожалуйста, выберите цену билета %DEPARTURE% - %ARRIVAL%  и рейс(ы).';
-$MESS[ "TS_FRONTOFFICE_OPTIMAL_OFFER_TITLE" ] = 'Купить дешевые авиабилеты %DEPARTURE% - %ARRIVAL% &#9992; Цена билетов от %MIN_PRICE%.'; 
+$MESS[ "TS_FRONTOFFICE_OPTIMAL_OFFER_TITLE" ] = 'Купить дешевые авиабилеты %DEPARTURE% - %ARRIVAL% &#9992; Цена билетов от %MIN_PRICE%.';
 
 $MESS[ "TS_FRONTOFFICE_CHARTER_H1" ] = 'Чартерные рейсы %DEPARTURE% - %ARRIVAL%';
-$MESS[ "TS_FRONTOFFICE_CHARTER_DESCRIPTION" ] = 'TOPTOO.COM &#9992; Чартерные авиабилеты из %DEPARTURE% в %ARRIVAL% %MIN_PRICE%%AK%'; 
+$MESS[ "TS_FRONTOFFICE_CHARTER_DESCRIPTION" ] = 'TOPTOO.COM &#9992; Чартерные авиабилеты из %DEPARTURE% в %ARRIVAL% %MIN_PRICE%%AK%';
 $MESS[ "TS_FRONTOFFICE_CHARTER_DESCRIPTION_MIN_PRICE" ] = ' &#9992; Цены на рейсы от %MIN_PRICE%';
-$MESS[ "TS_FRONTOFFICE_CHARTER_DESCRIPTION_AK" ] = ' &#9992; Чартеры от %AK_NAMES%'; 
+$MESS[ "TS_FRONTOFFICE_CHARTER_DESCRIPTION_AK" ] = ' &#9992; Чартеры от %AK_NAMES%';
 $MESS[ "TS_FRONTOFFICE_CHARTER_TH" ] = 'Чартерный рейс';
-$MESS[ "TS_FRONTOFFICE_CHARTER_OFFER_TITLE" ] = 'Чартерные рейсы %DEPARTURE% - %ARRIVAL%';//&#9992; Купить чартер по цене от %MIN_PRICE%.'; 
+$MESS[ "TS_FRONTOFFICE_CHARTER_OFFER_TITLE" ] = 'Чартерные рейсы %DEPARTURE% - %ARRIVAL%';//&#9992; Купить чартер по цене от %MIN_PRICE%.';
 
 $MESS[ "IBE_PREVIEW_ACCEPT_CUSTOM" ] = 'Я принимаю условия выбранного тарифа и ознакомлен с <a href="http://www.toptoo.com/terms/" target="_blank">условиями публичной оферты</a>.';
 $MESS[ "IBE_PREVIEW_ACCEPT_VISA_CUSTOM" ] = 'Я принимаю условия выбранного тарифа и ознакомлен с правилами визового режима и <a href="http://www.toptoo.com/terms/" target="_blank">условиями публичной оферты</a>.';
@@ -101,7 +101,7 @@ $MESS['IBE_FRONTOFFICE_PERSONAL_DATA_CTC_MAIL'] = 'E-mail';
 $MESS['IBE_FRONTOFFICE_PERSONAL_DATA_AUTO_REGISTRATION'] = 'Я разрешаю использовать эти данные для регистрации на сайте.';
 
 /* paymethod.php */
-$MESS['IBE_FRONTOFFICE_PAY_METHOD_GROUP_CARD'] = 
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_GROUP_CARD'] =
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_GROUP_ONLINE'] = 'Оплатить сейчас онлайн';
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_GROUP_CASH'] = 'Забронировать и оплатить позже';
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_GROUP_OTHER'] = 'Другие способы оплаты';
@@ -127,7 +127,7 @@ $MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_COMMENT_AK'] = 'В случае возврата биле
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_PCS'] = '';
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_CASH'] = 'Рекомендуем Вам не откладывать оплату заказа и по возможности произвести её в течение суток. Указанная первоначально цена может повыситься в случае изменения тарифа авиакомпанией, а также из-за разницы курса валют на момент оплаты билета.';
 
-$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_AG'] = 
+$MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_AG'] =
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_ASSIST'] =
 $MESS['IBE_FRONTOFFICE_PAY_METHOD_PAYMENT_DESCRIPTION_CHRONOPAY'] = 'Списание средств с Вашей карты будет произведено Top Too.<br />
 Если валюта карты отличается от валюты оплаты, то конвертация будет проводиться по курсу Вашего банка. Сумму конвертации можно уточнить у Вашего банка.';
